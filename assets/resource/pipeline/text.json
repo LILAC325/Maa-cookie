@@ -1,0 +1,163 @@
+{
+     "freeshopping":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "common/shopping.png",
+                "roi" : [33,160,35,43]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "freeshoppingpage"
+        ]
+    },
+    "freeshoppingpage":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "商城",
+                "roi" : [0,0,114,70]
+            }
+        },
+        "next":[
+            "findredpointfromshoppinglist"
+        ]
+    },
+    "findredpointfromshoppinglist":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "shopping/redpoint.png",
+                "roi" : [0,70,246,649],
+                "threshold" : 0.5
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "shoppingfreecollect"
+        ]
+    },
+    "shoppingfreecollect":{
+        "next":[
+            "findredpointforfree"
+        ],
+        "interrupt":[
+            "swipeshoppingpage"
+        ],
+        "post_delay":1000
+    },
+    "swipeshoppingpage":{
+        "action":{
+            "type":"Swipe",
+            "param":{
+                "begin" : [1222,635,1,1],
+                "end" : [1222,482,1,1]
+            }
+        }
+    },
+    "findredpointforfree":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "shopping/listredpoint.png",
+                "roi" : [259,150,1020,569]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "post_delay":1000,
+        "next":[
+            "freepack2",
+            "freepack",
+            "checkshoppingtype"
+        ]
+    },
+    "freepack":{
+        "recognition":{
+            "type":"ColorMatch",
+            "param":{
+                "upper" : [122,206,16],
+                "lower" : [122,206,16],
+                "roi" : [14,231,1265,463],
+                "method" : 4
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "returnshoppingpage"
+        ],
+        "pre_delay":1000
+    },
+    "freepack2":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"购买完毕"
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "returnshoppingpage"
+        ],
+        "pre_delay":1000
+    },
+    "checkshoppingtype":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "商城",
+                "roi" : [0,0,114,70]
+            }
+        },
+        "inverse":true,
+        "next":[
+            "collectshoppingpass"
+        ]
+    },
+    "collectshoppingpass":{
+        "recognition":{
+            "type":"ColorMatch",
+            "param":{
+                "upper" : [122,206,16],
+                "lower" : [122,206,16],
+                "roi" : [14,231,1265,463],
+                "method" : 4
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "collectshoppingpass",
+            "returnshoppingpage"
+        ],
+        "post_delay":1000
+    },
+    "returnshoppingpage":{
+        "action":{
+            "type":"Click",
+            "param":{
+                "target":[1224,23,34,30]
+            }
+        },
+        "next":[
+            "freeshoppingpage"
+        ],
+        "interrupt":[
+            "returnshoppingpage"
+        ],
+        "post_delay":2000
+    }
+}
+   
+    

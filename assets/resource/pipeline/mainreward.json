@@ -1,5 +1,12 @@
 {
     "everydayfreereward":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template":"common/mainpage.png",
+                "recommended roi" : [37,550,167,60]
+            }
+        },
         "next":[
             "freegacha",
             "mailbox",
@@ -7,6 +14,13 @@
         ]
     },
     "progressreward":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template":"common/mainpage.png",
+                "recommended roi" : [37,550,167,60]
+            }
+        },
         "next":[
             "kingdomguide",
             "kingdompass"
@@ -129,17 +143,15 @@
         "next":[
             "guidereceive",
             "guideaccrued",
-            "returnmainpage"
+            "weeklyguidedone"
         ]
     },
     "guidereceive":{
         "recognition":{
-            "type":"ColorMatch",
+            "type":"OCR",
             "param":{
-                "upper" : [99,211,0],
-                "lower" : [98,210,0],
-                "method" : 4,
-                "roi" : [187,344,1092,375]
+                "expected" : "领取",
+                "roi" : [234,585,1045,102]
             }
         },
         "action":{
@@ -162,6 +174,23 @@
         },
         "next":[
             "weeklyguidecollect"
+        ]
+    },
+    "weeklyguidedone":{
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action":"DisableNode",
+                "custom_action_param":{
+                    "node_name":"kingdomguide"
+                }
+            }
+        },
+        "interrupt":[
+            "returnmainpage"
+        ],
+        "next":[
+            "progressreward"
         ]
     },
     "kingdompass":{
@@ -193,6 +222,10 @@
     "passcollectnode":{
         "next":[
             "redpointpass",
+            "seasonreward",
+            "everydayfreereward"
+        ],
+        "interrupt":[
             "returnmainpage"
         ]
     },
@@ -225,10 +258,43 @@
         },
         "action":{
                 "type":"Click"
-            },
-            "next":[
-                "passcollectnode"
-            ]
+        },
+        "next":[
+            "passcollectnode"
+        ]
+    },
+    "seasonreward":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "领取",
+                "roi" : [1107,203,141,45]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "seasonrewardcollect"
+        ]
+    },
+    "seasonrewardcollect":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"已获得",
+                "roi" : [234,144,227,110]
+            }
+        },
+        "action":{
+            "type":"Click",
+            "param":{
+                "target": [114,547,1072,143]
+            }
+        },
+        "next":[
+            "passcollectnode"
+        ]
     },
     "freegacha":{
         "recognition":{
@@ -262,7 +328,8 @@
         },
         "next":[
             "choosefreegacha"
-        ]
+        ],
+        "post_delay":2000
     },
     "choosefreegacha":{
         "recognition":{
@@ -294,7 +361,7 @@
             "freegachcollect"
         ],
         "on_error":[
-            "everydayfreereward_returnmainpage"
+            "freegachadone"
         ],
         "timeout":500,
         "post_delay":4000
@@ -321,7 +388,10 @@
             }
         },
         "next":[
-            "everydayfreereward_returnmainpage"
+            "everydayfreereward"
+        ],
+        "interrupt":[
+            "returnmainpage"
         ]
     },
     "mailbox":{
@@ -377,36 +447,10 @@
             }
         },
         "next":[
-            "everydayfreereward_returnmainpage"
-        ]
-    },
-    "everydayfreereward_returnmainpage":{
-        "recognition":{
-            "type":"TemplateMatch",
-            "param":{
-                "template" : "common/return.png",
-                "roi" : [1137,2,142,114]
-            }
-        },
-        "action":{
-            "type":"Click"
-        },
-        "next":[
-            "everydayfreereward_mainpagejudgment",
-            "everydayfreereward_returnmainpage"
-        ],
-        "post_delay":2000
-    },
-    "everydayfreereward_mainpagejudgment":{
-        "recognition":{
-            "type":"TemplateMatch",
-            "param":{
-                "template":"common/mainpage.png",
-                "recommended roi" : [37,550,167,60]
-            }
-        },
-        "next":[
             "everydayfreereward"
+        ],
+        "interrupt":[
+            "returnmainpage"
         ]
     }
 }

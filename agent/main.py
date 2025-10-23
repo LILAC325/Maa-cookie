@@ -3,10 +3,10 @@ import sys
 from maa.agent.agent_server import AgentServer
 from maa.toolkit import Toolkit
 
-import base
+import custom
 
 def main():
-    Toolkit.init_option("032f874d-d96c-4f2a-86a7-df10dbb80de6")
+    Toolkit.init_option("./")
 
     socket_id = sys.argv[-1]
 
