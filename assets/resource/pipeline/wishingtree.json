@@ -1,0 +1,238 @@
+{
+    "wishingtree":{
+        "next":[
+            "kingdomeventspage3"
+        ]
+   },
+   "kingdomeventspage3":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "王国活动",
+                "roi" : [165,653,96,54]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "choosewishingtree"
+        ]
+    },
+    "choosewishingtree":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "common/wishingtree.png",
+                "roi" : [331,253,92,123]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "wishtreewhetherdone",
+            "wishingtreepage"
+        ]
+    },
+    "wishtreewhetherdone":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "已获得",
+                "roi" : [37,550,167,60]
+            }
+        },
+        "next":[
+            "returnmainpage"
+        ]
+
+    },
+    "wishingtreepage":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "许愿树",
+                "roi" : [565,17,146,61]
+            }
+        },
+        "next":[
+            "checkmax",
+            "wishload",
+            "wishsubmit",
+            "wishcooling",
+            "returnmainpage"
+        ]
+    },
+    "checkmax":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "30|[3-9]\\d",
+                "roi" : [49,555,141,43]
+            }
+        },
+        "next":[
+            "wishingtreecollect"
+        ]
+    },
+    "wishload":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" :[
+                    "饼干",
+                    "甜甜圈"
+                ],
+                "roi" : [271,138,877,41]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "wishingtreepage"
+        ]
+    },
+    "wishsubmit":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "交付",
+                "roi" : [261,535,888,88]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "checkmax",
+            "wishsubmit",
+            "wishingtreepage"
+        ],
+        "post_delay":1000
+    },
+    "wishcooling":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "common/wishcooling.png",
+                "roi" : [258,211,895,91]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "useaccelerationcoupon"
+        ]
+    },
+    "useaccelerationcoupon":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "10分钟加速券",
+                "roi" : [361,276,560,291]
+            }
+        },
+        "action":{
+            "type":"Click",
+            "param":{
+                "target_offset":[330,0,0,0]
+            }
+        },
+        "next":[
+            "wishcooling",
+            "wishingtreepage",
+            "ignorereminder"
+        ]
+    },
+    "ignorereminder":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "使用加速券",
+                "roi" : [555,475,170,61]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "wishingtreepage"
+        ]
+    },
+    "wishingtreecollect":{
+        "recognition":{
+            "type":"ColorMatch",
+            "param":{
+                "upper" : [147,233,33],
+                "lower" : [122,206,16],
+                "method" : 4,
+                "recommended roi" : [160,441,40,38]
+            }
+        },
+        "action":{
+            "type":"Click",
+            "param":{
+                "target":[44,437,149,148]
+            }
+        },
+        "next":[
+            "clickwishchest"
+        ]
+    },
+    "clickwishchest":{
+        "recognition":{
+            "type":"ColorMatch",
+            "param":{
+                "upper" : [7,11,2],
+                "lower" : [6,10,1],
+                "method" : 4,
+                "roi" : [160,441,40,38]
+            }
+        },
+        "action":{
+            "type":"Click",
+            "param":{
+                "target":[0,0,0,0]
+            }
+        },
+        "next":[
+            "wishcometrue"
+        ],
+        "pre_delay":2000
+    },
+    "wishcometrue":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "愿望实现",
+                "roi" : [226,147,321,107]
+            }
+        },
+        "action":{
+            "type":"Click",
+            "param":{
+                "target":[205,549,880,139]
+            }
+        },
+        "next":[
+            "wishingtreedone",
+            "wishingtreecollect"
+            
+        ]
+    },
+    "wishingtreedone":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "已获得",
+                "roi" : [39,554,161,48]
+            }
+        },
+        "next":[
+            "returnmainpage"
+        ]
+    }  
+}

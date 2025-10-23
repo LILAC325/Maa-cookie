@@ -1,0 +1,511 @@
+{
+    "cleargreenpoint":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "common/greenpoint.png"
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "train",
+            "hotairballoon",
+            "fountain",
+            "sailingcollect",
+            "landmarkreward"
+        ],
+        "on_error":[
+            "adventurercookie",
+            "quitsell",
+            "quitannouncement"
+        ],
+        "timeout":100,
+        "post_wait_freezes":50
+    },
+    "hotairballoon":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"探险",
+                "roi" : [377,20,523,110]
+            }
+        },
+        "action":{
+            "type":"Click",
+            "param":{
+                "target": [218,628,854,63]
+            }
+        },
+        "next":[
+            "autochoose"
+        ]
+    },
+    "autochoose":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "roi" : [423,635,135,51],
+                "expected" : "自动选择"
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "adventurestart"
+        ]
+
+    },
+    "adventurestart":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "roi" : [969,633,133,55],
+                "expected" : "探险开始"
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "waitforhotairballoon"
+        ],
+        "pre_wait_freezes":1000
+    },
+    "waitforhotairballoon":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"熊熊果冻热气球",
+                "roi" : [477,36,320,52]
+            }
+        },
+        "next":[
+            "back"
+        ],
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action":"DisableNode",
+                "custom_action_param":{
+                    "node_name":"hotairballoon"
+                }
+            }
+        }
+
+    },
+    "back":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "hotairballoon/03.png",
+                "roi" : [1208,3,63,59]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "cleargreenpoint"
+        ],
+        "interrupt":[
+            "quitsell"
+        ],
+        "timeout":2000
+    },
+    "inprogress":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "roi" : [545,627,65,44],
+                "expected" : "取消"
+            }
+        },
+        "next":[
+            "back"
+        ]
+    },
+    "train":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "roi" : [27,13,214,59],
+                "expected" : "熊熊果冻列车"
+            }
+        },
+        "action":{
+            "type":"DoNothing"
+        },
+        "next":[
+            "trainsubmit",
+            "traincollect"
+        ]
+    },
+    "trainsubmit":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "roi":[788,112,304,577],
+                "expected" : "全部交货"
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "trainsubmit",
+            "traincollect"
+        ],
+        "on_error":[
+            "traindone"
+        ],
+        "timeout":2000
+    },
+    "traindone":{
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action":"DisableNode",
+                "custom_action_param":{
+                    "node_name":"fountain"
+                }
+            }
+        },
+        "next":[
+            "back"
+        ]
+    },
+    "traincollect":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "roi" : [722,79,286,637],
+                "template" : "train/traincollect.png"
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "traincollect",
+            "trainsubmit"
+        ],
+        "post_delay":6000
+
+    },
+    "fountain":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "领取奖励",
+                "roi" : [844,580,212,81]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "pre_wait_freezes":500,
+        "next":[
+            "checkliquidation",
+            "clickforcollect"
+        ]
+    },
+    "clickforcollect":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "丰饶喷泉奖励"
+            }
+        },
+        "action":{
+            "type":"Click",
+            "param":{
+                "target": [218,628,854,63]
+            }
+        },
+        "next":[
+            "fountaindone"
+        ],
+        "timeout":3000
+    },
+    "fountaindone":{
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action":"DisableNode",
+                "custom_action_param":{
+                    "node_name":"fountain"
+                }
+            }
+        },
+        "next":[
+            "cleargreenpoint"
+        ]
+    },
+    "sailingcollect":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"已获得",
+                "roi" : [237,162,227,84]
+            }
+        },
+        "action":{
+            "type":"Click",
+            "param":{
+                "target": [218,628,854,63]
+            }
+        },
+        "next":[
+            "tradepage",
+            "cleargreenpoint"
+        ]
+    },
+    "landmarkreward":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "地标",
+                "roi" : [223,146,469,103]
+            }
+        },
+        "next":[
+            "clickforcollect"
+        ]
+    },
+    "adventurercookie":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "common/adventurercookie.png"
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "cleargreenpoint"
+        ]
+    },
+    "kingdomeventspage1":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "王国活动",
+                "roi" : [165,653,96,54]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "choosetrain"
+        ]
+    },
+    "choosetrain":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "common/train.png",
+                "roi":[653,399,153,144]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "train"
+        ]
+    },
+    "kingdomeventspage2":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "王国活动",
+                "roi" : [165,653,96,54]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "choosetrade"
+        ]
+    },
+    "choosetrade":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "common/trade.png",
+                "roi" : [315,417,132,118]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "tradepage"
+        ]
+    },
+    "tradepage":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "贸易中心",
+                "roi" : [212,5,147,62]
+            }
+        },
+        "next":[
+            "shipment",
+            "shipmentcooling"
+        ]
+    },
+    "shipment":{
+        "recognition":{
+            "type":"ColorMatch",
+            "param":{
+                "upper" : [122,206,16],
+                "lower" : [122,206,16],
+                "method" : 4,
+                "roi" : [814,517,36,31]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "shipmentpage"
+        ],
+        "timeout":200
+    },
+    "shipmentpage":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "最高载货量",
+                "roi" : [790,635,106,43]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "confirmshipment"
+        ]
+    },
+    "confirmshipment":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "装船",
+                "roi" : [575,451,131,66]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "tradepage"
+        ]
+    },
+    "shipmentcooling":{
+        "recognition":{
+            "type":"ColorMatch",
+            "param":{
+                "upper" : [160,160,160],
+                "lower" : [160,160,160],
+                "method" : 4,
+                "roi" : [814,517,36,31]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "nextship"
+        ],
+        "on_error":[
+            "returnmainpage"
+        ],
+        "timeout":200
+    },
+    "nextship":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "第2码头",
+                "roi" : [1102,140,153,64]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "shipment"
+        ],
+        "on_error":[
+            "returnmainpage"
+        ],
+        "timeout":2000
+    },
+    "kingdomproduce":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "common/kingdomproduce.png",
+                "roi" : [0,408,105,98]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "filluponce"
+        ]
+    },
+    "filluponce":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "一次填满",
+                "roi" : [1085,658,176,54]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "filluponcepage"
+        ]
+    },
+    "filluponcepage":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "一次填满",
+                "roi" : [661,542,198,62]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "checkliquidation",
+            "checkproducedone",
+            "filluponce"
+        ]
+    },
+    "checkproducedone":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "没有可制作的产品"
+                }
+        },
+        "next":[
+            "returnmainpage"
+        ]
+    }
+}

@@ -1,84 +1,57 @@
 {
+    "name":"Maa-cookiek",
+    "url":"https://github.com/LILAC325/Maa-cookie",
+    "message":"welecome to cookiekingdom",
+    "version":"v1.0.0",
     "controller": [
         {
-            "name": "安卓端",
+            "name": "ADB默认",
             "type": "Adb"
-        },
-        {
-            "name": "桌面端",
-            "type": "Win32",
-            "win32": {
-                "class_regex": ".*",
-                "window_regex": "Visual Studio"
-            }
         }
     ],
-    "resource": [
-        {
-            "name": "官服",
-            "path": [
-                "{PROJECT_DIR}/resource"
-            ]
-        },
-        {
-            "name": "B 服",
-            "path": [
-                "{PROJECT_DIR}/resource",
-                "{PROJECT_DIR}/resource_bilibili"
-            ]
-        }
-    ],
-    "agent_demo": {
+    "agent": {
         "child_exec": "python",
         "child_args": [
             "{PROJECT_DIR}/agent/main.py"
         ]
     },
-    "task": [
+    "resource": [
         {
-            "name": "普通任务",
-            "entry": "MyTask1"
-        },
-        {
-            "name": "选项任务",
-            "entry": "MyTask2",
-            "option": [
-                "任务选项1"
+            "name": "Official",
+            "path": [
+                "{PROJECT_DIR}/resource"
             ]
-        },
-        {
-            "name": "参数任务",
-            "entry": "MyTask3",
-            "option": [
-                "任务选项1"
-            ],
-            "pipeline_override": {}
-        },
-        {
-            "name": "带Custom的任务",
-            "entry": "MyTask4"
         }
     ],
-    "option": {
-        "任务选项1": {
-            "cases": [
-                {
-                    "name": "文本1",
-                    "pipeline_override": {
-                        "OcrTask": {
-                            "text": "文本1"
-                        }
-                    }
-                },
-                {
-                    "name": "文本2",
-                    "pipeline_override": {
-                        "OcrTask": {
-                            "text": "文本2"
-                        }
-                    }
-                }
-            ]
+    "task": [
+        
+        {
+            "name":"清绿点",
+            "entry":"cleargreenpoint"
+        },
+        {
+            "name":"熊熊果冻列车",
+            "entry":"kingdomeventspage1"
+        },
+        {
+            "name":"海上贸易中心",
+            "entry":"kingdomeventspage2"
+        },
+        {
+            "name":"愿望树",
+            "entry":"wishingtree"
+        },
+        {
+            "name":"王国生产管理",
+            "entry":"kingdomproduce"
+        },
+        {
+            "name":"每日奖励",
+            "entry":"everydayfreereward"
+        },
+        {
+            "name":"进度奖励",
+            "entry":"progressreward"
         }
-    }
+    ]
 }

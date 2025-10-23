@@ -1,0 +1,154 @@
+{
+    "pveentry":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "冒险",
+                "roi" : [1098,607,154,97]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "adventurepage1"
+        ]
+    },
+    "adventurepage1":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "冒险",
+                "roi" : [69,13,84,57]
+            }
+        },
+        "next":[
+            "todayreward",
+            "swtoright"
+        ]
+    },
+    "swtoright":{
+        "action":{
+            "type":"Swipe",
+            "param":{
+                "begin" : [1256,161,1,1],
+                "end" : [15,168,1,1]
+            }
+        },
+        "next":[
+            "adventurepage1"
+        ]
+    },
+    "todayreward":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"今日悬赏"
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "todayrewardpage"
+        ]
+    },
+    "todayrewardpage":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "今日悬赏令",
+                "roi" : [9,7,199,67]
+            }
+        },
+        "next":[
+            "checktodayrewardtime",
+            "skillpowder"
+        ]
+    },
+    "checktodayrewardtime":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "0/6",
+                "roi" : [1079,14,115,49]
+            },
+            "action":{
+                "type":"Click",
+                "param":{
+                    "target":[]
+                }
+            },
+            "next":[
+            ]
+        }
+
+    },
+    "skillpowder":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "技能粉末"
+            }
+        },
+        "action":{
+            "type":"Click",
+            "param":{
+                "target_offset":[-135,145,-22,42]
+            }
+        },
+        "next":[
+            "timespring"
+        ]
+    },
+    "timespring":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "最多",
+                "roi" : [779,434,78,46]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "usetimespring"
+        ]
+    },
+    "usetimespring":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "快转",
+                "roi" : [578,514,137,61]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "timespringdone"
+        ],
+        "post_delay":4000
+    },
+    "timespringdone":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "完成",
+                "roi" : [545,58,191,52]
+            }
+        },
+        "action":{
+            "type":"Click",
+            "param":{
+                "target" : [324,642,682,77]
+            }
+        },
+        "next":[
+            "todayrewardpage"
+        ],
+        "post_delay":4000
+    }
+}

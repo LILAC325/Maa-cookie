@@ -1,0 +1,70 @@
+{
+    "returnmainpage":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "common/return.png",
+                "roi" : [1137,2,142,114]
+        }
+    },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "mainpagejudgment",
+            "returnmainpage"
+        ],
+        "post_delay":2000
+    },
+    "mainpagejudgment":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template":"common/mainpage.png",
+                "recommended roi" : [37,550,167,60]
+            }
+        }
+    },
+    "quitsell":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "商品信息",
+                "roi" : [53,20,96,38]
+            }
+        },
+        "next":[
+            "back"
+        ]
+    },
+    "quitannouncement":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"公告",
+                "roi" : [101,277,112,96]
+            }
+        },
+        "next":[
+            "returnmainpage"
+        ]
+    },
+    "checkliquidation":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "仓库空间不足",
+                "recommended roi" : [480,292,145,55]
+            }
+        },
+        "action":{
+            "type":"Click",
+            "param":{
+                "target" : [855,176,36,36]
+            }
+        },
+        "next":[
+            "returnmainpage"
+        ]
+    }
+}

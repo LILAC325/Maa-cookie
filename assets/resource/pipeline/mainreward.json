@@ -1,0 +1,412 @@
+{
+    "everydayfreereward":{
+        "next":[
+            "freegacha",
+            "mailbox",
+            "friendgift"
+        ]
+    },
+    "progressreward":{
+        "next":[
+            "kingdomguide",
+            "kingdompass"
+    ]
+    },
+    "friendgift":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "common/friendgift.png",
+                "roi" : [1020,26,35,31]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "friendgiftpage"
+        ]
+    },
+    "friendgiftpage":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "好友",
+                "roi" : [11,136,66,83]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "givegift"
+        ]
+    },
+    "givegift":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "全",
+                "roi" : [728,641,91,73]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "quitfriendgiftpage"
+        ],
+        "post_delay":1000
+    },
+    "quitfriendgiftpage":{
+        "action":{
+            "type":"Click",
+            "param":{
+                "target" : [873,110,275,432]
+            }
+        },
+        "next":[
+            "friendgiftdone"
+        ]
+    },
+    "friendgiftdone":{
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action":"DisableNode",
+                "custom_action_param":{
+                    "node_name":"friendgift"
+                }
+            }
+        },
+        "next":[
+            "everydayfreereward"
+        ]
+    },
+    "kingdomguide":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "common/kingdomguide.png",
+                "roi" : [34,329,42,39]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "kingdomguidepage"
+        ]
+    },
+    "kingdomguidepage":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "王国向导",
+                "roi" : [6,5,137,84]
+            }
+        },
+        "next":[
+            "weeklyguide"
+        ]
+    },
+    "weeklyguide":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "每周向导",
+                "roi" : [42,131,112,83]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "weeklyguidecollect"
+        ]
+    },
+    "weeklyguidecollect":{
+        "next":[
+            "guidereceive",
+            "guideaccrued",
+            "returnmainpage"
+        ]
+    },
+    "guidereceive":{
+        "recognition":{
+            "type":"ColorMatch",
+            "param":{
+                "upper" : [99,211,0],
+                "lower" : [98,210,0],
+                "method" : 4,
+                "roi" : [187,344,1092,375]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "weeklyguidecollect"
+        ]
+    },
+    "guideaccrued":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template":"common/guideaccrued.png",
+                "roi" : [480,51,758,240]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "weeklyguidecollect"
+        ]
+    },
+    "kingdompass":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "common/kingdompass.png",
+                "roi" : [1150,133,114,95]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "kingdompasspage"
+        ]
+    },
+    "kingdompasspage":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "common/kingdompasspage.png"
+            }
+        },
+        "next":[
+            "passcollectnode"
+        ]
+    },
+    "passcollectnode":{
+        "next":[
+            "redpointpass",
+            "returnmainpage"
+        ]
+    },
+    "redpointpass":{
+        "recognition":{
+            "type":"ColorMatch",
+            "param":{
+                "lower" : [255,0,0],
+                "upper" : [255,0,0],
+                "method" : 4,
+                "roi" : [403,644,876,75]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "passcollect"
+        ]
+    },
+    "passcollect":{
+        "recognition":{
+            "type":"ColorMatch",
+            "param":{
+                "upper" : [87,210,0],
+                "lower" : [87,210,0],
+                "roi" : [1090,651,168,57],
+                "method" : 4
+            }  
+        },
+        "action":{
+                "type":"Click"
+            },
+            "next":[
+                "passcollectnode"
+            ]
+    },
+    "freegacha":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "common/gacha.png",
+                "roi" : [606,615,74,81]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "swfreegacha"
+        ]
+    },
+    "swfreegacha":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "common/gacha2.png",
+                "roi" : [0,0,112,63]
+            }
+        },
+        "action":{
+            "type":"Swipe",
+            "param":{
+                "begin" : [68,568,1,1],
+                "end" : [68,113,1,1]
+            }
+        },
+        "next":[
+            "choosefreegacha"
+        ]
+    },
+    "choosefreegacha":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "common/gacha3.png",
+                "roi" : [8,60,111,658]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "freegachapage"
+        ]
+    },
+    "freegachapage":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "领取免费奖励",
+                "roi" : [1035,595,210,80]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "freegachcollect"
+        ],
+        "on_error":[
+            "everydayfreereward_returnmainpage"
+        ],
+        "timeout":500,
+        "post_delay":4000
+    },
+    "freegachcollect":{
+        "action":{
+            "type":"Click",
+            "param":{
+                "target": [218,628,854,63]
+            }
+        },
+        "next":[
+            "freegachadone"
+        ]
+    },
+    "freegachadone":{
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action":"DisableNode",
+                "custom_action_param":{
+                    "node_name":"freegacha"
+                }
+            }
+        },
+        "next":[
+            "everydayfreereward_returnmainpage"
+        ]
+    },
+    "mailbox":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "common/mailbox.png",
+                "roi" : [1081,17,31,40]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "mailboxpage"
+        ]
+    },
+    "mailboxpage":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"全部领取",
+                "roi" : [1013,614,159,48]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "mailboxcollect"
+        ],
+        "post_wait_freezes":500
+    },
+    "mailboxcollect":{
+        "action":{
+            "type":"Click",
+            "param":{
+                "target": [218,628,854,63]
+            }
+        },
+        "next":[
+            "mailboxdone"
+        ]
+    },
+    "mailboxdone":{
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action":"DisableNode",
+                "custom_action_param":{
+                    "node_name":"mailbox"
+                }
+            }
+        },
+        "next":[
+            "everydayfreereward_returnmainpage"
+        ]
+    },
+    "everydayfreereward_returnmainpage":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "common/return.png",
+                "roi" : [1137,2,142,114]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "everydayfreereward_mainpagejudgment",
+            "everydayfreereward_returnmainpage"
+        ],
+        "post_delay":2000
+    },
+    "everydayfreereward_mainpagejudgment":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template":"common/mainpage.png",
+                "recommended roi" : [37,550,167,60]
+            }
+        },
+        "next":[
+            "everydayfreereward"
+        ]
+    }
+}
