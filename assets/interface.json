@@ -52,6 +52,10 @@
         {
             "name":"进度奖励",
             "entry":"progressreward"
+        },
+        {
+            "name":"商城",
+            "entry":"freeshopping"
         }
     ]
 }

@@ -266,7 +266,8 @@
         "next":[
             "tradepage",
             "cleargreenpoint"
-        ]
+        ],
+        "timeout":2000
     },
     "landmarkreward":{
         "recognition":{
@@ -276,8 +277,14 @@
                 "roi" : [223,146,469,103]
             }
         },
+        "action":{
+            "type":"Click",
+            "param":{
+                "target" : [37,545,1209,141]
+            }
+        },
         "next":[
-            "clickforcollect"
+            "filluponcepage"
         ]
     },
     "adventurercookie":{
@@ -497,20 +504,24 @@
             "type":"Click"
         },
         "next":[
+            "landmarkreward",
             "checkliquidation",
             "checkproducedone",
-            "filluponce"
-        ]
+            "returnmainpage"
+        ],
+        "post_delay":2000
     },
     "checkproducedone":{
         "recognition":{
-            "type":"OCR",
+            "type":"TemplateMatch",
             "param":{
-                "expected" : "没有可制作的产品"
+                "template":"common/producedone.png",
+                "roi" : [8,109,610,497],
+                "threshold" : 0.5
                 }
         },
         "next":[
-            "returnmainpage"
+            "filluponce"
         ]
     }
 }
