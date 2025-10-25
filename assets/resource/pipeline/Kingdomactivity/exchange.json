@@ -1,0 +1,113 @@
+{
+    "chooseexchance":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "kingdomactivity/exchanceentry.png",
+                "roi" : [315,417,132,118]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "exchancepage"
+        ],
+        "enabled":false
+    },
+    "exchancepage":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "海滩交易所",
+                "roi" : [363,65,546,79]
+            }
+        },
+        "next":[
+            "itemsexchance",
+            "returnmainpage"
+        ]
+    },
+    "itemsexchance":{
+        "next":[
+            "skillpowderexchance",
+            "checkfreeitemsrefresh1",
+            "goldexchance"
+        ]
+    },
+    "seekitem":{
+        "action":{
+            "type":"Swipe",
+            "param":{
+                "start" : [381,656,210,52],
+                "end" : [381,726,210,52],
+                "duration" : 1000
+            }
+        },
+        "next":[
+            "itemsexchance"
+        ]
+    },
+    "skillpowderexchance":{
+        "next":[
+            "seekitem"
+        ]
+    },
+    "checkfreeitemsrefresh1":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"免费刷新",
+                "roi" : [995,346,264,51]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "itemsexchance"
+        ]
+    },
+    "goldexchance":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"金币交易所",
+                "roi" : [646,655,283,53]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "buymultiple"
+        ]
+    },
+    "buymultiple":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"购买多个",
+                "roi" : [785,348,188,46]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "buymultiplepage"
+        ]
+    },
+    "buymultiplepage":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"购买多个",
+                "roi" : [785,348,188,46]
+            }
+        },
+        "next":[
+            
+        ]
+    }
+}

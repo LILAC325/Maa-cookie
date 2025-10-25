@@ -30,18 +30,6 @@
             "entry":"cleargreenpoint"
         },
         {
-            "name":"熊熊果冻列车",
-            "entry":"kingdomeventspage1"
-        },
-        {
-            "name":"海上贸易中心",
-            "entry":"kingdomeventspage2"
-        },
-        {
-            "name":"愿望树",
-            "entry":"wishingtree"
-        },
-        {
             "name":"王国生产管理",
             "entry":"kingdomproduce"
         },
@@ -56,6 +44,22 @@
         {
             "name":"商城",
             "entry":"freeshopping"
+        },
+        {
+            "name":"交易所",
+            "entry":"exchange"
+        },
+        {
+            "name":"王国活动",
+            "entry":"kingdomactivity",
+            "option":[
+                "愿望树",
+                "熊熊果冻热气球",
+                "海上贸易中心",
+                "熊熊果冻列车",
+                "交易所",
+                "相约之所"
+            ]
         }
     ]
 }

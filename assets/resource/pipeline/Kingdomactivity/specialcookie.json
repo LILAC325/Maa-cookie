@@ -1,0 +1,79 @@
+{
+    "choosespecialcookie":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "kingdomactivity/choosespecialcookie.png",
+                "roi" : [840,401,120,139]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next": [
+            "specialcookiepage"
+        ],
+        "enabled":false
+    },
+    "specialcookiepage":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "相约之亭",
+                "roi" : [14,7,198,64]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next": [
+            "huaxiaolong"
+        ]
+    },
+    "huaxiaolong":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "花小龙饼干"
+            }
+        },
+        "action":{
+            "type":"Click",
+            "param":{
+                "target_offset" : [-6, 51, 18, 4]
+            }
+        },
+        "next": [
+            "incubationpage"
+        ]
+    },
+    "incubationpage":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "kingdomactivity/incubation.png",
+                "roi" : [819,7,384,63]
+            }
+        },
+        "next": [
+            "checkincubationnumber"
+        ]
+    },
+    "checkincubationnumber":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "0/15"
+            }
+        },
+        "action":{
+            "type":"Click",
+            "param":{
+                "target_offset" : [-147, 45, 154, 60]
+            }
+        },
+        "next": [
+        ],
+        "inverse":true
+    }
+}

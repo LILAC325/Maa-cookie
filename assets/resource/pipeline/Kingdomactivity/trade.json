@@ -1,0 +1,119 @@
+{
+    "choosetrade":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "kingdomactivity/trade.png",
+                "roi" : [315,417,132,118]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "tradepage"
+        ],
+        "enabled":false
+    },
+    "tradepage":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "贸易中心",
+                "roi" : [212,5,147,62]
+            }
+        },
+        "next":[
+            "shipment",
+            "shipmentcooling"
+        ]
+    },
+    "shipment":{
+        "recognition":{
+            "type":"ColorMatch",
+            "param":{
+                "upper" : [122,206,16],
+                "lower" : [122,206,16],
+                "method" : 4,
+                "roi" : [814,517,36,31]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "shipmentpage"
+        ],
+        "timeout":200
+    },
+    "shipmentpage":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "最高载货量",
+                "roi" : [790,635,106,43]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "confirmshipment"
+        ]
+    },
+    "confirmshipment":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "装船",
+                "roi" : [575,451,131,66]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "tradepage"
+        ]
+    },
+    "shipmentcooling":{
+        "recognition":{
+            "type":"ColorMatch",
+            "param":{
+                "upper" : [160,160,160],
+                "lower" : [160,160,160],
+                "method" : 4,
+                "roi" : [814,517,36,31]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "nextship"
+        ],
+        "on_error":[
+            "returnmainpage"
+        ],
+        "timeout":200
+    },
+    "nextship":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "第2码头",
+                "roi" : [1102,140,153,64]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "shipment"
+        ],
+        "on_error":[
+            "returnmainpage"
+        ],
+        "timeout":2000
+    }
+}
