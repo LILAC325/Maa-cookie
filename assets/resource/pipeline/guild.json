@@ -25,32 +25,9 @@
         },
         "next":[
             "guild_checkin",
-            "guild_gacha"
+            "guild_gacha",
+            "guild_returnmainpage"
         ]
-    },
-    "guild_checkin_entry":{
-        "next":[
-            "guild_main_page"
-        ]
-    },
-    "guild_gacha_entry":{
-        "next":[
-            "guild_main_page"
-        ]
-    },
-    "guild_upgrade_entry":{
-        "next":[
-            "guild_main_page"
-        ],
-        "action":{
-            "type":"Custom",
-            "param":{
-                "custom_action":"EnbleNode",
-                "custom_action_param":{
-                    "node_name":"guild_checkin"
-                }
-            }
-        }
     },
     "guild_checkin":{
         "recognition":{
@@ -67,14 +44,13 @@
             "guild_checkin_page",
             "guild_upgrade_page"
         ],
-        "post_delay":2000
+        "post_delay":4000
     },
     "guild_checkin_page":{
         "recognition":{
             "type":"OCR",
             "param":{
-                "expected" : "确认",
-                "roi" : [400,197,457,64]
+                "expected" : "确认"
             }
         },
         "action":{
@@ -282,7 +258,7 @@
         "recognition":{
             "type":"OCR",
             "param":{
-                "expected":"公会讨伐"
+                "expected":"公会讨伐战"
             }
         },
         "action":{
@@ -307,6 +283,25 @@
             }
         },
         "next":[
+            "guild_battle_report",
+            "guild_battle_page"
+        ]
+    },
+    "guild_battle_report":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"战报",
+                "roi" : [526,50,243,67]
+            }
+        },
+        "action":{
+            "type":"Click",
+            "param":{
+                "target" : [1178,50,38,38]
+            }
+        },
+        "next":[
             "guild_battle_page"
         ]
     },
@@ -314,13 +309,27 @@
         "recognition":{
             "type":"OCR",
             "param":{
-                "expected":"公会讨伐战"
+                "expected":"公会讨伐战",
+                "roi" : [0,12,239,48]
             }
         },
         "next":[
             
         ]
+    },
+    "guild_returnmainpage":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"前往王国",
+                "roi" : [1153,614,98,80]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "mainpagejudgment"
+        ]
     }
-    
-    
 }

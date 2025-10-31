@@ -1,5 +1,5 @@
 {
-    "pveentry":{
+    "adventure_entry":{
         "recognition":{
             "type":"OCR",
             "param":{
@@ -11,10 +11,10 @@
             "type":"Click"
         },
         "next":[
-            "adventurepage"
+            "adventure_page"
         ]
     },
-    "adventurepage":{
+    "adventure_page":{
         "recognition":{
             "type":"OCR",
             "param":{
@@ -23,20 +23,246 @@
             }
         },
         "next":[
+            "legendaryjam",
             "todayreward",
-            "swtoright"
+            "archipelago",
+            "adventure_swtoright",
+            "returnmainpage"
+        ],
+        "post_delay":1000
+    },
+    "legendaryjam":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"实证战场"
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "legendaryjam_page"
         ]
     },
-    "swtoright":{
-        "action":{
-            "type":"Swipe",
+    "legendaryjam_page":{
+        "recognition":{
+            "type":"OCR",
             "param":{
-                "begin" : [1256,161,1,1],
-                "end" : [15,168,1,1]
+                "expected" : "强大力量",
+                "roi" : [649,107,133,42]
             }
         },
         "next":[
-            "adventurepage"
+            "check_legendaryjam_time",
+            "frostqueen",
+            "seasprite",
+            "blackpearl",
+            "sw_legendaryjam_bottom"
+        ]
+    },
+    "sw_legendaryjam_bottom":{
+        "action":{
+            "type":"Swipe",
+            "param":{
+                "begin" : [1189,601,1,1],
+                "end" : [1187,372,1,1]
+            }
+        },
+        "next":[
+            "legendaryjam_page"
+        ]
+    },
+    "frostqueen":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "adventure/frostqueen.png"
+            }   
+        },
+        "action":{
+            "type":"Click",
+            "param":{
+                "target_offset" : [150, 0, 50, 0]
+            }
+        },
+        "next":[
+            "legendaryjam_battle_page"
+        ]
+    },
+    "seasprite":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "adventure/seasprite.png"
+            }   
+        },
+        "action":{
+            "type":"Click",
+            "param":{
+                "target_offset" : [150, 0, 50, 0]
+            }
+        },
+        "next":[
+            "legendaryjam_battle_page"
+        ],
+        "enabled":false
+    },
+    "blackpearl":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "adventure/seasprite.png"
+            }   
+        },
+        "action":{
+            "type":"Click",
+            "param":{
+                "target_offset" : [150, 0, 50, 0]
+            }
+        },
+        "next":[
+            "legendaryjam_battle_page"
+        ],
+        "enabled":false
+    },
+    "legendaryjam_battle_page":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"战斗准备",
+                "roi" : [858,628,298,54]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "flegendaryjam_timespring"
+        ]
+    },
+    "flegendaryjam_timespring":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "adventure/timespring.png"
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "use_flegendaryjam_timespring_max"
+        ]
+    },
+    "use_flegendaryjam_timespring_max":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "最多",
+                "roi" : [777,441,83,36]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "use_flegendaryjam_timespring"
+        ]
+    },
+    "use_flegendaryjam_timespring":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "快转",
+                "roi" : [578,514,137,61]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "confirm_flegendaryjam_timespring_max"
+        ],
+        "post_delay":4000
+    },
+    "flegendaryjam_done":{
+        "action":{
+            "type":"custom",
+            "param":{
+                "custom_action":"DisableNode",
+                "custom_action_param":{
+                    "node_name":"legendaryjam"
+                }
+            }
+        },
+        "next":[
+            "back_adventure_page"
+        ]
+    },
+    "confirm_flegendaryjam_timespring_max":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"时间快转完成",
+                "roi" : [541,63,204,46]
+            }
+        },
+        "action":{
+            "type":"Click",
+            "param":{
+                "target" : [438,651,407,54]
+            }
+        },
+        "next":[
+            "flegendaryjam_done"
+        ]
+    },
+    "check_legendaryjam_time":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"0/7",
+                "roi" : [1170,654,90,58]
+            }
+        },
+        "next":[
+            "flegendaryjam_done"
+        ]
+    },
+    "adventure_swtoright":{
+        "action":{
+            "type":"Swipe",
+            "param":{
+                "begin" : [1213,587,1,1],
+                "end" : [808,590,1,1]
+            }
+        },
+        "next":[
+            "check_adventure_page_rightend",
+            "adventure_page"
+        ],
+        "pre_delay":2000
+    },
+    "check_adventure_page_rightend":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "获得解放的村子",
+                "roi" : [870,638,148,39]
+            }
+        },
+        "action":{
+            "type":"custom",
+            "param":{
+                "custom_action":"DisableNode",
+                "custom_action_param":{
+                    "node_name":"adventure_swtoright"
+                }
+            }
+        },
+        "next":[
+            "adventure_page"
         ]
     },
     "todayreward":{
@@ -50,10 +276,10 @@
             "type":"Click"
         },
         "next":[
-            "todayrewardpage"
+            "todayreward_page"
         ]
     },
-    "todayrewardpage":{
+    "todayreward_page":{
         "recognition":{
             "type":"OCR",
             "param":{
@@ -62,61 +288,79 @@
             }
         },
         "next":[
-            "checktodayrewardtime",
-            "skillpowder"
+            "check_todayreward_time",
+            "skillpowder",
+            "sugar"
         ]
     },
-    "checktodayrewardtime":{
+    "check_todayreward_time":{
         "recognition":{
             "type":"OCR",
             "param":{
                 "expected" : "0/6",
                 "roi" : [1079,14,115,49]
-            },
-            "action":{
-                "type":"Click",
-                "param":{
-                    "target":[]
-                }
-            },
-            "next":[
-            ]
-        }
-
-    },
-    "skillpowder":{
-        "recognition":{
-            "type":"OCR",
-            "param":{
-                "expected" : "技能粉末"
             }
         },
         "action":{
-            "type":"Click",
+            "type":"custom",
             "param":{
-                "target_offset":[-135,145,-22,42]
+                "custom_action":"DisableNode",
+                "custom_action_param":{
+                    "node_name":"todayreward"
+                }
             }
         },
         "next":[
-            "timespring"
+            "back_adventure_page"
         ]
     },
-    "timespring":{
+    "skillpowder":{
         "recognition":{
-            "type":"OCR",
+            "type":"TemplateMatch",
             "param":{
-                "expected" : "最多",
-                "roi" : [779,434,78,46]
+                "template" : "adventure/timespring.png",
+                "roi" : [11,76,420,632]
             }
         },
         "action":{
             "type":"Click"
         },
         "next":[
-            "usetimespring"
+            "use_todayreward_timespring_max"
         ]
     },
-    "usetimespring":{
+    "sugar":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "adventure/timespring.png",
+                "roi" : [429,48,411,662]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "use_todayreward_timespring_max"
+        ],
+        "enabled":false
+    },
+    "use_todayreward_timespring_max":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "最多",
+                "roi" : [777,441,83,36]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "use_todayreward_timespring"
+        ]
+    },
+    "use_todayreward_timespring":{
         "recognition":{
             "type":"OCR",
             "param":{
@@ -128,27 +372,164 @@
             "type":"Click"
         },
         "next":[
-            "timespringdone"
+            "confirm_todayreward_timespring_max"
         ],
         "post_delay":4000
     },
-    "timespringdone":{
+    "confirm_todayreward_timespring_max":{
         "recognition":{
             "type":"OCR",
             "param":{
-                "expected" : "完成",
-                "roi" : [545,58,191,52]
+                "expected":"时间快转完成",
+                "roi" : [541,63,204,46]
             }
         },
         "action":{
             "type":"Click",
             "param":{
-                "target" : [324,642,682,77]
+                "target" : [438,651,407,54]
             }
         },
         "next":[
-            "todayrewardpage"
+            "todayreward_page"
+        ]
+    },
+    "archipelago":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "热带苏打群岛"
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "archipelago_page"
+        ]
+    },
+    "archipelago_page":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "热带苏打群岛",
+                "roi" : [0,0,233,67]
+            }
+        },
+        "next":[
+            "archipelago_timespring",
+            "archipelago_done"
+        ],
+        "pre_delay":3000
+    },
+    "archipelago_timespring":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "adventure/archipelago_timespring.png"
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "use_archipelago_timespring_max"
+        ]
+    },
+    "use_archipelago_timespring_max":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "最多",
+                "roi" : [777,441,83,36]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "use_archipelago_timespring"
+        ]
+    },
+    "use_archipelago_timespring":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "快转",
+                "roi" : [578,514,137,61]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "confirm_archipelago_timespring_max"
         ],
         "post_delay":4000
+    },
+    "confirm_archipelago_timespring_max":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"时间快转完成",
+                "roi" : [541,63,204,46]
+            }
+        },
+        "action":{
+            "type":"Click",
+            "param":{
+                "target" : [438,651,407,54]
+            }
+        },
+        "next":[
+            "archipelago_page"
+        ]
+    },
+    "archipelago_done":{
+        "action":{
+            "type":"custom",
+            "param":{
+                "custom_action":"DisableNode",
+                "custom_action_param":{
+                    "node_name":"archipelago"
+                }
+            }
+        },
+        "next":[
+            "archipelago_back"
+        ]
+    },
+    "archipelago_back":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"前往王国"
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "adventure_page"
+        ]
+    },
+    "back_adventure_page":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "common/return.png"
+            }
+        },
+        "action":{
+            "type":"Click",
+            "param":{
+                "target" : [1224,18,34,39]
+            }
+        },
+        "next":[
+            "adventure_page",
+            "back_adventure_page"
+        ],
+        "post_delay":2000
     }
 }

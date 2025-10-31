@@ -1,4 +1,10 @@
 {
+    "cleargreenpoint_entry":{
+        "next":[
+            "adventurer_cookie",
+            "cleargreenpoint"
+        ]
+    },
     "cleargreenpoint":{
         "recognition":{
             "type":"TemplateMatch",
@@ -15,12 +21,13 @@
             "fountain",
             "sailing_collect",
             "wait_sailing_collect",
-            "landmark_reward"
+            "landmark_reward",
+            "research"
         ],
         "on_error":[
-            "adventurer_cookie",
             "quit_sell",
-            "quit_announcement"
+            "quit_announcement",
+            "nothingtodo"
         ],
         "timeout":100,
         "post_delay":5000
@@ -265,7 +272,8 @@
             }
         },
         "next":[
-            "cleargreenpoint"
+            "cleargreenpoint",
+            "nothingtodo"
         ],
         "timeout":1000
     },
@@ -316,7 +324,7 @@
             }
         },
         "next":[
-            "filluponce_page"
+            "filluponce"
         ]
     },
     "adventurer_cookie":{
@@ -330,6 +338,7 @@
             "type":"Click"
         },
         "next":[
+            "adventurer_cookie",
             "cleargreenpoint"
         ]
     },
@@ -393,6 +402,35 @@
         },
         "next":[
             "filluponce"
+        ]
+    },
+    "research":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"研究完成",
+                "roi" : [458,36,361,102]
+            }
+        },
+        "action":{
+            "type":"Click",
+            "param":{
+                "target" : [350,650,518,49]
+            }
+        },
+        "next":[
+            "research_done"
+        ]
+    },
+    "research_done":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"糖糖精灵研究室"
+            }
+        },
+        "next":[
+            "returnmainpage"
         ]
     }
 }

@@ -1,0 +1,56 @@
+{
+    "logging_game_page":{
+        "next":[
+            "check_left_block",
+            "check_right_block",
+            "click_logging_left",
+            "click_logging_right"
+        ] 
+    },
+    "check_left_block":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "activity/leftblock.png",
+                "roi" : [387,312,179,146]
+            }
+        },
+        "next":[
+            "click_logging_right"
+        ]
+    },
+    "check_right_block":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "activity/rightblock.png",
+                "roi" : [710,323,184,102]
+            }
+        },
+        "next":[
+            "click_logging_left"
+        ]
+    },
+    "click_logging_right":{
+        "action":{
+            "type":"Click",
+            "param":{
+                "roi" : [1035,569,149,79]
+            }
+        },
+        "next":[
+            "logging_game_page"
+        ]
+    },
+    "click_logging_left":{
+        "action":{
+            "type":"Click",
+            "param":{
+                "target" : [105,561,130,92]
+            }
+        },
+        "next":[
+            "logging_game_page"
+        ]
+    }
+}
