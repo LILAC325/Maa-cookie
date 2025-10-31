@@ -1,7 +1,7 @@
 {
     "name":"Maa-cookiek",
     "url":"https://github.com/LILAC325/Maa-cookie",
-    "message":"welecome to cookiekingdom",
+    "custom_title":"Maa-cookie",
     "version":"v1.0.0",
     "controller": [
         {
@@ -28,7 +28,8 @@
         
         {
             "name":"清绿点",
-            "entry":"cleargreenpoint"
+            "entry":"cleargreenpoint",
+            "check":true
         },
         {
             "name":"王国生产管理",
