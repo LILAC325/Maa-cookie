@@ -11,10 +11,10 @@
             "type":"Click"
         },
         "next":[
-            "adventurepage1"
+            "adventurepage"
         ]
     },
-    "adventurepage1":{
+    "adventurepage":{
         "recognition":{
             "type":"OCR",
             "param":{
@@ -36,7 +36,7 @@
             }
         },
         "next":[
-            "adventurepage1"
+            "adventurepage"
         ]
     },
     "todayreward":{

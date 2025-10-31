@@ -23,99 +23,99 @@
             }
         },
         "next": [
-            "choosewishingtree",
-            "choosehotairballoon",
-            "choosetrade",
-            "chooseexchance",
-            "choosetrain",
-            "choosespecialcookie"
+            "choose_wishingtree",
+            "choose_hotairballoon",
+            "choose_trade",
+            "choose_exchance",
+            "choose_train",
+            "choose_specialcookie"
         ]
     },
-    "wishingtreentry":{
+    "wishingtree_entry":{
         "next":[
-            "kingdomactivitypage"
+            "kingdomactivity"
         ],
         "action":{
             "type":"Custom",
             "param":{
                 "custom_action":"EnableNode",
                 "custom_action_param":{
-                    "node_name":"choosewishingtree"
+                    "node_name":"choose_wishingtree"
                 }
             }
         }
     },
-    "hotairballoonentry":{
+    "hotairballoon_entry":{
         "next":[
-            "kingdomactivitypage"
+            "kingdomactivity"
         ],
         "action":{
             "type":"Custom",
             "param":{
                 "custom_action":"EnableNode",
                 "custom_action_param":{
-                    "node_name":"choosehotairballoon"
+                    "node_name":"choose_hotairballoon"
                 }
             }
         }
     },
-    "tradepageentry":{
+    "tradepage_entry":{
         "next":[
-            "kingdomactivitypage"
+            "kingdomactivity"
         ],
         "action":{
             "type":"Custom",
             "param":{
                 "custom_action":"EnableNode",
                 "custom_action_param":{
-                    "node_name":"choosetrade"
+                    "node_name":"choose_trade"
                 }
             }
         }
     },
-    "exchanceentry":{
+    "exchance_entry":{
         "next":[
-            "kingdomactivitypage"
+            "kingdomactivity"
         ],
         "action":{
             "type":"Custom",
             "param":{
                 "custom_action":"EnableNode",
                 "custom_action_param":{
-                    "node_name":"chooseexchance"
+                    "node_name":"choose_exchance"
                 }
             }
         }
     },
-    "trainentry":{
+    "train_entry":{
         "next":[
-            "kingdomactivitypage"
+            "kingdomactivity"
         ],
         "action":{
             "type":"Custom",
             "param":{
                 "custom_action":"EnableNode",
                 "custom_action_param":{
-                    "node_name":"choosetrain"
+                    "node_name":"choose_train"
                 }
             }
         }
     },
-    "specialcookieentry":{
+    "specialcookie_entry":{
         "next":[
-            "kingdomactivitypage"
+            "kingdomactivity"
         ],
         "action":{
             "type":"Custom",
             "param":{
                 "custom_action":"EnableNode",
                 "custom_action_param":{
-                    "node_name":"choosespecialcookie"
+                    "node_name":"choose_specialcookie"
                 }
             }
         }
     },
-    "choosehotairballoon":{
+    "choose_hotairballoon":{
         "recognition":{
             "type":"TemplateMatch",
             "param":{
@@ -131,7 +131,7 @@
         ],
         "enabled":false
     },
-    "choosetrain":{
+    "choose_train":{
         "recognition":{
             "type":"TemplateMatch",
             "param":{

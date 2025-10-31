@@ -1,5 +1,5 @@
 {
-    "choosetrade":{
+    "choose_trade":{
         "recognition":{
             "type":"TemplateMatch",
             "param":{
@@ -11,11 +11,11 @@
             "type":"Click"
         },
         "next":[
-            "tradepage"
+            "trade_page"
         ],
         "enabled":false
     },
-    "tradepage":{
+    "trade_page":{
         "recognition":{
             "type":"OCR",
             "param":{
@@ -25,7 +25,7 @@
         },
         "next":[
             "shipment",
-            "shipmentcooling"
+            "shipment_cooling"
         ]
     },
     "shipment":{
@@ -42,11 +42,11 @@
             "type":"Click"
         },
         "next":[
-            "shipmentpage"
+            "shipment_page"
         ],
         "timeout":200
     },
-    "shipmentpage":{
+    "shipment_page":{
         "recognition":{
             "type":"OCR",
             "param":{
@@ -58,10 +58,10 @@
             "type":"Click"
         },
         "next":[
-            "confirmshipment"
+            "confirm_shipment"
         ]
     },
-    "confirmshipment":{
+    "confirm_shipment":{
         "recognition":{
             "type":"OCR",
             "param":{
@@ -73,10 +73,10 @@
             "type":"Click"
         },
         "next":[
-            "tradepage"
+            "trade_page"
         ]
     },
-    "shipmentcooling":{
+    "shipment_cooling":{
         "recognition":{
             "type":"ColorMatch",
             "param":{
@@ -115,5 +115,50 @@
             "returnmainpage"
         ],
         "timeout":2000
+    },
+    "pearl_exchance":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "kingdomactivity/pearlexchance.png",
+                "roi" : [37,434,69,38]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "pearl_exchance_page"
+        ]
+    },
+    "pearl_exchance_page":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "璀璨贝艺廊",
+                "roi" : [0,0,260,130]
+            }
+        },
+        "next":[
+            "pearl_legendfragment"
+        ]
+    },
+    "pearl_legendfragment":{
+        "recognition":{
+            "type":"ColorMatch",
+            "param":{
+                "upper" : [122,206,14],
+                "lower" : [121,205,13],
+                "method" : 4,
+                "roi" : [138,600,195,72]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "pearl_exchance"
+        ]
     }
+
 }

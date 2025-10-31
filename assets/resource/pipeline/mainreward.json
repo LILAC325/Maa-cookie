@@ -10,7 +10,8 @@
         "next":[
             "freegacha",
             "mailbox",
-            "friendgift"
+            "friendgift",
+            "freeshopping"
         ]
     },
     "progressreward":{
@@ -68,11 +69,11 @@
             "type":"Click"
         },
         "next":[
-            "quitfriendgiftpage"
+            "quit_friendgift_page"
         ],
         "post_delay":1000
     },
-    "quitfriendgiftpage":{
+    "quit_friendgift_page":{
         "action":{
             "type":"Click",
             "param":{
@@ -80,10 +81,10 @@
             }
         },
         "next":[
-            "friendgiftdone"
+            "friendgift_done"
         ]
     },
-    "friendgiftdone":{
+    "friendgift_done":{
         "action":{
             "type":"Custom",
             "param":{
@@ -109,10 +110,10 @@
             "type":"Click"
         },
         "next":[
-            "kingdomguidepage"
+            "kingdomguide_page"
         ]
     },
-    "kingdomguidepage":{
+    "kingdomguide_page":{
         "recognition":{
             "type":"OCR",
             "param":{
@@ -136,17 +137,17 @@
             "type":"Click"
         },
         "next":[
-            "weeklyguidecollect"
+            "weeklyguide_collect"
         ]
     },
-    "weeklyguidecollect":{
+    "weeklyguide_collect":{
         "next":[
-            "guidereceive",
-            "guideaccrued",
-            "weeklyguidedone"
+            "guide_receive",
+            "guide_accrued",
+            "weeklyguide_done"
         ]
     },
-    "guidereceive":{
+    "guide_receive":{
         "recognition":{
             "type":"OCR",
             "param":{
@@ -158,10 +159,10 @@
             "type":"Click"
         },
         "next":[
-            "weeklyguidecollect"
+            "weeklyguide_collect"
         ]
     },
-    "guideaccrued":{
+    "guide_accrued":{
         "recognition":{
             "type":"TemplateMatch",
             "param":{
@@ -173,10 +174,10 @@
             "type":"Click"
         },
         "next":[
-            "weeklyguidecollect"
+            "weeklyguide_collect"
         ]
     },
-    "weeklyguidedone":{
+    "weeklyguide_done":{
         "action":{
             "type":"Custom",
             "param":{
@@ -190,7 +191,84 @@
             "returnmainpage"
         ],
         "next":[
+            "check_weekend",
             "progressreward"
+        ]
+    },
+    "check_weekend":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"周末加码",
+                "roi" : [6,85,178,634]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "weekend_page"
+        ]
+    },
+    "weekend_page":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"在线",
+                "roi" : [218,605,81,87]
+            }
+        },
+        "next":[
+            "weekend_collect",
+            "weekend_accrued",
+            "weekend_done"
+        ]
+    },
+    "weekend_collect":{
+        "recognition":{
+            "type":"ColorMatch",
+            "param":{
+                "upper" : [122,206,16],
+                "lower" : [122,206,16],
+                "roi" : [626,453,213,77],
+                "method" : 4
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "weekend_page"
+        ]
+    },
+    "weekend_accrued":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template":"common/guideaccrued.png",
+                "roi" : [366,593,777,122]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "weekend_page"
+        ],
+        "post_delay":2000
+    },
+    "weekend_done":{
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action":"DisableNode",
+                "custom_action_param":{
+                    "node_name":"check_weekend"
+                }
+            }
+        },
+        "next":[
+            "weeklyguide_done"
         ]
     },
     "kingdompass":{
@@ -205,10 +283,10 @@
             "type":"Click"
         },
         "next":[
-            "kingdompasspage"
+            "kingdompass_page"
         ]
     },
-    "kingdompasspage":{
+    "kingdompass_page":{
         "recognition":{
             "type":"TemplateMatch",
             "param":{
@@ -216,14 +294,13 @@
             }
         },
         "next":[
-            "passcollectnode"
+            "passcollect_node"
         ]
     },
-    "passcollectnode":{
+    "passcollect_node":{
         "next":[
             "redpointpass",
-            "seasonreward",
-            "everydayfreereward"
+            "seasonreward"
         ],
         "interrupt":[
             "returnmainpage"
@@ -260,7 +337,7 @@
                 "type":"Click"
         },
         "next":[
-            "passcollectnode"
+            "passcollect_node"
         ]
     },
     "seasonreward":{
@@ -275,10 +352,10 @@
             "type":"Click"
         },
         "next":[
-            "seasonrewardcollect"
+            "seasonreward_collect"
         ]
     },
-    "seasonrewardcollect":{
+    "seasonreward_collect":{
         "recognition":{
             "type":"OCR",
             "param":{
@@ -293,7 +370,7 @@
             }
         },
         "next":[
-            "passcollectnode"
+            "passcollect_node"
         ]
     },
     "freegacha":{
@@ -308,10 +385,10 @@
             "type":"Click"
         },
         "next":[
-            "swfreegacha"
+            "sw_freegacha"
         ]
     },
-    "swfreegacha":{
+    "sw_freegacha":{
         "recognition":{
             "type":"TemplateMatch",
             "param":{
@@ -327,11 +404,11 @@
             }
         },
         "next":[
-            "choosefreegacha"
+            "choose_freegacha"
         ],
         "post_delay":2000
     },
-    "choosefreegacha":{
+    "choose_freegacha":{
         "recognition":{
             "type":"TemplateMatch",
             "param":{
@@ -343,10 +420,10 @@
             "type":"Click"
         },
         "next":[
-            "freegachapage"
+            "freegacha_page"
         ]
     },
-    "freegachapage":{
+    "freegacha_page":{
         "recognition":{
             "type":"OCR",
             "param":{
@@ -358,15 +435,15 @@
             "type":"Click"
         },
         "next":[
-            "freegachcollect"
+            "freegach_collect"
         ],
         "on_error":[
-            "freegachadone"
+            "freegacha_done"
         ],
         "timeout":500,
         "post_delay":4000
     },
-    "freegachcollect":{
+    "freegach_collect":{
         "action":{
             "type":"Click",
             "param":{
@@ -374,10 +451,10 @@
             }
         },
         "next":[
-            "freegachadone"
+            "freegacha_done"
         ]
     },
-    "freegachadone":{
+    "freegacha_done":{
         "action":{
             "type":"Custom",
             "param":{
@@ -406,10 +483,10 @@
             "type":"Click"
         },
         "next":[
-            "mailboxpage"
+            "mailbox_page"
         ]
     },
-    "mailboxpage":{
+    "mailbox_page":{
         "recognition":{
             "type":"OCR",
             "param":{
@@ -421,11 +498,11 @@
             "type":"Click"
         },
         "next":[
-            "mailboxcollect"
+            "mailbox_collect"
         ],
         "post_wait_freezes":500
     },
-    "mailboxcollect":{
+    "mailbox_collect":{
         "action":{
             "type":"Click",
             "param":{
@@ -433,10 +510,10 @@
             }
         },
         "next":[
-            "mailboxdone"
+            "mailbox_done"
         ]
     },
-    "mailboxdone":{
+    "mailbox_done":{
         "action":{
             "type":"Custom",
             "param":{
@@ -452,5 +529,163 @@
         "interrupt":[
             "returnmainpage"
         ]
+    },
+     "freeshopping":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "common/shopping.png",
+                "roi" : [33,160,35,43]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "freeshopping_page"
+        ],
+        "enabled":false
+    },
+    "freeshopping_page":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "商城",
+                "roi" : [0,0,114,70]
+            }
+        },
+        "next":[
+            "find_redpoint_from_shoppinglist"
+        ]
+    },
+    "find_redpoint_from_shoppinglist":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "shopping/redpoint.png",
+                "roi" : [0,70,246,649],
+                "threshold" : 0.5
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "shoppingfree_collect"
+        ]
+    },
+    "shoppingfree_collect":{
+        "next":[
+            "find_redpoint_for_free"
+        ],
+        "interrupt":[
+            "swipe_shopping_page"
+        ],
+        "post_delay":1000
+    },
+    "swipe_shopping_page":{
+        "action":{
+            "type":"Swipe",
+            "param":{
+                "begin" : [1222,635,1,1],
+                "end" : [1222,482,1,1]
+            }
+        }
+    },
+    "find_redpoint_for_free":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "shopping/listredpoint.png",
+                "roi" : [259,150,1020,569]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "post_delay":1000,
+        "next":[
+            "freepack2",
+            "freepack",
+            "check_shopping_type"
+        ]
+    },
+    "freepack":{
+        "recognition":{
+            "type":"ColorMatch",
+            "param":{
+                "upper" : [122,206,16],
+                "lower" : [122,206,16],
+                "roi" : [14,231,1265,463],
+                "method" : 4
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "return_shopping_page"
+        ],
+        "pre_delay":1000
+    },
+    "freepack2":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"购买完毕"
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "return_shopping_page"
+        ],
+        "pre_delay":1000
+    },
+    "check_shopping_type":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "商城",
+                "roi" : [0,0,114,70]
+            }
+        },
+        "inverse":true,
+        "next":[
+            "collect_shopping_pass"
+        ]
+    },
+    "collect_shopping_pass":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "shopping/collectshoppingpass.png",
+                "roi" : [14,231,1265,463]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "collect_shopping_pass",
+            "return_shopping_page"
+        ],
+        "post_delay":1000
+    },
+    "return_shopping_page":{
+        "action":{
+            "type":"Click",
+            "param":{
+                "target":[1224,23,34,30]
+            }
+        },
+        "next":[
+            "freeshopping_page"
+        ],
+        "interrupt":[
+            "return_shopping_page"
+        ],
+        "post_delay":2000
     }
 }

@@ -11,20 +11,21 @@
         },
         "next":[
             "train",
-            "hotairballoon",
+            "hotairballoon_collect",
             "fountain",
-            "sailingcollect",
-            "landmarkreward"
+            "sailing_collect",
+            "wait_sailing_collect",
+            "landmark_reward"
         ],
         "on_error":[
-            "adventurercookie",
-            "quitsell",
-            "quitannouncement"
+            "adventurer_cookie",
+            "quit_sell",
+            "quit_announcement"
         ],
         "timeout":100,
         "post_delay":5000
     },
-    "hotairballooncollect":{
+    "hotairballoon_collect":{
         "recognition":{
             "type":"OCR",
             "param":{
@@ -35,12 +36,13 @@
         "action":{
             "type":"Click",
             "param":{
-                "target" : [246,642,800,72]
+                "target" :[413,650,465,58]
             }
         },
         "next":[
             "autochoose"
-        ]
+        ],
+        "pre_delay":2000
     },
     "hotairballoon":{
         "recognition":{
@@ -72,11 +74,11 @@
             "type":"Click"
         },
         "next":[
-            "adventurestart"
+            "adventure_start"
         ]
 
     },
-    "adventurestart":{
+    "adventure_start":{
         "recognition":{
             "type":"OCR",
             "param":{
@@ -88,11 +90,11 @@
             "type":"Click"
         },
         "next":[
-            "waitforhotairballoon"
+            "wait_hotairballoon"
         ],
         "pre_wait_freezes":1000
     },
-    "waitforhotairballoon":{
+    "wait_hotairballoon":{
         "recognition":{
             "type":"OCR",
             "param":{
@@ -129,7 +131,7 @@
             "cleargreenpoint"
         ],
         "interrupt":[
-            "quitsell"
+            "quit_sell"
         ],
         "timeout":2000
     },
@@ -157,15 +159,15 @@
             "type":"DoNothing"
         },
         "next":[
-            "trainsubmit",
-            "traincollect"
+            "train_submit",
+            "train_collect"
         ],
         "timeout":2000,
         "on_error":[
             "returnmainpage"
         ]
     },
-    "trainsubmit":{
+    "train_submit":{
         "recognition":{
             "type":"OCR",
             "param":{
@@ -177,15 +179,15 @@
             "type":"Click"
         },
         "next":[
-            "trainsubmit",
-            "traincollect"
+            "train_submit",
+            "train_collect"
         ],
         "on_error":[
-            "traindone"
+            "train_done"
         ],
         "timeout":2000
     },
-    "traindone":{
+    "train_done":{
         "action":{
             "type":"Custom",
             "param":{
@@ -199,7 +201,7 @@
             "back"
         ]
     },
-    "traincollect":{
+    "train_collect":{
         "recognition":{
             "type":"TemplateMatch",
             "param":{
@@ -211,8 +213,8 @@
             "type":"Click"
         },
         "next":[
-            "traincollect",
-            "trainsubmit"
+            "train_collect",
+            "train_submit"
         ],
         "post_delay":6000
 
@@ -230,11 +232,11 @@
         },
         "pre_wait_freezes":500,
         "next":[
-            "checkliquidation",
-            "clickforcollect"
+            "check_liquidation",
+            "fountain_collect"
         ]
     },
-    "clickforcollect":{
+    "fountain_collect":{
         "recognition":{
             "type":"OCR",
             "param":{
@@ -248,11 +250,11 @@
             }
         },
         "next":[
-            "fountaindone"
+            "fountain_done"
         ],
         "timeout":3000
     },
-    "fountaindone":{
+    "fountain_done":{
         "action":{
             "type":"Custom",
             "param":{
@@ -267,7 +269,19 @@
         ],
         "timeout":1000
     },
-    "sailingcollect":{
+    "wait_sailing_collect":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "贸易中心",
+                "roi" : [212,5,147,62]
+            }
+        },
+        "next":[
+            "sailing_collect"
+        ]
+    },
+    "sailing_collect":{
         "recognition":{
             "type":"OCR",
             "param":{
@@ -282,12 +296,12 @@
             }
         },
         "next":[
-            "tradepage",
+            "trade_page",
             "cleargreenpoint"
         ],
         "timeout":2000
     },
-    "landmarkreward":{
+    "landmark_reward":{
         "recognition":{
             "type":"OCR",
             "param":{
@@ -302,10 +316,10 @@
             }
         },
         "next":[
-            "filluponcepage"
+            "filluponce_page"
         ]
     },
-    "adventurercookie":{
+    "adventurer_cookie":{
         "recognition":{
             "type":"TemplateMatch",
             "param":{
@@ -346,10 +360,10 @@
             "type":"Click"
         },
         "next":[
-            "filluponcepage"
+            "filluponce_page"
         ]
     },
-    "filluponcepage":{
+    "filluponce_page":{
         "recognition":{
             "type":"OCR",
             "param":{
@@ -361,14 +375,14 @@
             "type":"Click"
         },
         "next":[
-            "landmarkreward",
-            "checkliquidation",
-            "checkproducedone",
+            "landmark_reward",
+            "check_liquidation",
+            "check_produce_done",
             "returnmainpage"
         ],
-        "post_delay":2000
+        "post_delay":4000
     },
-    "checkproducedone":{
+    "check_produce_done":{
         "recognition":{
             "type":"TemplateMatch",
             "param":{

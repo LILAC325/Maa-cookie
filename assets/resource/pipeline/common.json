@@ -11,8 +11,12 @@
             "type":"Click"
         },
         "next":[
+            "cleargreenpoint",
             "mainpagejudgment",
             "returnmainpage"
+        ],
+        "interrupt":[
+            "quit_sell"
         ],
         "post_delay":2000
     },
@@ -25,7 +29,7 @@
             }
         }
     },
-    "quitsell":{
+    "quit_sell":{
         "recognition":{
             "type":"OCR",
             "param":{
@@ -34,10 +38,10 @@
             }
         },
         "next":[
-            "back"
+            "returnmainpage"
         ]
     },
-    "quitannouncement":{
+    "quit_announcement":{
         "recognition":{
             "type":"OCR",
             "param":{
@@ -49,7 +53,7 @@
             "returnmainpage"
         ]
     },
-    "checkliquidation":{
+    "check_liquidation":{
         "recognition":{
             "type":"OCR",
             "param":{

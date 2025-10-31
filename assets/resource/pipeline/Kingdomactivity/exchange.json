@@ -1,5 +1,5 @@
 {
-    "chooseexchance":{
+    "choose_exchance":{
         "recognition":{
             "type":"TemplateMatch",
             "param":{
@@ -11,11 +11,11 @@
             "type":"Click"
         },
         "next":[
-            "exchancepage"
+            "exchance_page"
         ],
         "enabled":false
     },
-    "exchancepage":{
+    "exchance_page":{
         "recognition":{
             "type":"OCR",
             "param":{
@@ -24,18 +24,18 @@
             }
         },
         "next":[
-            "itemsexchance",
+            "items_exchance",
             "returnmainpage"
         ]
     },
-    "itemsexchance":{
+    "items_exchance":{
         "next":[
-            "skillpowderexchance",
-            "checkfreeitemsrefresh1",
-            "goldexchance"
+            "skillpowder_exchance",
+            "check_freeitems_refresh1",
+            "gold_exchance"
         ]
     },
-    "seekitem":{
+    "seek_item":{
         "action":{
             "type":"Swipe",
             "param":{
@@ -45,15 +45,15 @@
             }
         },
         "next":[
-            "itemsexchance"
+            "items_exchance"
         ]
     },
-    "skillpowderexchance":{
+    "skillpowder_exchance":{
         "next":[
-            "seekitem"
+            "seek_item"
         ]
     },
-    "checkfreeitemsrefresh1":{
+    "check_freeitems_refresh1":{
         "recognition":{
             "type":"OCR",
             "param":{
@@ -65,10 +65,10 @@
             "type":"Click"
         },
         "next":[
-            "itemsexchance"
+            "items_exchance"
         ]
     },
-    "goldexchance":{
+    "gold_exchance":{
         "recognition":{
             "type":"OCR",
             "param":{
@@ -95,10 +95,10 @@
             "type":"Click"
         },
         "next":[
-            "buymultiplepage"
+            "buymultiple_page"
         ]
     },
-    "buymultiplepage":{
+    "buymultiple_page":{
         "recognition":{
             "type":"OCR",
             "param":{
@@ -107,7 +107,6 @@
             }
         },
         "next":[
-            
         ]
     }
 }

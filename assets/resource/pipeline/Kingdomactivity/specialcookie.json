@@ -1,5 +1,5 @@
 {
-    "choosespecialcookie":{
+    "choose_specialcookie":{
         "recognition":{
             "type":"TemplateMatch",
             "param":{
@@ -11,11 +11,11 @@
             "type":"Click"
         },
         "next": [
-            "specialcookiepage"
+            "specialcookie_page"
         ],
         "enabled":false
     },
-    "specialcookiepage":{
+    "specialcookie_page":{
         "recognition":{
             "type":"OCR",
             "param":{
@@ -44,22 +44,23 @@
             }
         },
         "next": [
-            "incubationpage"
+            "huaxiaolong_page"
         ]
     },
-    "incubationpage":{
+    "huaxiaolong_page":{
         "recognition":{
-            "type":"TemplateMatch",
+            "type":"OCR",
             "param":{
-                "template" : "kingdomactivity/incubation.png",
-                "roi" : [819,7,384,63]
+                "expected" : "花小龙饼干",
+                "roi" : [0,0,263,66]
             }
         },
         "next": [
-            "checkincubationnumber"
+            "check_incubation_number",
+            "incubation_done"
         ]
     },
-    "checkincubationnumber":{
+    "check_incubation_number":{
         "recognition":{
             "type":"OCR",
             "param":{
@@ -69,11 +70,89 @@
         "action":{
             "type":"Click",
             "param":{
-                "target_offset" : [-147, 45, 154, 60]
+                "target" : [767,593,207,83]
             }
         },
         "next": [
+            "incubation_page"
         ],
         "inverse":true
+    },
+    "incubation_page":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"孵化温度"
+            }
+        },
+        "action":{
+            "type":"Swipe",
+            "param":{
+                "begin" : [461,287,1,1],
+                "end" : [880,281,1,1]
+            }
+        },
+        "next":[
+            "wait_incubation"
+        ],
+        "pre_delay":5000
+    },
+    "wait_incubation":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"暂停"
+            }
+        },
+        "next":[
+            "wait_incubation",
+            "incubation_done"
+        ],
+        "pre_delay":5000
+    },
+    "incubation_done":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"尝试孵化"
+            }
+        },
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action":"EnableNode",
+                "custom_action_param":{
+                    "node_name":"huaxiaolong"
+                }
+            }
+        },
+        "next":[
+            "back_specialcookie_page"
+        ]
+    },
+    "back_specialcookie_page":{
+        "action":{
+            "type":"Click",
+            "param":{
+                "target" : [1219,21,42,34]
+            }
+        },
+        "next":[
+            "specialcookie_done"
+        ]
+    },
+    "specialcookie_done":{
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action":"DisableNode",
+                "custom_action_param":{
+                    "node_name":"choose_specialcookie"
+                }
+            }
+        },
+        "next":[
+            "returnmainpage"
+        ]
     }
 }

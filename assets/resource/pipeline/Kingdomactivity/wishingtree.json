@@ -1,5 +1,5 @@
 {
-    "choosewishingtree":{
+    "choose_wishingtree":{
         "recognition":{
             "type":"TemplateMatch",
             "param":{
@@ -11,12 +11,13 @@
             "type":"Click"
         },
         "next":[
-            "wishtreewhetherdone",
-            "wishingtreepage"
+            "wishingtree_whether_done",
+            "wishingtree_page"
         ],
-        "enabled":false
+        "enabled":false,
+        "post_delay":1000
     },
-    "wishtreewhetherdone":{
+    "wishingtree_whether_done":{
         "recognition":{
             "type":"OCR",
             "param":{
@@ -29,7 +30,7 @@
         ]
 
     },
-    "wishingtreepage":{
+    "wishingtree_page":{
         "recognition":{
             "type":"OCR",
             "param":{
@@ -39,9 +40,9 @@
         },
         "next":[
             "checkmax",
-            "wishload",
-            "wishsubmit",
-            "wishcooling",
+            "wish_load",
+            "wish_submit",
+            "wish_cooling",
             "returnmainpage"
         ]
     },
@@ -54,10 +55,10 @@
             }
         },
         "next":[
-            "wishingtreecollect"
+            "wishingtree_collect"
         ]
     },
-    "wishload":{
+    "wish_load":{
         "recognition":{
             "type":"OCR",
             "param":{
@@ -72,10 +73,10 @@
             "type":"Click"
         },
         "next":[
-            "wishingtreepage"
+            "wishingtree_page"
         ]
     },
-    "wishsubmit":{
+    "wish_submit":{
         "recognition":{
             "type":"OCR",
             "param":{
@@ -88,12 +89,12 @@
         },
         "next":[
             "checkmax",
-            "wishsubmit",
-            "wishingtreepage"
+            "wish_submit",
+            "wishingtree_page"
         ],
         "post_delay":1000
     },
-    "wishcooling":{
+    "wish_cooling":{
         "recognition":{
             "type":"TemplateMatch",
             "param":{
@@ -123,8 +124,8 @@
             }
         },
         "next":[
-            "wishcooling",
-            "wishingtreepage",
+            "wish_cooling",
+            "wishingtree_page",
             "ignorereminder"
         ]
     },
@@ -140,10 +141,10 @@
             "type":"Click"
         },
         "next":[
-            "wishingtreepage"
+            "wishingtree_page"
         ]
     },
-    "wishingtreecollect":{
+    "wishingtree_collect":{
         "recognition":{
             "type":"ColorMatch",
             "param":{
@@ -160,10 +161,10 @@
             }
         },
         "next":[
-            "clickwishchest"
+            "click_wishchest"
         ]
     },
-    "clickwishchest":{
+    "click_wishchest":{
         "recognition":{
             "type":"ColorMatch",
             "param":{
@@ -199,12 +200,12 @@
             }
         },
         "next":[
-            "wishingtreedone",
-            "wishingtreecollect"
+            "wishingtree_done",
+            "wishingtree_collect"
             
         ]
     },
-    "wishingtreedone":{
+    "wishingtree_done":{
         "recognition":{
             "type":"OCR",
             "param":{

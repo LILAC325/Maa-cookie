@@ -1,4 +1,0 @@
-maafw==4.5.4
-loguru
-pillow
-pytz
