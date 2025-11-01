@@ -227,7 +227,8 @@
         "next":[
             "guild_gacha_allin",
             "guild_gacha_allin_done"
-        ]
+        ],
+        "post_delay":2000
     },
     "guild_gacha_allin_done":{
         "action":{

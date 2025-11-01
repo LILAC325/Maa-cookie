@@ -3,6 +3,11 @@
         "next":[
             "adventurer_cookie",
             "cleargreenpoint"
+        ],
+        "on_error":[
+            "quit_sell",
+            "quit_announcement",
+            "nothingtodo"
         ]
     },
     "cleargreenpoint":{
@@ -22,6 +27,7 @@
             "sailing_collect",
             "wait_sailing_collect",
             "landmark_reward",
+            "cleargreenpoint",
             "research"
         ],
         "on_error":[

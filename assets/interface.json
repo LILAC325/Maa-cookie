@@ -36,12 +36,8 @@
             "entry":"kingdomproduce"
         },
         {
-            "name":"每日奖励",
-            "entry":"everydayfreereward"
-        },
-        {
-            "name":"进度奖励",
-            "entry":"progressreward"
+            "name":"页面奖励",
+            "entry":"mainpge_reward"
         },
         {
             "name":"商城",
@@ -70,6 +66,15 @@
                 "蓝色焰火提交",
                 "公会讨伐",
                 "公会扭蛋"
+            ]
+        },
+        {
+            "name":"冒险",
+            "entry":"adventure_entry",
+            "option":[
+                "实证战场",
+                "今日悬赏",
+                "苏打群岛"
             ]
         }
     ],

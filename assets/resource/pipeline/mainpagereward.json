@@ -1,5 +1,5 @@
 {
-    "everydayfreereward":{
+    "mainpge_reward":{
         "recognition":{
             "type":"TemplateMatch",
             "param":{
@@ -11,21 +11,10 @@
             "freegacha",
             "mailbox",
             "friendgift",
-            "freeshopping"
-        ]
-    },
-    "progressreward":{
-        "recognition":{
-            "type":"TemplateMatch",
-            "param":{
-                "template":"common/mainpage.png",
-                "recommended roi" : [37,550,167,60]
-            }
-        },
-        "next":[
+            "freeshopping",
             "kingdomguide",
             "kingdompass"
-    ]
+        ]
     },
     "friendgift":{
         "recognition":{
@@ -95,7 +84,7 @@
             }
         },
         "next":[
-            "everydayfreereward"
+            "mainpge_reward"
         ]
     },
     "kingdomguide":{
@@ -192,7 +181,7 @@
         ],
         "next":[
             "check_weekend",
-            "progressreward"
+            "mainpge_reward"
         ]
     },
     "check_weekend":{
@@ -294,13 +283,23 @@
             }
         },
         "next":[
-            "passcollect_node"
+            "redpointpass",
+            "seasonreward",
+            "kingdompass_done"
         ]
     },
-    "passcollect_node":{
+    "kingdompass_done":{
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action":"DisableNode",
+                "custom_action_param":{
+                    "node_name":"kingdompass"
+                }
+            }
+        },
         "next":[
-            "redpointpass",
-            "seasonreward"
+            "mainpge_reward"
         ],
         "interrupt":[
             "returnmainpage"
@@ -320,7 +319,8 @@
             "type":"Click"
         },
         "next":[
-            "passcollect"
+            "passcollect",
+            "kingdompass_page"
         ]
     },
     "passcollect":{
@@ -337,7 +337,7 @@
                 "type":"Click"
         },
         "next":[
-            "passcollect_node"
+            "kingdompass_page"
         ]
     },
     "seasonreward":{
@@ -370,7 +370,7 @@
             }
         },
         "next":[
-            "passcollect_node"
+            "kingdompass_page"
         ]
     },
     "freegacha":{
@@ -465,7 +465,7 @@
             }
         },
         "next":[
-            "everydayfreereward"
+            "mainpge_reward"
         ],
         "interrupt":[
             "returnmainpage"
@@ -524,7 +524,7 @@
             }
         },
         "next":[
-            "everydayfreereward"
+            "mainpge_reward"
         ],
         "interrupt":[
             "returnmainpage"
@@ -555,7 +555,8 @@
             }
         },
         "next":[
-            "find_redpoint_from_shoppinglist"
+            "find_redpoint_from_shoppinglist",
+            "freeshopping_done"
         ]
     },
     "find_redpoint_from_shoppinglist":{
@@ -686,6 +687,23 @@
         "interrupt":[
             "return_shopping_page"
         ],
-        "post_delay":2000
+        "post_delay":3000
+    },
+    "freeshopping_done":{
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action":"DisableNode",
+                "custom_action_param":{
+                    "node_name":"freeshopping"
+                }
+            }
+        },
+        "next":[
+            "mainpge_reward"
+        ],
+        "interrupt":[
+            "returnmainpage"
+        ]
     }
 }
