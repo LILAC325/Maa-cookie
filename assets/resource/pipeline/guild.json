@@ -241,18 +241,10 @@
             }
         },
         "next":[
-            "guild_gacha_allin_exit"
-        ]
-    },
-    "guild_gacha_allin_exit":{
-        "action":{
-            "type":"Click",
-            "param":{
-                "target" : [1222,16,37,41]
-            }
-        },
-        "next":[
             "guild_main_page"
+        ],
+        "interrupt":[
+            "quit"
         ]
     },
     "guild_battle":{
@@ -323,7 +315,7 @@
             "type":"OCR",
             "param":{
                 "expected":"前往王国",
-                "roi" : [1153,614,98,80]
+                "roi" : [1102,576,177,143]
             }
         },
         "action":{

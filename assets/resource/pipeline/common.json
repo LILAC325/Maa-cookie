@@ -5,8 +5,8 @@
             "param":{
                 "template" : "common/return.png",
                 "roi" : [1137,2,142,114]
-        }
-    },
+            }
+        },
         "action":{
             "type":"Click"
         },
@@ -70,6 +70,18 @@
         "next":[
             "returnmainpage"
         ]
+    },
+    "quit":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "common/return.png",
+                "roi" : [1137,2,142,114]
+            }
+        },
+        "action":{
+            "type":"Click"
+        }
     },
     "nothingtodo":{
         
