@@ -115,7 +115,7 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: Maa-cookice-${{ matrix.os }}-${{ matrix.arch }}
+          name: Maa-cookie-${{ matrix.os }}-${{ matrix.arch }}
           path: "install"
 
   changelog:
