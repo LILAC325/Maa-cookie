@@ -12,6 +12,7 @@
     "agent": {
         "child_exec": "python",
         "child_args": [
+            "-u",
             "{PROJECT_DIR}/../agent/main.py"
         ]
     },
@@ -44,7 +45,7 @@
         },
         {
             "name":"交易所",
-            "entry":"exchange"
+            "entry":"exchance_entry"
         },
         {
             "name":"王国活动",

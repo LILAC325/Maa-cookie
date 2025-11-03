@@ -25,7 +25,9 @@
         },
         "next":[
             "shipment",
-            "shipment_cooling"
+            "shipment_cooling",
+            "pearl_exchance",
+            "returnmainpage"
         ]
     },
     "shipment":{
@@ -93,7 +95,7 @@
             "nextship"
         ],
         "on_error":[
-            "returnmainpage"
+            "shipment_done"
         ],
         "timeout":200
     },
@@ -112,9 +114,28 @@
             "shipment"
         ],
         "on_error":[
-            "returnmainpage"
+            "shipment_done"
         ],
         "timeout":2000
+    },
+    "shipment_done":{
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action":"NodeOverride",
+                "custom_action_param":{
+                    "shipment":{
+                        "enabled":false
+                    },
+                    "shipment_cooling":{
+                        "enabled":false
+                    }
+                }
+            }
+        },
+        "next":[
+            "trade_page"
+        ]
     },
     "pearl_exchance":{
         "recognition":{
@@ -140,7 +161,15 @@
             }
         },
         "next":[
-            "pearl_legendfragment"
+            "pearl_legendfragment",
+            "pearl_guildrelics",
+            "pearl_treasuregacha",
+            "pearl_skillpowder",
+            "pearl_sw_next",
+            "pearl_done"
+        ],
+        "interrupt":[
+            "alreadyobtained_collect"
         ]
     },
     "pearl_legendfragment":{
@@ -157,8 +186,122 @@
             "type":"Click"
         },
         "next":[
-            "pearl_exchance"
+            "pearl_buy"
+        ]
+    },
+    "pearl_legendfragment_done":{
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action":"DisableNode",
+                "custom_action_param":{
+                    "node_name":"pearl_legendfragment"
+                }
+            }
+        },
+        "next":[
+            "pearl_exchance_page"
+        ]
+    },
+    "pearl_skillpowder":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template":"shop/pearl/skillpowder.png",
+                "roi" : [411,110,769,563],
+                "threshold":0.8
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "pearl_buy"
+        ]
+    },
+    "pearl_treasuregacha":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template":"shop/pearl/treasuregacha.png"
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "pearl_buy"
+        ]
+    },
+    "pearl_guildrelics":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template":"shop/pearl/Guild_Relics.png"
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "pearl_buy"
+        ]
+    },
+    "pearl_sw_next":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template":"shop/pearl/next.png",
+                "threshold":0.8
+            }
+        },
+        "action":{
+            "type":"Swipe",
+            "param":{
+                "begin" : [1184,623,1,1],
+                "end" : [343,629,1,1]
+            }
+        },
+        "next":[
+            "pearl_exchance_page"
+        ],
+        "post_delay":1000
+    },
+    "pearl_buy":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "购买",
+                "roi" : [422,370,479,343]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "pearl_exchance_page"
+        ],
+        "post_delay":2000
+    },
+    "pearl_done":{
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action":"NodeOverride",
+                "custom_action_param":{
+                    "pearl_exchance":{
+                        "enabled":false
+                    },
+                    "quit":{
+                        "next":[
+                            "trade_page"
+                        ]
+                    }
+                }
+            }
+        },
+        "next":[
+            "quit"
         ]
     }
-
 }

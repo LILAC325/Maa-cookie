@@ -152,39 +152,8 @@
             "type":"Click"
         },
         "next":[
-            "use_flegendaryjam_timespring_max"
+            "flegendaryjam_timespring_use"
         ]
-    },
-    "use_flegendaryjam_timespring_max":{
-        "recognition":{
-            "type":"OCR",
-            "param":{
-                "expected" : "最多",
-                "roi" : [777,441,83,36]
-            }
-        },
-        "action":{
-            "type":"Click"
-        },
-        "next":[
-            "use_flegendaryjam_timespring"
-        ]
-    },
-    "use_flegendaryjam_timespring":{
-        "recognition":{
-            "type":"OCR",
-            "param":{
-                "expected" : "快转",
-                "roi" : [578,514,137,61]
-            }
-        },
-        "action":{
-            "type":"Click"
-        },
-        "next":[
-            "confirm_flegendaryjam_timespring_max"
-        ],
-        "post_delay":4000
     },
     "flegendaryjam_done":{
         "action":{
@@ -200,22 +169,22 @@
             "back_adventure_page"
         ]
     },
-    "confirm_flegendaryjam_timespring_max":{
-        "recognition":{
-            "type":"OCR",
-            "param":{
-                "expected":"时间快转完成",
-                "roi" : [541,63,204,46]
-            }
-        },
+    "flegendaryjam_timespring_use":{
         "action":{
-            "type":"Click",
+            "type":"custom",
             "param":{
-                "target" : [438,651,407,54]
+                "custom_action":"NodeOverride",
+                "custom_action_param":{
+                    "timespring_collect":{
+                            "next":[
+                                "flegendaryjam_done"
+                            ]
+                    }
+                }
             }
         },
         "next":[
-            "flegendaryjam_done"
+            "timespring_choose_max"
         ]
     },
     "check_legendaryjam_time":{
@@ -326,7 +295,7 @@
             "type":"Click"
         },
         "next":[
-            "use_todayreward_timespring_max"
+            "todayreward_timespring_use"
         ]
     },
     "sugar":{
@@ -341,57 +310,26 @@
             "type":"Click"
         },
         "next":[
-            "use_todayreward_timespring_max"
+            "todayreward_timespring_use"
         ],
         "enabled":false
     },
-    "use_todayreward_timespring_max":{
-        "recognition":{
-            "type":"OCR",
-            "param":{
-                "expected" : "最多",
-                "roi" : [777,441,83,36]
-            }
-        },
+    "todayreward_timespring_use":{
         "action":{
-            "type":"Click"
-        },
-        "next":[
-            "use_todayreward_timespring"
-        ]
-    },
-    "use_todayreward_timespring":{
-        "recognition":{
-            "type":"OCR",
+            "type":"custom",
             "param":{
-                "expected" : "快转",
-                "roi" : [578,514,137,61]
-            }
-        },
-        "action":{
-            "type":"Click"
-        },
-        "next":[
-            "confirm_todayreward_timespring_max"
-        ],
-        "post_delay":4000
-    },
-    "confirm_todayreward_timespring_max":{
-        "recognition":{
-            "type":"OCR",
-            "param":{
-                "expected":"时间快转完成",
-                "roi" : [541,63,204,46]
-            }
-        },
-        "action":{
-            "type":"Click",
-            "param":{
-                "target" : [438,651,407,54]
+                "custom_action":"NodeOverride",
+                "custom_action_param":{
+                    "timespring_collect":{
+                            "next":[
+                                "todayreward_page"
+                            ]
+                    }
+                }
             }
         },
         "next":[
-            "todayreward_page"
+            "timespring_choose_max"
         ]
     },
     "archipelago":{
@@ -416,74 +354,24 @@
                 "roi" : [0,0,233,67]
             }
         },
+        "action":{
+            "type":"custom",
+            "param":{
+                "custom_action":"NodeOverride",
+                "custom_action_param":{
+                    "timespring_collect":{
+                            "next":[
+                                "archipelago_page"
+                            ]
+                    }
+                }
+            } 
+        },
         "next":[
-            "archipelago_timespring",
+            "timespring",
             "archipelago_done"
         ],
         "pre_delay":3000
-    },
-    "archipelago_timespring":{
-        "recognition":{
-            "type":"TemplateMatch",
-            "param":{
-                "template" : "adventure/archipelago_timespring.png"
-            }
-        },
-        "action":{
-            "type":"Click"
-        },
-        "next":[
-            "use_archipelago_timespring_max"
-        ]
-    },
-    "use_archipelago_timespring_max":{
-        "recognition":{
-            "type":"OCR",
-            "param":{
-                "expected" : "最多",
-                "roi" : [777,441,83,36]
-            }
-        },
-        "action":{
-            "type":"Click"
-        },
-        "next":[
-            "use_archipelago_timespring"
-        ]
-    },
-    "use_archipelago_timespring":{
-        "recognition":{
-            "type":"OCR",
-            "param":{
-                "expected" : "快转",
-                "roi" : [578,514,137,61]
-            }
-        },
-        "action":{
-            "type":"Click"
-        },
-        "next":[
-            "confirm_archipelago_timespring_max"
-        ],
-        "post_delay":4000
-    },
-    "confirm_archipelago_timespring_max":{
-        "recognition":{
-            "type":"OCR",
-            "param":{
-                "expected":"时间快转完成",
-                "roi" : [541,63,204,46]
-            }
-        },
-        "action":{
-            "type":"Click",
-            "param":{
-                "target" : [438,651,407,54]
-            }
-        },
-        "next":[
-            "archipelago_page"
-        ]
     },
     "archipelago_done":{
         "action":{
@@ -531,5 +419,62 @@
             "back_adventure_page"
         ],
         "post_delay":2000
+    },
+    "timespring":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "adventure/archipelago_timespring.png"
+            }
+        },
+        "action":{
+            "type":"Click"
+        }
+    },
+    "timespring_choose_max":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "最多",
+                "roi" : [777,441,83,36]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "timespring_confirm"
+        ]
+    },
+    "timespring_confirm":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "快转",
+                "roi" : [578,514,137,61]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "timespring_collect"
+        ],
+        "post_delay":4000
+    },
+    "timespring_collect":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"时间快转完成",
+                "roi" : [541,63,204,46]
+            }
+        },
+        "action":{
+            "type":"Click",
+            "param":{
+                "target" : [438,651,407,54]
+            }
+        }
     }
 }

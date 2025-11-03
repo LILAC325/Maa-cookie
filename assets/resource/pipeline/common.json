@@ -85,5 +85,19 @@
     },
     "nothingtodo":{
         
+    },
+    "alreadyobtained_collect":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "已获得"
+            }
+        },
+        "action":{
+            "type":"Click",
+            "param":{
+                "target" : [421,570,479,84]
+            }
+        }
     }
 }
