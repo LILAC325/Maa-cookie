@@ -138,53 +138,28 @@
             "type":"Click"
         },
         "next":[
-            "flegendaryjam_timespring"
-        ]
-    },
-    "flegendaryjam_timespring":{
-        "recognition":{
-            "type":"TemplateMatch",
-            "param":{
-                "template" : "adventure/timespring.png"
-            }
-        },
-        "action":{
-            "type":"Click"
-        },
-        "next":[
-            "flegendaryjam_timespring_use"
+            "flegendaryjam_done"
         ]
     },
     "flegendaryjam_done":{
         "action":{
             "type":"custom",
             "param":{
-                "custom_action":"DisableNode",
-                "custom_action_param":{
-                    "node_name":"legendaryjam"
-                }
-            }
-        },
-        "next":[
-            "back_adventure_page"
-        ]
-    },
-    "flegendaryjam_timespring_use":{
-        "action":{
-            "type":"custom",
-            "param":{
                 "custom_action":"NodeOverride",
                 "custom_action_param":{
                     "timespring_collect":{
-                            "next":[
-                                "flegendaryjam_done"
-                            ]
+                        "next":[
+                            "back_adventure_page"
+                        ]
+                    },
+                    "legendaryjam":{
+                        "enabled":false
                     }
                 }
             }
         },
         "next":[
-            "timespring_choose_max"
+            "timespring"
         ]
     },
     "check_legendaryjam_time":{
@@ -196,7 +171,7 @@
             }
         },
         "next":[
-            "flegendaryjam_done"
+            "back_adventure_page"
         ]
     },
     "adventure_swtoright":{
@@ -424,12 +399,19 @@
         "recognition":{
             "type":"TemplateMatch",
             "param":{
-                "template" : "adventure/archipelago_timespring.png"
+                "template" : [
+                    "adventure/timespring.png",
+                    "adventure/archipelago_timespring.png"
+                ],
+                "threshold":0.5
             }
         },
         "action":{
             "type":"Click"
-        }
+        },
+        "next":[
+            "timespring_choose_max"
+        ]
     },
     "timespring_choose_max":{
         "recognition":{

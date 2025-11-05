@@ -1,5 +1,5 @@
 {
-    "guild":{
+    "guild_entry":{
         "recognition":{
             "type":"TemplateMatch",
             "param":{
@@ -25,6 +25,7 @@
         },
         "next":[
             "guild_checkin",
+            "guild_upgrade_entry",
             "guild_gacha",
             "guild_returnmainpage"
         ]
@@ -42,9 +43,42 @@
         },
         "next":[
             "guild_checkin_page",
-            "guild_upgrade_page"
+            "guild_checkin_exit"
         ],
-        "post_delay":4000
+        "post_delay":3000
+    },
+    "guild_checkin_exit":{
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action":"NodeOverride",
+                "custom_action_param":{
+                    "guild_checkin_done":{
+                        "next":[
+                            "guild_upgrade_exit"
+                        ]
+                    }
+                }
+            }
+        },
+        "next":[
+            "guild_checkin_done"
+        ]
+    },
+    "guild_upgrade_entry":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "guild/checkin.png",
+                "roi" : [365,136,790,461]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "guild_upgrade_page"
+        ]
     },
     "guild_checkin_page":{
         "recognition":{
@@ -115,7 +149,7 @@
             "param":{
                 "custom_action":"DisableNode",
                 "custom_action_param":{
-                    "node_name":"guild_checkin"
+                    "node_name":"guild_upgrade_entry"
                 }
             }
         },
@@ -209,7 +243,8 @@
         },
         "next":[
             "guild_gacha_allin_collectdone"
-        ]
+        ],
+        "post_delay":2000
     },
     "guild_gacha_allin_collectdone":{
         "recognition":{
@@ -227,8 +262,7 @@
         "next":[
             "guild_gacha_allin",
             "guild_gacha_allin_done"
-        ],
-        "post_delay":2000
+        ]
     },
     "guild_gacha_allin_done":{
         "action":{
@@ -323,6 +357,7 @@
         },
         "next":[
             "mainpagejudgment"
-        ]
+        ],
+        "post_delay":5000
     }
 }

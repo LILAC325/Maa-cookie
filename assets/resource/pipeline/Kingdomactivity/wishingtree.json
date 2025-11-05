@@ -11,24 +11,11 @@
             "type":"Click"
         },
         "next":[
-            "wishingtree_whether_done",
+            "wishingtree_done",
             "wishingtree_page"
         ],
         "enabled":false,
         "post_delay":1000
-    },
-    "wishingtree_whether_done":{
-        "recognition":{
-            "type":"OCR",
-            "param":{
-                "expected" : "已获得",
-                "roi" : [37,550,167,60]
-            }
-        },
-        "next":[
-            "returnmainpage"
-        ]
-
     },
     "wishingtree_page":{
         "recognition":{
@@ -42,8 +29,7 @@
             "checkmax",
             "wish_load",
             "wish_submit",
-            "wish_cooling",
-            "returnmainpage"
+            "wish_cooling"
         ]
     },
     "checkmax":{
@@ -63,10 +49,9 @@
             "type":"OCR",
             "param":{
                 "expected" :[
-                    "饼干",
-                    "甜甜圈"
+                    "的愿望"
                 ],
-                "roi" : [271,138,877,41]
+                "roi" : [266,139,874,73]
             }
         },
         "action":{
@@ -89,10 +74,29 @@
         },
         "next":[
             "checkmax",
+            "wish_lack",
             "wish_submit",
             "wishingtree_page"
         ],
         "post_delay":1000
+    },
+    "wish_lack":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"道具不足",
+                "roi" : [390,171,519,367]
+            }
+        },
+        "action":{
+            "type":"Click",
+            "param":{
+                "target" : [855,174,39,38]
+            }
+        },
+        "next":[
+            "wishingtree_page"
+        ]
     },
     "wish_cooling":{
         "recognition":{

@@ -86,6 +86,27 @@
     "nothingtodo":{
         
     },
+    "get_guildrelics":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : [
+                    "普通",
+                    "稀有",
+                    "超级稀有",
+                    "传奇"
+                ],
+                "roi" : [411,110,769,563]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "alreadyobtained_collect"
+        ],
+        "enabled":false
+    },
     "alreadyobtained_collect":{
         "recognition":{
             "type":"OCR",

@@ -165,6 +165,8 @@
             "pearl_guildrelics",
             "pearl_treasuregacha",
             "pearl_skillpowder",
+            "pearl_arenaentrance",
+            "pearl_kingdommaterials",
             "pearl_sw_next",
             "pearl_done"
         ],
@@ -223,7 +225,8 @@
         "recognition":{
             "type":"TemplateMatch",
             "param":{
-                "template":"shop/pearl/treasuregacha.png"
+                "template":"shop/pearl/treasuregacha.png",
+                "roi" : [411,110,769,563]
             }
         },
         "action":{
@@ -237,7 +240,59 @@
         "recognition":{
             "type":"TemplateMatch",
             "param":{
-                "template":"shop/pearl/Guild_Relics.png"
+                "template":"shop/pearl/Guild_Relics.png",
+                "roi" : [411,110,769,563]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "pearl_get_guildrelics"
+        ]
+    },
+    "pearl_get_guildrelics":{
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action":"NodeOverride",
+                "custom_action_param":{
+                    "alreadyobtained_collect":{
+                        "next":[
+                            "pearl_exchance_page"
+                        ]
+                    },
+                    "get_guildrelics":{
+                        "enabled":true
+                    }
+                }
+            }
+        },
+        "next":[
+            "pearl_buy"
+        ]
+    },
+    "pearl_arenaentrance":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template":"shop/pearl/arenaentrance.png",
+                "roi" : [411,110,769,563]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "pearl_buy"
+        ]
+    },
+    "pearl_kingdommaterials":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template":"shop/pearl/kingdommaterials.png",
+                "roi" : [411,110,769,563]
             }
         },
         "action":{
@@ -279,6 +334,7 @@
             "type":"Click"
         },
         "next":[
+            "get_guildrelics",
             "pearl_exchance_page"
         ],
         "post_delay":2000
