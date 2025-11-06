@@ -3,8 +3,7 @@
         "recognition":{
             "type":"TemplateMatch",
             "param":{
-                "template" : "kingdomactivity/exchanceentry.png",
-                "roi" : [315,417,132,118]
+                "template" : "kingdomactivity/exchanceentry.png"
             }
         },
         "action":{
@@ -24,36 +23,81 @@
             }
         },
         "next":[
-            "items_exchance",
+            "exchance_items",
+            "exchance_gold",
             "returnmainpage"
         ]
     },
-    "items_exchance":{
-        "next":[
-            "skillpowder_exchance",
-            "check_freeitems_refresh1",
-            "gold_exchance"
-        ]
-    },
-    "seek_item":{
-        "action":{
-            "type":"Swipe",
+    "exchance_items":{
+        "recognition":{
+            "type":"OCR",
             "param":{
-                "start" : [381,656,210,52],
-                "end" : [381,726,210,52],
-                "duration" : 1000
+                "expected" : "道具交换所",
+                "roi" : [304,645,339,73]
             }
         },
         "next":[
-            "items_exchance"
+            "exchance_skillpowder",
+            "seek_item",
+            "check_exchance_items_refresh",
+            "exchance_items_done"
         ]
     },
-    "skillpowder_exchance":{
+    "seek_item":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "shop/exchange/seekitem.png",
+                "roi" : [1193,438,84,147]
+            }
+        },
+        "action":{
+            "type":"Swipe",
+            "param":{
+                "begin" : [1198,423,1,1],
+                "end" : [459,421,1,1],
+                "duration":2000
+            }
+        },
         "next":[
-            "seek_item"
+            "exchance_items"
         ]
     },
-    "check_freeitems_refresh1":{
+    "exchance_skillpowder":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : [
+                    "shop/exchange/skillpowder1.png",
+                    "shop/exchange/skillpowder2.png",
+                    "shop/exchange/skillpowder3.png"
+                ],
+                "roi" : [28,414,1240,241]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "exchance_buy"
+        ]
+    },
+    "exchance_buy":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"购买",
+                "roi" : [352,449,589,113]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "exchance_items"
+        ]
+    },
+    "check_exchance_items_refresh":{
         "recognition":{
             "type":"OCR",
             "param":{
@@ -65,14 +109,28 @@
             "type":"Click"
         },
         "next":[
-            "items_exchance"
+            "exchance_items"
         ]
     },
-    "gold_exchance":{
+    "exchance_items_done":{
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action":"DisableNode",
+                "custom_action_param":{
+                    "node_name":"exchance_items"
+                }
+            }
+        },
+        "next":[
+            "exchance_page"
+        ]
+    },
+    "exchance_gold":{
         "recognition":{
             "type":"OCR",
             "param":{
-                "expected":"金币交易所",
+                "expected":"金币交换所",
                 "roi" : [646,655,283,53]
             }
         },
@@ -81,7 +139,8 @@
         },
         "next":[
             "buymultiple"
-        ]
+        ],
+        "enabled":false
     },
     "buymultiple":{
         "recognition":{
@@ -103,10 +162,106 @@
             "type":"OCR",
             "param":{
                 "expected":"购买多个",
-                "roi" : [785,348,188,46]
+                "roi" : [530,75,217,66]
             }
         },
         "next":[
+            "gold_choose",
+            "sw_bottom_buymultiple_page",
+            "exchance_gold_buy"
+        ]
+    },
+    "gold_choose":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"持有数量：(0|[1-9]|[1-4][0-9])",
+                "roi" : [136,153,1014,353]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "exchance_gold_buy"
+        ]
+    },
+    "sw_bottom_buymultiple_page":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "shop/exchange/buymultiple.png",
+                "roi" : [808,393,332,119]
+            }
+        },
+        "action":{
+            "type":"Swipe",
+            "param":{
+                "begin" : [1131,507,1,1],
+                "end" : [1127,265,1,1],
+                "duration":2000
+            }
+        },
+        "next":[
+            "quit_buymultiple_page"
+        ],
+        "post_delay":1500,
+        "inverse":true
+    },
+    "quit_buymultiple_page":{
+        "action":{
+            "type":"Click",
+            "param":{
+                "target" : [1121,66,44,49]
+            }
+        },
+        "next":[
+            "check_exchance_gold_refresh",
+            "exchance_gold_done"
+        ]
+    },
+    "exchance_gold_buy":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"购买所选商品",
+                "roi" : [797,572,340,91]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "buymultiple"
+        ]
+    },
+    "check_exchance_gold_refresh":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"免费刷新",
+                "roi" : [995,346,264,51]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "buymultiple"
+        ]
+    },
+    "exchance_gold_done":{
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action":"DisableNode",
+                "custom_action_param":{
+                    "node":"exchance_gold"
+                }
+            }
+        },
+        "next":[
+            "exchance_page"
         ]
     }
 }

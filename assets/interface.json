@@ -45,7 +45,11 @@
         },
         {
             "name":"大嘴鹦鹉的海上交易所",
-            "entry":"exchance_entry"
+            "entry":"exchance_entry",
+            "option":[
+                "道具交易-技能粉末",
+                "金币交换-自动买持有数量低于50的商品"
+            ]
         },
         {
             "name":"许愿树",
