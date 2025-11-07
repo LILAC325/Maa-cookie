@@ -23,8 +23,10 @@
             }
         },
         "next":[
+            "arena_entry",
             "legendaryjam",
             "todayreward",
+            "protectbattle",
             "archipelago",
             "adventure_swtoright",
             "returnmainpage"
@@ -43,7 +45,8 @@
         },
         "next":[
             "legendaryjam_page"
-        ]
+        ],
+        "enabled":false 
     },
     "legendaryjam_page":{
         "recognition":{
@@ -221,7 +224,8 @@
         },
         "next":[
             "todayreward_page"
-        ]
+        ],
+        "enabled":false
     },
     "todayreward_page":{
         "recognition":{
@@ -319,7 +323,8 @@
         },
         "next":[
             "archipelago_page"
-        ]
+        ],
+        "enabled":false
     },
     "archipelago_page":{
         "recognition":{
@@ -376,6 +381,168 @@
             "adventure_page"
         ]
     },
+    "protectbattle":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"守护之战"
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "protectbattle_page"
+        ],
+        "enabled":false
+    },
+    "protectbattle_page":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"守护之战",
+                "roi" : [0,0,227,64]
+            }
+        },
+        "next":[
+            "check_protectbattle_number",
+            "protectbattle_master",
+            "protectbattle_infinite"
+        ]
+    },
+    "check_protectbattle_number":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"0/8"
+            }
+        },
+        "next":[
+            "protectbattle_done"
+        ]
+    },
+    "protectbattle_master":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"大师"
+            }
+        },
+        "action":{
+            "type":"custom",
+            "param":{
+                "custom_action":"NodeOverride",
+                "custom_action_param":{
+                    "protectbattle_battle_entry":{
+                        "recognition":{
+                            "type":"OCR",
+                            "param":{
+                                "expected":"进入",
+                                "roi" : [1041,436,183,80]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "next":[
+            "protectbattle_battle_entry"
+        ]
+    },
+    "protectbattle_infinite":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"无限"
+            }
+        },
+        "action":{
+            "type":"custom",
+            "param":{
+                "custom_action":"NodeOverride",
+                "custom_action_param":{
+                    "protectbattle_battle_entry":{
+                        "recognition":{
+                            "type":"OCR",
+                            "param":{
+                                "expected":"进入",
+                                "roi" : [1037,591,196,85]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "next":[
+            "protectbattle_battle_entry"
+        ]
+    },
+    "protectbattle_battle_entry":{
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "protectbattle_battle_page"
+        ]
+    },
+    "protectbattle_battle_page":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"队伍设置",
+                "roi" : [5,620,183,99]
+            }
+        },
+        "next":[
+            "protectbattle_battle_use_timespring"
+        ]
+    },
+    "protectbattle_battle_use_timespring":{
+        "action":{
+            "type":"custom",
+            "param":{
+                "custom_action":"NodeOverride",
+                "custom_action_param":{
+                    "timespring_confirm":{
+                        "next":[
+                            "get_guildrelics"
+                        ]
+                    },
+                    "get_guildrelics":{
+                        "next":[
+                            "get_guildrelics",
+                            "timespring_collect"
+                        ],
+                        "enabled":true
+                    },
+                    "timespring_collect":{
+                        "next":[
+                            "protectbattle_done"
+                        ]
+                    }
+                }
+            }
+        },
+        "next":[
+            "timespring"
+        ]
+    },
+    "protectbattle_done":{
+        "action":{
+            "type":"custom",
+            "param":{
+                "custom_action":"NodeOverride",
+                "custom_action_param":{
+                    "protectbattle":{
+                        "enabled":false
+                    }
+                }
+            }
+        },
+        "next":[
+            "back_adventure_page"
+        ]
+    },
     "back_adventure_page":{
         "recognition":{
             "type":"TemplateMatch",
@@ -417,8 +584,7 @@
         "recognition":{
             "type":"OCR",
             "param":{
-                "expected" : "最多",
-                "roi" : [777,441,83,36]
+                "expected" : "最多"
             }
         },
         "action":{
@@ -458,5 +624,216 @@
                 "target" : [438,651,407,54]
             }
         }
+    },
+    "arena_entry":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"王国竞技场"
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "arena_page"
+        ]
+    },
+    "arena_page":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"攻击队伍设置",
+                "roi" : [10,625,198,85]
+            }
+        },
+        "next":[
+            "arena_position_1",
+            "arena_position_2",
+            "arena_position_3",
+            "sw_arena_page"
+        ]
+    },
+    "sw_arena_page":{
+        "action":{
+            "type":"Swipe",
+            "param":{
+                "begin" : [1221,150,1,1],
+                "end" : [434,155,1,1],
+                "duration" : 2000
+            }
+        },
+        "next":[
+            "arena_page"
+        ]
+
+    },
+    "arena_position_1":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":[
+                    "胜利",
+                    "失败"
+                ],
+                "roi" : [464,207,241,239]
+            }
+        },
+        "action":{
+            "type":"Click",
+            "param":{
+                "target" : [496,311,169,47]
+            }
+        },
+        "inverse":true,
+        "next":[
+            "arena_battle_page"
+        ]
+    },
+    "arena_position_2":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":[
+                    "胜利",
+                    "失败"
+                ],
+                "roi" : [720,188,248,255]
+            }
+        },
+        "action":{
+            "type":"Click",
+            "param":{
+                "target" : [741,299,195,86]
+            }
+        },
+        "inverse":true,
+        "next":[
+            "arena_battle_page"
+        ]
+    },
+    "arena_position_3":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":[
+                    "胜利",
+                    "失败"
+                ],
+                "roi" : [972,194,249,253]
+            }
+        },
+        "action":{
+            "type":"Click",
+            "param":{
+                "target" : [1005,264,196,118]
+            }
+        },
+        "inverse":true,
+        "next":[
+            "arena_battle_page"
+        ]
+    },
+    "arena_battle_page":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"战斗开始",
+                "roi" : [935,603,344,116]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "arena_ticket_lack",
+            "arena_clear_page"
+        ],
+        "post_wait_freezes":100,
+        "post_delay":3000
+    },
+    "arena_clear_page":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":[
+                    "胜利",
+                    "失败"
+                ]
+            }
+        },
+        "action":{
+            "type":"Click",
+            "param":{
+                "target" : [1103,621,138,61]
+            }
+        },
+        "next":[
+            "arena_page",
+            "arena_level_up",
+            "arena_clear_page"
+        ],
+        "post_delay":1000
+    },
+    "arena_level_up":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":[
+                    "已升至",
+                    "奖励"
+                ],
+                "roi" : [211,3,901,277]
+            }
+        },
+        "action":{
+            "type":"Click",
+            "param":{
+                "target" : [416,608,515,74]
+            }
+        },
+        "next":[
+            "arena_level_up",
+            "arena_page"
+        ],
+        "post_delay":2000
+    },
+    "arena_ticket_lack":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"可选择资源"
+            }
+        },
+        "next":[
+            "arena_ticket_lack_quit"
+        ]
+    },
+    "arena_ticket_lack_quit":{
+        "action":{
+            "type":"Click",
+            "param":{
+                "target" : [971,33,34,36]
+            }
+        },
+        "next":[
+            "arena_done"
+        ]
+    },
+    "arena_done":{
+        "action":{
+            "type":"custom",
+            "param":{
+                "custom_action":"NodeOverride",
+                "custom_action_param":{
+                    "arena_entry":{
+                        "enabled":false
+                    }
+                }
+            }
+        },
+        "next":[
+            "back_adventure_page"
+        ]
     }
 }

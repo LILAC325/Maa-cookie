@@ -33,7 +33,8 @@
         },
         {
             "name":"王国生产管理",
-            "entry":"kingdomproduce"
+            "entry":"kingdomproduce",
+            "doc":"若爆仓会自动退出该功能"
         },
         {
             "name":"页面奖励",
@@ -48,7 +49,7 @@
             "entry":"exchance_entry",
             "option":[
                 "道具交易-技能粉末",
-                "金币交换-自动买持有数量低于50的商品"
+                "金币交换-自动买持有数量低于50的商品(已禁用，待开发)"
             ]
         },
         {
@@ -76,10 +77,17 @@
             "name":"冒险",
             "entry":"adventure_entry",
             "option":[
+                "是否启用竞技场",
+                "竞技场",
+                "是否启用实证战场",
                 "实证战场",
+                "是否启用今日悬赏",
                 "今日悬赏",
-                "苏打群岛"
-            ]
+                "是否启用守护之战",
+                "守护之战",
+                "是否启用热带苏打群岛"
+            ],
+            "doc":"竞技场：会用完所有竞技场入场券，无论输赢；实证战场：请确保选择战场已通过10阶；守护之战：请确保至少通关大师难度"
         },
         {
             "name":"海上贸易中心",
@@ -278,6 +286,164 @@
                     }
                 }
             }
+        ]
+    },
+    "是否启用实证战场":{
+        "default_case":[
+            {
+                "name":"yes",
+                "pipeline_override":{
+                "legendaryjam":{
+                    "enabled":true
+                    }
+                }
+            }
+        ],
+        "cases":[
+            {
+                "name":"no",
+                "pipeline_override":{
+                "legendaryjam":{
+                    "enabled":false
+                    }
+                }
+            }
+
+        ]
+    },
+    "实证战场":{
+        "cases":[
+            {
+                "name":"冰霜女王饼干",
+                "pipeline_override":{
+                    "frostqueen":{
+                        "enabled":true
+                    }
+                }
+            },
+            {
+                "name":"海妖精饼干",
+                "pipeline_override":{
+                    "seasprite":{
+                        "enabled":true
+                    }
+                }
+            },
+            {
+                "name":"黑珍珠饼干",
+                "pipeline_override":{
+                    "blackpearl":{
+                        "enabled":true
+                    }
+                }
+            }
+        ]
+    },
+    "是否启用今日悬赏":{
+        "default_case":[
+                {
+                    "name":"yes",
+                    "pipeline_override":{
+                        "todayreward":{
+                            "enabled":true
+                        }
+                    }
+                }
+        ],
+        "cases":[
+                {
+                    "name":"no",
+                    "pipeline_override":{
+                        "todayreward":{
+                            "enabled":false
+                        }
+                    }
+                }
+        ]
+
+    },
+    "今日悬赏":{
+        "cases":[
+            {
+                "name":"技能粉末",
+                "pipeline_override":{
+                    "skillpowder":{
+                        "enabled":true
+                    }
+                }
+            },
+            {
+                "name":"开糖材料",
+                "pipeline_override":{
+                    "sugar":{
+                        "enabled":true
+                    }
+                }
+            }
+        ]
+    },
+    "是否启用守护之战":{
+        "default_case":[
+                {
+                    "name":"yes",
+                    "pipeline_override":{
+                        "protectbattle":{
+                            "enabled":true
+                        }
+                    }
+                }
+        ],
+        "cases":[
+                {
+                    "name":"no",
+                    "pipeline_override":{
+                        "protectbattle":{
+                            "enabled":false
+                        }
+                    }
+                }
+        ]
+    },
+    "守护之战":{
+        "cases":[
+            {
+                "name":"大师难度",
+                "pipeline_override":{
+                    "protectbattle_master":{
+                        "enabled":true
+                    }
+                }
+            },
+            {
+                "name":"无限难度",
+                "pipeline_override":{
+                    "protectbattle_infinite":{
+                        "enabled":true
+                    }
+                }
+            }
+        ]
+    },
+    "是否启用热带苏打群岛":{
+        "default_case":[
+                {
+                    "name":"yes",
+                    "pipeline_override":{
+                        "archipelago":{
+                            "enabled":true
+                        }
+                    }
+                }
+        ],
+        "cases":[
+                {
+                    "name":"no",
+                    "pipeline_override":{
+                        "archipelago":{
+                            "enabled":false
+                        }
+                    }
+                }
         ]
     }
 }

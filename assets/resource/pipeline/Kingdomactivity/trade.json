@@ -162,6 +162,7 @@
         },
         "next":[
             "pearl_legendfragment",
+            "pearl_cookiegacha",
             "pearl_guildrelics",
             "pearl_treasuregacha",
             "pearl_skillpowder",
@@ -203,6 +204,22 @@
         },
         "next":[
             "pearl_exchance_page"
+        ]
+    },
+    "pearl_cookiegacha":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "cookiegacha.png",
+                "roi" : [411,110,769,563],
+                "threshold":0.8
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "pearl_buy"
         ]
     },
     "pearl_skillpowder":{

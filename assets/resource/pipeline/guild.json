@@ -294,6 +294,9 @@
         "next":[
             "guild_battle_collect",
             "guild_battle_page"
+        ],
+        "interrupt":[
+            "bottom_click"
         ]
     },
     "guild_battle_collect":{

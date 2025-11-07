@@ -103,8 +103,10 @@
             "type":"Click"
         },
         "next":[
+            "get_guildrelics",
             "alreadyobtained_collect"
         ],
+        "post_delay":1000,
         "enabled":false
     },
     "alreadyobtained_collect":{
@@ -118,6 +120,14 @@
             "type":"Click",
             "param":{
                 "target" : [421,570,479,84]
+            }
+        }
+    },
+    "bottom_click":{
+        "action":{
+            "type":"Click",
+            "param":{
+                "target" : [376,647,560,51]
             }
         }
     }
