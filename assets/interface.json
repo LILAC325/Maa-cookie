@@ -1,8 +1,8 @@
 {
-    "name":"Maa-cookiek",
-    "url":"https://github.com/LILAC325/Maa-cookie",
-    "custom_title":"Maa-cookie",
-    "version":"v1.0.0",
+    "name": "Maa-cookiek",
+    "url": "https://github.com/LILAC325/Maa-cookie",
+    "custom_title": "Maa-cookie",
+    "version": "v1.0.0",
     "controller": [
         {
             "name": "ADB默认",
@@ -13,7 +13,7 @@
         "child_exec": "python",
         "child_args": [
             "-u",
-            "{PROJECT_DIR}/../agent/main.py"
+            "{PROJECT_DIR}/agent/main.py"
         ]
     },
     "resource": [
@@ -25,60 +25,57 @@
         }
     ],
     "task": [
-        
         {
-            "name":"清绿点",
-            "entry":"cleargreenpoint",
-            "check":true
+            "name": "清绿点",
+            "entry": "cleargreenpoint",
+            "check": true
         },
         {
-            "name":"王国生产管理",
-            "entry":"kingdomproduce",
-            "doc":"若爆仓会自动退出该功能"
+            "name": "王国生产管理",
+            "entry": "kingdomproduce",
+            "doc": "若爆仓会自动退出该功能"
         },
         {
-            "name":"页面奖励",
-            "entry":"mainpge_reward"
+            "name": "页面奖励",
+            "entry": "mainpge_reward"
         },
         {
-            "name":"商城",
-            "entry":"freeshopping"
+            "name": "商城",
+            "entry": "freeshopping"
         },
         {
-            "name":"大嘴鹦鹉的海上交易所",
-            "entry":"exchance_entry",
-            "option":[
+            "name": "大嘴鹦鹉的海上交易所",
+            "entry": "exchance_entry",
+            "option": [
                 "道具交易-技能粉末",
                 "金币交换-自动买持有数量低于50的商品(已禁用，待开发)"
             ]
         },
         {
-            "name":"许愿树",
-            "entry":"wishingtree_entry"
-
+            "name": "许愿树",
+            "entry": "wishingtree_entry"
         },
         {
-            "name":"相约之所",
-            "entry":"specialcookie_entry",
-            "option":[
+            "name": "相约之所",
+            "entry": "specialcookie_entry",
+            "option": [
                 "饼干选择"
             ]
         },
         {
-            "name":"公会",
-            "entry":"guild",
-            "option":[
+            "name": "公会",
+            "entry": "guild",
+            "option": [
                 "蓝色焰火提交",
                 "公会讨伐",
                 "公会扭蛋"
             ]
         },
         {
-            "name":"冒险",
-            "entry":"adventure_entry",
-            "option":[
+            "name": "冒险",
+            "entry": "adventure_entry",
+            "option": [
                 "是否启用竞技场",
-                "竞技场",
                 "是否启用实证战场",
                 "实证战场",
                 "是否启用今日悬赏",
@@ -87,363 +84,373 @@
                 "守护之战",
                 "是否启用热带苏打群岛"
             ],
-            "doc":"竞技场：会用完所有竞技场入场券，无论输赢；实证战场：请确保选择战场已通过10阶；守护之战：请确保至少通关大师难度"
+            "doc": "竞技场：会用完所有竞技场入场券，无论输赢；实证战场：请确保选择战场已通过10阶；守护之战：请确保至少通关大师难度"
         },
         {
-            "name":"海上贸易中心",
-            "entry":"tradepage_entry",
-            "option":[
+            "name": "海上贸易中心",
+            "entry": "tradepage_entry",
+            "option": [
                 "璀璨贝艺廊：传奇饼干灵魂石",
                 "璀璨贝艺廊：公会文物",
                 "璀璨贝艺廊：竞技场入场券",
                 "璀璨贝艺廊：技能粉末",
                 "璀璨贝艺廊：王国材料",
                 "璀璨贝艺廊：宝物扭蛋券"
-
             ],
-            "doc":"该功能已包含在‘清绿点’中，若需要自动购买“璀璨贝艺廊”物品，请开启"
+            "doc": "该功能已包含在'清绿点'中，若需要自动购买'璀璨贝艺廊'物品，请开启"
         },
         {
-            "name":"熊熊果冻热气球",
-            "entry":"hotairballoon_entry",
-            "doc":"该功能已包含在‘清绿点’中，该入口为保底检查，按需启用"
+            "name": "熊熊果冻热气球",
+            "entry": "hotairballoon_entry",
+            "doc": "该功能已包含在'清绿点'中，该入口为保底检查，按需启用"
         },
         {
-            "name":"熊熊果冻列车",
-            "entry":"tradepage_entry",
-            "doc":"该功能已包含在‘清绿点’中，该入口为保底检查，按需启用"
+            "name": "熊熊果冻列车",
+            "entry": "tradepage_entry",
+            "doc": "该功能已包含在'清绿点'中，该入口为保底检查，按需启用"
         }
     ],
-    "option":{
-        "饼干选择":{
+    "option": {
+        "饼干选择": {
+            "cases": [
+                {
+                    "name": "花小龙",
+                    "pipeline_override": {
+                        "huaxiaolong": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "璀璨贝艺廊：传奇饼干灵魂石": {
+            "cases": [
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "pearl_legendfragment": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "pearl_legendfragment": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "璀璨贝艺廊：公会文物": {
+            "cases": [
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "pearl_guildrelics": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "pearl_guildrelics": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "璀璨贝艺廊：竞技场入场券": {
+            "cases": [
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "pearl_arenaentrance": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "pearl_arenaentrance": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "璀璨贝艺廊：技能粉末": {
+            "cases": [
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "pearl_skillpowder": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "pearl_skillpowder": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "璀璨贝艺廊：宝物扭蛋券": {
+            "cases": [
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "pearl_treasuregacha": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "pearl_treasuregacha": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "璀璨贝艺廊：王国材料": {
+            "cases": [
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "pearl_kingdommaterials": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "pearl_kingdommaterials": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "蓝色焰火提交": {
+            "cases": [
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "guild_upgrade_entry": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "guild_upgrade_entry": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "公会扭蛋": {
+            "cases": [
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "guild_gacha": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "guild_gacha": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "是否启用竞技场":{
             "cases":[
                 {
-                    "name":"花小龙",
-                    "pipeline_override":{
-                        "huaxiaolong":{
-                            "enabled":true
+                    "name": "yes",
+                    "pipeline_override": {
+                        "arena_entry": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "arena_entry": {
+                            "enabled": false
+                        }
+                    }
+                }
+
+            ]
+        },
+        "是否启用实证战场": {
+            "cases": [
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "legendaryjam": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "legendaryjam": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "实证战场": {
+            "cases": [
+                {
+                    "name": "冰霜女王饼干",
+                    "pipeline_override": {
+                        "frostqueen": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "海妖精饼干",
+                    "pipeline_override": {
+                        "seasprite": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "黑珍珠饼干",
+                    "pipeline_override": {
+                        "blackpearl": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "是否启用今日悬赏": {
+            "cases": [
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "todayreward": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "todayreward": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "今日悬赏": {
+            "cases": [
+                {
+                    "name": "技能粉末",
+                    "pipeline_override": {
+                        "skillpowder": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "开糖材料",
+                    "pipeline_override": {
+                        "sugar": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "是否启用守护之战": {
+            "cases": [
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "protectbattle": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "protectbattle": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "守护之战": {
+            "cases": [
+                {
+                    "name": "大师难度",
+                    "pipeline_override": {
+                        "protectbattle_master": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "无限难度",
+                    "pipeline_override": {
+                        "protectbattle_infinite": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "是否启用热带苏打群岛": {
+            "cases": [
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "archipelago": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "archipelago": {
+                            "enabled": false
                         }
                     }
                 }
             ]
         }
-    },
-    "璀璨贝艺廊：传奇饼干灵魂石":{
-        "cases":[
-            {
-                "name":"yes",
-                "pipeline_override":{
-                    "pearl_legendfragment":{
-                        "enabled":true
-                    }
-                }
-            },
-            {
-                "name":"no",
-                "pipeline_override":{
-                    "pearl_legendfragment":{
-                        "enabled":false
-                    }
-                }
-            }
-        ]
-    },
-    "璀璨贝艺廊：公会文物":{
-        "cases":[
-            {
-                "name":"yes",
-                "pipeline_override":{
-                    "pearl_guildrelics":{
-                        "enabled":true
-                    }
-                }
-            },
-            {
-                "name":"no",
-                "pipeline_override":{
-                    "pearl_guildrelics":{
-                        "enabled":false
-                    }
-                }
-            }
-        ]
-    },
-    "璀璨贝艺廊：竞技场入场券":{
-        "cases":[
-            {
-                "name":"yes",
-                "pipeline_override":{
-                    "pearl_arenaentrance":{
-                        "enabled":true
-                    }
-                }
-            },
-            {
-                "name":"no",
-                "pipeline_override":{
-                    "pearl_arenaentrance":{
-                        "enabled":false
-                    }
-                }
-            }
-        ]
-    },
-    "璀璨贝艺廊：技能粉末":{
-        "cases":[
-            {
-                "name":"yes",
-                "pipeline_override":{
-                    "pearl_skillpowder":{
-                        "enabled":true
-                    }
-                }
-            },
-            {
-                "name":"no",
-                "pipeline_override":{
-                    "pearl_skillpowder":{
-                        "enabled":false
-                    }
-                }
-            }
-        ]
-    },
-    "璀璨贝艺廊：宝物扭蛋券":{
-        "cases":[
-            {
-                "name":"yes",
-                "pipeline_override":{
-                    "pearl_treasuregacha":{
-                        "enabled":true
-                    }
-                }
-            },
-            {
-                "name":"no",
-                "pipeline_override":{
-                    "pearl_treasuregacha":{
-                        "enabled":false
-                    }
-                }
-            }
-        ]
-    },
-    "璀璨贝艺廊：王国材料":{
-        "cases":[
-            {
-                "name":"yes",
-                "pipeline_override":{
-                    "pearl_kingdommaterials":{
-                        "enabled":true
-                    }
-                }
-            },
-            {
-                "name":"no",
-                "pipeline_override":{
-                    "pearl_kingdommaterials":{
-                        "enabled":false
-                    }
-                }
-            }
-        ]
-    },
-    "蓝色焰火提交":{
-        "cases":[
-            {
-                "name":"yes",
-                "pipeline_override":{
-                    "guild_upgrade_entry":{
-                        "enabled":true
-                    }
-                }
-            },
-            {
-                "name":"no",
-                "pipeline_override":{
-                    "guild_upgrade_entry":{
-                        "enabled":false
-                    }
-                }
-            }
-        ]
-    },
-    "公会扭蛋":{
-        "cases":[
-            {
-                "name":"yes",
-                "pipeline_override":{
-                    "guild_gacha":{
-                        "enabled":true
-                    }
-                }
-            },
-            {
-                "name":"no",
-                "pipeline_override":{
-                    "guild_gacha":{
-                        "enabled":false
-                    }
-                }
-            }
-        ]
-    },
-    "是否启用实证战场":{
-        "default_case":[
-            {
-                "name":"yes",
-                "pipeline_override":{
-                "legendaryjam":{
-                    "enabled":true
-                    }
-                }
-            }
-        ],
-        "cases":[
-            {
-                "name":"no",
-                "pipeline_override":{
-                "legendaryjam":{
-                    "enabled":false
-                    }
-                }
-            }
-
-        ]
-    },
-    "实证战场":{
-        "cases":[
-            {
-                "name":"冰霜女王饼干",
-                "pipeline_override":{
-                    "frostqueen":{
-                        "enabled":true
-                    }
-                }
-            },
-            {
-                "name":"海妖精饼干",
-                "pipeline_override":{
-                    "seasprite":{
-                        "enabled":true
-                    }
-                }
-            },
-            {
-                "name":"黑珍珠饼干",
-                "pipeline_override":{
-                    "blackpearl":{
-                        "enabled":true
-                    }
-                }
-            }
-        ]
-    },
-    "是否启用今日悬赏":{
-        "default_case":[
-                {
-                    "name":"yes",
-                    "pipeline_override":{
-                        "todayreward":{
-                            "enabled":true
-                        }
-                    }
-                }
-        ],
-        "cases":[
-                {
-                    "name":"no",
-                    "pipeline_override":{
-                        "todayreward":{
-                            "enabled":false
-                        }
-                    }
-                }
-        ]
-
-    },
-    "今日悬赏":{
-        "cases":[
-            {
-                "name":"技能粉末",
-                "pipeline_override":{
-                    "skillpowder":{
-                        "enabled":true
-                    }
-                }
-            },
-            {
-                "name":"开糖材料",
-                "pipeline_override":{
-                    "sugar":{
-                        "enabled":true
-                    }
-                }
-            }
-        ]
-    },
-    "是否启用守护之战":{
-        "default_case":[
-                {
-                    "name":"yes",
-                    "pipeline_override":{
-                        "protectbattle":{
-                            "enabled":true
-                        }
-                    }
-                }
-        ],
-        "cases":[
-                {
-                    "name":"no",
-                    "pipeline_override":{
-                        "protectbattle":{
-                            "enabled":false
-                        }
-                    }
-                }
-        ]
-    },
-    "守护之战":{
-        "cases":[
-            {
-                "name":"大师难度",
-                "pipeline_override":{
-                    "protectbattle_master":{
-                        "enabled":true
-                    }
-                }
-            },
-            {
-                "name":"无限难度",
-                "pipeline_override":{
-                    "protectbattle_infinite":{
-                        "enabled":true
-                    }
-                }
-            }
-        ]
-    },
-    "是否启用热带苏打群岛":{
-        "default_case":[
-                {
-                    "name":"yes",
-                    "pipeline_override":{
-                        "archipelago":{
-                            "enabled":true
-                        }
-                    }
-                }
-        ],
-        "cases":[
-                {
-                    "name":"no",
-                    "pipeline_override":{
-                        "archipelago":{
-                            "enabled":false
-                        }
-                    }
-                }
-        ]
     }
 }

@@ -614,8 +614,7 @@
         "recognition":{
             "type":"OCR",
             "param":{
-                "expected":"时间快转完成",
-                "roi" : [541,63,204,46]
+                "expected":"时间快转完成"
             }
         },
         "action":{

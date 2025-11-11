@@ -105,7 +105,26 @@
             }
         },
         "next":[
+            "incubation_success",
             "wait_incubation",
+            "incubation_done"
+        ],
+        "pre_delay":5000
+    },
+    "incubation_success":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"本次分享"
+            }
+        },
+        "action":{
+            "type":"Click",
+            "param":{
+                "target" : [449,473,207,162]
+            }
+        },
+        "next":[
             "incubation_done"
         ],
         "pre_delay":5000
