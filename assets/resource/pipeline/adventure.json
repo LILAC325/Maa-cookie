@@ -351,7 +351,7 @@
             "timespring",
             "archipelago_done"
         ],
-        "pre_delay":3000
+        "pre_delay":2000
     },
     "archipelago_done":{
         "action":{

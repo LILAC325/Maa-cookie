@@ -60,7 +60,8 @@
             "entry": "specialcookie_entry",
             "option": [
                 "饼干选择"
-            ]
+            ],
+            "doc": "请在使用前打开“连续”功能"
         },
         {
             "name": "公会",
@@ -114,9 +115,17 @@
         "饼干选择": {
             "cases": [
                 {
-                    "name": "花小龙",
+                    "name": "花小龙饼干",
                     "pipeline_override": {
                         "huaxiaolong": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "冰锥雪怪饼干",
+                    "pipeline_override": {
+                        "snowman": {
                             "enabled": true
                         }
                     }

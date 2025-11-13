@@ -27,7 +27,8 @@
             "type":"Click"
         },
         "next": [
-            "huaxiaolong"
+            "huaxiaolong",
+            "snowman"
         ]
     },
     "huaxiaolong":{
@@ -38,26 +39,40 @@
             }
         },
         "action":{
-            "type":"Click",
-            "param":{
-                "target_offset" : [-6, 51, 18, 4]
-            }
+            "type":"Click"
         },
         "next": [
-            "huaxiaolong_page"
+            "cookie_page"
         ]
     },
-    "huaxiaolong_page":{
+    "snowman":{
         "recognition":{
             "type":"OCR",
             "param":{
-                "expected" : "花小龙饼干",
+                "expected" : "冰锥雪怪饼干"
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next": [
+            "cookie_page"
+        ]
+    },
+    "cookie_page":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : [
+                    "花小龙饼干",
+                    "冰锥雪怪饼干"
+                ],
                 "roi" : [0,0,263,66]
             }
         },
         "next": [
             "check_incubation_number",
-            "incubation_done"
+            "cookie_done"
         ]
     },
     "check_incubation_number":{
@@ -74,15 +89,18 @@
             }
         },
         "next": [
-            "incubation_page"
+            "cookie_next_page"
         ],
         "inverse":true
     },
-    "incubation_page":{
+    "cookie_next_page":{
         "recognition":{
             "type":"OCR",
             "param":{
-                "expected":"孵化温度"
+                "expected":[
+                    "孵化温度",
+                    "起床点数"
+                ]
             }
         },
         "action":{
@@ -93,11 +111,11 @@
             }
         },
         "next":[
-            "wait_incubation"
+            "wait_cookie_next"
         ],
         "pre_delay":5000
     },
-    "wait_incubation":{
+    "wait_cookie_next":{
         "recognition":{
             "type":"OCR",
             "param":{
@@ -105,13 +123,13 @@
             }
         },
         "next":[
-            "incubation_success",
-            "wait_incubation",
-            "incubation_done"
+            "cookie_success",
+            "wait_cookie_next",
+            "cookie_done"
         ],
         "pre_delay":5000
     },
-    "incubation_success":{
+    "cookie_success":{
         "recognition":{
             "type":"OCR",
             "param":{
@@ -125,11 +143,11 @@
             }
         },
         "next":[
-            "incubation_done"
+            "cookie_done"
         ],
         "pre_delay":5000
     },
-    "incubation_done":{
+    "cookie_done":{
         "recognition":{
             "type":"OCR",
             "param":{
