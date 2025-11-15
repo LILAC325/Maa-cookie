@@ -43,7 +43,8 @@
         },
         "next": [
             "cookie_page"
-        ]
+        ],
+        "enabled":false
     },
     "snowman":{
         "recognition":{
@@ -57,7 +58,8 @@
         },
         "next": [
             "cookie_page"
-        ]
+        ],
+        "enabled":false
     },
     "cookie_page":{
         "recognition":{

@@ -27,6 +27,7 @@
             "guild_checkin",
             "guild_upgrade_entry",
             "guild_gacha",
+            "guild_battle",
             "guild_returnmainpage"
         ]
     },
@@ -344,8 +345,69 @@
             }
         },
         "next":[
-            
+            "guild_battle_shop_entry",
+            "returnmainpage"
         ]
+    },
+    "guild_battle_shop_entry":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"奖牌交换所",
+                "roi" : [0,166,115,89]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "guild_battle_shop_page"
+        ]
+    },
+    "guild_battle_shop_page":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"进货时间",
+                "roi" : [46,107,114,45]
+            }
+        },
+        "next":[
+            "guild_cookiegacha",
+            "guild_guildRelics"
+        ]
+    },
+    "guild_cookiegacha":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template":"shop/cookiegacha",
+                "roi" : [33,162,1215,475]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "guild_buy"
+        ]
+    },
+    "guild_buy":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "购买",
+                "roi" : [422,370,479,343]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "get_guildrelics",
+            "guild_battle_shop_page"
+        ],
+        "post_delay":2000
     },
     "guild_returnmainpage":{
         "recognition":{

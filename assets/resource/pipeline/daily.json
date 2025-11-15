@@ -35,14 +35,16 @@
             "quit_announcement",
             "nothingtodo"
         ],
-        "timeout":100,
         "post_delay":3000
     },
     "hotairballoon_collect":{
         "recognition":{
             "type":"OCR",
             "param":{
-                "expected" : "探险"
+                "expected" : [
+                    "探险",
+                    "大成功"
+                ]
             }
         },
         "action":{

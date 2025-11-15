@@ -150,7 +150,8 @@
         },
         "next":[
             "pearl_exchance_page"
-        ]
+        ],
+        "enabled":false
     },
     "pearl_exchance_page":{
         "recognition":{
@@ -210,7 +211,7 @@
         "recognition":{
             "type":"TemplateMatch",
             "param":{
-                "template" : "cookiegacha.png",
+                "template" : "shop/cookiegacha.png",
                 "roi" : [411,110,769,563],
                 "threshold":0.8
             }
@@ -226,7 +227,7 @@
         "recognition":{
             "type":"TemplateMatch",
             "param":{
-                "template":"shop/pearl/skillpowder.png",
+                "template":"shop/skillpowder.png",
                 "roi" : [411,110,769,563],
                 "threshold":0.8
             }
@@ -242,7 +243,7 @@
         "recognition":{
             "type":"TemplateMatch",
             "param":{
-                "template":"shop/pearl/treasuregacha.png",
+                "template":"shop/treasuregacha.png",
                 "roi" : [411,110,769,563]
             }
         },
@@ -257,7 +258,7 @@
         "recognition":{
             "type":"TemplateMatch",
             "param":{
-                "template":"shop/pearl/Guild_Relics.png",
+                "template":"shop/Guild_Relics.png",
                 "roi" : [411,110,769,563]
             }
         },
@@ -293,7 +294,7 @@
         "recognition":{
             "type":"TemplateMatch",
             "param":{
-                "template":"shop/pearl/arenaentrance.png",
+                "template":"shop/arenaentrance.png",
                 "roi" : [411,110,769,563]
             }
         },
@@ -308,7 +309,7 @@
         "recognition":{
             "type":"TemplateMatch",
             "param":{
-                "template":"shop/pearl/kingdommaterials.png",
+                "template":"shop/kingdommaterials.png",
                 "roi" : [411,110,769,563]
             }
         },
