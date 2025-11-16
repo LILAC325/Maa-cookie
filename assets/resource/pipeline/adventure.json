@@ -173,8 +173,16 @@
                 "roi" : [1170,654,90,58]
             }
         },
+        "action":{
+            "param":{
+                "custom_action":"DisableNode",
+                "custom_action_param":{
+                    "node_name":"legendaryjam"
+                }
+            }
+        },
         "next":[
-            "flegendaryjam_done"
+            "back_adventure_page"
         ]
     },
     "adventure_swtoright":{
@@ -607,8 +615,7 @@
         },
         "next":[
             "timespring_collect"
-        ],
-        "post_delay":4000
+        ]
     },
     "timespring_collect":{
         "recognition":{

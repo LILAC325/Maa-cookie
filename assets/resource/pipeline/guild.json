@@ -381,12 +381,40 @@
         "recognition":{
             "type":"TemplateMatch",
             "param":{
-                "template":"shop/cookiegacha",
+                "template":"shop/cookiegacha.png",
                 "roi" : [33,162,1215,475]
             }
         },
         "action":{
             "type":"Click"
+        },
+        "next":[
+            "guild_buy"
+        ]
+    },
+    "guild_guildRelics":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template":"shop/Guild_Relics.png",
+                "roi" : [33,162,1215,475]
+            }
+        },
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action":"NodeOverride",
+                "custom_action_param":{
+                    "alreadyobtained_collect":{
+                        "next":[
+                            "guild_battle_shop_page"
+                        ]
+                    },
+                    "get_guildrelics":{
+                        "enabled":true
+                    }
+                }
+            }
         },
         "next":[
             "guild_buy"
