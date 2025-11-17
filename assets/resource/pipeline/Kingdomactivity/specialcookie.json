@@ -23,12 +23,24 @@
                 "roi" : [14,7,198,64]
             }
         },
+        "next": [
+            "check_specialcookie_number",
+            "huaxiaolong",
+            "snowman"
+        ]
+    },
+    "check_specialcookie_number":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "0/15"
+            }
+        },
         "action":{
             "type":"Click"
         },
         "next": [
-            "huaxiaolong",
-            "snowman"
+            "specialcookie_done"
         ]
     },
     "huaxiaolong":{
@@ -59,41 +71,24 @@
         "next": [
             "cookie_page"
         ],
-        "enabled":false
+        "enabled":true
     },
     "cookie_page":{
         "recognition":{
             "type":"OCR",
             "param":{
                 "expected" : [
-                    "花小龙饼干",
-                    "冰锥雪怪饼干"
-                ],
-                "roi" : [0,0,263,66]
-            }
-        },
-        "next": [
-            "check_incubation_number",
-            "cookie_done"
-        ]
-    },
-    "check_incubation_number":{
-        "recognition":{
-            "type":"OCR",
-            "param":{
-                "expected" : "0/15"
+                    "唤醒",
+                    "孵化"
+                ]
             }
         },
         "action":{
-            "type":"Click",
-            "param":{
-                "target" : [767,593,207,83]
-            }
+            "type":"Click"
         },
         "next": [
             "cookie_next_page"
-        ],
-        "inverse":true
+        ]
     },
     "cookie_next_page":{
         "recognition":{
@@ -153,27 +148,10 @@
         "recognition":{
             "type":"OCR",
             "param":{
-                "expected":"尝试孵化"
-            }
-        },
-        "action":{
-            "type":"Custom",
-            "param":{
-                "custom_action":"EnableNode",
-                "custom_action_param":{
-                    "node_name":"huaxiaolong"
-                }
-            }
-        },
-        "next":[
-            "back_specialcookie_page"
-        ]
-    },
-    "back_specialcookie_page":{
-        "action":{
-            "type":"Click",
-            "param":{
-                "target" : [1219,21,42,34]
+                "expected":[
+                    "尝试孵化",
+                    "唤醒"
+                ]
             }
         },
         "next":[
