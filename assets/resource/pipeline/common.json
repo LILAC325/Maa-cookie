@@ -34,7 +34,8 @@
             "type":"OCR",
             "param":{
                 "expected":"公告",
-                "roi" : [101,277,112,96]
+                "roi" : [101,277,112,96],
+                "only_rec":true
             }
         },
         "next":[
