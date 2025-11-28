@@ -342,21 +342,8 @@
                 "roi" : [0,0,233,67]
             }
         },
-        "action":{
-            "type":"custom",
-            "param":{
-                "custom_action":"NodeOverride",
-                "custom_action_param":{
-                    "timespring_collect":{
-                            "next":[
-                                "archipelago_page"
-                            ]
-                    }
-                }
-            } 
-        },
         "next":[
-            "timespring",
+            "[JumpBack]timespring",
             "archipelago_done"
         ],
         "pre_delay":2000
@@ -621,14 +608,11 @@
         "recognition":{
             "type":"OCR",
             "param":{
-                "expected":"时间快转完成"
+                "expected":"点击以完成"
             }
         },
         "action":{
-            "type":"Click",
-            "param":{
-                "target" : [438,651,407,54]
-            }
+            "type":"Click"
         }
     },
     "arena_entry":{

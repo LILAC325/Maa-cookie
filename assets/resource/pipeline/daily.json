@@ -19,14 +19,14 @@
             "type":"Click"
         },
         "next":[
-            "train",
-            "hotairballoon_collect",
-            "fountain",
-            "sailing_collect",
-            "wait_sailing_collect",
-            "landmark_reward",
-            "cleargreenpoint",
-            "research",
+            "[JumpBack]train",
+            "[JumpBack]hotairballoon_collect",
+            "[JumpBack]fountain",
+            "[JumpBack]sailing_collect",
+            "[JumpBack]wait_sailing_collect",
+            "[JumpBack]landmark_reward",
+            "[JumpBack]research",
+            "[JumpBack]returnmainpage",
             "[JumpBack]quit_sell",
             "[JumpBack]quit_announcement",
             "nothingtodo"
@@ -40,7 +40,9 @@
                 "expected" : [
                     "探险大成功",
                     "探险完成"
-                ]
+                ],
+                "roi" : [377,20,523,110],
+                "only_rec":true
             }
         },
         "next": [
@@ -82,7 +84,6 @@
         "next":[
             "adventure_start"
         ]
-
     },
     "adventure_start":{
         "recognition":{
@@ -108,26 +109,13 @@
                 "roi" : [477,36,320,52]
             }
         },
-        "next":[
-            "returnmainpage"
-        ],
         "action":{
             "type":"Custom",
             "param":{
                 "custom_action":"DisableNode",
                 "custom_action_param":{
-                    "node_name":"hotairballoon"
+                    "node_name":"hotairballoon_collect"
                 }
-            }
-        }
-
-    },
-    "inprogress":{
-        "recognition":{
-            "type":"OCR",
-            "param":{
-                "roi" : [545,627,65,44],
-                "expected" : "取消"
             }
         },
         "next":[
@@ -141,9 +129,6 @@
                 "roi" : [27,13,214,59],
                 "expected" : "熊熊果冻列车"
             }
-        },
-        "action":{
-            "type":"DoNothing"
         },
         "next":[
             "train_submit",

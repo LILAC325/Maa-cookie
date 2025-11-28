@@ -33,7 +33,8 @@
         {
             "name": "清绿点",
             "entry": "cleargreenpoint",
-            "check": true
+            "check": true,
+            "doc":"1.热气球功能：若有新主线推出，请记得手动选取地区"
         },
         {
             "name": "王国生产管理",

@@ -8,9 +8,25 @@
         },
         "next":[
             "login_page",
-            "[Jumpback]quit"
+            "[Jumpback]login_download",
+            "[Jumpback]quit",
+            "[Jumpback]mainpagejudgment"
         ],
         "pre_wait_freezes":2000
+    },
+    "login_download":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":[
+                    "有可下载的数据"
+                ],
+                "roi" : [351,169,584,384]
+            }
+        },
+        "next":[
+            "exit_task"
+        ]
     },
     "login_page":{
         "recognition":{
