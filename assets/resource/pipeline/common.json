@@ -1,24 +1,12 @@
 {
     "returnmainpage":{
-        "recognition":{
-            "type":"TemplateMatch",
-            "param":{
-                "template" : "common/return.png",
-                "roi" : [1137,2,142,114]
-            }
-        },
-        "action":{
-            "type":"Click"
-        },
-        "next":[
-            "cleargreenpoint",
+        "next": [
             "mainpagejudgment",
-            "returnmainpage"
+            "[JumpBack]quit",
+            "[JumpBack]quit_sell",
+            "[JumpBack]quit_announcement"
         ],
-        "interrupt":[
-            "quit_sell"
-        ],
-        "post_delay":2000
+        "post_delay":1000
     },
     "mainpagejudgment":{
         "recognition":{
@@ -129,6 +117,21 @@
             "param":{
                 "target" : [376,647,560,51]
             }
+        }
+    },
+    "back":{
+        "action":{
+            "type":"ClickKey",
+            "param":{
+                "key" : [
+                    1111
+                ]
+            }
+        }
+    },
+    "exit_task":{
+        "action":{
+            "type":"StopTask"
         }
     }
 }

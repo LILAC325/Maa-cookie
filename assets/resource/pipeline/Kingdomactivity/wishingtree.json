@@ -22,7 +22,8 @@
             "type":"OCR",
             "param":{
                 "expected" : "许愿树",
-                "roi" : [565,17,146,61]
+                "roi" : [565,17,146,61],
+                "only_rec":true
             }
         },
         "next":[
@@ -37,7 +38,8 @@
             "type":"OCR",
             "param":{
                 "expected" : "30|[3-9]\\d",
-                "roi" : [49,555,141,43]
+                "roi" : [49,555,141,43],
+                "only_rec":true
             }
         },
         "next":[
@@ -51,7 +53,8 @@
                 "expected" :[
                     "的愿望"
                 ],
-                "roi" : [266,139,874,73]
+                "roi" : [266,139,874,73],
+                "only_rec":true
             }
         },
         "action":{
@@ -66,7 +69,8 @@
             "type":"OCR",
             "param":{
                 "expected" : "交付",
-                "roi" : [261,535,888,88]
+                "roi" : [261,535,888,88],
+                "only_rec":true
             }
         },
         "action":{
@@ -85,7 +89,8 @@
             "type":"OCR",
             "param":{
                 "expected":"道具不足",
-                "roi" : [390,171,519,367]
+                "roi" : [390,171,519,367],
+                "only_rec":true
             }
         },
         "action":{
@@ -95,8 +100,34 @@
             }
         },
         "next":[
+            "wish_cooling_find",
             "wishingtree_page"
         ]
+    },
+    "wish_cooling_find":{
+        "next":[
+            "wish_location1",
+            "wish_location2",
+            "wish_location3",
+            "wish_location4"
+        ]
+    },
+    "wish_location1":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template":""
+            }
+        }
+    },
+    "wish_location2":{
+
+    },
+    "wish_location3":{
+
+    },
+    "wish_location4":{
+
     },
     "wish_cooling":{
         "recognition":{
@@ -118,7 +149,8 @@
             "type":"OCR",
             "param":{
                 "expected" : "10分钟加速券",
-                "roi" : [361,276,560,291]
+                "roi" : [361,276,560,291],
+                "only_rec":true
             }
         },
         "action":{
@@ -138,7 +170,8 @@
             "type":"OCR",
             "param":{
                 "expected" : "使用加速券",
-                "roi" : [555,475,170,61]
+                "roi" : [555,475,170,61],
+                "only_rec":true
             }
         },
         "action":{
@@ -194,7 +227,8 @@
             "type":"OCR",
             "param":{
                 "expected" : "愿望实现",
-                "roi" : [226,147,321,107]
+                "roi" : [226,147,321,107],
+                "only_rec":true
             }
         },
         "action":{
@@ -214,7 +248,8 @@
             "type":"OCR",
             "param":{
                 "expected" : "已获得",
-                "roi" : [39,554,161,48]
+                "roi" : [39,554,161,48],
+                "only_rec":true
             }
         },
         "next":[

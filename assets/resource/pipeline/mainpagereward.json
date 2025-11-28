@@ -176,12 +176,10 @@
                 }
             }
         },
-        "interrupt":[
-            "returnmainpage"
-        ],
-        "next":[
+        "next": [
             "check_weekend",
-            "mainpge_reward"
+            "mainpge_reward",
+            "[JumpBack]returnmainpage"
         ]
     },
     "check_weekend":{
@@ -298,11 +296,9 @@
                 }
             }
         },
-        "next":[
-            "mainpge_reward"
-        ],
-        "interrupt":[
-            "returnmainpage"
+        "next": [
+            "mainpge_reward", 
+            "[JumpBack]returnmainpage"
         ]
     },
     "redpointpass":{
@@ -464,11 +460,9 @@
                 }
             }
         },
-        "next":[
-            "mainpge_reward"
-        ],
-        "interrupt":[
-            "returnmainpage"
+        "next": [
+            "mainpge_reward", 
+            "[JumpBack]returnmainpage"
         ]
     },
     "mailbox":{
@@ -523,11 +517,9 @@
                 }
             }
         },
-        "next":[
-            "mainpge_reward"
-        ],
-        "interrupt":[
-            "returnmainpage"
+        "next": [
+            "mainpge_reward", 
+            "[JumpBack]returnmainpage"
         ]
     },
      "freeshopping":{
@@ -576,12 +568,7 @@
         ]
     },
     "shoppingfree_collect":{
-        "next":[
-            "find_redpoint_for_free"
-        ],
-        "interrupt":[
-            "swipe_shopping_page"
-        ],
+        "next": ["find_redpoint_for_free", "[JumpBack]swipe_shopping_page"],
         "post_delay":1000
     },
     "swipe_shopping_page":{
@@ -681,11 +668,9 @@
                 "target":[1224,23,34,30]
             }
         },
-        "next":[
-            "freeshopping_page"
-        ],
-        "interrupt":[
-            "return_shopping_page"
+        "next": [
+            "freeshopping_page", 
+            "[JumpBack]return_shopping_page"
         ],
         "post_delay":3000
     },
@@ -699,11 +684,9 @@
                 }
             }
         },
-        "next":[
-            "mainpge_reward"
-        ],
-        "interrupt":[
-            "returnmainpage"
+        "next": [
+            "mainpge_reward", 
+            "[JumpBack]returnmainpage"
         ]
     }
 }

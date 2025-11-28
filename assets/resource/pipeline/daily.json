@@ -2,7 +2,9 @@
     "cleargreenpoint_entry":{
         "next":[
             "adventurer_cookie",
-            "cleargreenpoint"
+            "cleargreenpoint",
+            "[JumpBack]returnmainpage",
+            "[JumpBack]q"
         ],
         "on_error":[
             "quit_sell",
@@ -43,19 +45,11 @@
             "param":{
                 "expected" : [
                     "探险大成功",
-                    "大成功"
+                    "探险完成"
                 ]
             }
         },
-        "action":{
-            "type":"Click",
-            "param":{
-                "target": [460,651,369,44]
-            }
-        },
-        "next":[
-            "autochoose"
-        ],
+        "next": ["autochoose", "[JumpBack]bottom_click"],
         "pre_delay":2000
     },
     "hotairballoon":{

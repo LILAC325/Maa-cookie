@@ -11,7 +11,8 @@
             "type":"Click"
         },
         "next":[
-            "trade_page"
+            "trade_page",
+            "[JumpBack]returnmainpage"
         ],
         "enabled":false
     },
@@ -161,7 +162,7 @@
                 "roi" : [0,0,260,130]
             }
         },
-        "next":[
+        "next": [
             "pearl_legendfragment",
             "pearl_cookiegacha",
             "pearl_guildrelics",
@@ -170,10 +171,8 @@
             "pearl_arenaentrance",
             "pearl_kingdommaterials",
             "pearl_sw_next",
-            "pearl_done"
-        ],
-        "interrupt":[
-            "alreadyobtained_collect"
+            "pearl_done",
+            "[JumpBack]alreadyobtained_collect"
         ]
     },
     "pearl_legendfragment":{

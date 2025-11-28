@@ -1,0 +1,17 @@
+{
+    "start_game":{
+        "action":{
+            "type":"StartApp",
+            "param":{
+                "package":"com.tencent.cookie"
+            }
+        },
+        "next":[
+            "login_page"
+        ]
+    },
+    "login_page":{
+        "recognition":{
+        }
+    }
+}

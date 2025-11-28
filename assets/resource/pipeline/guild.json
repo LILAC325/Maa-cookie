@@ -275,12 +275,7 @@
                 }
             }
         },
-        "next":[
-            "guild_main_page"
-        ],
-        "interrupt":[
-            "quit"
-        ]
+        "next": ["guild_main_page", "[JumpBack]quit"],
     },
     "guild_battle":{
         "recognition":{
@@ -292,13 +287,11 @@
         "action":{
             "type":"Click"
         },
-        "next":[
+        "next": [
             "guild_battle_collect",
-            "guild_battle_page"
+            "guild_battle_page",
+            "[JumpBack]bottom_click"
         ],
-        "interrupt":[
-            "bottom_click"
-        ]
     },
     "guild_battle_collect":{
         "recognition":{
