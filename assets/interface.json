@@ -26,6 +26,11 @@
     ],
     "task": [
         {
+            "name":"启动",
+            "entry":"start_game",
+            "check": true
+        },
+        {
             "name": "清绿点",
             "entry": "cleargreenpoint",
             "check": true

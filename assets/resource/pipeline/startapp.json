@@ -7,11 +7,27 @@
             }
         },
         "next":[
-            "login_page"
-        ]
+            "login_page",
+            "[Jumpback]quit"
+        ],
+        "pre_wait_freezes":2000
     },
     "login_page":{
         "recognition":{
-        }
+            "type":"OCR",
+            "param":{
+                "expected" : [
+                    "点击开始"
+                ],
+                "roi" : [537,632,188,53]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "returnmainpage"
+        ],
+        "pre_wait_freezes":2000
     }
 }

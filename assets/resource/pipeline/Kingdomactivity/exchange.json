@@ -68,9 +68,9 @@
             "type":"TemplateMatch",
             "param":{
                 "template" : [
-                    "shop/exchange/skillpowder1.png",
-                    "shop/exchange/skillpowder2.png",
-                    "shop/exchange/skillpowder3.png"
+                    "shop/skillpowder1.png",
+                    "shop/skillpowder2.png",
+                    "shop/skillpowder3.png"
                 ],
                 "roi" : [28,414,1240,241]
             }

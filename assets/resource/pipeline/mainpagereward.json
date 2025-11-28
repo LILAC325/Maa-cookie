@@ -641,25 +641,8 @@
         },
         "inverse":true,
         "next":[
-            "collect_shopping_pass"
-        ]
-    },
-    "collect_shopping_pass":{
-        "recognition":{
-            "type":"TemplateMatch",
-            "param":{
-                "template" : "shopping/collectshoppingpass.png",
-                "roi" : [14,231,1265,463]
-            }
-        },
-        "action":{
-            "type":"Click"
-        },
-        "next":[
-            "collect_shopping_pass",
             "return_shopping_page"
-        ],
-        "post_delay":1000
+        ]
     },
     "return_shopping_page":{
         "action":{
