@@ -17,31 +17,6 @@
             }
         }
     },
-    "quit_sell":{
-        "recognition":{
-            "type":"OCR",
-            "param":{
-                "expected" : "商品信息",
-                "roi" : [53,20,96,38]
-            }
-        },
-        "next":[
-            "returnmainpage"
-        ]
-    },
-    "quit_announcement":{
-        "recognition":{
-            "type":"OCR",
-            "param":{
-                "expected":"公告",
-                "roi" : [101,277,112,96],
-                "only_rec":true
-            }
-        },
-        "next":[
-            "returnmainpage"
-        ]
-    },
     "check_liquidation":{
         "recognition":{
             "type":"OCR",

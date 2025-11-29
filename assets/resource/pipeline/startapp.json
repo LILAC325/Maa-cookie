@@ -8,11 +8,11 @@
         },
         "next":[
             "login_page",
-            "[Jumpback]login_download",
-            "[Jumpback]quit",
-            "[Jumpback]mainpagejudgment"
+            "[JumpBack]login_download",
+            "[JumpBack]quit",
+            "[JumpBack]mainpagejudgment"
         ],
-        "pre_wait_freezes":2000
+        "post_delay":30000
     },
     "login_download":{
         "recognition":{
@@ -42,8 +42,8 @@
             "type":"Click"
         },
         "next":[
-            "returnmainpage"
+            "[JumpBack]returnmainpage"
         ],
-        "pre_wait_freezes":2000
+        "post_delay":3000
     }
 }
