@@ -135,8 +135,7 @@
         "recognition":{
             "type":"TemplateMatch",
             "param":{
-                "template" : "kingdomactivity/train.png",
-                "roi" : [504,392,99,134]
+                "template" : "kingdomactivity/train.png"
             }
         },
         "action":{

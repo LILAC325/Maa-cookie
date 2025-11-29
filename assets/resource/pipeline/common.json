@@ -1,10 +1,11 @@
 {
     "returnmainpage":{
         "next": [
+            "[JumpBack]check_back",
             "mainpagejudgment",
             "[JumpBack]back"
         ],
-        "post_delay":1000
+        "pre_wait_freezes":1000
     },
     "mainpagejudgment":{
         "recognition":{
@@ -103,6 +104,19 @@
             }
         },
         "post_delay":1000
+    },
+    "check_back":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"要结束游戏吗",
+                "roi" : [555,368,156,27],
+                "only_rec":true
+            }
+        },
+        "next":[
+            "back"
+        ]
     },
     "exit_task":{
         "action":{

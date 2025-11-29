@@ -111,7 +111,7 @@
         },
         {
             "name": "熊熊果冻列车",
-            "entry": "tradepage_entry",
+            "entry": "train_entry",
             "doc": "该功能已包含在'清绿点'中，该入口为保底检查，按需启用"
         }
     ],
