@@ -45,10 +45,6 @@
             "entry": "mainpge_reward"
         },
         {
-            "name": "商城",
-            "entry": "freeshopping"
-        },
-        {
             "name": "大嘴鹦鹉的海上交易所",
             "entry": "exchance_entry",
             "option": [

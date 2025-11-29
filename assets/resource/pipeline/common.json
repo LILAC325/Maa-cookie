@@ -2,7 +2,7 @@
     "returnmainpage":{
         "next": [
             "mainpagejudgment",
-            "[JumpBack]quit"
+            "[JumpBack]back"
         ],
         "post_delay":1000
     },
@@ -98,10 +98,11 @@
             "type":"ClickKey",
             "param":{
                 "key" : [
-                    1111
+                    111
                 ]
             }
-        }
+        },
+        "post_delay":1000
     },
     "exit_task":{
         "action":{

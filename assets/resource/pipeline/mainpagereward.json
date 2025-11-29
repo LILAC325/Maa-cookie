@@ -8,13 +8,13 @@
             }
         },
         "next":[
-            "freegacha",
-            "mailbox",
-            "friendgift",
-            "freeshopping",
-            "kingdomguide",
-            "kingdompass",
-            "[JumpBack]returnmainpage"
+            "[JumpBack]freegacha",
+            "[JumpBack]mailbox",
+            "[JumpBack]friendgift",
+            "[JumpBack]freeshopping",
+            "[JumpBack]kingdomguide",
+            "[JumpBack]kingdompass",
+            "returnmainpage"
         ]
     },
     "friendgift":{
@@ -59,20 +59,9 @@
             "type":"Click"
         },
         "next":[
-            "quit_friendgift_page"
+            "friendgift_done"
         ],
         "post_delay":1000
-    },
-    "quit_friendgift_page":{
-        "action":{
-            "type":"Click",
-            "param":{
-                "target" : [873,110,275,432]
-            }
-        },
-        "next":[
-            "friendgift_done"
-        ]
     },
     "friendgift_done":{
         "action":{
@@ -85,7 +74,7 @@
             }
         },
         "next":[
-            "mainpge_reward"
+            "returnmainpage"
         ]
     },
     "kingdomguide":{
@@ -462,8 +451,7 @@
             }
         },
         "next": [
-            "mainpge_reward", 
-            "[JumpBack]returnmainpage"
+            "returnmainpage"
         ]
     },
     "mailbox":{
@@ -519,8 +507,7 @@
             }
         },
         "next": [
-            "mainpge_reward", 
-            "[JumpBack]returnmainpage"
+            "returnmainpage"
         ]
     },
      "freeshopping":{
@@ -536,8 +523,7 @@
         },
         "next":[
             "freeshopping_page"
-        ],
-        "enabled":false
+        ]
     },
     "freeshopping_page":{
         "recognition":{
@@ -548,28 +534,44 @@
             }
         },
         "next":[
-            "find_redpoint_from_shoppinglist",
+            "[JumpBack]freeshopping_cookie",
+            "[JumpBack]freeshopping_dayily",
+            "[JumpBack]swipe_shopping_list",
             "freeshopping_done"
         ]
     },
-    "find_redpoint_from_shoppinglist":{
+    "freeshopping_cookie":{
         "recognition":{
-            "type":"TemplateMatch",
+            "type":"OCR",
             "param":{
-                "template" : "shopping/redpoint.png",
-                "roi" : [0,70,246,649],
-                "threshold" : 0.5
+                "expected":"雪酪饼干",
+                "roi" : [0,70,246,649]
             }
         },
         "action":{
             "type":"Click"
         },
         "next":[
-            "shoppingfree_collect"
-        ]
+            "freepack",
+            "[JumpBack]swipe_shopping_page"
+        ],
+        "post_delay":1000
     },
-    "shoppingfree_collect":{
-        "next": ["find_redpoint_for_free", "[JumpBack]swipe_shopping_page"],
+    "freeshopping_dayily":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"养成助力",
+                "roi" : [0,70,246,649]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "freeshopping_dayily_get",
+            "[JumpBack]swipe_shopping_page"
+        ],
         "post_delay":1000
     },
     "swipe_shopping_page":{
@@ -581,39 +583,27 @@
             }
         }
     },
-    "find_redpoint_for_free":{
-        "recognition":{
-            "type":"TemplateMatch",
-            "param":{
-                "template" : "shopping/listredpoint.png",
-                "roi" : [259,150,1020,569]
-            }
-        },
+    "swipe_shopping_list":{
         "action":{
-            "type":"Click"
-        },
-        "post_delay":1000,
-        "next":[
-            "freepack2",
-            "freepack",
-            "check_shopping_type"
-        ]
+            "type":"Swipe",
+            "param":{
+                "begin" : [227,541,1,1],
+                "end" : [228,350,1,1]
+            }
+        }
     },
     "freepack":{
         "recognition":{
-            "type":"ColorMatch",
+            "type":"OCR",
             "param":{
-                "upper" : [122,206,16],
-                "lower" : [122,206,16],
-                "roi" : [14,231,1265,463],
-                "method" : 4
+                "expected":"免费礼包"
             }
         },
         "action":{
             "type":"Click"
         },
         "next":[
-            "return_shopping_page"
+            "freepack2"
         ],
         "pre_delay":1000
     },
@@ -621,42 +611,62 @@
         "recognition":{
             "type":"OCR",
             "param":{
-                "expected":"购买完毕"
+                "expected":"日限购1次",
+                "roi" : [529,482,227,88]
             }
         },
         "action":{
             "type":"Click"
         },
         "next":[
-            "return_shopping_page"
+            "freeshopping_cookie_done"
         ],
         "pre_delay":1000
     },
-    "check_shopping_type":{
+    "freeshopping_dayily_get":{
         "recognition":{
             "type":"OCR",
             "param":{
-                "expected" : "商城",
-                "roi" : [0,0,114,70]
+                "expected":"免费礼物"
             }
         },
-        "inverse":true,
-        "next":[
-            "return_shopping_page"
-        ]
-    },
-    "return_shopping_page":{
         "action":{
-            "type":"Click",
+            "type":"Click"
+        },
+        "next":[
+            "freeshopping_dayily_done"
+        ],
+        "pre_delay":1000
+    },
+    "freeshopping_cookie_done":{
+        "action":{
+            "type":"Custom",
             "param":{
-                "target":[1224,23,34,30]
+                "custom_action":"DisableNode",
+                "custom_action_param":{
+                    "node_name":"freeshopping_cookie"
+                }
             }
         },
-        "next": [
-            "freeshopping_page", 
-            "[JumpBack]return_shopping_page"
+        "next":[
+            "bottom_click"
         ],
-        "post_delay":3000
+        "pre_delay":1000
+    },
+    "freeshopping_dayily_done":{
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action":"DisableNode",
+                "custom_action_param":{
+                    "node_name":"freeshopping_dayily"
+                }
+            }
+        },
+        "next":[
+            "bottom_click"
+        ],
+        "pre_delay":1000
     },
     "freeshopping_done":{
         "action":{
@@ -669,8 +679,7 @@
             }
         },
         "next": [
-            "mainpge_reward", 
-            "[JumpBack]returnmainpage"
+            "returnmainpage"
         ]
     }
 }
