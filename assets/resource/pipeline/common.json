@@ -2,9 +2,7 @@
     "returnmainpage":{
         "next": [
             "mainpagejudgment",
-            "[JumpBack]quit",
-            "[JumpBack]quit_sell",
-            "[JumpBack]quit_announcement"
+            "[JumpBack]quit"
         ],
         "post_delay":1000
     },

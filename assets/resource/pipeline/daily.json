@@ -3,9 +3,7 @@
         "next":[
             "[JumpBack]adventurer_cookie",
             "cleargreenpoint",
-            "[JumpBack]returnmainpage",
-            "[JumpBack]quit_sell",
-            "[JumpBack]quit_announcement"
+            "[JumpBack]returnmainpage"
         ]
     },
     "cleargreenpoint":{
@@ -19,6 +17,7 @@
             "type":"Click"
         },
         "next":[
+            "cleargreenpoint",
             "[JumpBack]train",
             "[JumpBack]hotairballoon_collect",
             "[JumpBack]fountain",
@@ -26,10 +25,7 @@
             "[JumpBack]wait_sailing_collect",
             "[JumpBack]landmark_reward",
             "[JumpBack]research",
-            "[JumpBack]returnmainpage",
-            "[JumpBack]quit_sell",
-            "[JumpBack]quit_announcement",
-            "nothingtodo"
+            "returnmainpage"
         ],
         "post_delay":3000
     },
