@@ -1,4 +1,14 @@
 {
+    "startup":{
+        "post_wait_freeze":300,
+        "timeout":60000,
+        "next":[
+            "[JumpBack]start_game",
+            "[JumpBack]login_download",
+            "[JumpBack]quit",
+            "[JumpBack]mainpagejudgment"
+        ]
+    },
     "start_game":{
         "action":{
             "type":"StartApp",
@@ -7,12 +17,20 @@
             }
         },
         "next":[
-            "login_page",
-            "[JumpBack]login_download",
-            "[JumpBack]quit",
-            "[JumpBack]mainpagejudgment"
+            "start_game_done"
         ],
         "post_delay":30000
+    },
+    "start_game_done":{
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "start_game"
+                }
+            }
+        }
     },
     "login_download":{
         "recognition":{

@@ -38,7 +38,7 @@
             "type":"OCR",
             "param":{
                 "expected" : "30|[3-9]\\d",
-                "roi" : [49,555,141,43],
+                "roi" : [108,564,54,26],
                 "only_rec":true
             }
         },
@@ -53,14 +53,14 @@
                 "expected" :[
                     "的愿望"
                 ],
-                "roi" : [266,139,874,73],
-                "only_rec":true
+                "roi" : [320,178,773,29]
             }
         },
         "action":{
             "type":"Click"
         },
         "next":[
+            "wish_load",
             "wishingtree_page"
         ]
     },
@@ -69,8 +69,7 @@
             "type":"OCR",
             "param":{
                 "expected" : "交付",
-                "roi" : [261,535,888,88],
-                "only_rec":true
+                "roi" : [261,535,888,88]
             }
         },
         "action":{
@@ -89,8 +88,7 @@
             "type":"OCR",
             "param":{
                 "expected":"道具不足",
-                "roi" : [390,171,519,367],
-                "only_rec":true
+                "roi" : [390,171,519,367]
             }
         },
         "action":{
@@ -149,8 +147,7 @@
             "type":"OCR",
             "param":{
                 "expected" : "10分钟加速券",
-                "roi" : [361,276,560,291],
-                "only_rec":true
+                "roi" : [361,276,560,291]
             }
         },
         "action":{
@@ -170,8 +167,7 @@
             "type":"OCR",
             "param":{
                 "expected" : "使用加速券",
-                "roi" : [555,475,170,61],
-                "only_rec":true
+                "roi" : [555,475,170,61]
             }
         },
         "action":{
@@ -227,8 +223,7 @@
             "type":"OCR",
             "param":{
                 "expected" : "愿望实现",
-                "roi" : [226,147,321,107],
-                "only_rec":true
+                "roi" : [226,147,321,107]
             }
         },
         "action":{
@@ -247,8 +242,7 @@
             "type":"OCR",
             "param":{
                 "expected" : "已获得",
-                "roi" : [39,554,161,48],
-                "only_rec":true
+                "roi" : [39,554,161,48]
             }
         },
         "next":[
