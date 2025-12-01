@@ -1,11 +1,13 @@
 {
     "returnmainpage":{
         "next": [
-            "mainpagejudgment",
             "[JumpBack]quit",
-            "[JumpBack]wait_mainpagejudgment"
+            "[JumpBack]check_over_quit",
+            "[JumpBack]chcek_over_back",
+            "[JumpBack]wait_mainpagejudgment",
+            "mainpagejudgment"
         ],
-        "pre_wait_freezes":1000
+        "post_delay":2000
     },
     "mainpagejudgment":{
         "recognition":{
@@ -37,10 +39,39 @@
         },
         "action":{
             "type":"Click"
-        }
+        },
+        "post_delay":2000
     },
-    "nothingtodo":{
-        
+    "check_over_quit":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":[
+                    "光荣殿堂"
+                ],
+                "roi" : [1008,90,94,36],
+                "only_rec":true
+            }
+        },
+        "next":[
+            "back"
+        ],
+        "post_delay":2000
+    },
+    "chcek_over_back":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":[
+                    "要结束游戏吗"
+                ],
+                "roi" : [557,363,158,32],
+                "only_rec":true
+            }
+        },
+        "next":[
+            "back"
+        ]
     },
     "get_guildrelics":{
         "recognition":{
@@ -80,6 +111,16 @@
         }
     },
     "bottom_click":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":[
+                    "点击画面继续"
+                ],
+                "roi" : [541,599,201,51],
+                "only_rec":true
+            }
+        },
         "action":{
             "type":"Click",
             "param":{

@@ -1,4 +1,10 @@
 {
+    "mainpge_reward_entry":{
+        "next":[
+            "mainpge_reward",
+            "[JumpBack]returnmainpage"
+        ]
+    },
     "mainpge_reward":{
         "recognition":{
             "type":"TemplateMatch",
@@ -75,7 +81,7 @@
             }
         },
         "next":[
-            "returnmainpage"
+            "back"
         ]
     },
     "kingdomguide":{
@@ -553,6 +559,7 @@
             "type":"Click"
         },
         "next":[
+            "check_freeshopping_cookie_Bought",
             "freepack",
             "[JumpBack]swipe_shopping_page"
         ],
@@ -570,6 +577,7 @@
             "type":"Click"
         },
         "next":[
+            "check_freeshopping_dayily_Bought",
             "freeshopping_dayily_get",
             "[JumpBack]swipe_shopping_page"
         ],
@@ -591,7 +599,36 @@
                 "begin" : [227,541,1,1],
                 "end" : [228,350,1,1]
             }
-        }
+        },
+        "max_hit":1
+    },
+    "check_freeshopping_cookie_Bought":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":[
+                    "购买完毕"
+                ]
+            },
+            "roi" : [250,71,1029,648]
+        },
+        "next":[
+            "freeshopping_cookie_done"
+        ]
+    },
+    "check_freeshopping_dayily_Bought":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":[
+                    "购买完毕"
+                ]
+            },
+            "roi" : [250,71,1029,648]
+        },
+        "next":[
+            "freeshopping_dayily_done"
+        ]
     },
     "freepack":{
         "recognition":{
@@ -620,9 +657,11 @@
             "type":"Click"
         },
         "next":[
+            "[JumpBack]bottom_click",
+            "[JumpBack]check_freeshopping_page",
             "freeshopping_cookie_done"
         ],
-        "pre_delay":1000
+        "pre_delay":2000
     },
     "freeshopping_dayily_get":{
         "recognition":{
@@ -635,9 +674,11 @@
             "type":"Click"
         },
         "next":[
+            "[JumpBack]bottom_click",
+            "[JumpBack]check_freeshopping_page",
             "freeshopping_dayily_done"
         ],
-        "pre_delay":1000
+        "pre_delay":2000
     },
     "freeshopping_cookie_done":{
         "action":{
@@ -649,9 +690,6 @@
                 }
             }
         },
-        "next":[
-            "bottom_click"
-        ],
         "pre_delay":1000
     },
     "freeshopping_dayily_done":{
@@ -664,9 +702,7 @@
                 }
             }
         },
-        "next":[
-            "bottom_click"
-        ],
+        "timeout":2000,
         "pre_delay":1000
     },
     "freeshopping_done":{
@@ -682,6 +718,18 @@
         "next": [
             "returnmainpage"
         ]
+    },
+    "check_freeshopping_page":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "common/return.png",
+                "roi" : [921,120,57,55]
+            }
+        },
+        "action":{
+            "type":"Click"
+        }
     },
     "kingdomproduce":{
         "recognition":{
@@ -702,8 +750,8 @@
         "next":[
             "check_liquidation",
             "[JumpBack]landmark_reward",
-            "[JumpBack]filluponce",
-            "kingdomproduce_done"
+            "kingdomproduce_done",
+            "[JumpBack]filluponce"
         ]
     },
     "filluponce":{
