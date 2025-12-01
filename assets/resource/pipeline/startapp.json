@@ -21,7 +21,7 @@
         "next":[
             "start_game_done"
         ],
-        "post_delay":30000
+        "post_delay":25000
     },
     "start_game_done":{
         "action":{

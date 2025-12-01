@@ -232,10 +232,6 @@
                 }
             }
         },
-        "next":[
-            "cleargreenpoint",
-            "nothingtodo"
-        ],
         "timeout":1000
     },
     "wait_sailing_collect":{

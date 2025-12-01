@@ -700,7 +700,8 @@
     },
     "kingdomproduce_page":{
         "next":[
-            "[JumpBack]check_liquidation",
+            "check_liquidation",
+            "[JumpBack]landmark_reward",
             "[JumpBack]filluponce",
             "kingdomproduce_done"
         ]
@@ -731,11 +732,28 @@
         "action":{
             "type":"Click"
         },
-        "next":[
-            "landmark_reward",
-            "returnmainpage"
-        ],
         "post_delay":4000
+    },
+    "check_liquidation":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "仓库空间不足",
+                "recommended roi" : [480,292,145,55]
+            }
+        },
+        "action":{
+            "type":"Click",
+            "param":{
+                "target" : [855,176,36,36]
+            }
+        },
+        "next":[
+            "try_filluponce",
+            "[JumpBack]kingdomproduce_done",
+            "[JumpBack]fountain_done"
+        ],
+        "post_delay":1000
     },
     "kingdomproduce_done":{
         "recognition":{
@@ -755,6 +773,16 @@
                 }
             }
         },
+        "next":[
+            "returnmainpage"
+        ],
         "inverse":true
+    },
+    "try_filluponce":{
+        "max_hit":1,
+        "next":[
+            "[JumpBack]filluponce",
+            "kingdomproduce_page"
+        ]
     }
 }

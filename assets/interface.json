@@ -26,7 +26,7 @@
     "task": [
         {
             "name":"启动",
-            "entry":"start_game",
+            "entry":"startup",
             "check": true
         },
         {
@@ -39,7 +39,7 @@
             "name": "页面奖励",
             "entry": "mainpge_reward",
             "check": true,
-            "doc":"1.若爆仓会自动退出该功能"
+            "doc":"1.王国管理所若出现爆仓，会自动该退出功能"
         },
         {
             "name": "大嘴鹦鹉的海上交易所",

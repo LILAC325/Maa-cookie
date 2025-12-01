@@ -3,7 +3,7 @@
         "next": [
             "mainpagejudgment",
             "[JumpBack]quit",
-            "wait_mainpagejudgment"
+            "[JumpBack]wait_mainpagejudgment"
         ],
         "pre_wait_freezes":1000
     },
@@ -25,25 +25,7 @@
             }
         },
         "inverse":true,
-        "post_delay":200
-    },
-    "check_liquidation":{
-        "recognition":{
-            "type":"OCR",
-            "param":{
-                "expected" : "仓库空间不足",
-                "recommended roi" : [480,292,145,55]
-            }
-        },
-        "action":{
-            "type":"Click",
-            "param":{
-                "target" : [855,176,36,36]
-            }
-        },
-        "next":[
-            "returnmainpage"
-        ]
+        "post_delay":1000
     },
     "quit":{
         "recognition":{
