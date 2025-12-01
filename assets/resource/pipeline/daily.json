@@ -200,7 +200,7 @@
         },
         "pre_wait_freezes":500,
         "next":[
-            "check_liquidation",
+            "[JumpBack]check_liquidation",
             "fountain_collect"
         ]
     },
@@ -283,10 +283,7 @@
             "param":{
                 "target" : [37,545,1209,141]
             }
-        },
-        "next":[
-            "filluponce"
-        ]
+        }
     },
     "adventurer_cookie":{
         "recognition":{
@@ -301,68 +298,6 @@
         "next":[
             "adventurer_cookie",
             "cleargreenpoint"
-        ]
-    },
-    "kingdomproduce":{
-        "recognition":{
-            "type":"TemplateMatch",
-            "param":{
-                "template" : "common/kingdomproduce.png",
-                "roi" : [0,408,105,98]
-            }
-        },
-        "action":{
-            "type":"Click"
-        },
-        "next":[
-            "filluponce"
-        ]
-    },
-    "filluponce":{
-        "recognition":{
-            "type":"OCR",
-            "param":{
-                "expected" : "一次填满",
-                "roi" : [1085,658,176,54]
-            }
-        },
-        "action":{
-            "type":"Click"
-        },
-        "next":[
-            "filluponce_page"
-        ]
-    },
-    "filluponce_page":{
-        "recognition":{
-            "type":"OCR",
-            "param":{
-                "expected" : "一次填满",
-                "roi" : [661,542,198,62]
-            }
-        },
-        "action":{
-            "type":"Click"
-        },
-        "next":[
-            "landmark_reward",
-            "check_liquidation",
-            "check_produce_done",
-            "returnmainpage"
-        ],
-        "post_delay":4000
-    },
-    "check_produce_done":{
-        "recognition":{
-            "type":"TemplateMatch",
-            "param":{
-                "template":"common/producedone.png",
-                "roi" : [8,109,610,497],
-                "threshold" : 0.5
-                }
-        },
-        "next":[
-            "filluponce"
         ]
     },
     "research":{

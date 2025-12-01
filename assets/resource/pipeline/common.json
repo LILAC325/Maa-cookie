@@ -2,7 +2,8 @@
     "returnmainpage":{
         "next": [
             "mainpagejudgment",
-            "[JumpBack]quit"
+            "[JumpBack]quit",
+            "wait_mainpagejudgment"
         ],
         "pre_wait_freezes":1000
     },
@@ -14,6 +15,17 @@
                 "recommended roi" : [37,550,167,60]
             }
         }
+    },
+    "wait_mainpagejudgment":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template":"common/mainpage.png",
+                "recommended roi" : [37,550,167,60]
+            }
+        },
+        "inverse":true,
+        "post_delay":200
     },
     "check_liquidation":{
         "recognition":{

@@ -36,13 +36,10 @@
             "doc":"1.热气球功能：若有新主线推出，请记得手动选取地区"
         },
         {
-            "name": "王国生产管理",
-            "entry": "kingdomproduce",
-            "doc": "若爆仓会自动退出该功能"
-        },
-        {
             "name": "页面奖励",
-            "entry": "mainpge_reward"
+            "entry": "mainpge_reward",
+            "check": true,
+            "doc":"1.若爆仓会自动退出该功能"
         },
         {
             "name": "大嘴鹦鹉的海上交易所",

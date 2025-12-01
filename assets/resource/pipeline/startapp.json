@@ -3,10 +3,12 @@
         "post_wait_freeze":300,
         "timeout":60000,
         "next":[
+            "login_page",
             "[JumpBack]start_game",
             "[JumpBack]login_download",
             "[JumpBack]quit",
-            "[JumpBack]mainpagejudgment"
+            "[JumpBack]mainpagejudgment",
+            "[JumpBack]wait_login_page"
         ]
     },
     "start_game":{
@@ -60,8 +62,20 @@
             "type":"Click"
         },
         "next":[
-            "[JumpBack]returnmainpage"
-        ],
-        "post_delay":3000
+            "returnmainpage"
+        ]
+    },
+    "wait_login_page":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : [
+                    "点击开始"
+                ],
+                "roi" : [537,632,188,53]
+            }
+        },
+        "inverse":true,
+        "post_delay":5000
     }
 }

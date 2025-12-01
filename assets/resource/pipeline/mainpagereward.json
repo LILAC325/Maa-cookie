@@ -14,6 +14,7 @@
             "[JumpBack]freeshopping",
             "[JumpBack]kingdomguide",
             "[JumpBack]kingdompass",
+            "[JumpBack]kingdomproduce",
             "returnmainpage"
         ]
     },
@@ -681,5 +682,79 @@
         "next": [
             "returnmainpage"
         ]
+    },
+    "kingdomproduce":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "common/kingdomproduce.png",
+                "roi" : [0,408,105,98]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "kingdomproduce_page"
+        ]
+    },
+    "kingdomproduce_page":{
+        "next":[
+            "[JumpBack]check_liquidation",
+            "[JumpBack]filluponce",
+            "kingdomproduce_done"
+        ]
+    },
+    "filluponce":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "一次填满",
+                "roi" : [1085,658,176,54]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "filluponce_page"
+        ]
+    },
+    "filluponce_page":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "一次填满",
+                "roi" : [661,542,198,62]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "landmark_reward",
+            "returnmainpage"
+        ],
+        "post_delay":4000
+    },
+    "kingdomproduce_done":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template":"common/producedone.png",
+                "roi" : [8,109,610,497],
+                "threshold" : 0.5
+                }
+        },
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action":"DisableNode",
+                "custom_action_param":{
+                    "node_name":"kingdomproduce"
+                }
+            }
+        },
+        "inverse":true
     }
 }
