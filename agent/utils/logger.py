@@ -1,91 +1,66 @@
-import logging
-from logging.handlers import TimedRotatingFileHandler
-from pathlib import Path
+import os
+import sys
 
-class Logger:
-    def __init__(self,  name: str = ""):
-        """
-        初始化日志记录器
-        
+try:
+    from loguru import logger as _logger
+
+    def setup_logger(log_dir="debug/custom", console_level="INFO"):
+        """设置 loguru logger
+
         Args:
-            component_name (str): 组件名称，默认为"CombatActions"
-            role_name (str): 角色名称，用于日志标识
+            log_dir: 日志文件目录
+            console_level: 控制台输出等级 (DEBUG, INFO, WARNING, ERROR)
         """
-        self.name = name
-        self.logger = self._create_logger()
-    
-    def _create_logger(self):
-        """
-        创建并配置日志记录器
-        
-        Returns:
-            logging.Logger: 配置好的日志记录器实例
-        """
-        # 创建特定名称的日志记录器
-        logger_name = self.name
-        logger = logging.getLogger(logger_name)
-        logger.setLevel(logging.DEBUG)
-        
-        # 禁止日志传播到父记录器
-        logger.propagate = False
-        
-        # 清除可能已存在的处理器
-        for handler in logger.handlers[:]:
-            handler.close()
-            logger.removeHandler(handler)
-        
-        # 创建日志目录
-        log_path = Path("debug") / "custom.log"
-        log_path.parent.mkdir(parents=True, exist_ok=True)
-        
-        # 创建文件和控制台处理器
-        file_handler = TimedRotatingFileHandler(
-            log_path,
-            when="midnight",
-            backupCount=3,
-            encoding="utf-8",
+        os.makedirs(log_dir, exist_ok=True)
+        _logger.remove()
+
+        # 定义日志级别的简短格式
+        def format_level(record):
+            level_map = {
+                "INFO": "info",
+                "ERROR": "err",
+                "WARNING": "warn",
+                "DEBUG": "debug",
+                "CRITICAL": "critical",
+                "SUCCESS": "success",
+                "TRACE": "trace",
+            }
+            record["extra"]["level_short"] = level_map.get(
+                record["level"].name, record["level"].name.lower()
+            )
+            return True
+
+        _logger.add(
+            sys.stderr,
+            format="<level>{extra[level_short]}</level>: <level>{message}</level>",
+            colorize=True,
+            level=console_level,
+            filter=format_level,
         )
-        stream_handler = logging.StreamHandler()
-        
-        # 设置日志格式
-        name_tag = f"|{self.name}|" if self.name else ""
-        LOG_FORMAT = f"[%(asctime)s][%(levelname)s][%(filename)s][L%(lineno)d][%(funcName)s] {name_tag} %(message)s"
-        
-        formatter = logging.Formatter(LOG_FORMAT)
-        file_handler.setFormatter(formatter)
-        stream_handler.setFormatter(formatter)
-        
-        # 添加处理器到日志记录器
-        logger.addHandler(file_handler)
-        logger.addHandler(stream_handler)
-        
-        return logger
-    
-    def __del__(self):
-        """
-        对象被销毁时清理日志记录器资源
-        """
-        try:
-            if hasattr(self, "logger") and self.logger:
-                # 关闭并移除所有处理器
-                for handler in self.logger.handlers[:]:
-                    handler.close()
-                    self.logger.removeHandler(handler)
-                
-                # 从logging模块中移除该日志记录器
-                logger_name = self.name
-                if logger_name in logging.Logger.manager.loggerDict:
-                    del logging.Logger.manager.loggerDict[logger_name]
-        except Exception as e:
-            # 避免在析构函数中抛出异常
-            pass
-    
-    def get_logger(self):
-        """
-        获取配置好的日志记录器实例
-        
-        Returns:
-            logging.Logger: 日志记录器实例
-        """
-        return self.logger
-    
+        _logger.add(
+            f"{log_dir}/{{time:YYYY-MM-DD}}.log",
+            rotation="00:00",  # midnight
+            retention="2 weeks",
+            compression="zip",
+            level="DEBUG",
+            format="{time:YYYY-MM-DD HH:mm:ss.SSS} | {level: <8} | {name}:{function}:{line} | {message}",
+            encoding="utf-8",
+            enqueue=True,
+            backtrace=True,  # 包含完整的异常回溯信息
+            diagnose=True,  # 包含变量值信息
+        )
+        return _logger
+
+    def change_console_level(level="DEBUG"):
+        """动态修改控制台日志等级"""
+        setup_logger(console_level=level)
+        _logger.info(f"控制台日志等级已更改为: {level}")
+
+    logger = setup_logger()
+except ImportError:
+    import logging
+
+    logging.basicConfig(
+        format="%(asctime)s | %(levelname)s | %(message)s", level=logging.INFO
+    )
+    logger = logging

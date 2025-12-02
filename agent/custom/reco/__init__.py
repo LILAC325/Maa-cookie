@@ -1,5 +1,7 @@
-from .base import *
+from .general import *
+
 
 __all__ = [
-    "MultiRecognition"
+    "MultiRecognition",
+    "Count"
 ]

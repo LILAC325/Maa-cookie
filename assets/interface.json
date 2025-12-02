@@ -1,8 +1,10 @@
 {
     "name": "Maa-cookiek",
     "url": "https://github.com/LILAC325/Maa-cookie",
-    "custom_title": "Maa-cookie",
+    "custom_title": "Maa-饼干人",
     "version": "v1.0.0",
+    "mirrorchyan_rid":null,
+    "mirrorchyan_multiplatform":false,
     "controller": [
         {
             "name": "ADB默认",
@@ -32,7 +34,7 @@
         },
         {
             "name": "清绿点",
-            "entry": "cleargreenpoint",
+            "entry": "cleargreenpoint_entry",
             "check": true,
             "doc":"1.热气球功能：若有新主线推出，请记得手动选取地区"
         },
