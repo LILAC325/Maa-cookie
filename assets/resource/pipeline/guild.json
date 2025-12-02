@@ -24,10 +24,10 @@
             }
         },
         "next":[
-            "guild_checkin",
-            "guild_upgrade_entry",
-            "guild_gacha",
-            "guild_battle",
+            "[JumpBack]guild_checkin",
+            "[JumpBack]guild_upgrade_entry",
+            "[JumpBack]guild_gacha",
+            "[JumpBack]guild_battle",
             "guild_returnmainpage"
         ]
     },
@@ -105,10 +105,7 @@
                     "node_name":"guild_checkin"
                 }
             }
-        },
-        "next":[
-            "guild_main_page"
-        ]
+        }
     },
     "guild_upgrade_page":{
         "recognition":{
@@ -168,10 +165,7 @@
         },
         "action":{
             "type":"Click"
-        },
-        "next":[
-            "guild_main_page"
-        ]
+        }
     },
     "guild_gacha":{
         "recognition":{
@@ -261,6 +255,7 @@
             }
         },
         "next":[
+            "[JumpBack]bottom_click",
             "guild_gacha_allin",
             "guild_gacha_allin_done"
         ]
@@ -275,7 +270,10 @@
                 }
             }
         },
-        "next": ["guild_main_page", "[JumpBack]quit"],
+        "next": [
+            "guild_main_page", 
+            "[JumpBack]quit"
+        ]
     },
     "guild_battle":{
         "recognition":{
@@ -291,7 +289,7 @@
             "guild_battle_collect",
             "guild_battle_page",
             "[JumpBack]bottom_click"
-        ],
+        ]
     },
     "guild_battle_collect":{
         "recognition":{

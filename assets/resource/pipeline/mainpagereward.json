@@ -5,6 +5,12 @@
             "[JumpBack]returnmainpage"
         ]
     },
+    "kingdomproduce_entry":{
+        "next":[
+            "[JumpBack]kingdomproduce",
+            "returnmainpage"
+        ]
+    },
     "mainpge_reward":{
         "recognition":{
             "type":"TemplateMatch",
@@ -20,7 +26,6 @@
             "[JumpBack]freeshopping",
             "[JumpBack]kingdomguide",
             "[JumpBack]kingdompass",
-            "[JumpBack]kingdomproduce",
             "returnmainpage"
         ]
     },

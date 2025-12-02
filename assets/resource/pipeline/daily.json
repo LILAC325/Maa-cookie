@@ -42,10 +42,10 @@
             }
         },
         "next": [
-            "autochoose",
-             "[JumpBack]bottom_click"
+            "[JumpBack]bottom_click",
+            "autochoose"
         ],
-        "pre_delay":2000
+        "post_delay":2000
     },
     "hotairballoon":{
         "recognition":{

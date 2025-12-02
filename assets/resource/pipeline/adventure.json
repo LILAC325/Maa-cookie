@@ -627,8 +627,10 @@
             "type":"Click"
         },
         "next":[
+            "[JumpBack]bottom_click",
             "arena_page"
-        ]
+        ],
+        "post_delay":2000
     },
     "arena_page":{
         "recognition":{
@@ -760,51 +762,16 @@
             }
         },
         "next":[
-            "arena_page",
-            "arena_level_up",
-            "arena_clear_page"
-        ],
-        "post_delay":1000
-    },
-    "arena_level_up":{
-        "recognition":{
-            "type":"OCR",
-            "param":{
-                "expected":[
-                    "已升至",
-                    "奖励"
-                ],
-                "roi" : [211,3,901,277]
-            }
-        },
-        "action":{
-            "type":"Click",
-            "param":{
-                "target" : [416,608,515,74]
-            }
-        },
-        "next":[
-            "arena_level_up",
+            "[JumpBack]bottom_click",
             "arena_page"
         ],
-        "post_delay":2000
+        "post_delay":1000
     },
     "arena_ticket_lack":{
         "recognition":{
             "type":"OCR",
             "param":{
                 "expected":"可选择资源"
-            }
-        },
-        "next":[
-            "arena_ticket_lack_quit"
-        ]
-    },
-    "arena_ticket_lack_quit":{
-        "action":{
-            "type":"Click",
-            "param":{
-                "target" : [971,33,34,36]
             }
         },
         "next":[
