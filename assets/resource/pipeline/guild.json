@@ -364,69 +364,7 @@
             }
         },
         "next":[
-            "guild_cookiegacha",
-            "guild_guildRelics"
         ]
-    },
-    "guild_cookiegacha":{
-        "recognition":{
-            "type":"TemplateMatch",
-            "param":{
-                "template":"shop/cookiegacha.png",
-                "roi" : [33,162,1215,475]
-            }
-        },
-        "action":{
-            "type":"Click"
-        },
-        "next":[
-            "guild_buy"
-        ]
-    },
-    "guild_guildRelics":{
-        "recognition":{
-            "type":"TemplateMatch",
-            "param":{
-                "template":"shop/Guild_Relics.png",
-                "roi" : [33,162,1215,475]
-            }
-        },
-        "action":{
-            "type":"Custom",
-            "param":{
-                "custom_action":"NodeOverride",
-                "custom_action_param":{
-                    "alreadyobtained_collect":{
-                        "next":[
-                            "guild_battle_shop_page"
-                        ]
-                    },
-                    "get_guildrelics":{
-                        "enabled":true
-                    }
-                }
-            }
-        },
-        "next":[
-            "guild_buy"
-        ]
-    },
-    "guild_buy":{
-        "recognition":{
-            "type":"OCR",
-            "param":{
-                "expected" : "购买",
-                "roi" : [422,370,479,343]
-            }
-        },
-        "action":{
-            "type":"Click"
-        },
-        "next":[
-            "get_guildrelics",
-            "guild_battle_shop_page"
-        ],
-        "post_delay":2000
     },
     "guild_returnmainpage":{
         "recognition":{

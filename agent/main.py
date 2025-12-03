@@ -379,34 +379,6 @@ def agent(is_dev_mode=False):
             change_console_level("DEBUG")
             logger.info("开发模式：日志等级已设置为DEBUG")
 
-        if not is_dev_mode:
-            # 检查资源版本
-            from utils.version_checker import check_resource_version
-
-            version_info = check_resource_version()
-            if not version_info["is_latest"]:
-                logger.warning("检测到资源有新版本!")
-                logger.warning(f"当前资源版本: {version_info['current_version']}")
-                logger.warning(f"最新资源版本: {version_info['latest_version']}")
-            elif version_info["error"]:
-                logger.debug(f"资源版本检查遇到问题: {version_info['error']}")
-
-            # 数据热更新
-            hot_update_conf = read_hot_update_config()
-            if not hot_update_conf.get("enable_hot_update", True):
-                logger.info("已配置为跳过部分资源热更（hot_update.disabled）")
-            else:
-                from utils.resource_updater import check_and_update_resources
-
-                logger.info("开始检查部分资源...")
-                update_result = check_and_update_resources()
-                if update_result and update_result.get("updated_files"):
-                    pass
-                elif update_result and update_result.get("error"):
-                    logger.debug(f"热更部分资源更新遇到问题: {update_result['error']}")
-                else:
-                    logger.debug("热更部分资源已是最新")
-
         from maa.agent.agent_server import AgentServer
         from maa.toolkit import Toolkit
 

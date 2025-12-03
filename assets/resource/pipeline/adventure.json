@@ -246,8 +246,8 @@
         },
         "next":[
             "check_todayreward_time",
-            "skillpowder",
-            "sugar"
+            "todayreward_skillpowder",
+            "todayreward_sugar"
         ]
     },
     "check_todayreward_time":{
@@ -271,7 +271,7 @@
             "back_adventure_page"
         ]
     },
-    "skillpowder":{
+    "todayreward_skillpowder":{
         "recognition":{
             "type":"TemplateMatch",
             "param":{
@@ -286,7 +286,7 @@
             "todayreward_timespring_use"
         ]
     },
-    "sugar":{
+    "todayreward_sugar":{
         "recognition":{
             "type":"TemplateMatch",
             "param":{

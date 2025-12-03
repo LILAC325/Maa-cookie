@@ -73,43 +73,6 @@
             "back"
         ]
     },
-    "get_guildrelics":{
-        "recognition":{
-            "type":"OCR",
-            "param":{
-                "expected" : [
-                    "普通",
-                    "稀有",
-                    "超级稀有",
-                    "传奇"
-                ],
-                "roi" : [411,110,769,563]
-            }
-        },
-        "action":{
-            "type":"Click"
-        },
-        "next":[
-            "get_guildrelics",
-            "alreadyobtained_collect"
-        ],
-        "post_delay":1000,
-        "enabled":false
-    },
-    "alreadyobtained_collect":{
-        "recognition":{
-            "type":"OCR",
-            "param":{
-                "expected" : "已获得"
-            }
-        },
-        "action":{
-            "type":"Click",
-            "param":{
-                "target" : [421,570,479,84]
-            }
-        }
-    },
     "bottom_click":{
         "recognition":{
             "type":"OCR",

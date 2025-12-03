@@ -14,7 +14,6 @@
             "wishingtree_done",
             "wishingtree_page"
         ],
-        "enabled":false,
         "post_delay":1000
     },
     "wishingtree_page":{

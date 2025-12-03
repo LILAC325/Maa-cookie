@@ -9,111 +9,43 @@
         },
         "action":{
             "type":"Click"
-        },
-        "next": [
-            "kingdomactivitypage"
-        ]
-    },
-    "kingdomactivitypage":{
-        "recognition":{
-            "type":"OCR",
-            "param":{
-                "expected" : "王国活动",
-                "roi" : [495,125,272,80]
-            }
-        },
-        "next": [
-            "choose_wishingtree",
-            "choose_hotairballoon",
-            "choose_trade",
-            "choose_exchance",
-            "choose_train",
-            "choose_specialcookie"
-        ]
+        }
     },
     "wishingtree_entry":{
         "next":[
-            "kingdomactivity"
-        ],
-        "action":{
-            "type":"Custom",
-            "param":{
-                "custom_action":"EnableNode",
-                "custom_action_param":{
-                    "node_name":"choose_wishingtree"
-                }
-            }
-        }
+            "[JumpBack]kingdomactivity",
+            "choose_wishingtree"
+        ]
     },
     "hotairballoon_entry":{
         "next":[
-            "kingdomactivity"
-        ],
-        "action":{
-            "type":"Custom",
-            "param":{
-                "custom_action":"EnableNode",
-                "custom_action_param":{
-                    "node_name":"choose_hotairballoon"
-                }
-            }
-        }
+            "[JumpBack]kingdomactivity",
+            "choose_hotairballoon"
+        ]
     },
     "tradepage_entry":{
         "next":[
-            "kingdomactivity"
-        ],
-        "action":{
-            "type":"Custom",
-            "param":{
-                "custom_action":"EnableNode",
-                "custom_action_param":{
-                    "node_name":"choose_trade"
-                }
-            }
-        }
+            "[JumpBack]kingdomactivity",
+            "choose_trade"
+        ]
     },
     "exchance_entry":{
         "next":[
-            "kingdomactivity"
-        ],
-        "action":{
-            "type":"Custom",
-            "param":{
-                "custom_action":"EnableNode",
-                "custom_action_param":{
-                    "node_name":"choose_exchance"
-                }
-            }
-        }
+            "[JumpBack]kingdomactivity",
+            "choose_exchance"
+        ]
     },
     "train_entry":{
         "next":[
-            "kingdomactivity"
-        ],
-        "action":{
-            "type":"Custom",
-            "param":{
-                "custom_action":"EnableNode",
-                "custom_action_param":{
-                    "node_name":"choose_train"
-                }
-            }
-        }
+            "[JumpBack]kingdomactivity",
+            "choose_train"
+        ]
     },
     "specialcookie_entry":{
         "next":[
-            "kingdomactivity"
-        ],
-        "action":{
-            "type":"Custom",
-            "param":{
-                "custom_action":"EnableNode",
-                "custom_action_param":{
-                    "node_name":"choose_specialcookie"
-                }
-            }
-        }
+            "[JumpBack]kingdomactivity",
+            "choose_specialcookie"
+        ]
     },
     "choose_hotairballoon":{
         "recognition":{
@@ -128,8 +60,7 @@
         },
         "next": [
             "autochoose"
-        ],
-        "enabled":false
+        ]
     },
     "choose_train":{
         "recognition":{
@@ -143,7 +74,6 @@
         },
         "next": [
             "train"
-        ],
-        "enabled":false
+        ]
     }
 }

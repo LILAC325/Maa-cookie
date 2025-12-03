@@ -41,8 +41,7 @@
         {
             "name":"王国管理所",
             "entry":"kingdomproduce_entry",
-            "check": true,
-            "doc":"1.王国管理所若出现爆仓，会自动该退出功能"
+            "check": true
 
         },
         {
