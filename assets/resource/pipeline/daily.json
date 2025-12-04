@@ -17,7 +17,6 @@
             "type":"Click"
         },
         "next":[
-            "cleargreenpoint",
             "[JumpBack]comfirm",
             "[JumpBack]train",
             "[JumpBack]hotairballoon_collect",
@@ -27,6 +26,7 @@
             "[JumpBack]landmark_reward",
             "[Jumpback]landmark_upgrade",
             "[JumpBack]research",
+            "cleargreenpoint",
             "returnmainpage"
         ],
         "post_delay":3000
