@@ -3,8 +3,7 @@
         "recognition":{
             "type":"TemplateMatch",
             "param":{
-                "template" : "kingdomactivity/trade.png",
-                "roi" : [315,417,132,118]
+                "template" : "kingdomactivity/trade.png"
             }
         },
         "action":{

@@ -3,8 +3,7 @@
         "recognition":{
             "type":"TemplateMatch",
             "param":{
-                "template" : "kingdomactivity/choosespecialcookie.png",
-                "roi" : [840,401,120,139]
+                "template" : "kingdomactivity/choosespecialcookie.png"
             }
         },
         "action":{

@@ -200,11 +200,11 @@
         "action":{
             "type":"Click"
         },
-        "pre_wait_freezes":500,
         "next":[
             "[JumpBack]check_liquidation",
             "fountain_collect"
-        ]
+        ],
+        "post_delay":1000
     },
     "fountain_collect":{
         "recognition":{

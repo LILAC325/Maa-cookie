@@ -3,8 +3,7 @@
         "recognition":{
             "type":"TemplateMatch",
             "param":{
-                "template" : "common/wishingtree.png",
-                "roi" : [331,253,92,123]
+                "template" : "common/wishingtree.png"
             }
         },
         "action":{
