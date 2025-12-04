@@ -18,12 +18,14 @@
         },
         "next":[
             "cleargreenpoint",
+            "[JumpBack]comfirm",
             "[JumpBack]train",
             "[JumpBack]hotairballoon_collect",
             "[JumpBack]fountain",
             "[JumpBack]sailing_collect",
             "[JumpBack]wait_sailing_collect",
             "[JumpBack]landmark_reward",
+            "[Jumpback]landmark_upgrade",
             "[JumpBack]research",
             "returnmainpage"
         ],
@@ -322,6 +324,23 @@
             }
         },
         "next":[
+            "returnmainpage"
+        ]
+    },
+    "landmark_upgrade":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "地标空中庭园",
+                "roi" : [223,146,469,103]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "[JumpBack]greenpoint_click",
+            "[JumpBack]comfirm",
             "returnmainpage"
         ]
     }

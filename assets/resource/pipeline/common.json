@@ -93,6 +93,21 @@
             }
         }
     },
+    "comfirm":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":[
+                    "确定",
+                    "确认"
+                ],
+                "roi" : [360,353,579,366]
+            }
+        },
+        "action":{
+            "type":"Click"
+        }
+    },
     "back":{
         "action":{
             "type":"ClickKey",
@@ -101,6 +116,20 @@
                     111
                 ]
             }
+        }
+    },
+    "greenpoint_click":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template":[
+                    "common/greenpoint.png",
+                    "common/greenpoint1.png"
+                ]
+            }
+        },
+        "action":{
+            "type":"Click"
         }
     },
     "exit_task":{
