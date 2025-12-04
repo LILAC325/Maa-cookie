@@ -25,20 +25,34 @@
             }
         },
         "next":[
-            "shipment",
-            "shipment_cooling",
+            "[JumpBack]trade_ready",
             "pearl_exchance",
             "returnmainpage"
         ]
     },
+    "trade_ready":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "kingdomactivity/trade_ready.png",
+                "roi" : [21,123,201,245]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "shipment"
+        ],
+        "post_delay":2000
+    },
     "shipment":{
         "recognition":{
-            "type":"ColorMatch",
+            "type":"OCR",
             "param":{
-                "upper" : [122,206,16],
-                "lower" : [122,206,16],
-                "method" : 4,
-                "roi" : [814,517,36,31]
+                "expected" : "自动装船",
+                "roi" : [797,505,219,53],
+                "only_rec":true
             }
         },
         "action":{
@@ -74,69 +88,7 @@
         },
         "action":{
             "type":"Click"
-        },
-        "next":[
-            "trade_page"
-        ]
-    },
-    "shipment_cooling":{
-        "recognition":{
-            "type":"ColorMatch",
-            "param":{
-                "upper" : [160,160,160],
-                "lower" : [160,160,160],
-                "method" : 4,
-                "roi" : [814,517,36,31]
-            }
-        },
-        "action":{
-            "type":"Click"
-        },
-        "next":[
-            "nextship"
-        ],
-        "on_error":[
-            "shipment_done"
-        ],
-        "timeout":200
-    },
-    "nextship":{
-        "recognition":{
-            "type":"OCR",
-            "param":{
-                "expected" : "第2码头",
-                "roi" : [1102,140,153,64]
-            }
-        },
-        "action":{
-            "type":"Click"
-        },
-        "next":[
-            "shipment"
-        ],
-        "on_error":[
-            "shipment_done"
-        ],
-        "timeout":2000
-    },
-    "shipment_done":{
-        "action":{
-            "type":"Custom",
-            "param":{
-                "custom_action":"NodeOverride",
-                "custom_action_param":{
-                    "shipment":{
-                        "enabled":false
-                    },
-                    "shipment_cooling":{
-                        "enabled":false
-                    }
-                }
-            }
-        },
-        "next":[
-            "trade_page"
-        ]
+        }
     },
     "pearl_exchance":{
         "recognition":{

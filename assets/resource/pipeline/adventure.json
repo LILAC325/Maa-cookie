@@ -183,7 +183,8 @@
             }
         },
         "next":[
-            "back_adventure_page"
+            "adventure_page",
+            "[JumpBack]back"
         ]
     },
     "adventure_swtoright":{
@@ -268,7 +269,8 @@
             }
         },
         "next":[
-            "back_adventure_page"
+            "adventure_page",
+            "[JumpBack]back"
         ]
     },
     "todayreward_skillpowder":{
@@ -536,7 +538,8 @@
             }
         },
         "next":[
-            "back_adventure_page"
+            "adventure_page",
+            "[JumpBack]back"
         ]
     },
     "back_adventure_page":{
