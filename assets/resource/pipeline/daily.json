@@ -97,7 +97,7 @@
         "next":[
             "wait_hotairballoon"
         ],
-        "pre_wait_freezes":1000
+        "pre_delay":1000
     },
     "wait_hotairballoon":{
         "recognition":{

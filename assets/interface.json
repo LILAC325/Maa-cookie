@@ -84,6 +84,7 @@
             "entry": "adventure_entry",
             "option": [
                 "是否启用竞技场",
+                "竞技场模式",
                 "是否启用实证战场",
                 "实证战场",
                 "是否启用今日悬赏",
@@ -380,7 +381,26 @@
                         }
                     }
                 }
-
+            ]
+        },
+        "竞技场模式":{
+            "cases":[
+                {
+                    "name":"正常对战",
+                    "pipeline_override":{
+                        "arena_counterattack_page":{
+                            "enabled": false
+                        }
+                    }
+                },
+                {
+                    "name":"防御反击",
+                    "pipeline_override":{
+                        "arena_page":{
+                            "enabled": false
+                        }
+                    }
+                }
             ]
         },
         "是否启用实证战场": {

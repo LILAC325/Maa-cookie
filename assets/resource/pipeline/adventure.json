@@ -628,7 +628,8 @@
         },
         "next":[
             "[JumpBack]bottom_click",
-            "arena_page"
+            "arena_page",
+            "arena_counterattack_page"
         ],
         "post_delay":2000
     },
@@ -641,11 +642,13 @@
             }
         },
         "next":[
-            "arena_position_1",
-            "arena_position_2",
-            "arena_position_3",
-            "sw_arena_page"
-        ]
+            "[JumpBack]bottom_click",
+            "[JumpBack]arena_position_1",
+            "[JumpBack]arena_position_2",
+            "[JumpBack]arena_position_3",
+            "[JumpBack]sw_arena_page"
+        ],
+        "post_delay":2000
     },
     "sw_arena_page":{
         "action":{
@@ -655,11 +658,7 @@
                 "end" : [434,155,1,1],
                 "duration" : 2000
             }
-        },
-        "next":[
-            "arena_page"
-        ]
-
+        }
     },
     "arena_position_1":{
         "recognition":{
@@ -680,7 +679,8 @@
         },
         "inverse":true,
         "next":[
-            "arena_battle_page"
+            "arena_battle_page",
+            "arena_page"
         ]
     },
     "arena_position_2":{
@@ -702,7 +702,8 @@
         },
         "inverse":true,
         "next":[
-            "arena_battle_page"
+            "arena_battle_page",
+            "arena_page"
         ]
     },
     "arena_position_3":{
@@ -724,8 +725,66 @@
         },
         "inverse":true,
         "next":[
-            "arena_battle_page"
+            "arena_battle_page",
+            "arena_page"
         ]
+    },
+    "arena_counterattack_page":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"防御纪录",
+                "roi":[666,649,162,54],
+                "only_rec":true
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "[JumpBack]arena_counterattack",
+            "[JumpBack]arena_battle_page",
+            "[JumpBack]sw_arena_counterattack_page"
+        ]
+    },
+    "sw_arena_counterattack_page":{
+        "action":{
+            "type":"Swipe",
+            "param":{
+                "begin" : [1250,508,1,1],
+                "end" : [1249,273,1,1],
+                "duration" : 2000
+            }
+        },
+        "next":[
+            "check_arena_counterattack_page",
+            "arena_counterattack_page"
+        ]
+    },
+    "check_arena_counterattack_page":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template":[
+                    "adventure/arena_counterattack_page.png"
+                ]
+            }
+        },
+        "next":[
+            "arena_done"
+        ]
+    },
+    "arena_counterattack":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"^反击$",
+                "roi" : [1111,122,150,427]
+            }
+        },
+        "action":{
+            "type":"Click"
+        }
     },
     "arena_battle_page":{
         "recognition":{
@@ -740,9 +799,9 @@
         },
         "next":[
             "arena_ticket_lack",
-            "arena_clear_page"
+            "[JumpBack]arena_clear_page"
         ],
-        "post_wait_freezes":100,
+        "post_wait_freezes":1000,
         "post_delay":3000
     },
     "arena_clear_page":{
@@ -763,15 +822,30 @@
         },
         "next":[
             "[JumpBack]bottom_click",
-            "arena_page"
+            "[JumpBack]back_arena_page",
+            "[JumpBack]arena_counterattack_page",
+            "arena_page",
+            "arena_clear_page"
         ],
         "post_delay":1000
+    },
+    "back_arena_page":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"离开"
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "post_delay":2000
     },
     "arena_ticket_lack":{
         "recognition":{
             "type":"OCR",
             "param":{
-                "expected":"可选择资源"
+                "expected":"补充8个竞技场入场券"
             }
         },
         "next":[
@@ -791,7 +865,8 @@
             }
         },
         "next":[
-            "back_adventure_page"
+            "adventure_page",
+            "[JumpBack]back"
         ]
     }
 }
