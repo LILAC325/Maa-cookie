@@ -335,6 +335,7 @@
                 "type":"Click"
         },
         "next":[
+            "[JumpBack]comfirm",
             "kingdompass_page"
         ]
     },
@@ -350,24 +351,8 @@
             "type":"Click"
         },
         "next":[
-            "seasonreward_collect"
-        ]
-    },
-    "seasonreward_collect":{
-        "recognition":{
-            "type":"OCR",
-            "param":{
-                "expected":"已获得",
-                "roi" : [234,144,227,110]
-            }
-        },
-        "action":{
-            "type":"Click",
-            "param":{
-                "target": [114,547,1072,143]
-            }
-        },
-        "next":[
+            "[JumpBack]comfirm",
+            "[JumpBack]bottom_click",
             "kingdompass_page"
         ]
     },
