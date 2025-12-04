@@ -541,7 +541,7 @@
         "recognition":{
             "type":"OCR",
             "param":{
-                "expected":"雪酪饼干",
+                "expected":"百合饼干",
                 "roi" : [0,70,246,649]
             }
         },
