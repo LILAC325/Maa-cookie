@@ -682,6 +682,7 @@
         },
         "inverse":true,
         "next":[
+            "[JumpBack]bottom_click",
             "arena_battle_page",
             "arena_page"
         ]
@@ -705,6 +706,7 @@
         },
         "inverse":true,
         "next":[
+            "[JumpBack]bottom_click",
             "arena_battle_page",
             "arena_page"
         ]
@@ -728,6 +730,7 @@
         },
         "inverse":true,
         "next":[
+            "[JumpBack]bottom_click",
             "arena_battle_page",
             "arena_page"
         ]
@@ -745,6 +748,7 @@
             "type":"Click"
         },
         "next":[
+            "[JumpBack]bottom_click",
             "[JumpBack]arena_counterattack",
             "[JumpBack]arena_battle_page",
             "[JumpBack]sw_arena_counterattack_page"

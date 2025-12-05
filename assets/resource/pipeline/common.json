@@ -71,7 +71,8 @@
         },
         "next":[
             "back"
-        ]
+        ],
+        "post_delay":2000
     },
     "bottom_click":{
         "recognition":{
