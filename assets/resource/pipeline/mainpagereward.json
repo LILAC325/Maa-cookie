@@ -7,8 +7,8 @@
     },
     "kingdomproduce_entry":{
         "next":[
-            "[JumpBack]kingdomproduce",
-            "returnmainpage"
+            "kingdomproduce",
+            "[JumpBack]returnmainpage"
         ]
     },
     "mainpge_reward":{
@@ -740,8 +740,8 @@
         "next":[
             "check_liquidation",
             "[JumpBack]landmark_reward",
-            "kingdomproduce_done",
-            "[JumpBack]filluponce"
+            "[JumpBack]filluponce",
+            "returnmainpage"
         ]
     },
     "filluponce":{
@@ -757,7 +757,8 @@
         },
         "next":[
             "filluponce_page"
-        ]
+        ],
+        "max_hit":3
     },
     "filluponce_page":{
         "recognition":{
@@ -788,33 +789,9 @@
         },
         "next":[
             "try_filluponce",
-            "[JumpBack]kingdomproduce_done",
             "[JumpBack]fountain_done"
         ],
         "post_delay":1000
-    },
-    "kingdomproduce_done":{
-        "recognition":{
-            "type":"TemplateMatch",
-            "param":{
-                "template":"common/producedone.png",
-                "roi" : [8,109,610,497],
-                "threshold" : 0.5
-                }
-        },
-        "action":{
-            "type":"Custom",
-            "param":{
-                "custom_action":"DisableNode",
-                "custom_action_param":{
-                    "node_name":"kingdomproduce"
-                }
-            }
-        },
-        "next":[
-            "returnmainpage"
-        ],
-        "inverse":true
     },
     "try_filluponce":{
         "max_hit":1,
