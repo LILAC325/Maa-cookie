@@ -91,7 +91,8 @@
             "param":{
                 "target" : [376,647,560,51]
             }
-        }
+        },
+        "post_delay":2000
     },
     "comfirm":{
         "recognition":{

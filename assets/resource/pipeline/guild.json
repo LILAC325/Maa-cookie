@@ -11,6 +11,7 @@
             "type":"Click"
         },
         "next":[
+            "[JumpBack]bottom_click",
             "guild_main_page"
         ],
         "post_delay":4000
