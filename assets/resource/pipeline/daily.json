@@ -2,8 +2,7 @@
     "cleargreenpoint_entry":{
         "next":[
             "[JumpBack]adventurer_cookie",
-            "cleargreenpoint",
-            "returnmainpage"
+            "cleargreenpoint"
         ]
     },
     "cleargreenpoint":{
@@ -17,6 +16,7 @@
             "type":"Click"
         },
         "next":[
+            "[JumpBack]bottom_click",
             "[JumpBack]comfirm",
             "[JumpBack]train",
             "[JumpBack]hotairballoon_collect",
