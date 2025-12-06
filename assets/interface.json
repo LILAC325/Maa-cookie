@@ -88,7 +88,7 @@
                 "是否启用实证战场",
                 "实证战场",
                 "是否启用今日悬赏",
-                "今日悬赏",
+                "今日悬赏选择",
                 "是否启用守护之战",
                 "守护之战",
                 "是否启用热带苏打群岛"
@@ -471,12 +471,20 @@
                 }
             ]
         },
-        "今日悬赏": {
+        "今日悬赏选择": {
             "cases": [
+                {
+                    "name": "今日最高加成",
+                    "pipeline_override": {
+                        "todayreward_bonus": {
+                            "enabled": true
+                        }
+                    }
+                },
                 {
                     "name": "技能粉末",
                     "pipeline_override": {
-                        "skillpowder": {
+                        "todayreward_skillpowder": {
                             "enabled": true
                         }
                     }
@@ -484,11 +492,11 @@
                 {
                     "name": "开糖材料",
                     "pipeline_override": {
-                        "sugar": {
+                        "todayreward_sugar": {
                             "enabled": true
                         }
                     }
-                }
+                }   
             ]
         },
         "是否启用守护之战": {

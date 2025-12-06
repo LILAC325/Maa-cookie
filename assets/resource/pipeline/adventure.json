@@ -247,8 +247,9 @@
         },
         "next":[
             "check_todayreward_time",
-            "todayreward_skillpowder",
-            "todayreward_sugar"
+            "[JumpBack]todayreward_skillpowder",
+            "[JumpBack]todayreward_sugar",
+            "[JumpBack]todayreward_bonus"
         ]
     },
     "check_todayreward_time":{
@@ -285,7 +286,7 @@
             "type":"Click"
         },
         "next":[
-            "todayreward_timespring_use"
+            "timespring"
         ]
     },
     "todayreward_sugar":{
@@ -300,26 +301,78 @@
             "type":"Click"
         },
         "next":[
-            "todayreward_timespring_use"
+            "timespring"
         ],
         "enabled":false
     },
-    "todayreward_timespring_use":{
+    "todayreward_bonus":{
         "action":{
             "type":"custom",
             "param":{
                 "custom_action":"NodeOverride",
                 "custom_action_param":{
-                    "timespring_collect":{
-                            "next":[
-                                "todayreward_page"
-                            ]
+                    "todayreward_skillpowder":{
+                        "enabled":true
                     }
                 }
             }
         },
         "next":[
-            "timespring_choose_max"
+            "todayreward_bonus_100%",
+            "todayreward_bonus_60%",
+            "todayreward_page"
+        ]
+    },
+    "todayreward_bonus_100%":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "adventure/bonus_100%.png",
+                "roi" : [18,70,815,649]
+            }
+        },
+        "action":{
+            "type":"custom",
+            "param":{
+                "custom_action":"NodeOverride",
+                "custom_action_param":{
+                    "timespring":{
+                        "recognition":{
+                            "roi" : "todayreward_bonus_100%",
+                            "roi_offset":[-262,335,250,234]
+                        }
+                    }
+                }
+            }
+        },
+        "next":[
+            "timespring"
+        ]
+    },
+    "todayreward_bonus_60%":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "adventure/bonus_60%.png",
+                "roi" : [18,70,815,649]
+            }
+        },
+        "action":{
+            "type":"custom",
+            "param":{
+                "custom_action":"NodeOverride",
+                "custom_action_param":{
+                    "timespring":{
+                        "recognition":{
+                            "roi" : "todayreward_bonus_60%",
+                            "roi_offset":[-262,335,250,234]
+                        }
+                    }
+                }
+            }
+        },
+        "next":[
+            "timespring"
         ]
     },
     "archipelago":{
@@ -494,6 +547,17 @@
                 "roi" : [5,620,183,99]
             }
         },
+        "action":{
+            "type":"custom",
+            "param":{
+                "custom_action":"NodeOverride",
+                "custom_action_param":{
+                    "guildRelics_donate":{
+                        "enabled":true
+                    }
+                }
+            }
+        },
         "next":[
             "[JumpBack]timespring",
             "[JumpBack]comfirm",
@@ -507,6 +571,9 @@
                 "custom_action":"NodeOverride",
                 "custom_action_param":{
                     "protectbattle":{
+                        "enabled":false
+                    },
+                    "guildRelics_donate":{
                         "enabled":false
                     }
                 }
@@ -864,6 +931,7 @@
         "action":{
             "type":"Click"
         },
-        "inverse":true
+        "inverse":true,
+        "enabled":false
     }
 }
