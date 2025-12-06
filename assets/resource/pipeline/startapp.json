@@ -45,8 +45,19 @@
             }
         },
         "next":[
-            "exit_task"
+            "download_data"
         ]
+    },
+    "download_data":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"^下载$"
+            }
+        },
+        "action":{
+            "type":"Click"
+        }
     },
     "login_page":{
         "recognition":{

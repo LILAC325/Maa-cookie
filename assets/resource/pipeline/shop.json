@@ -170,24 +170,6 @@
         "action":{
             "type":"Click"
         },
-        "next":[
-            "get_guildrelics",
-            "alreadyobtained_collect"
-        ],
         "post_delay":1000
-    },
-    "alreadyobtained_collect":{
-        "recognition":{
-            "type":"OCR",
-            "param":{
-                "expected" : "已获得"
-            }
-        },
-        "action":{
-            "type":"Click",
-            "param":{
-                "target" : [421,570,479,84]
-            }
-        }
     }
 }

@@ -405,7 +405,8 @@
         "next":[
             "check_protectbattle_number",
             "protectbattle_master",
-            "protectbattle_infinite"
+            "protectbattle_infinite",
+            "protectbattle_done"
         ]
     },
     "check_protectbattle_number":{
@@ -443,6 +444,7 @@
                 }
             }
         },
+        "max_hit":1,
         "next":[
             "protectbattle_battle_entry"
         ]
@@ -471,6 +473,7 @@
                 }
             }
         },
+        "max_hit":1,
         "next":[
             "protectbattle_battle_entry"
         ]
@@ -492,37 +495,9 @@
             }
         },
         "next":[
-            "protectbattle_battle_use_timespring"
-        ]
-    },
-    "protectbattle_battle_use_timespring":{
-        "action":{
-            "type":"custom",
-            "param":{
-                "custom_action":"NodeOverride",
-                "custom_action_param":{
-                    "timespring_confirm":{
-                        "next":[
-                            "get_guildrelics"
-                        ]
-                    },
-                    "get_guildrelics":{
-                        "next":[
-                            "get_guildrelics",
-                            "timespring_collect"
-                        ],
-                        "enabled":true
-                    },
-                    "timespring_collect":{
-                        "next":[
-                            "protectbattle_done"
-                        ]
-                    }
-                }
-            }
-        },
-        "next":[
-            "timespring"
+            "[JumpBack]timespring",
+            "[JumpBack]comfirm",
+            "check_protectbattle_number"
         ]
     },
     "protectbattle_done":{
@@ -560,64 +535,6 @@
             "back_adventure_page"
         ],
         "post_delay":2000
-    },
-    "timespring":{
-        "recognition":{
-            "type":"TemplateMatch",
-            "param":{
-                "template" : [
-                    "adventure/timespring.png",
-                    "adventure/archipelago_timespring.png"
-                ],
-                "threshold":0.5
-            }
-        },
-        "action":{
-            "type":"Click"
-        },
-        "next":[
-            "timespring_choose_max"
-        ]
-    },
-    "timespring_choose_max":{
-        "recognition":{
-            "type":"OCR",
-            "param":{
-                "expected" : "最多"
-            }
-        },
-        "action":{
-            "type":"Click"
-        },
-        "next":[
-            "timespring_confirm"
-        ]
-    },
-    "timespring_confirm":{
-        "recognition":{
-            "type":"OCR",
-            "param":{
-                "expected" : "快转",
-                "roi" : [578,514,137,61]
-            }
-        },
-        "action":{
-            "type":"Click"
-        },
-        "next":[
-            "timespring_collect"
-        ]
-    },
-    "timespring_collect":{
-        "recognition":{
-            "type":"OCR",
-            "param":{
-                "expected":"点击以完成"
-            }
-        },
-        "action":{
-            "type":"Click"
-        }
     },
     "arena_entry":{
         "recognition":{
@@ -875,5 +792,78 @@
             "adventure_page",
             "[JumpBack]back"
         ]
+    },
+    "arena_tips":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"未装载配料或脆饼",
+                "roi" : [317,193,653,89]
+            }
+        },
+        "next":[
+            
+        ]
+    },
+    "timespring":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : [
+                    "adventure/timespring.png",
+                    "adventure/archipelago_timespring.png"
+                ]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "[JumpBack]guildRelics_donate",
+            "timespring_choose_max"
+            
+        ]
+    },
+    "timespring_choose_max":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "最多"
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "timespring_confirm"
+        ]
+    },
+    "timespring_confirm":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "^快转$"
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "[JumpBack]get_guildrelics",
+            "bottom_click"
+        ]
+    },
+    "guildRelics_donate":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "adventure/guildRelics_donate.png",
+                "roi" : [427,547,49,44]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "inverse":true
     }
 }
