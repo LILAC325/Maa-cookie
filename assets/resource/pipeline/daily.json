@@ -19,7 +19,7 @@
             "[JumpBack]bottom_click",
             "[JumpBack]comfirm",
             "[JumpBack]train",
-            "[JumpBack]hotairballoon_collect",
+            "[JumpBack]hotairballoon_autochoose",
             "[JumpBack]fountain",
             "[JumpBack]sailing_collect",
             "[JumpBack]wait_sailing_collect",
@@ -30,24 +30,6 @@
             "returnmainpage"
         ],
         "post_delay":3000
-    },
-    "hotairballoon_collect":{
-        "recognition":{
-            "type":"OCR",
-            "param":{
-                "expected" : [
-                    "探险大成功",
-                    "探险完成"
-                ],
-                "roi" : [377,20,523,110],
-                "only_rec":true
-            }
-        },
-        "next": [
-            "[JumpBack]bottom_click",
-            "autochoose"
-        ],
-        "post_delay":2000
     },
     "hotairballoon":{
         "recognition":{
@@ -65,10 +47,10 @@
             }
         },
         "next":[
-            "autochoose"
+            "hotairballoon_autochoose"
         ]
     },
-    "autochoose":{
+    "hotairballoon_autochoose":{
         "recognition":{
             "type":"OCR",
             "param":{
@@ -112,7 +94,7 @@
             "param":{
                 "custom_action":"DisableNode",
                 "custom_action_param":{
-                    "node_name":"hotairballoon_collect"
+                    "node_name":"hotairballoon_autochoose"
                 }
             }
         },

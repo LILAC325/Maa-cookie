@@ -64,7 +64,7 @@
             "type":"Click"
         },
         "next": [
-            "autochoose"
+            "hotairballoon_autochoose"
         ]
     },
     "choose_train":{
