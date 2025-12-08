@@ -20,51 +20,18 @@
         "recognition":{
             "type":"OCR",
             "param":{
-                "expected" : "编辑领土",
-                "roi" : [8,482,102,113]
+                "expected" : "公会商店",
+                "roi" : [39,671,81,28],
+                "only_rec":true
             }
         },
         "next":[
-            "[JumpBack]guild_checkin",
             "[JumpBack]guild_upgrade_entry",
+            "[JumpBack]guild_task",
             "[JumpBack]guild_gacha",
+            "[JumpBack]guild_shop_entry",
             "[JumpBack]guild_battle",
             "guild_returnmainpage"
-        ]
-    },
-    "guild_checkin":{
-        "recognition":{
-            "type":"TemplateMatch",
-            "param":{
-                "template" : "guild/checkin.png",
-                "roi" : [365,136,790,461]
-            }
-        },
-        "action":{
-            "type":"Click"
-        },
-        "next":[
-            "guild_checkin_page",
-            "guild_checkin_exit"
-        ],
-        "post_delay":3000
-    },
-    "guild_checkin_exit":{
-        "action":{
-            "type":"Custom",
-            "param":{
-                "custom_action":"NodeOverride",
-                "custom_action_param":{
-                    "guild_checkin_done":{
-                        "next":[
-                            "guild_upgrade_exit"
-                        ]
-                    }
-                }
-            }
-        },
-        "next":[
-            "guild_checkin_done"
         ]
     },
     "guild_upgrade_entry":{
@@ -79,34 +46,9 @@
             "type":"Click"
         },
         "next":[
-            "guild_upgrade_page"
+            "[JumpBack]guild_upgrade_max",
+            "[JumpBack]guild_upgrade_done"
         ]
-    },
-    "guild_checkin_page":{
-        "recognition":{
-            "type":"OCR",
-            "param":{
-                "expected" : "确认"
-            }
-        },
-        "action":{
-            "type":"Click"
-        },
-        "next":[
-            "guild_checkin_done"
-        ],
-        "post_delay":2000
-    },
-    "guild_checkin_done":{
-        "action":{
-            "type":"Custom",
-            "param":{
-                "custom_action":"DisableNode",
-                "custom_action_param":{
-                    "node_name":"guild_checkin"
-                }
-            }
-        }
     },
     "guild_upgrade_page":{
         "recognition":{
@@ -117,8 +59,25 @@
             }
         },
         "next":[
-            "guild_upgrade",
+            "[JumpBack]guild_upgrade_max",
             "guild_upgrade_done"
+        ],
+        "post_delay":1000
+    },
+    "guild_upgrade_max":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "最大值",
+                "roi" : [723,631,201,44],
+                "only_rec":true
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "guild_upgrade"
         ],
         "post_delay":1000
     },
@@ -126,23 +85,24 @@
         "recognition":{
             "type":"OCR",
             "param":{
-                "expected" : "未持有道具",
-                "roi" : [876,425,170,48]
+                "expected":"升级",
+                "roi" : [1006,624,179,54]
             }
         },
-        "inverse":true,
         "action":{
-            "type":"Click",
-            "param":{
-                "target":[862,621,205,53]
-            }
+            "type":"Click"
         },
-        "next":[
-            "guild_upgrade_done"
-        ],
-        "post_delay":1000
+        "post_delay":2000
     },
     "guild_upgrade_done":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"未持有道具",
+                "roi" : [900,489,118,36],
+                "only_rec":true
+            }
+        },
         "action":{
             "type":"Custom",
             "param":{
@@ -153,19 +113,115 @@
             }
         },
         "next":[
-            "guild_upgrade_exit"
+            "guild_main_page",
+            "[JumpBack]back"
+            
         ]
     },
-    "guild_upgrade_exit":{
-        "recognition":{
-            "type":"TemplateMatch",
+    "guild_task":{
+        "next":[
+            "[JumpBack]guild_task_emoji_entry",
+            "[JumpBack]guild_task_page_entry"
+        ]
+    },
+    "guild_task_done":{
+        "action":{
+            "type":"Custom",
             "param":{
-                "template" : "guild/upgrade_exit.png",
-                "roi" : [1165,15,79,64]
+                "custom_action":"DisableNode",
+                "custom_action_param":{
+                    "node_name":"guild_task"
+                }
+            }
+        },
+        "next":[
+            "guild_main_page",
+            "[JumpBack]back"
+        ],
+        "post_delay":2000
+    },
+    "guild_task_page_entry":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"任务",
+                "roi": [1185,475,81,82]
             }
         },
         "action":{
             "type":"Click"
+        },
+        "next":[
+            "[JumpBack]guild_task_collect",
+            "guild_task_done"
+        ]
+    },
+    "guild_task_collect":{
+        "recognition":{
+            "type":"ColorMatch",
+            "param":{
+                "upper" : [122,206,16],
+                "lower" : [122,206,16],
+                "method" : 4,
+                "connected":true
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "post_delay":1000
+    },
+    "guild_task_emoji_entry":{
+        "max_hit":1,
+        "next":[
+            "guild_task_camp", 
+            "[JumpBack]guild_task_sw"
+        ]
+
+    },
+    "guild_task_sw":{
+        "action":{
+            "type":"Swipe",
+            "param":{
+                "begin" : [437,441,1,1],
+                "end" : [592,527,1,1]
+            }
+        }
+    },
+    "guild_task_camp":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "guild/guild_task_camp.png"
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "guild_task_emoji"
+        ]
+    },
+    "guild_task_emoji":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "guild/guild_task_emoji.png"
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "guild_task_emoji_choose"
+        ]
+    },
+    "guild_task_emoji_choose":{
+        "action":{
+            "type":"Click",
+            "param":{
+                "target" : [446,562]
+            }
         }
     },
     "guild_gacha":{
@@ -337,35 +393,50 @@
             }
         },
         "next":[
-            "guild_battle_shop_entry",
-            "returnmainpage"
+            "guild_main_page",
+            "[JumpBack]back"
         ]
     },
-    "guild_battle_shop_entry":{
+    "guild_shop_entry":{
         "recognition":{
-            "type":"OCR",
+            "type":"TemplateMatch",
             "param":{
-                "expected":"奖牌交换所",
-                "roi" : [0,166,115,89]
+                "template" : "guild/guild_shop_entry.png"
             }
         },
         "action":{
             "type":"Click"
         },
         "next":[
-            "guild_battle_shop_page"
+            "guild_shop_page"
         ]
     },
-    "guild_battle_shop_page":{
+    "guild_shop_page":{
         "recognition":{
             "type":"OCR",
             "param":{
-                "expected":"进货时间",
-                "roi" : [46,107,114,45]
+                "expected":"公会名誉商店",
+                "roi" : [543,79,188,44],
+                "only_rec":true
             }
         },
         "next":[
+            "[JumpBack]guild_shop_sw",
+            "guild_main_page",
+            "[JumpBack]back"
         ]
+    },
+    "guild_shop_sw":{
+        "action":{
+            "type":"Swipe",
+            "param":{
+                "begin" : [1163,532,1,1],
+                "end" : [759,536,1,1],
+                "duration":2000
+            }
+        },
+        "max_hit":5,
+        "post_delay":2000
     },
     "guild_returnmainpage":{
         "recognition":{

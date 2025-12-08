@@ -15,7 +15,10 @@
         "recognition":{
             "type":"TemplateMatch",
             "param":{
-                "template":"shop/cookiegacha.png",
+                "template":[
+                    "shop/cookiegacha.png",
+                    "shop/cookiegacha1.png"
+                ],
                 "threshold":0.4
             }
         },
@@ -137,6 +140,20 @@
         "action":{
             "type":"Click"
         }
+    },
+    "闪亮脆饼面团":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template":"shop/闪亮脆饼面团.png"
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+        ]
+
     },
     "buy":{
         "recognition":{

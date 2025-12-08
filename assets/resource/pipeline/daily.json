@@ -54,8 +54,9 @@
         "recognition":{
             "type":"OCR",
             "param":{
-                "roi" : [423,635,135,51],
-                "expected" : "自动选择"
+                "roi" : [438,645,114,38],
+                "expected" : "自动选择",
+                "only_rec":true
             }
         },
         "action":{
