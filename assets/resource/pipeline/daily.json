@@ -26,8 +26,7 @@
             "[JumpBack]landmark_reward",
             "[Jumpback]landmark_upgrade",
             "[JumpBack]research",
-            "cleargreenpoint",
-            "returnmainpage"
+            "cleargreenpoint"
         ],
         "post_delay":3000
     },
@@ -317,7 +316,8 @@
             "type":"OCR",
             "param":{
                 "expected" : "地标空中庭园",
-                "roi" : [223,146,469,103]
+                "roi" : [72,4,217,60],
+                "only_rec":true
             }
         },
         "action":{
