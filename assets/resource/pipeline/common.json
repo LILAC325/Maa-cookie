@@ -1,11 +1,11 @@
 {
     "returnmainpage":{
         "next": [
+            "[JumpBack]check_over_quit",
+            "[JumpBack]chcek_over_back",
             "mainpagejudgment",
             "[JumpBack]back",
             "[JumpBack]quit",
-            "[JumpBack]check_over_quit",
-            "[JumpBack]chcek_over_back",
             "[JumpBack]wait_mainpagejudgment"
             
         ],

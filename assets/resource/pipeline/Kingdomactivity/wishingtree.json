@@ -182,14 +182,12 @@
                 "upper" : [147,233,33],
                 "lower" : [122,206,16],
                 "method" : 4,
-                "recommended roi" : [160,441,40,38]
+                "roi" : [40,427,161,175],
+                "connected":true
             }
         },
         "action":{
-            "type":"Click",
-            "param":{
-                "target":[44,437,149,148]
-            }
+            "type":"Click"
         },
         "next":[
             "click_wishchest"

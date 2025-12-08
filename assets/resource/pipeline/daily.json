@@ -122,10 +122,12 @@
     },
     "train_submit":{
         "recognition":{
-            "type":"OCR",
+            "type":"ColorMatch",
             "param":{
-                "roi":[788,112,304,577],
-                "expected" : "全部交货"
+                "upper" : [122,206,16],
+                "lower" : [122,206,16],
+                "method" : 4,
+                "connected":true
             }
         },
         "action":{

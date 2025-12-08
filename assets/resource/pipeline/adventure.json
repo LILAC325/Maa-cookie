@@ -666,7 +666,6 @@
         },
         "inverse":true,
         "next":[
-            "[JumpBack]comfirm",
             "arena_battle_page",
             "arena_page"
         ]
@@ -690,7 +689,6 @@
         },
         "inverse":true,
         "next":[
-            "[JumpBack]comfirm",
             "arena_battle_page",
             "arena_page"
         ]
@@ -714,7 +712,6 @@
         },
         "inverse":true,
         "next":[
-            "[JumpBack]comfirm",
             "arena_battle_page",
             "arena_page"
         ]
@@ -732,7 +729,7 @@
             "type":"Click"
         },
         "next":[
-            "[JumpBack]comfirm",
+            "[JumpBack]arena_tips",
             "[JumpBack]arena_counterattack",
             "[JumpBack]arena_battle_page",
             "[JumpBack]sw_arena_counterattack_page"
@@ -789,6 +786,7 @@
             "type":"Click"
         },
         "next":[
+            "[JumpBack]arena_tips",
             "arena_ticket_lack",
             "[JumpBack]arena_clear_page"
         ],
@@ -858,19 +856,28 @@
         "next":[
             "adventure_page",
             "[JumpBack]back"
-        ]
+        ],
+        "post_delay":2000
     },
     "arena_tips":{
         "recognition":{
             "type":"OCR",
             "param":{
-                "expected":"未装载配料或脆饼",
-                "roi" : [317,193,653,89]
+                "expected":"今日不再显示",
+                "roi" : [557,623,125,28],
+                "only_rec":true
+            }
+        },
+        "action":{
+            "type":"Click",
+            "param":{
+                "target" : [704,635,1,1]
             }
         },
         "next":[
-            
-        ]
+            "comfirm"
+        ],
+        "max_hit":1
     },
     "timespring":{
         "recognition":{
