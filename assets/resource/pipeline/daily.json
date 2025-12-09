@@ -25,7 +25,7 @@
             "[JumpBack]wait_sailing_collect",
             "[JumpBack]landmark_reward",
             "[Jumpback]landmark_upgrade",
-            "[JumpBack]research",
+            "[JumpBack]research_done",
             "cleargreenpoint"
         ],
         "post_delay":3000
@@ -280,24 +280,6 @@
         "next":[
             "adventurer_cookie",
             "cleargreenpoint"
-        ]
-    },
-    "research":{
-        "recognition":{
-            "type":"OCR",
-            "param":{
-                "expected":"研究完成",
-                "roi" : [458,36,361,102]
-            }
-        },
-        "action":{
-            "type":"Click",
-            "param":{
-                "target" : [350,650,518,49]
-            }
-        },
-        "next":[
-            "research_done"
         ]
     },
     "research_done":{
