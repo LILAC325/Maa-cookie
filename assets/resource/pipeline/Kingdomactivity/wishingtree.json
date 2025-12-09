@@ -29,7 +29,8 @@
             "wish_load",
             "wish_submit",
             "wish_cooling"
-        ]
+        ],
+        "post_delay":1000
     },
     "checkmax":{
         "recognition":{
@@ -210,28 +211,11 @@
             }
         },
         "next":[
-            "wishcometrue"
+            "[JumpBack]bottom_click",
+            "[JumpBack]wishingtree_collect",
+            "wishingtree_done"
         ],
         "pre_delay":2000
-    },
-    "wishcometrue":{
-        "recognition":{
-            "type":"OCR",
-            "param":{
-                "expected" : "愿望实现",
-                "roi" : [226,147,321,107]
-            }
-        },
-        "action":{
-            "type":"Click",
-            "param":{
-                "target":[205,549,880,139]
-            }
-        },
-        "next":[
-            "wishingtree_done",
-            "wishingtree_collect"
-        ]
     },
     "wishingtree_done":{
         "recognition":{
