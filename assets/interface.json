@@ -77,7 +77,6 @@
             "option": [
                 "蓝色焰火提交",
                 "公会扭蛋",
-                "公会讨伐",
                 "是否开启公会讨伐战奖牌交换所"
             ]
         },
@@ -347,7 +346,7 @@
                 {
                     "name": "yes",
                     "pipeline_override": {
-                        "guild_battle_shop_entry": {
+                        "guild_shop_entry": {
                             "enabled": true
                         }
                     }
@@ -355,7 +354,7 @@
                 {
                     "name": "no",
                     "pipeline_override": {
-                        "guild_battle_shop_entry": {
+                        "guild_shop_entry": {
                             "enabled": false
                         }
                     }

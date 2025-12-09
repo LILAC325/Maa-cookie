@@ -14,42 +14,46 @@
     "wishingtree_entry":{
         "next":[
             "choose_wishingtree",
-            "[JumpBack]kingdomactivity"
+            "[JumpBack]kingdomactivity",
+            "[JumpBack]returnmainpage"
             
         ]
     },
     "hotairballoon_entry":{
         "next":[
             "choose_hotairballoon",
-            "[JumpBack]kingdomactivity"
+            "[JumpBack]kingdomactivity",
+            "[JumpBack]returnmainpage"
             
         ]
     },
     "tradepage_entry":{
         "next":[
             "choose_trade",
-            "[JumpBack]kingdomactivity"
-            
+            "[JumpBack]kingdomactivity",    
+            "[JumpBack]returnmainpage"
         ]
     },
     "exchance_entry":{
         "next":[
             "choose_exchance",
-            "[JumpBack]kingdomactivity"
-            
+            "[JumpBack]kingdomactivity",
+            "[JumpBack]returnmainpage"
         ]
     },
     "train_entry":{
         "next":[
             "choose_train",
-            "[JumpBack]kingdomactivity"
+            "[JumpBack]kingdomactivity",
+            "[JumpBack]returnmainpage"
             
         ]
     },
     "specialcookie_entry":{
         "next":[
             "choose_specialcookie",
-            "[JumpBack]kingdomactivity"
+            "[JumpBack]kingdomactivity",
+            "[JumpBack]returnmainpage"
         ]
     },
     "choose_hotairballoon":{

@@ -9,7 +9,10 @@
         },
         "action":{
             "type":"Click"
-        }
+        },
+        "next":[
+            "buy"
+        ]
     },
     "cookiegacha":{
         "recognition":{
@@ -24,7 +27,10 @@
         },
         "action":{
             "type":"Click"
-        }
+        },
+        "next":[
+            "buy"
+        ]
     },
     "treasuregacha":{
         "recognition":{
@@ -35,7 +41,10 @@
         },
         "action":{
             "type":"Click"
-        }
+        },
+        "next":[
+            "buy"
+        ]
     },
     "Legendsoul":{
         "recognition":{
@@ -47,7 +56,10 @@
         },
         "action":{
             "type":"Click"
-        }
+        },
+        "next":[
+            "buy"
+        ]
     },
     "IngredientPieces":{
         "recognition":{
@@ -58,7 +70,10 @@
         },
         "action":{
             "type":"Click"
-        }
+        },
+        "next":[
+            "buy"
+        ]
     },
     "lightPieces":{
         "recognition":{
@@ -69,7 +84,10 @@
         },
         "action":{
             "type":"Click"
-        }
+        },
+        "next":[
+            "buy"
+        ]
     },
     "skillpowder3":{
         "recognition":{
@@ -133,7 +151,8 @@
             "param":{
                 "template":[
                     "shop/kingdommaterials.png",
-                    "shop/kingdommaterials1.png"
+                    "shop/kingdommaterials1.png",
+                    "shop/kingdommaterials3.png"
                 ]
             }
         },
@@ -152,6 +171,7 @@
             "type":"Click"
         },
         "next":[
+            "buy"
         ]
 
     },

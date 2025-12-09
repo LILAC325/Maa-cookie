@@ -3,11 +3,11 @@
         "post_wait_freeze":300,
         "timeout":60000,
         "next":[
+            "mainpagejudgment",
             "login_page",
             "[JumpBack]start_game",
             "[JumpBack]login_download",
             "[JumpBack]quit",
-            "[JumpBack]mainpagejudgment",
             "[JumpBack]wait_login_page"
         ]
     },

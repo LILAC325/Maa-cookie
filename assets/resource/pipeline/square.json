@@ -1,0 +1,107 @@
+{
+    "square_entry":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "广场",
+                "roi" : [269,608,725,111]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "square_page"
+        ]
+    },
+    "square_page":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "中央广场",
+                "roi" : [16,18,107,36]
+            }
+        },
+        "next":[
+            "square_task_entry"
+        ]
+    },
+    "square_task_entry":{
+        "next":[
+            "[JumpBack]square_task_emoji_entry",
+            "sqare_task_page"
+        ]
+    },
+    "square_task_emoji_entry":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "guild/guild_task_emoji.png"
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "[JumpBack]square_task_emoji_choose"
+        ],
+        "max_hit":1
+    },
+    "square_task_emoji_choose":{
+        "action":{
+            "type":"Click",
+            "param":{
+                "target" : [308,553,1,1]
+            }
+        },
+        "max_hit":5
+    },
+    "sqare_task_page":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "任务",
+                "roi" : [1184,122,95,162]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "[JumpBack]sqare_task_collect",
+            "sqare_task_done"
+        ]
+    },
+    "sqare_task_collect":{
+        "recognition":{
+            "type":"ColorMatch",
+            "param":{
+                "upper" : [122,206,16],
+                "lower" : [122,206,16],
+                "method" : 4,
+                "connected":true
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "post_delay":1000
+    },
+    "sqare_task_done":{
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action":"DisableNode",
+                "custom_action_param":{
+                    "node_name":"square_task_entry"
+                }
+            }
+        },
+        "next":[
+            "square_page",
+            "[JumpBack]back"
+        ],
+        "post_delay":2000
+    }
+
+}
