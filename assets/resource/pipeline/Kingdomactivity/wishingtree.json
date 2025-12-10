@@ -28,7 +28,8 @@
             "checkmax",
             "wish_load",
             "wish_submit",
-            "wish_cooling"
+            "wish_cooling",
+            "returnmainpage"
         ],
         "post_delay":1000
     },
@@ -97,34 +98,26 @@
             }
         },
         "next":[
-            "wish_cooling_find",
+            "wish_refresh",
             "wishingtree_page"
         ]
     },
-    "wish_cooling_find":{
-        "next":[
-            "wish_location1",
-            "wish_location2",
-            "wish_location3",
-            "wish_location4"
-        ]
-    },
-    "wish_location1":{
+    "wish_refresh":{
         "recognition":{
-            "type":"TemplateMatch",
+            "type":"OCR",
             "param":{
-                "template":""
+                "expected":"刷新列表",
+                "roi":"wish_submit",
+                "roi_offset":[-34,-415,75,7]
             }
-        }
-    },
-    "wish_location2":{
-
-    },
-    "wish_location3":{
-
-    },
-    "wish_location4":{
-
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "wish_cooling",
+            "wishingtree_page"
+        ]
     },
     "wish_cooling":{
         "recognition":{
@@ -192,7 +185,8 @@
         },
         "next":[
             "click_wishchest"
-        ]
+        ],
+        "post_delay":2000
     },
     "click_wishchest":{
         "recognition":{
@@ -212,8 +206,9 @@
         },
         "next":[
             "[JumpBack]bottom_click",
-            "[JumpBack]wishingtree_collect",
+            "wishingtree_collect",
             "wishingtree_done"
+
         ],
         "pre_delay":2000
     },

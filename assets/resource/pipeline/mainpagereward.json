@@ -1,9 +1,16 @@
 {
-    "mainpge_reward_entry":{
+    "mainpge_reward_once_entry":{
         "next":[
-            "mainpge_reward",
+            "mainpage_reward",
             "[JumpBack]returnmainpage"
         ]
+    },
+    "mainpage_reward_again_entry":{
+        "next":[
+            "mainpage_activity_entry",
+            "[JumpBack]returnmainpage"
+        ]
+        
     },
     "kingdomproduce_entry":{
         "next":[
@@ -11,7 +18,7 @@
             "[JumpBack]returnmainpage"
         ]
     },
-    "mainpge_reward":{
+    "mainpage_reward":{
         "recognition":{
             "type":"TemplateMatch",
             "param":{
@@ -180,7 +187,7 @@
         },
         "next": [
             "check_weekend",
-            "mainpge_reward",
+            "mainpage_reward",
             "[JumpBack]returnmainpage"
         ]
     },
@@ -299,7 +306,7 @@
             }
         },
         "next": [
-            "mainpge_reward", 
+            "mainpage_reward", 
             "[JumpBack]returnmainpage"
         ]
     },
@@ -478,20 +485,11 @@
             "type":"Click"
         },
         "next":[
-            "mailbox_collect"
-        ],
-        "post_wait_freezes":500
-    },
-    "mailbox_collect":{
-        "action":{
-            "type":"Click",
-            "param":{
-                "target": [218,628,854,63]
-            }
-        },
-        "next":[
+            "[JumpBack]comfirm",
+            "[JumpBack]bottom_click",
             "mailbox_done"
-        ]
+        ],
+        "post_delay":1000
     },
     "mailbox_done":{
         "action":{
@@ -799,6 +797,49 @@
         "next":[
             "[JumpBack]filluponce",
             "kingdomproduce_page"
+        ]
+    },
+    "mainpage_activity_entry":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"^活动$",
+                "roi" : [5,128,100,468]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "[JumpBack]mainpage_activity_pass",
+            "mainpage_activity_done"
+        ]
+    },
+    "mainpage_activity_pass":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"通行证",
+                "roi" : [0,70,246,649]
+            }
+        },
+        "action":{
+            "type":"Click"
+        }
+    },
+    "mainpage_activity_done":{
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action":"DisableNode",
+                "custom_action_param":{
+                    "node_name":"mainpage_activity_entry"
+                }
+            }
+        },
+        "max_hit":1,
+        "next":[
+            "returnmainpage"
         ]
     }
 }

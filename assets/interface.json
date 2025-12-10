@@ -45,7 +45,11 @@
         },
         {
             "name": "许愿树",
-            "entry": "wishingtree_entry"
+            "entry": "wishingtree_entry",
+            "option": [
+                "是否使用加速劵",
+                "许愿模式"
+            ]
         },
         {
             "name": "相约之所",
@@ -82,7 +86,7 @@
         },
         {
             "name": "页面奖励",
-            "entry": "mainpge_reward_entry",
+            "entry": "mainpge_reward_once_entry",
             "check": true
         },
         {
@@ -551,6 +555,46 @@
                     "name": "no",
                     "pipeline_override": {
                         "archipelago": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "是否使用10分钟加速劵":{
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "wish_cooling": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "wish_cooling": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "许愿模式":{
+            "cases":[
+                {
+                    "name":"每日30",
+                    "pipeline_override":{
+                        "checkmax":{
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name":"无限刷取",
+                    "pipeline_override":{
+                        "checkmax":{
                             "enabled": false
                         }
                     }

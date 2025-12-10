@@ -28,7 +28,8 @@
             "[JumpBack]research_done",
             "cleargreenpoint"
         ],
-        "post_delay":3000
+        "post_delay":3000,
+        "timeout":10000
     },
     "hotairballoon":{
         "recognition":{
