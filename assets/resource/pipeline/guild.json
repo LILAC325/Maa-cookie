@@ -114,7 +114,7 @@
         },
         "next":[
             "guild_main_page",
-            "[JumpBack]back"
+            "[JumpBack]quit"
         ]
     },
     "guild_task":{
@@ -393,7 +393,7 @@
         },
         "next":[
             "guild_main_page",
-            "[JumpBack]back"
+            "[JumpBack]quit"
         ]
     },
     "guild_shop_entry":{
@@ -422,7 +422,7 @@
         "next":[
             "[JumpBack]guild_shop_sw",
             "guild_main_page",
-            "[JumpBack]back"
+            "[JumpBack]quit"
         ]
     },
     "guild_shop_sw":{

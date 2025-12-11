@@ -47,7 +47,7 @@
             "name": "许愿树",
             "entry": "wishingtree_entry",
             "option": [
-                "是否使用加速劵",
+                "是否使用10分钟加速劵",
                 "许愿模式"
             ]
         },
@@ -56,8 +56,7 @@
             "entry": "specialcookie_entry",
             "option": [
                 "饼干选择"
-            ],
-            "doc": "请在使用前打开“连续”功能"
+            ]
         },
         {
             "name": "冒险",

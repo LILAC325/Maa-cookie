@@ -31,7 +31,10 @@
         "recognition":{
             "type":"TemplateMatch",
             "param":{
-                "template" : "common/return.png",
+                "template" : [
+                    "common/return.png",
+                    "common/quit2.png"
+                ],
                 "roi" : [1137,2,142,114]
             }
         },
