@@ -1,9 +1,10 @@
 {
     "cleargreenpoint_entry":{
         "next":[
+            "cleargreenpoint",
             "[JumpBack]returnmainpage",
-            "[JumpBack]adventurer_cookie",
-            "cleargreenpoint"
+            "[JumpBack]adventurer_cookie"
+            
         ]
     },
     "cleargreenpoint":{

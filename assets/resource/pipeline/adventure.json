@@ -58,10 +58,10 @@
         },
         "next":[
             "check_legendaryjam_time",
-            "frostqueen",
-            "seasprite",
-            "blackpearl",
-            "sw_legendaryjam_bottom"
+            "[JumpBack]frostqueen",
+            "[JumpBack]seasprite",
+            "[JumpBack]blackpearl",
+            "[JumpBack]sw_legendaryjam_bottom"
         ]
     },
     "sw_legendaryjam_bottom":{
@@ -71,10 +71,7 @@
                 "begin" : [1189,601,1,1],
                 "end" : [1187,372,1,1]
             }
-        },
-        "next":[
-            "legendaryjam_page"
-        ]
+        }
     },
     "frostqueen":{
         "recognition":{

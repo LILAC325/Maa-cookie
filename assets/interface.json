@@ -84,9 +84,15 @@
             ]
         },
         {
-            "name": "页面奖励",
+            "name": "页面奖励(一次)",
             "entry": "mainpge_reward_once_entry",
             "check": true
+        },
+        {
+            "name": "页面奖励(重复)",
+            "entry": "mainpage_reward_again_entry",
+            "check": true
+
         },
         {
             "name": "海上贸易中心",
@@ -120,6 +126,10 @@
             "name": "熊熊果冻列车",
             "entry": "train_entry",
             "doc": "该功能已包含在'清绿点'中，该入口为保底检查，按需启用"
+        },
+        {
+            "name": "广场挂机",
+            "entry": "square_entry"
         }
     ],
     "option": {
