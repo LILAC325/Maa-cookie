@@ -1,18 +1,37 @@
 {
     "square_entry":{
+        "next":[
+            "square",
+            "[JumpBack]returnmainpage"
+        ]
+    },
+    "square":{
         "recognition":{
             "type":"OCR",
             "param":{
                 "expected" : "广场",
-                "roi" : [269,608,725,111]
+                "roi" : [416,676,47,24],
+                "only_rec":true
             }
         },
         "action":{
             "type":"Click"
         },
         "next":[
-            "square_page"
+            "square_page",
+            "[JumpBack]wait_square_page"
         ]
+    },
+    "wait_square_page":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "中央广场",
+                "roi" : [16,18,107,36]
+            }
+        },
+        "inverse":true,
+        "post_delay":3000
     },
     "square_page":{
         "recognition":{
@@ -29,6 +48,7 @@
     "square_task_entry":{
         "next":[
             "[JumpBack]square_task_emoji_entry",
+            "[JumpBack]square_map_collect_entry",
             "sqare_task_page"
         ]
     },
@@ -43,7 +63,8 @@
             "type":"Click"
         },
         "next":[
-            "[JumpBack]square_task_emoji_choose"
+            "[JumpBack]square_task_emoji_choose",
+            "square_task_entry"
         ],
         "max_hit":1
     },
@@ -56,30 +77,68 @@
         },
         "max_hit":5
     },
-    "sqare_task_page":{
+    "square_map_collect_entry":{
         "recognition":{
-            "type":"OCR",
+            "type":"TemplateMatch",
             "param":{
-                "expected" : "任务",
-                "roi" : [1184,122,95,162]
+                "template" : "square/map.png",
+                "roi" : [863,19,49,41]
             }
         },
         "action":{
             "type":"Click"
         },
         "next":[
+            "square_map_page"
+        ]
+    },
+    "square_map_page":{
+
+    },
+    "sqare_task_page":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "任务",
+                "roi" : [1205,163,54,34],
+                "only_rec":true
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "[Jumpback]sqare_task_daily_choose",
             "[JumpBack]sqare_task_collect",
             "sqare_task_done"
         ]
+    },
+    "sqare_task_daily_choose":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "每目任务",
+                "roi" : [564,50,145,43],
+                "only_rec":true
+            }
+        },
+        "action":{
+            "type":"Click",
+            "param":{
+                "target" : [334,631,144,45]
+            }
+        },
+        "inverse":true
     },
     "sqare_task_collect":{
         "recognition":{
             "type":"ColorMatch",
             "param":{
-                "upper" : [122,206,16],
-                "lower" : [122,206,16],
+                "upper" : [122,205,16],
+                "lower" : [122,205,16],
                 "method" : 4,
-                "connected":true
+                "connected":true,
+                "roi" : [870,180,229,356]
             }
         },
         "action":{

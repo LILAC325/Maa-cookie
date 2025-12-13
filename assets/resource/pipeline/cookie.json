@@ -1,0 +1,24 @@
+{
+    "cookie_page_entry":{
+        "next":[
+            "cookie_page",
+            "[JumpBack]returnmainpage"
+        ]
+    },
+    "cookie_page":{
+        "recognition":{
+            "recognition":{
+                "type":"OCR",
+                "param":{
+                    "expected" : "饼干",
+                    "roi" : [911,677,44,21],
+                    "only_rec":true
+                }
+            }
+        }
+        "next":[
+            "adventurer_cookie",
+            "cleargreenpoint"
+        ]
+    }
+}

@@ -10,10 +10,10 @@
             "type":"Click"
         },
         "next": [
-            "specialcookie_page"
+            "specialcookie_page_entry"
         ]
     },
-    "specialcookie_page":{
+    "specialcookie_page_entry":{
         "recognition":{
             "type":"OCR",
             "param":{
@@ -52,7 +52,7 @@
             "type":"Click"
         },
         "next": [
-            "cookie_page"
+            "specialcookie_page"
         ],
         "enabled":false
     },
@@ -67,11 +67,11 @@
             "type":"Click"
         },
         "next": [
-            "cookie_page"
+            "specialcookie_page"
         ],
         "enabled":true
     },
-    "cookie_page":{
+    "specialcookie_page":{
         "recognition":{
             "type":"OCR",
             "param":{
@@ -85,10 +85,10 @@
             "type":"Click"
         },
         "next": [
-            "cookie_next_page"
+            "specialcookie_next_page"
         ]
     },
-    "cookie_next_page":{
+    "specialcookie_next_page":{
         "recognition":{
             "type":"OCR",
             "param":{
@@ -106,11 +106,11 @@
             }
         },
         "next":[
-            "wait_cookie_next"
+            "wait_specialcookie_next"
         ],
         "pre_delay":5000
     },
-    "wait_cookie_next":{
+    "wait_specialcookie_next":{
         "recognition":{
             "type":"OCR",
             "param":{
@@ -118,13 +118,13 @@
             }
         },
         "next":[
-            "cookie_success",
-            "wait_cookie_next",
-            "cookie_done"
+            "specialcookie_success",
+            "wait_specialcookie_next",
+            "specialcookie_done"
         ],
         "pre_delay":5000
     },
-    "cookie_success":{
+    "specialcookie_success":{
         "recognition":{
             "type":"OCR",
             "param":{
@@ -138,23 +138,9 @@
             }
         },
         "next":[
-            "cookie_done"
+            "specialcookie_done"
         ],
         "pre_delay":5000
-    },
-    "cookie_done":{
-        "recognition":{
-            "type":"OCR",
-            "param":{
-                "expected":[
-                    "尝试孵化",
-                    "唤醒"
-                ]
-            }
-        },
-        "next":[
-            "specialcookie_done"
-        ]
     },
     "specialcookie_done":{
         "action":{
