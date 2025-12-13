@@ -4,8 +4,8 @@
             "cleargreenpoint",
             "[JumpBack]returnmainpage",
             "[JumpBack]adventurer_cookie"
-            
-        ]
+        ],
+        "timeout":5000
     },
     "cleargreenpoint":{
         "recognition":{

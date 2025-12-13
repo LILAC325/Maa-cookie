@@ -536,17 +536,13 @@
                 "custom_action_param":{
                     "protectbattle_battle_entry":{
                         "recognition":{
-                            "type":"OCR",
-                            "param":{
-                                "expected":"进入",
-                                "roi" : [1041,436,183,80]
-                            }
+                            "roi":"protectbattle_master",
+                            "roi_offset":[547,32,22,10]
                         }
                     }
                 }
             }
         },
-        "max_hit":1,
         "next":[
             "protectbattle_battle_entry"
         ]
@@ -565,22 +561,24 @@
                 "custom_action_param":{
                     "protectbattle_battle_entry":{
                         "recognition":{
-                            "type":"OCR",
-                            "param":{
-                                "expected":"进入",
-                                "roi" : [1037,591,196,85]
-                            }
+                            "roi":"protectbattle_infinite",
+                            "roi_offset":[547,32,22,10]
                         }
                     }
                 }
             }
         },
-        "max_hit":1,
         "next":[
             "protectbattle_battle_entry"
         ]
     },
     "protectbattle_battle_entry":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"进入"
+            }
+        },
         "action":{
             "type":"Click"
         },
