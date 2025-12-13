@@ -28,6 +28,10 @@
     ],
     "task": [
         {
+            "name":"全局商店列表设置",
+            "check": true
+        },
+        {
             "name":"启动",
             "entry":"startup",
             "check": true

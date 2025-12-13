@@ -62,7 +62,8 @@
         "next":[
             "wish_load",
             "wishingtree_page"
-        ]
+        ],
+        "post_delay":1000
     },
     "wish_submit":{
         "recognition":{
@@ -166,6 +167,7 @@
             "type":"Click"
         },
         "next":[
+            "wish_cooling",
             "wishingtree_page"
         ]
     },

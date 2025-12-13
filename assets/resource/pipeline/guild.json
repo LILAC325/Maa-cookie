@@ -420,6 +420,7 @@
             }
         },
         "next":[
+            "[JumpBack]shop_list",
             "[JumpBack]guild_shop_sw",
             "guild_main_page",
             "[JumpBack]quit"
