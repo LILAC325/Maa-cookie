@@ -104,7 +104,7 @@
             }
         },
         "next":[
-            "legendaryjam_battle_page"
+"legendaryjam_battle_page"
         ],
         "enabled":false
     },
@@ -335,8 +335,10 @@
                 "custom_action_param":{
                     "timespring":{
                         "recognition":{
-                            "roi" : "todayreward_bonus_100%",
-                            "roi_offset":[-262,335,250,234]
+                            "param":{
+                                "roi" : "todayreward_bonus_100%",
+                                "roi_offset":[-262,335,250,234]
+                            }
                         }
                     }
                 }
@@ -361,8 +363,10 @@
                 "custom_action_param":{
                     "timespring":{
                         "recognition":{
-                            "roi" : "todayreward_bonus_80%",
-                            "roi_offset":[-262,335,250,234]
+                            "param":{
+                                "roi" : "todayreward_bonus_80%",
+                                "roi_offset":[-262,335,250,234]
+                            }
                         }
                     }
                 }
@@ -387,8 +391,10 @@
                 "custom_action_param":{
                     "timespring":{
                         "recognition":{
-                            "roi" : "todayreward_bonus_60%",
-                            "roi_offset":[-262,335,250,234]
+                            "param":{
+                                "roi" : "todayreward_bonus_60%",
+                                "roi_offset":[-262,335,250,234]
+                            }
                         }
                     }
                 }
@@ -413,8 +419,10 @@
                 "custom_action_param":{
                     "timespring":{
                         "recognition":{
-                            "roi" : "todayreward_bonus_50%",
-                            "roi_offset":[-262,335,250,234]
+                            "param":{
+                                "roi" : "todayreward_bonus_50%",
+                                "roi_offset":[-262,335,250,234]
+                            }
                         }
                     }
                 }

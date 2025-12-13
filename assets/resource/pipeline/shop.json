@@ -115,7 +115,7 @@
             "buy"
         ]
     },
-    "IngredientPieces":{
+    "Ingredient_Pieces":{
         "recognition":{
             "type":"TemplateMatch",
             "param":{

@@ -33,9 +33,10 @@
             "param":{
                 "template" : [
                     "common/return.png",
-                    "common/quit2.png"
+                    "common/quit2.png",
+                    "common/quit3.png"
                 ],
-                "roi" : [1137,2,142,114]
+                "roi" : [783,0,496,338]
             }
         },
         "action":{
@@ -130,6 +131,9 @@
         "action":{
             "type":"Click"
         }
+    },
+    "nothingtodo":{
+        
     },
     "exit_task":{
         "action":{

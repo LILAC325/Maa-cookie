@@ -7,18 +7,577 @@
     },
     "cookie_page":{
         "recognition":{
-            "recognition":{
-                "type":"OCR",
-                "param":{
-                    "expected" : "饼干",
-                    "roi" : [911,677,44,21],
-                    "only_rec":true
+            "type":"OCR",
+            "param":{
+                "expected" : "饼干",
+                "roi" : [911,677,44,21],
+                "only_rec":true
+                }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "cookie_page_next"
+        ],
+        "post_delay":3000
+    },
+    "cookie_page_next":{
+        "action":{
+            "type":"Click",
+            "param":{
+                "target" : [154,93,85,54]
+            }
+        },
+        "next":[
+            "Ingredient_page",
+            "CrispyCookie_page"
+        ]
+    },
+    "Ingredient_page":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "配料管理",
+                "roi" : [913,517,114,43],
+                "only_rec":true
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "Ingredient_Decompose_entry"
+        ]
+    },
+    "Ingredient_Decompose_entry":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "配料分解",
+                "roi" : [674,649,107,31],
+                "only_rec":true
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "Ingredient_Decompose_page"
+        ]
+    },
+    "Ingredient_Decompose_page":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "配料列表",
+                "roi" : [260,95,132,47],
+                "only_rec":true
+            }
+        },
+        "next":[
+            "[JumpBack]Ingredient_Filter_entry",
+            "[JumpBack]Ingredient_Decompose_chooseall",
+            "returnmainpage"
+        ]
+    },
+    "Ingredient_Decompose_chooseall":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"选择全部",
+                "roi" : [52,648,102,34],
+                "only_rec":true
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "max_hit":1,
+        "next":[
+            "Ingredient_Decompose_confirm"
+        ]
+    },
+    "Ingredient_Decompose_confirm":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"分解",
+                "roi" : [834,633,236,60]
+            }
+        },
+        "action":{
+            "type":"Click"
+        }
+    },
+    "Ingredient_Filter_entry":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "筛选",
+                "roi" : [363,647,62,34],
+                "only_rec":true
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "max_hit":1,
+        "next":[
+            "[JumpBack]Broad_Filtering",
+            "[JumpBack]Precise_Filtering",
+            "Ingredient_Decompose_page",
+            "[JumpBack]quit"
+        ]
+    },
+    "Broad_Filtering":{
+        "max_hit":1,
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action":"NodeOverride",
+                "custom_action_param":{
+                    "ssr_Ingredient_Filtering":{
+                        "inverse":false
+                    }
                 }
             }
-        }
+        },
         "next":[
-            "adventurer_cookie",
-            "cleargreenpoint"
+            "ssr_Ingredient_Filtering",
+            "nothingtodo"
+        ]
+    },
+    "ssr_Ingredient_Filtering":{
+        "recognition":{
+            "type":"ColorMatch",
+            "param":{
+                "upper" : [177,90,233],
+                "lower" : [177,90,233],
+                "method" : 4,
+                "connected":true,
+                "roi" : [744,160,39,36]
+            }
+        },
+        "action":{
+            "type":"Click",
+            "param":{
+                "target" : [744,160,39,36]
+            }
+        },
+        "inverse":true
+    },
+    "Precise_Filtering":{
+        "max_hit":1,
+        "next":[
+            "[JumpBack]ssr_Ingredient_Filtering",
+            "[JumpBack]Reset_Precise_Filtering",
+            "[JumpBack]覆盆莓_choose",
+            "[JumpBack]核桃_choose",
+            "[JumpBack]花生_choose",
+            "[JumpBack]焦糖_choose", 
+            "[JumpBack]苹果果冻_choose",
+            "[JumpBack]巧克力豆_choose",
+            "[JumpBack]杏仁_choose",
+            "[JumpBack]榛果_choose",
+            "[JumpBack]奇异果_choose",
+            "[JumpBack]巧克力糖_choose",
+            "Precise_Filtering_done"
+        ],
+        "enabled":false
+    },
+    "Precise_Filtering_done":{
+        "next":[
+            "Ingredient_Decompose_page",
+            "[JumpBack]quit"
+        ]
+    },
+    "Reset_Precise_Filtering":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "cookie/choose.png",
+                "roi" : [1180,628,58,48]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "inverse":true
+    },
+    "覆盆莓_choose":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "覆盆莓"
+            }
+        },
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action":"NodeOverride",
+                "custom_action_param":{
+                    "Ingredient_choose_check" :{
+                        "recognition":{
+                            "param":{
+                                "roi" : "覆盆莓_choose",
+                                "roi_offset" : [144, -7, -27, 14]
+                            }
+                        },
+                        "action":{
+                            "param":{
+                                "target" : "覆盆莓_choose"
+                            }
+                            
+                        }
+                    }
+                }
+            }
+        },
+        "max_hit":1,
+        "next":[
+            "Ingredient_choose_check",
+            "nothingtodo"
+        ]
+    },
+    "核桃_choose":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "核桃"
+            }
+        },
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action":"NodeOverride",
+                "custom_action_param":{
+                    "Ingredient_choose_check" :{
+                        "recognition":{
+                            "param":{
+                                "roi" : "核桃_choose",
+                                "roi_offset" : [144, -7, -27, 14]
+                            }
+                        },
+                        "action":{
+                            "param":{
+                                "target" : "核桃_choose"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "max_hit":1,
+        "next":[
+            "Ingredient_choose_check",
+            "nothingtodo"
+        ]
+    },
+    "花生_choose":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "花生"
+            }
+        },
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action":"NodeOverride",
+                "custom_action_param":{
+                    "Ingredient_choose_check" :{
+                        "recognition":{
+                            "param":{
+                                "roi" : "花生_choose",
+                                "roi_offset" : [144, -7, -27, 14]
+                            }
+                        },
+                        "action":{
+                            "param":{
+                                "target" : "花生_choose"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "max_hit":1,
+        "next":[
+            "Ingredient_choose_check",
+            "nothingtodo"
+        ]
+    },
+    "焦糖_choose":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "焦糖"
+            }
+        },
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action":"NodeOverride",
+                "custom_action_param":{
+                    "Ingredient_choose_check" :{
+                        "recognition":{
+                            "param":{
+                                "roi" : "焦糖_choose",
+                                "roi_offset" : [144, -7, -27, 14]
+                            }
+                        },
+                        "action":{
+                            "param":{
+                                "target" : "焦糖_choose"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "max_hit":1,
+        "next":[
+            "Ingredient_choose_check",
+            "nothingtodo"
+        ]
+    },
+    "苹果果冻_choose":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "苹果果冻"
+            }
+        },
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action":"NodeOverride",
+                "custom_action_param":{
+                    "Ingredient_choose_check" :{
+                        "recognition":{
+                            "param":{
+                                "roi" : "苹果果冻_choose",
+                                "roi_offset" : [144, -7, -27, 14]
+                            }
+                        },
+                        "action":{
+                            "param":{
+                                "target" : "苹果果冻_choose"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "max_hit":1,
+        "next":[
+            "Ingredient_choose_check",
+            "nothingtodo"
+        ]
+    },
+    "巧克力豆_choose":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "巧克力豆"
+            }
+        },
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action":"NodeOverride",
+                "custom_action_param":{
+                    "Ingredient_choose_check" :{
+                        "recognition":{
+                            "param":{
+                                "roi" : "巧克力豆_choose",
+                                "roi_offset" : [144, -7, -27, 14]
+                            }
+                        },
+                        "action":{
+                            "param":{
+                                "target" : "巧克力豆_choose"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "max_hit":1,
+        "next":[
+            "Ingredient_choose_check",
+            "nothingtodo"
+        ]
+    },
+    "杏仁_choose":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "杏仁"
+            }
+        },
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action":"NodeOverride",
+                "custom_action_param":{
+                    "Ingredient_choose_check" :{
+                        "recognition":{
+                            "param":{
+                                "roi" : "杏仁_choose",
+                                "roi_offset" : [144, -7, -27, 14]
+                            }
+                        },
+                        "action":{
+                            "param":{
+                                "target" : "杏仁_choose"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "max_hit":1,
+        "next":[
+            "Ingredient_choose_check",
+            "nothingtodo"
+        ]
+    },
+    "榛果_choose":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "榛果"
+            }
+        },
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action":"NodeOverride",
+                "custom_action_param":{
+                    "Ingredient_choose_check" :{
+                        "recognition":{
+                            "param":{
+                                "roi" : "榛果_choose",
+                                "roi_offset" : [144, -7, -27, 14]
+                            }
+                        },
+                        "action":{
+                            "param":{
+                                "target" : "榛果_choose"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "max_hit":1,
+        "next":[
+            "Ingredient_choose_check",
+            "nothingtodo"
+        ]
+    },
+    "奇异果_choose":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "奇异果"
+            }
+        },
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action":"NodeOverride",
+                "custom_action_param":{
+                    "Ingredient_choose_check" :{
+                        "recognition":{
+                            "param":{
+                                "roi" : "奇异果_choose",
+                                "roi_offset" : [144, -7, -27, 14]
+                            }
+                        },
+                        "action":{
+                            "param":{
+                                "target" : "奇异果_choose"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "max_hit":1,
+        "next":[
+            "Ingredient_choose_check",
+            "nothingtodo"
+        ]
+    },
+    "巧克力糖_choose":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "巧克力糖"
+            }
+        },
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action":"NodeOverride",
+                "custom_action_param":{
+                    "Ingredient_choose_check" :{
+                        "recognition":{
+                            "param":{
+                                "roi" : "巧克力糖_choose",
+                                "roi_offset" : [144, -7, -27, 14]
+                            }
+                        },
+                        "action":{
+                            "param":{
+                                "target" : "巧克力糖_choose"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "max_hit":1,
+        "next":[
+            "Ingredient_choose_check",
+            "nothingtodo"
+        ]
+    },
+    "Ingredient_choose_check":{
+        "recognition":{
+            "type":"ColorMatch",
+            "param":{
+                "upper" : [246,137,36],
+                "lower" : [237,133,35],
+                "method" : 4,
+                "connected" : true
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "inverse":true,
+        "next":[
+            "Precise_Filtering"
+        ]
+    },
+    "CrispyCookie_page":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "脆饼管理",
+                "roi" : [731,519,113,38],
+                "only_rec":true
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            
         ]
     }
 }
