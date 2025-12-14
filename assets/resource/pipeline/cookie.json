@@ -50,6 +50,23 @@
             "Ingredient_Decompose_entry"
         ]
     },
+    "Ingredient_Enhanced_entry":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"配料同时强化",
+                "roi" : [813,650,117,31],
+                "only_rec":true
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "Ingredient_Enhanced_page"
+        ]
+    },
+
     "Ingredient_Decompose_entry":{
         "recognition":{
             "type":"OCR",
@@ -563,6 +580,504 @@
         "next":[
             "Precise_Filtering"
         ]
+    },
+    "Ingredient_Enhanced_page":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"配料列表",
+                "roi" : [257,95,140,48]
+            }
+        },
+        "next":[
+            "Ingredient_Enhanced_choose30",
+            "Ingredient_Enhanced_plus12"
+        ]
+    },
+    "Ingredient_Enhanced_plus12":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "强化",
+                "roi" : [825,651,67,24],
+                "only_rec":true
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "Ingredient_Enhanced_plus12_page"
+        ]
+    },
+    "Ingredient_Enhanced_plus12_page":{
+        "action":{
+            "type":"Click",
+            "param":{
+                "target" : [686,277,28,43]
+            }
+        },
+        "next":[
+            "Ingredient_Enhanced_plus12_chance"
+        ]
+
+    },
+    "Ingredient_Enhanced_plus12_chance":{
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action":"NodeOverride",
+                "custom_action_param":{
+                    "攻击力_choose":{
+                        "recognition":{
+                            "param":{
+                                "roi" : [708,509,144,83]
+                            }
+                        }
+                    },
+                    "冷却时间_choose":{
+                        "recognition":{
+                            "param":{
+                                "roi" : [708,592,144,83]
+                            }
+                        }
+                    },
+                    "会心_choose":{
+                        "recognition":{
+                            "param":{
+                                "roi" : [708,675,144,83]
+                            }
+                        }
+                    },
+                    "伤害减免_choose":{
+                        "recognition":{
+                            "param":{
+                                "roi" : [708,758,144,83]
+                            }
+                        }
+                    },
+                    "生命值_choose":{
+                        "recognition":{
+                            "param":{
+                                "roi" : [708,841,144,83]
+                            }
+                        }
+                    },
+                    "攻击速度_choose":{
+                        "recognition":{
+                            "param":{
+                                "roi" : [708,924,144,83]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "next":[
+            "Ingredient_Enhanced_cofirm"
+        ]
+
+    },
+    "Ingredient_Enhanced_choose30":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "选择30个",
+                "roi" : [52,647,100,35],
+                "only_rec":true
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "max_hit":1,
+        "next":[
+            "Ingredient_Enhanced_cofirm"
+        ]
+    },
+    "Ingredient_Enhanced_cofirm":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"连续强化",
+                "roi" : [1108,637,111,45],
+                "only_rec":true
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "[JumpBack]comfirm",
+            "Ingredient_Enhanced_check_page"
+        ],
+        "post_delay":1000
+    },
+    "Ingredient_Enhanced_check_page":{
+        "next":[
+            "攻击力_choose",
+            "冷却时间_choose",
+            "会心_choose",
+            "伤害减免_choose",
+            "生命值_choose",
+            "攻击速度_choose",
+            "Ingredient_Enhanced_Decompose",
+            "Ingredient_Enhanced_done"
+        ]
+    },
+    "攻击力_choose":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "攻击力",
+                "roi" : [707,475,163,117]
+            }
+        },
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action":"NodeOverride",
+                "custom_action_param":{
+                    "攻击力_value" :{
+                        "recognition":{
+                            "param":{
+                                "roi" : "攻击力_choose",
+                                "roi_offset" : [358, 0, 64, 0]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "next":[
+            "攻击力_value",
+            "Ingredient_Enhanced_Decompose"
+        ]
+    },
+    "攻击力_value":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected": [
+                    "3.5%", "3.6%", "3.7%", "3.8%", "3.9%", "^4%$"
+                ]
+            }
+        },
+        "next":[
+            "Ingredient_Enhanced_next_check",
+            "Ingredient_Enhanced_next"
+        ]
+    },
+    "冷却时间_choose": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "冷却时间",
+                "roi": [707, 475, 163, 117]
+            }
+        },
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "NodeOverride",
+                "custom_action_param": {
+                    "冷却时间_value": {
+                        "recognition": {
+                            "param": {
+                                "roi": "冷却时间_choose",
+                                "roi_offset": [358, 0, 64, 0]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "next": [
+            "冷却时间_value",
+            "Ingredient_Enhanced_Decompose"
+        ]
+    },
+    "冷却时间_value": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected":  ["1.7%", "1.8%", "1.9%", "^2%$"],
+                "roi": [1065, 475, 64, 117]
+            }
+        },
+        "next": [
+            "Ingredient_Enhanced_next_check",
+            "Ingredient_Enhanced_next"
+        ]
+    },
+    "会心_choose": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "会心",
+                "roi": [707, 475, 163, 117]
+            }
+        },
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "NodeOverride",
+                "custom_action_param": {
+                    "会心_value": {
+                        "recognition": {
+                            "param": {
+                                "roi": "会心_choose",
+                                "roi_offset": [358, 0, 64, 0]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "next": [
+            "会心_value",
+            "Ingredient_Enhanced_Decompose"
+        ]
+    },
+    "会心_value": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": ["2.5%", "2.6%", "2.7%", "2.8%", "2.9%", "^3%$"],
+                "roi": [1065, 475, 64, 117]
+            }
+        },
+        "next": [
+            "Ingredient_Enhanced_next_check",
+            "Ingredient_Enhanced_next"
+        ]
+    },
+    "伤害减免_choose": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "伤害减免",
+                "roi": [707, 475, 163, 117]
+            }
+        },
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "NodeOverride",
+                "custom_action_param": {
+                    "伤害减免_value": {
+                        "recognition": {
+                            "param": {
+                                "roi": "伤害减免_choose",
+                                "roi_offset": [358, 0, 64, 0]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "next": [
+            "伤害减免_value",
+            "Ingredient_Enhanced_Decompose"
+        ]
+    },
+    "伤害减免_value": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": ["3.7%", "3.8%", "3.9%", "^4%$"],
+                "roi": [1065, 475, 64, 117]
+            }
+        },
+        "next": [
+            "Ingredient_Enhanced_next_check",
+            "Ingredient_Enhanced_next"
+        ]
+    },
+    "生命值_choose": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "生命值",
+                "roi": [707, 475, 163, 117]
+            }
+        },
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "NodeOverride",
+                "custom_action_param": {
+                    "生命值_value": {
+                        "recognition": {
+                            "param": {
+                                "roi": "生命值_choose",
+                                "roi_offset": [358, 0, 64, 0]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "next": [
+            "生命值_value",
+            "Ingredient_Enhanced_Decompose"
+        ]
+    },
+    "生命值_value": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "^5%$"
+                ],
+                "roi": [1065, 475, 64, 117]
+            }
+        },
+        "next": [
+            "Ingredient_Enhanced_next_check",
+            "Ingredient_Enhanced_next"
+        ]
+    },
+    "攻击速度_choose": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "攻击速度",
+                "roi": [707, 475, 163, 117]
+            }
+        },
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "NodeOverride",
+                "custom_action_param": {
+                    "攻击速度_value": {
+                        "recognition": {
+                            "param": {
+                                "roi": "攻击速度_choose",
+                                "roi_offset": [358, 0, 64, 0]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "next": [
+            "攻击速度_value",
+            "Ingredient_Enhanced_Decompose"
+        ]
+    },
+    "攻击速度_value": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected":["2.5%", "2.6%", "2.7%", "2.8%", "2.9%", "3%"],
+                "roi": [1065, 475, 64, 117]
+            }
+        },
+        "next": [
+            "Ingredient_Enhanced_next_check",
+            "Ingredient_Enhanced_next"
+        ]
+    },
+    "Ingredient_Enhanced_next":{
+        "action":{
+            "type":"Click",
+            "param":{
+                "target":[682,275,33,49]
+            }
+        },
+        "next":[
+            "Ingredient_Enhanced_check_page",
+            "Ingredient_Enhanced_page"
+        ]
+    },
+    "Ingredient_Enhanced_next_check":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"^1$",
+                "roi" : [818,236,36,26],
+                "only_rec":true
+            }
+        },
+        "next":[
+            "Ingredient_Enhanced_done"
+        ]
+    },
+    "Ingredient_Enhanced_done":{
+        "next":[
+            "Ingredient_Enhanced_done_check",
+            "Ingredient_Enhanced_plus12"
+        ]
+    },
+    "Ingredient_Enhanced_done_check":{
+        "recognition":{
+            "type":"ColorMatch",
+            "param":{
+                "upper" : [106,168,40],
+                "lower" : [102,163,38],
+                "method" : 4,
+                "roi" : [821,642,80,48]
+            }
+        },
+        "action":{
+            "type":"ClickKey",
+            "param":{
+                "key" : [
+                    111
+                ]
+            }
+        },
+        "next":[
+            "Ingredient_Enhanced_entry"
+        ]
+
+    },
+    "Ingredient_Enhanced_Decompose":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"分解",
+                "roi" : [1155,173,67,37],
+                "only_rec":true
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "[JumpBack]Ingredient_Enhanced_Decompose_cofirm",
+            "Ingredient_Enhanced_next_check",
+            "Ingredient_Enhanced_check_page"
+        ],
+        "post_delay":1000
+    },
+    "Ingredient_Enhanced_Decompose_cofirm":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"分解",
+                "roi" : [688,485,163,41]
+            }
+        },
+        "action":{
+            "type":"Click"
+        }
+
+    },
+    "Ingredient_Enhanced_deselect_all":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "全部解除",
+                "roi" : [195,648,104,31],
+                "only_rec":true
+            }
+        },
+        "action":{
+            "type":"Click"
+        }
     },
     "CrispyCookie_page":{
         "recognition":{
