@@ -105,7 +105,8 @@
         },
         "action":{
             "type":"Click"
-        }
+        },
+        "post_delay":1000
     },
     "back":{
         "action":{

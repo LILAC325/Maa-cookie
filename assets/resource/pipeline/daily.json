@@ -1,9 +1,10 @@
 {
     "cleargreenpoint_entry":{
         "next":[
+            "[JumpBack]adventurer_cookie",
             "cleargreenpoint",
-            "[JumpBack]returnmainpage",
-            "[JumpBack]adventurer_cookie"
+            "mainpagejudgment",
+            "[JumpBack]returnmainpage"
         ],
         "timeout":5000
     },

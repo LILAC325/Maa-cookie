@@ -1,26 +1,41 @@
 {
-    "name": "Maa-cookiek",
-    "url": "https://github.com/LILAC325/Maa-cookie",
+    "interface_version": 2, 
+    "name": "Maa-cookie",
+    "label": {
+        "name": "Maa-饼干人王国"
+    },
+    "github": "https://github.com/LILAC325/Maa-cookie",
     "custom_title": "Maa-饼干人",
-    "version": "v1.0.0",
+    "icon": "icon.png",
+    "contact":"{PROJECT_DIR}/assets/resource/doc/contact/联系方式.md",
+    "license":null,
+    "welcome":"{PROJECT_DIR}/assets/resource/doc/announcement/简介.md",
+    "description":"{PROJECT_DIR}/assets/resource/doc/关于.md",
+    "version": "v1.0.2",
     "mirrorchyan_rid":null,
     "mirrorchyan_multiplatform":false,
     "controller": [
         {
             "name": "ADB默认",
-            "type": "Adb"
+            "label":"ADB默认",
+            "description": "使用默认ADB连接设备",
+            "icon": null,
+            "type": "Adb",
+            "display_short_side": 720,
+            "display_long_side": 1280
         }
     ],
     "agent": {
         "child_exec": "python/python.exe",
         "child_args": [
-            "-u",
             "{PROJECT_DIR}/agent/main.py"
         ]
     },
     "resource": [
         {
             "name": "Official",
+            "label":"official",
+            "icon":null,
             "path": [
                 "{PROJECT_DIR}/resource"
             ]
@@ -29,85 +44,125 @@
     "task": [
         {
             "name":"全局商店列表设置",
-            "check": true
+            "label":"$全局商店列表设置",
+            "entry":"shop_list",
+            "description":"设置全局商店购买列表，不开启则商店功能失效",
+            "icon":null,
+            "default_check": true
         },
         {
-            "name":"启动",
+            "name":"启动游戏",
+            "label":"$启动游戏",
             "entry":"startup",
-            "check": true
+            "description":null,
+            "icon":null,
+            "default_check": true
         },
         {
-            "name": "清绿点",
+            "name":"清绿点",
+            "label":"$清绿点",
             "entry": "cleargreenpoint_entry",
-            "check": true,
-            "doc":"1.热气球功能：若有新主线推出，请记得手动选取地区"
+            "description":"热气球：自动选取上一次地区",
+            "icon":null,
+            "default_check": true
         },
         {
             "name":"王国管理所",
+            "label":"$王国管理所",
             "entry":"kingdomproduce_entry",
-            "check": true
+            "description":null,
+            "icon":null,
+            "default_check": true
         },
         {
             "name": "许愿树",
+            "label":"$许愿树",
             "entry": "wishingtree_entry",
+            "description":null,
+            "icon":null,
+            "default_check": true,
             "option": [
-                "是否使用10分钟加速劵",
+                "使用加速劵",
                 "许愿模式"
             ]
         },
         {
             "name": "相约之所",
+            "label":"$相约之所",
             "entry": "specialcookie_entry",
+            "description":null,
+            "icon":null,
+            "default_check": true,
             "option": [
                 "饼干选择"
             ]
         },
         {
             "name": "冒险",
+            "label":"$冒险",
             "entry": "adventure_entry",
+            "description":"竞技场：请提前设置好进攻队伍，该功能会一直进攻，无论输赢，直到用完所有的竞技场入场券；实证战场：请确保所选战场已通过最高阶关卡；守护之战：请确保至少通关大师难度",
+            "icon":null,
+            "default_check": true,
             "option": [
-                "是否启用竞技场",
+                "竞技场",
                 "竞技场模式",
-                "是否启用实证战场",
                 "实证战场",
-                "是否启用今日悬赏",
-                "今日悬赏选择",
-                "是否启用守护之战",
+                "实证战场选择",
+                "今日悬赏",
+                "今日悬赏类型选择",
                 "守护之战",
-                "是否启用热带苏打群岛"
-            ],
-            "doc": "竞技场：请提前设置好进攻队伍，该功能会一直进攻，无论输赢，直到用完所有的竞技场入场券；实证战场：请确保所选战场已通过最高阶关卡；守护之战：请确保至少通关大师难度"
+                "守护之战难度选择",
+                "热带苏打群岛"
+            ]
         },
         {
             "name": "公会",
+            "label":"$公会",
             "entry": "guild_entry",
+            "description":"公会：请确保已加入公会",
+            "icon":null,
+            "default_check": true,
             "option": [
-                "蓝色焰火提交",
+                "公会升级",
                 "公会扭蛋",
-                "是否开启公会讨伐战奖牌交换所"
+                "公会奖牌交换所"
             ]
         },
         {
             "name": "页面奖励(一次)",
+            "label":"$页面奖励(一次)",
             "entry": "mainpge_reward_once_entry",
-            "check": true
+            "description":"功能包括：每日一抽，邮箱领取，好友赠送，商城每日奖励，王国通行证，王国向导",
+            "icon":null,
+            "default_check": true
         },
         {
             "name": "页面奖励(重复)",
+            "label":"$页面奖励(重复)",
             "entry": "mainpage_reward_again_entry",
-            "check": true
-
+            "description":"功能包括：活动奖励",
+            "icon":null,
+            "default_check": true
         },
         {
             "name": "海上贸易中心",
+            "label":"$海上贸易中心",
             "entry": "tradepage_entry",
+            "description":null,
+            "icon":null,
+            "default_check": false,
             "option": [
-                "是否启用璀璨贝艺廊"
+                "璀璨贝艺廊"
             ]
         },
         {
             "name": "大嘴鹦鹉的海上交易所",
+            "label":"$大嘴鹦鹉的海上交易所",
             "entry": "exchance_entry",
+            "description":null,
+            "icon":null,
+            "default_check": false,
             "option": [
                 "道具交易-技能粉末",
                 "金币交换-自动买持有数量低于50的商品(已禁用，待开发)"
@@ -115,24 +170,42 @@
         },
         {
             "name": "熊熊果冻热气球",
+            "label":"$熊熊果冻热气球(保底检查)",
             "entry": "hotairballoon_entry",
-            "doc": "该功能已包含在'清绿点'中，该入口为保底检查，按需启用"
+            "description":"该功能已包含在'清绿点'中，该入口为保底检查",
+            "icon":null,
+            "default_check": false
         },
         {
             "name": "熊熊果冻列车",
+            "label":"$熊熊果冻列车(保底检查)",
             "entry": "train_entry",
-            "doc": "该功能已包含在'清绿点'中，该入口为保底检查，按需启用"
+            "description":"该功能已包含在'清绿点'中，该入口为保底检查",
+            "icon":null,
+            "default_check": false
         },
         {
             "name": "广场挂机",
-            "entry": "square_entry"
+            "label":"$广场挂机",
+            "entry": "square_entry",
+            "description":null,
+            "icon":null,
+            "default_check": false
         }
     ],
     "option": {
         "饼干选择": {
+            "type":"select",
+            "label":"$饼干选择",
+            "description":"请选择要获取的饼干",
+            "icon":null,
+            "default_case":"花小龙饼干",
             "cases": [
                 {
                     "name": "花小龙饼干",
+                    "label":"$花小龙饼干",
+                    "description":null,
+                    "icon":null,
                     "pipeline_override": {
                         "huaxiaolong": {
                             "enabled": true
@@ -141,6 +214,9 @@
                 },
                 {
                     "name": "冰锥雪怪饼干",
+                    "label":"$冰锥雪怪饼干",
+                    "description":null,
+                    "icon":null,
                     "pipeline_override": {
                         "snowman": {
                             "enabled": true
@@ -149,7 +225,12 @@
                 }
             ]
         },
-        "是否启用璀璨贝艺廊":{
+        "璀璨贝艺廊":{
+            "type":"swith",
+            "label":"$璀璨贝艺廊",
+            "description":"是否启用璀璨贝艺廊商店购买功能",
+            "icon":null,
+            "default_case":"yes",
             "cases":[
                 {
                     "name": "yes",
@@ -170,7 +251,12 @@
             ]
 
         },
-        "蓝色焰火提交": {
+        "公会升级": {
+            "type":"swith",
+            "label":"$是否启用公会升级",
+            "description":"自动提交蓝色焰火",
+            "icon":null,
+            "default_case":"yes",
             "cases": [
                 {
                     "name": "yes",
@@ -191,6 +277,11 @@
             ]
         },
         "公会扭蛋": {
+            "type":"swith",
+            "label":"$是否启用公会扭蛋",
+            "description":"自动进行公会扭蛋",
+            "icon":null,
+            "default_case":"yes",
             "cases": [
                 {
                     "name": "yes",
@@ -210,7 +301,12 @@
                 }
             ]
         },
-        "是否开启公会讨伐战奖牌交换所":{
+        "公会奖牌交换所":{
+            "type":"swith",
+            "label":"$公会奖牌交换所",
+            "description":"是否启用公会奖牌交换所",
+            "icon":null,
+            "default_case":"no",
             "cases": [
                 {
                     "name": "yes",
@@ -230,10 +326,18 @@
                 }
             ]
         },
-        "是否启用竞技场":{
+        "竞技场":{
+            "type":"swith",
+            "label":"$竞技场",
+            "description":"是否启用竞技场",
+            "icon":null,
+            "default_case":"yes",
             "cases":[
                 {
                     "name": "yes",
+                    "option": [
+                        "竞技场模式"
+                    ],
                     "pipeline_override": {
                         "arena_entry": {
                             "enabled": true
@@ -251,9 +355,17 @@
             ]
         },
         "竞技场模式":{
+            "type":"select",
+            "label":"$竞技场模式",
+            "description":"请选择竞技场模式",
+            "icon":null,
+            "default_case":"正常对战",
             "cases":[
                 {
                     "name":"正常对战",
+                    "label":"$正常对战",
+                    "description":"正常对战模式,依次与对手对战，直到竞技场劵用完",
+                    "icon":null,
                     "pipeline_override":{
                         "arena_counterattack_page":{
                             "enabled": false
@@ -262,6 +374,9 @@
                 },
                 {
                     "name":"防御反击",
+                    "label":"$防御反击",
+                    "description":"依次挑战防御记录中失败的对手，直到无人可反击",
+                    "icon":null,
                     "pipeline_override":{
                         "arena_page":{
                             "enabled": false
@@ -270,10 +385,18 @@
                 }
             ]
         },
-        "是否启用实证战场": {
+        "实证战场": {
+            "type":"swith",
+            "label":"$实证战场",
+            "description":"是否启用实证战场",
+            "icon":null,
+            "default_case":"yes",
             "cases": [
                 {
                     "name": "yes",
+                    "option":[
+                        "实证战场选择"
+                    ],
                     "pipeline_override": {
                         "legendaryjam": {
                             "enabled": true
@@ -290,10 +413,18 @@
                 }
             ]
         },
-        "实证战场": {
+        "实证战场选择": {
+            "type":"select",
+            "label":"$实证战场选择",
+            "description":"选择要挑战的饼干战场",
+            "icon":null,
+            "default_case":"冰霜女王饼干",
             "cases": [
                 {
                     "name": "冰霜女王饼干",
+                    "label":"$冰霜女王饼干",
+                    "description":"启用冰霜女王饼干战场",
+                    "icon":null,
                     "pipeline_override": {
                         "frostqueen": {
                             "enabled": true
@@ -302,6 +433,9 @@
                 },
                 {
                     "name": "海妖精饼干",
+                    "label":"$海妖精饼干",
+                    "description":"启用海妖精饼干战场",
+                    "icon":null,
                     "pipeline_override": {
                         "seasprite": {
                             "enabled": true
@@ -310,6 +444,9 @@
                 },
                 {
                     "name": "黑珍珠饼干",
+                    "label":"$启用黑珍珠饼干",
+                    "description":"启用黑珍珠饼干战场",
+                    "icon":null,
                     "pipeline_override": {
                         "blackpearl": {
                             "enabled": true
@@ -318,10 +455,18 @@
                 }
             ]
         },
-        "是否启用今日悬赏": {
+        "今日悬赏": {
+            "type":"swith",
+            "label":"$今日悬赏",
+            "description":"是否开启今日悬赏",
+            "icon":null,
+            "default_case":"yes",
             "cases": [
                 {
                     "name": "yes",
+                    "option":[
+                        "今日悬赏选择"
+                    ],
                     "pipeline_override": {
                         "todayreward": {
                             "enabled": true
@@ -339,9 +484,17 @@
             ]
         },
         "今日悬赏选择": {
+            "type":"select",
+            "label":"$今日悬赏选择",
+            "description":"选择今日悬赏要刷取的副本",
+            "icon":null,
+            "default_case":"今日最高加成",
             "cases": [
                 {
                     "name": "今日最高加成",
+                    "label":"$今日最高加成",
+                    "description":"选择技能粉末与开糖材料两个副本中今日加成最高的副本，若两者都无加成则选择技能粉末副本",
+                    "icon":null,
                     "pipeline_override": {
                         "todayreward_bonus": {
                             "enabled": true
@@ -350,6 +503,9 @@
                 },
                 {
                     "name": "技能粉末",
+                    "label":"$技能粉末",
+                    "description":"只打技能粉末副本",
+                    "icon":null,
                     "pipeline_override": {
                         "todayreward_skillpowder": {
                             "enabled": true
@@ -358,6 +514,9 @@
                 },
                 {
                     "name": "开糖材料",
+                    "label":"$开糖材料",
+                    "description":"只打开糖材料副本",
+                    "icon":null,
                     "pipeline_override": {
                         "todayreward_sugar": {
                             "enabled": true
@@ -366,7 +525,12 @@
                 }   
             ]
         },
-        "是否启用守护之战": {
+        "守护之战": {
+            "type":"swith",
+            "label":"$守护之战",
+            "description":"是否开启守护之战，请确保已至少通关大师难度",
+            "icon":null,
+            "default_case":"yes",
             "cases": [
                 {
                     "name": "yes",
@@ -386,10 +550,17 @@
                 }
             ]
         },
-        "守护之战": {
+        "守护之战难度选择": {
+            "type":"select",
+            "label":"$守护之战难度选择",
+            "description":"选择守护之战的难度",
+            "icon":null,
             "cases": [
                 {
-                    "name": "大师难度",
+                    "name": "大师难度",         
+                    "label":"$大师难度",
+                    "description":"选择守护之战的大师难度",
+                    "icon":null,
                     "pipeline_override": {
                         "protectbattle_master": {
                             "enabled": true
@@ -398,6 +569,9 @@
                 },
                 {
                     "name": "无限难度",
+                    "label":"$无限难度",
+                    "description":"选择守护之战的无限难度",
+                    "icon":null,
                     "pipeline_override": {
                         "protectbattle_infinite": {
                             "enabled": true
@@ -406,7 +580,11 @@
                 }
             ]
         },
-        "是否启用热带苏打群岛": {
+        "热带苏打群岛": {
+            "type":"swith",
+            "label":"$热带苏打群岛",
+            "description":"是否开启热带苏打群岛,将自动使用发条进行扫荡",
+            "icon":null,
             "cases": [
                 {
                     "name": "yes",
@@ -426,7 +604,11 @@
                 }
             ]
         },
-        "是否使用10分钟加速劵":{
+        "使用加速劵":{
+            "type":"swith",
+            "label":"$使用加速劵",
+            "description":"是否使用10分钟加速劵",
+            "icon":null,
             "cases":[
                 {
                     "name": "yes",
@@ -447,9 +629,17 @@
             ]
         },
         "许愿模式":{
+            "type":"select",
+            "label":"$许愿模式",
+            "description":"选择许愿模式",
+            "icon":null,
+            "default_case":"每日30",
             "cases":[
                 {
-                    "name":"每日30",
+                    "name":"每日30", 
+                    "label":"$每日30",
+                    "description":"每天30次",
+                    "icon":null,
                     "pipeline_override":{
                         "checkmax":{
                             "enabled": true
@@ -457,7 +647,10 @@
                     }
                 },
                 {
-                    "name":"无限刷取",
+                    "name":"无限刷取", 
+                    "label":"$无限刷取",
+                    "description":"无限许愿，手动停止",
+                    "icon":null,
                     "pipeline_override":{
                         "checkmax":{
                             "enabled": false

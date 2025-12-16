@@ -638,7 +638,7 @@
                     "冷却时间_choose":{
                         "recognition":{
                             "param":{
-                                "roi" : [708,592,144,83]
+                                "roi" : [708,509,144,83]
                             }
                         }
                     },
@@ -652,21 +652,21 @@
                     "伤害减免_choose":{
                         "recognition":{
                             "param":{
-                                "roi" : [708,758,144,83]
+                                "roi" : [708,509,144,83]
                             }
                         }
                     },
                     "生命值_choose":{
                         "recognition":{
                             "param":{
-                                "roi" : [708,841,144,83]
+                                "roi" : [708,509,144,83]
                             }
                         }
                     },
                     "攻击速度_choose":{
                         "recognition":{
                             "param":{
-                                "roi" : [708,924,144,83]
+                                "roi" : [708,509,144,83]
                             }
                         }
                     }
@@ -742,7 +742,7 @@
                         "recognition":{
                             "param":{
                                 "roi" : "攻击力_choose",
-                                "roi_offset" : [358, 0, 64, 0]
+                                "roi_offset" : [380, 0, 90, 0]
                             }
                         }
                     }
@@ -814,7 +814,7 @@
         "recognition": {
             "type": "OCR",
             "param": {
-                "expected": "会心",
+                "expected": "^会心$",
                 "roi": [707, 475, 163, 117]
             }
         },
@@ -827,7 +827,7 @@
                         "recognition": {
                             "param": {
                                 "roi": "会心_choose",
-                                "roi_offset": [358, 0, 64, 0]
+                                "roi_offset": [380, 0, 90, 0]
                             }
                         }
                     }
@@ -856,7 +856,7 @@
         "recognition": {
             "type": "OCR",
             "param": {
-                "expected": "伤害减免",
+                "expected": "^伤害减免$",
                 "roi": [707, 475, 163, 117]
             }
         },
@@ -971,7 +971,7 @@
         "recognition": {
             "type": "OCR",
             "param": {
-                "expected":["2.5%", "2.6%", "2.7%", "2.8%", "2.9%", "3%"],
+                "expected":["2.5%", "2.6%", "2.7%", "2.8%", "2.9%", "^3%$"],
                 "roi": [1065, 475, 64, 117]
             }
         },
@@ -990,7 +990,8 @@
         "next":[
             "Ingredient_Enhanced_check_page",
             "Ingredient_Enhanced_page"
-        ]
+        ],
+        "post_delay":1000
     },
     "Ingredient_Enhanced_next_check":{
         "recognition":{
