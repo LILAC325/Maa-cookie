@@ -1,9 +1,7 @@
 {
     "interface_version": 2, 
     "name": "Maa-cookie",
-    "label": {
-        "name": "Maa-饼干人王国"
-    },
+    "label": "Maa-饼干人王国",
     "github": "https://github.com/LILAC325/Maa-cookie",
     "custom_title": "Maa-饼干人",
     "icon": "icon.png",
@@ -106,13 +104,9 @@
             "default_check": true,
             "option": [
                 "竞技场",
-                "竞技场模式",
                 "实证战场",
-                "实证战场选择",
                 "今日悬赏",
-                "今日悬赏类型选择",
                 "守护之战",
-                "守护之战难度选择",
                 "热带苏打群岛"
             ]
         },
@@ -187,7 +181,7 @@
         {
             "name":"饼干管理",
             "label":"$饼干管理",
-            "entry": "cookie_manage_entry",
+            "entry": "cookie_page_entry",
             "description":null,
             "icon":null,
             "default_check": false,
@@ -506,8 +500,11 @@
                 {
                     "name": "今日最高加成",
                     "label":"$今日最高加成",
-                    "description":"选择技能粉末与开糖材料两个副本中今日加成最高的副本，若两者都无加成则选择技能粉末副本",
+                    "description":"选择技能粉末与开糖材料两个副本中今日加成最高的副本",
                     "icon":null,
+                    "option":[
+                        "无加成偏好"
+                    ],
                     "pipeline_override": {
                         "todayreward_bonus": {
                             "enabled": true
@@ -538,6 +535,36 @@
                 }   
             ]
         },
+        "无加成偏好":{  
+            "type":"select",
+            "label":"$无加成偏好",
+            "description":"技能粉末与开糖材料均无加成时偏好副本",
+            "icon":null,
+            "cases":[
+                {
+                    "name": "技能粉末",
+                    "label":"$技能粉末",
+                    "description":"偏好技能粉末副本",
+                    "icon":null,
+                    "pipeline_override": {
+                        "todayreward_skillpowder": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "开糖材料",
+                    "label":"$开糖材料",
+                    "description":"偏好开糖材料副本",
+                    "icon":null,
+                    "pipeline_override": {
+                        "todayreward_sugar": {
+                            "enabled": true
+                        }
+                    }
+                }   
+            ]
+        },
         "守护之战": {
             "type":"swith",
             "label":"$守护之战",
@@ -547,6 +574,9 @@
             "cases": [
                 {
                     "name": "yes",
+                    "option":[
+                        "守护之战难度选择"
+                    ],
                     "pipeline_override": {
                         "protectbattle": {
                             "enabled": true
@@ -714,6 +744,34 @@
                     "name": "no",
                     "pipeline_override": {
                         "CrispyCookie_page": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "配料强化（单独启动）":{    
+            "type":"swith",
+            "label":"$配料强化（单独启动）",
+            "description":"此功能需单独启动，以避免不必要的错误",
+            "icon":null,
+            "default_case":"no",
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "Ingredient_Enhance_entry": {
+                            "enabled": true
+                        },
+                        "CrispyCookie_page":{
+                            "enabled": false
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "Ingredient_Enhance_entry": {
                             "enabled": false
                         }
                     }

@@ -245,7 +245,6 @@
             "[JumpBack]todayreward_bonus",
             "[JumpBack]todayreward_skillpowder",
             "[JumpBack]todayreward_sugar"
-            
         ]
     },
     "check_todayreward_time":{
@@ -283,7 +282,8 @@
         },
         "next":[
             "timespring"
-        ]
+        ],
+        "enabled":false
     },
     "todayreward_sugar":{
         "recognition":{
@@ -319,7 +319,8 @@
             "todayreward_bonus_60%",
             "todayreward_bonus_50%",
             "todayreward_page"
-        ]
+        ],
+        "enabled":false
     },
     "todayreward_bonus_100%":{
         "recognition":{

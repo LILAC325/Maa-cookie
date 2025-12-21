@@ -13,7 +13,6 @@
             "trade_page",
             "[JumpBack]returnmainpage"
         ],
-        "enabled":false,
         "post_delay":1000
     },
     "trade_page":{

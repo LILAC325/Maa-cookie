@@ -342,9 +342,11 @@
                 "type":"Click"
         },
         "next":[
+            "[JumpBack]bottom_click",
             "[JumpBack]comfirm",
             "kingdompass_page"
-        ]
+        ],
+        "pre_delay":2000
     },
     "seasonreward":{
         "recognition":{
