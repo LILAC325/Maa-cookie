@@ -185,6 +185,19 @@
             "default_check": false
         },
         {
+            "name":"饼干管理",
+            "label":"$饼干管理",
+            "entry": "cookie_manage_entry",
+            "description":null,
+            "icon":null,
+            "default_check": false,
+            "option": [
+                "配料分解",
+                "脆饼分解",
+                "配料强化（单独启动）"
+            ]
+        },
+        {
             "name": "广场挂机",
             "label":"$广场挂机",
             "entry": "square_entry",
@@ -653,6 +666,54 @@
                     "icon":null,
                     "pipeline_override":{
                         "checkmax":{
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "配料分解":{
+            "type":"swith",
+            "label":"$配料分解",
+            "description":"是否启用配料分解功能",
+            "icon":null,
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "Ingredient_Decompose_entry": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "Ingredient_page": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "脆饼分解":{
+            "type":"swith",
+            "label":"$脆饼分解",
+            "description":"是否启用脆饼分解功能",
+            "icon":null,
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "CrispyCookie_decompose_entry": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "CrispyCookie_page": {
                             "enabled": false
                         }
                     }

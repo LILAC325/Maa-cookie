@@ -242,9 +242,10 @@
         },
         "next":[
             "check_todayreward_time",
+            "[JumpBack]todayreward_bonus",
             "[JumpBack]todayreward_skillpowder",
-            "[JumpBack]todayreward_sugar",
-            "[JumpBack]todayreward_bonus"
+            "[JumpBack]todayreward_sugar"
+            
         ]
     },
     "check_todayreward_time":{
@@ -306,8 +307,8 @@
             "param":{
                 "custom_action":"NodeOverride",
                 "custom_action_param":{
-                    "todayreward_skillpowder":{
-                        "enabled":true
+                    "todayreward_bonus":{
+                        "enabled":false
                     }
                 }
             }
@@ -322,9 +323,9 @@
     },
     "todayreward_bonus_100%":{
         "recognition":{
-            "type":"TemplateMatch",
+            "type":"OCR",
             "param":{
-                "template" : "adventure/bonus_100%.png",
+                "expected" : "100%",
                 "roi" : [18,70,815,649]
             }
         },
@@ -350,9 +351,9 @@
     },
     "todayreward_bonus_80%":{
         "recognition":{
-            "type":"TemplateMatch",
+            "type":"OCR",
             "param":{
-                "template" : "adventure/bonus_80%.png",
+                "expected" : "80%",
                 "roi" : [18,70,815,649]
             }
         },
@@ -378,9 +379,9 @@
     },
     "todayreward_bonus_60%":{
         "recognition":{
-            "type":"TemplateMatch",
+            "type":"OCR",
             "param":{
-                "template" : "adventure/bonus_60%.png",
+                "expected" : "60%",
                 "roi" : [18,70,815,649]
             }
         },
@@ -406,9 +407,9 @@
     },
     "todayreward_bonus_50%":{
         "recognition":{
-            "type":"TemplateMatch",
+            "type":"OCR",
             "param":{
-                "template" : "adventure/bonus_50%.png",
+                "expected" : "50%",
                 "roi" : [18,70,815,649]
             }
         },
@@ -788,7 +789,8 @@
             "[JumpBack]arena_counterattack",
             "[JumpBack]arena_battle_page",
             "[JumpBack]sw_arena_counterattack_page"
-        ]
+        ],
+        "enable":false
     },
     "sw_arena_counterattack_page":{
         "action":{
@@ -883,7 +885,7 @@
         "action":{
             "type":"Click"
         },
-        "post_delay":2000
+        "post_delay":2500
     },
     "arena_ticket_lack":{
         "recognition":{

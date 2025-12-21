@@ -30,8 +30,22 @@
             }
         },
         "next":[
+            "cookie_detailed_page"
+        ]
+    },
+    "cookie_detailed_page":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "战斗力",
+                "roi" : [1070,136,94,43],
+                "only_rec":true
+            }
+        },
+        "next":[
             "Ingredient_page",
-            "CrispyCookie_page"
+            "CrispyCookie_page",
+            "returnmainpage"
         ]
     },
     "Ingredient_page":{
@@ -43,11 +57,13 @@
                 "only_rec":true
             }
         },
+        "max_hit":1,
         "action":{
             "type":"Click"
         },
         "next":[
-            "Ingredient_Decompose_entry"
+            "Ingredient_Decompose_entry",
+            "Ingredient_Enhanced_entry"
         ]
     },
     "Ingredient_Enhanced_entry":{
@@ -62,11 +78,11 @@
         "action":{
             "type":"Click"
         },
+        "enable":false,
         "next":[
             "Ingredient_Enhanced_page"
         ]
     },
-
     "Ingredient_Decompose_entry":{
         "recognition":{
             "type":"OCR",
@@ -79,6 +95,7 @@
         "action":{
             "type":"Click"
         },
+        "enable":false,
         "next":[
             "Ingredient_Decompose_page"
         ]
@@ -95,7 +112,8 @@
         "next":[
             "[JumpBack]Ingredient_Filter_entry",
             "[JumpBack]Ingredient_Decompose_chooseall",
-            "returnmainpage"
+            "cookie_detailed_page",
+            "[JumpBack]back"
         ]
     },
     "Ingredient_Decompose_chooseall":{
@@ -1065,7 +1083,6 @@
         "action":{
             "type":"Click"
         }
-
     },
     "Ingredient_Enhanced_deselect_all":{
         "recognition":{
@@ -1092,8 +1109,112 @@
         "action":{
             "type":"Click"
         },
+        "max_hit":1,
         "next":[
-            
+            "CrispyCookie_decompose_entry" 
         ]
+    },
+    "CrispyCookie_decompose_entry":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "分解",
+                "roi" : [689,651,71,38],
+                "only_rec":true
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "CrispyCookie_decompose_page"
+        ]
+    },
+    "CrispyCookie_decompose_page":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "全部选择",
+                "roi" : [53,647,98,34],
+                "only_rec":true
+            }
+        },
+        "next":[
+            "[JumpBack]CrispyCookie_decompose_Filter",
+            "[JumpBack]CrispyCookie_decompose_chooseall",
+            "[JumpBack]CrispyCookie_decompose_confirm",
+            "cookie_detailed_page",
+            "[JumpBack]back"
+        ]
+    },
+    "CrispyCookie_decompose_Filter":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "筛选",
+                "roi" : [348,645,86,38],
+                "only_rec":true
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "CrispyCookie_decompose_Filter_check"
+        ],
+        "max_hit":1
+    },
+    "CrispyCookie_decompose_Filter_check":{
+        "recognition":{
+            "type":"ColorMatch",
+            "param":{
+                "upper" : [194,110,234],
+                "lower" : [166,84,218],
+                "method" : 4,
+                "roi" : [747,208,33,20]
+            }
+        },
+        "action":{
+            "type":"Click",
+            "param":{
+                "target" : [751,215,25,26]
+            }
+        },
+        "next":[
+            "CrispyCookie_decompose_page",
+            "[JumpBack]back"
+        ]
+    },
+    "CrispyCookie_decompose_chooseall":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "全部选择",
+                "roi" : [53,647,98,34],
+                "only_rec":true
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "max_hit":1
+    },
+    "CrispyCookie_decompose_confirm":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"全部分解",
+                "roi" : [855,643,198,38]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "max_hit":1,
+        "next":[
+            "[JumpBack]bottom_click",
+            "nothingtodo"
+        ],
+        "post_delay":1000
     }
 }
