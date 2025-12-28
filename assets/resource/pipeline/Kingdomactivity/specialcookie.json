@@ -85,10 +85,30 @@
             "type":"Click"
         },
         "next": [
-            "specialcookie_next_page"
+            "specialcookie_general"
         ]
     },
-    "specialcookie_next_page":{
+    "specialcookie_quick":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":[
+                    "^(2[0-9]{2}|[3-9][0-9]{2}|[1-9][0-9]{3,})$"
+                ],
+                "roi" : [1103,21,92,35]
+            }
+        },
+        "action":{
+            "type":"Click",
+            "param":{
+                "target":[1030,600,202,14]
+            }
+        },
+        "next": [
+            "wait_specialcookie_next"
+        ]
+    },
+    "specialcookie_general":{
         "recognition":{
             "type":"OCR",
             "param":{
@@ -148,7 +168,7 @@
             "param":{
                 "custom_action":"DisableNode",
                 "custom_action_param":{
-                    "node_name":"choose_specialcookie"
+                    "node_name":"specialcookie_entrty"
                 }
             }
         },
