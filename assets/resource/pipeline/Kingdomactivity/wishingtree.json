@@ -62,8 +62,7 @@
         "next":[
             "wish_load",
             "wishingtree_page"
-        ],
-        "post_delay":1000
+        ]
     },
     "wish_submit":{
         "recognition":{
@@ -81,8 +80,7 @@
             "wish_lack",
             "wish_submit",
             "wishingtree_page"
-        ],
-        "post_delay":1000
+        ]
     },
     "wish_lack":{
         "recognition":{

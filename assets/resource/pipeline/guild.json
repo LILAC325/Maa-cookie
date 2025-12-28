@@ -127,9 +127,14 @@
         "action":{
             "type":"Custom",
             "param":{
-                "custom_action":"DisableNode",
+                "custom_action":"NodeOverride",
                 "custom_action_param":{
-                    "node_name":"guild_task"
+                    "guild_task":{
+                        "enabled":false
+                    },
+                    "back": {
+                        "max_hit":2
+                    }
                 }
             }
         },

@@ -548,7 +548,7 @@
                 {
                     "name": "大师难度",         
                     "label":"$大师难度",
-                    "description":"选择守护之战的大师难度",
+                    "description":"请确保已通关大师难度",
                     "icon":null,
                     "pipeline_override": {
                         "protectbattle_master": {
@@ -559,7 +559,7 @@
                 {
                     "name": "无限难度",
                     "label":"$无限难度",
-                    "description":"选择守护之战的无限难度",
+                    "description":"请确保已通关无限难度",
                     "icon":null,
                     "pipeline_override": {
                         "protectbattle_infinite": {
