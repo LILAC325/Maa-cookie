@@ -44,7 +44,7 @@
             "name":"全局商店列表设置",
             "label":"$全局商店列表设置",
             "entry":"shop_list",
-            "description":"设置全局商店购买列表，不开启则商店功能失效",
+            "description":"设置全局商店购买列表，不开启则商店类功能可能会失效",
             "icon":null,
             "default_check": true
         },
@@ -73,26 +73,19 @@
             "default_check": true
         },
         {
-            "name": "许愿树",
-            "label":"$许愿树",
-            "entry": "wishingtree_entry",
+            "name":"王国活动",
+            "label":"$王国活动",
+            "entry":"kingdomevent_list_entry",
             "description":null,
             "icon":null,
             "default_check": true,
             "option": [
-                "使用加速劵",
-                "许愿模式"
-            ]
-        },
-        {
-            "name": "相约之所",
-            "label":"$相约之所",
-            "entry": "specialcookie_entry",
-            "description":null,
-            "icon":null,
-            "default_check": true,
-            "option": [
-                "饼干选择"
+                "许愿树",
+                "相约之所",
+                "海上贸易中心",
+                "熊熊果冻热气球",
+                "熊熊果冻列车",
+                "大嘴鹦鹉的海上交易所"
             ]
         },
         {
@@ -124,59 +117,12 @@
             ]
         },
         {
-            "name": "页面奖励(一次)",
-            "label":"$页面奖励(一次)",
-            "entry": "mainpge_reward_once_entry",
-            "description":"功能包括：每日一抽，邮箱领取，好友赠送，商城每日奖励，王国通行证，王国向导",
+            "name": "页面奖励",
+            "label":"$页面奖励",
+            "entry": "mainpage_reward_entry",
+            "description":"领取页面奖励",
             "icon":null,
             "default_check": true
-        },
-        {
-            "name": "页面奖励(重复)",
-            "label":"$页面奖励(重复)",
-            "entry": "mainpage_reward_again_entry",
-            "description":"功能包括：活动奖励",
-            "icon":null,
-            "default_check": true
-        },
-        {
-            "name": "海上贸易中心",
-            "label":"$海上贸易中心",
-            "entry": "tradepage_entry",
-            "description":null,
-            "icon":null,
-            "default_check": false,
-            "option": [
-                "璀璨贝艺廊"
-            ]
-        },
-        {
-            "name": "大嘴鹦鹉的海上交易所",
-            "label":"$大嘴鹦鹉的海上交易所",
-            "entry": "exchance_entry",
-            "description":null,
-            "icon":null,
-            "default_check": false,
-            "option": [
-                "道具交易-技能粉末",
-                "金币交换-自动买持有数量低于50的商品(已禁用，待开发)"
-            ]
-        },
-        {
-            "name": "熊熊果冻热气球",
-            "label":"$熊熊果冻热气球(保底检查)",
-            "entry": "hotairballoon_entry",
-            "description":"该功能已包含在'清绿点'中，该入口为保底检查",
-            "icon":null,
-            "default_check": false
-        },
-        {
-            "name": "熊熊果冻列车",
-            "label":"$熊熊果冻列车(保底检查)",
-            "entry": "train_entry",
-            "description":"该功能已包含在'清绿点'中，该入口为保底检查",
-            "icon":null,
-            "default_check": false
         },
         {
             "name":"饼干管理",
@@ -772,6 +718,169 @@
                     "name": "no",
                     "pipeline_override": {
                         "Ingredient_Enhance_entry": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "许愿树":{
+            "type":"swith",
+            "label":"$许愿树",
+            "description":"启用许愿树功能",
+            "icon":null,
+            "default_case":"yes",
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "wishingtree_entry": {
+                            "enabled": true
+                        }
+                    },
+                    "option":[
+                        "使用加速劵",
+                        "许愿模式"
+                    ]
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "wishingtree_entry": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "相约之所":{
+            "type":"swith",
+            "label":"$相约之所",
+            "description":"启用相约之所功能",
+            "icon":null,
+            "default_case":"yes",
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "specialcookie_entry": {
+                            "enabled": true
+                        }
+                    },
+                    "option":[
+                        "饼干选择"
+                    ]
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "specialcookie_entry": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "海上贸易中心":{
+            "type":"swith",
+            "label":"$海上贸易中心",
+            "description":"启用海上贸易中心功能",
+            "icon":null,
+            "default_case":"yes",
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "tradepage_entry": {
+                            "enabled": true
+                        }
+                    },
+                    "option":[
+                        "璀璨贝艺廊"
+                    ]
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "tradepage_entry": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "大嘴鹦鹉的海上交易所":{
+            "type":"swith",
+            "label":"$大嘴鹦鹉的海上交易所",
+            "description":"启用大嘴鹦鹉的海上交易所功能",
+            "icon":null,
+            "default_case":"yes",
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "exchance_entry": {
+                            "enabled": true
+                        }
+                    },
+                    "option":[
+                        "道具交易-技能粉末"
+                    ]
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "exchance_entry": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "熊熊果冻热气球": {
+            "type":"swith",
+            "label":"$熊熊果冻热气球",
+            "description":"启用熊熊果冻热气球功能",
+            "icon":null,
+            "default_case":"yes",
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "hotairballoon_entry": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "hotairballoon_entry": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "熊熊果冻列车": {
+            "type":"swith",
+            "label":"$熊熊果冻列车",
+            "description":"启用熊熊果冻列车功能",
+            "icon":null,
+            "default_case":"yes",
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "train_entry": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "train_entry": {
                             "enabled": false
                         }
                     }

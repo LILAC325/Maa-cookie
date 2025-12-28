@@ -1,13 +1,7 @@
 {
-    "mainpge_reward_once_entry":{
+    "mainpage_reward_entry":{
         "next":[
             "mainpage_reward",
-            "[JumpBack]returnmainpage"
-        ]
-    },
-    "mainpage_reward_again_entry":{
-        "next":[
-            "mainpage_activity_entry",
             "[JumpBack]returnmainpage"
         ]
         
@@ -27,6 +21,7 @@
             }
         },
         "next":[
+            "[Jumpback]mainpage_activity_entry",
             "[JumpBack]freegacha",
             "[JumpBack]mailbox",
             "[JumpBack]friendgift",
@@ -734,16 +729,12 @@
             "type":"Click"
         },
         "next":[
-            "kingdomproduce_page"
-        ]
-    },
-    "kingdomproduce_page":{
-        "next":[
             "check_liquidation",
             "[JumpBack]landmark_reward",
             "[JumpBack]filluponce",
             "returnmainpage"
-        ]
+        ],
+        "post_delay":2000
     },
     "filluponce":{
         "recognition":{

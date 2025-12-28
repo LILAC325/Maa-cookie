@@ -1,4 +1,15 @@
 {
+    "kingdomevent_list_entry":{
+        "next":[
+            "wishingtree_entry",
+            "hotairballoon_entry",
+            "tradepage_entry",
+            "exchance_entry",
+            "train_entry",
+            "specialcookie_entry",
+            "returnmainpage"
+        ]
+    },
     "kingdomactivity": {
         "recognition":{
             "type":"TemplateMatch",
@@ -12,6 +23,7 @@
         }
     },
     "wishingtree_entry":{
+        "max_hit":1,
         "next":[
             "choose_wishingtree",
             "[JumpBack]kingdomactivity",
@@ -20,14 +32,15 @@
         ]
     },
     "hotairballoon_entry":{
+        "max_hit":1,
         "next":[
             "choose_hotairballoon",
             "[JumpBack]kingdomactivity",
             "[JumpBack]returnmainpage"
-            
         ]
     },
     "tradepage_entry":{
+        "max_hit":1,
         "next":[
             "choose_trade",
             "[JumpBack]kingdomactivity",    
@@ -35,6 +48,7 @@
         ]
     },
     "exchance_entry":{
+        "max_hit":1,
         "next":[
             "choose_exchance",
             "[JumpBack]kingdomactivity",
@@ -42,6 +56,7 @@
         ]
     },
     "train_entry":{
+        "max_hit":1,
         "next":[
             "choose_train",
             "[JumpBack]kingdomactivity",
@@ -50,6 +65,7 @@
         ]
     },
     "specialcookie_entry":{
+        "max_hit":1,
         "next":[
             "choose_specialcookie",
             "[JumpBack]kingdomactivity",
