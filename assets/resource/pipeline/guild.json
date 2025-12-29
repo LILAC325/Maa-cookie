@@ -30,7 +30,6 @@
             "[JumpBack]guild_task",
             "[JumpBack]guild_gacha",
             "[JumpBack]guild_shop_entry",
-            "[JumpBack]guild_battle",
             "guild_returnmainpage"
         ]
     },
@@ -333,71 +332,6 @@
         },
         "next": [
             "guild_main_page", 
-            "[JumpBack]quit"
-        ]
-    },
-    "guild_battle":{
-        "recognition":{
-            "type":"OCR",
-            "param":{
-                "expected":"公会讨伐战"
-            }
-        },
-        "action":{
-            "type":"Click"
-        },
-        "next": [
-            "guild_battle_collect",
-            "guild_battle_page",
-            "[JumpBack]bottom_click"
-        ]
-    },
-    "guild_battle_collect":{
-        "recognition":{
-            "type":"OCR",
-            "param":{
-                "expected":"讨伐完成"
-            }
-        },
-        "action":{
-            "type":"Click",
-            "param":{
-                "target" :[327,602,708,45]
-            }
-        },
-        "next":[
-            "guild_battle_report",
-            "guild_battle_page"
-        ]
-    },
-    "guild_battle_report":{
-        "recognition":{
-            "type":"OCR",
-            "param":{
-                "expected":"战报",
-                "roi" : [526,50,243,67]
-            }
-        },
-        "action":{
-            "type":"Click",
-            "param":{
-                "target" : [1178,50,38,38]
-            }
-        },
-        "next":[
-            "guild_battle_page"
-        ]
-    },
-    "guild_battle_page":{
-        "recognition":{
-            "type":"OCR",
-            "param":{
-                "expected":"公会讨伐战",
-                "roi" : [0,12,239,48]
-            }
-        },
-        "next":[
-            "guild_main_page",
             "[JumpBack]quit"
         ]
     },

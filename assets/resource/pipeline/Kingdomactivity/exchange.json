@@ -12,7 +12,7 @@
         "next":[
             "exchance_page"
         ],
-        "enabled":false
+        "max_hit":1
     },
     "exchance_page":{
         "recognition":{

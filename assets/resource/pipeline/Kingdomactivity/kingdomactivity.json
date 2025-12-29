@@ -1,12 +1,12 @@
 {
     "kingdomevent_list_entry":{
         "next":[
-            "wishingtree_entry",
-            "hotairballoon_entry",
-            "tradepage_entry",
-            "exchance_entry",
-            "train_entry",
-            "specialcookie_entry",
+            "[JumpBack]wishingtree_entry",
+            "[JumpBack]hotairballoon_entry",
+            "[JumpBack]tradepage_entry",
+            "[JumpBack]exchance_entry",
+            "[JumpBack]train_entry",
+            "[JumpBack]specialcookie_entry",
             "returnmainpage"
         ]
     },
@@ -28,7 +28,6 @@
             "choose_wishingtree",
             "[JumpBack]kingdomactivity",
             "[JumpBack]returnmainpage"
-            
         ]
     },
     "hotairballoon_entry":{
@@ -76,14 +75,14 @@
         "recognition":{
             "type":"TemplateMatch",
             "param":{
-                "template" : "kingdomactivity/choosehotairballoon.png",
-                "roi" : [504,257,99,134]
+                "template" : "kingdomactivity/choosehotairballoon.png"
             }
         },
         "action":{
             "type":"Click"
         },
         "next": [
+            "hotairballoon_done",
             "hotairballoon_autochoose"
         ]
     },
@@ -99,6 +98,21 @@
         },
         "next": [
             "train"
+        ]
+    },
+    "hotairballoon_done":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "roi" : [544,620,196,60],
+                "expected" : "取消热气球探险",
+                "only_rec":true
+                
+            }
+        },
+        "next":[
+            "mainpagejudgment",
+            "[JumpBack]returnmainpage"
         ]
     }
 }
