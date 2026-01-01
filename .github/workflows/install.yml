@@ -64,53 +64,80 @@ jobs:
       is_release: ${{ steps.set_tag.outputs.is_release }}
       is_prerelease: ${{ steps.set_tag.outputs.is_prerelease }}
 
-  install:
+  windows:
     needs: meta
-    runs-on: ubuntu-latest
     strategy:
       matrix:
-        os: [win, macos, linux, android]
-        arch: [aarch64, x86_64]
+        include:
+          - arch: x86_64
+            runner: windows-latest
+          - arch: aarch64
+            runner: windows-11-arm
       fail-fast: false
+    runs-on: ${{ matrix.runner }}
 
     steps:
       - uses: actions/checkout@v4
         with:
           submodules: true
 
+      - name: Set platform variables
+        id: platform
+        shell: bash
+        run: |
+          if [ "${{ matrix.arch }}" = "x86_64" ]; then
+            echo "tag=x64" >> $GITHUB_OUTPUT
+          else
+            echo "tag=arm64" >> $GITHUB_OUTPUT
+          fi
+
       - name: Download MaaFramework
         uses: robinraju/release-downloader@v1
         with:
           repository: MaaXYZ/MaaFramework
-          fileName: "MAA-${{ matrix.os }}-${{ matrix.arch }}*"
+          fileName: "MAA-win-${{ matrix.arch }}*"
           tag: ${{ env.MAA_FRAMEWORK_VERSION }}
           out-file-path: "deps"
           extract: true
 
-      - name: Remove built-in runtime in MFA
-        if: matrix.os != 'android'
-        shell: bash
-        run: |
-          rm -rf MFA/runtimes
-
       - name: Download MFAAvalonia
-        if: matrix.os != 'android'
         id: download_mfa
         uses: robinraju/release-downloader@v1
         with:
           repository: SweetSmellFox/MFAAvalonia
-          fileName: "MFAAvalonia-*-${{ (matrix.os == 'win' && 'win') || (matrix.os == 'macos' && 'osx') || (matrix.os == 'linux' && 'linux') }}-${{ (matrix.arch == 'x86_64' && 'x64') || (matrix.arch == 'aarch64' && 'arm64') }}*"
+          fileName: "MFAAvalonia-*-win-${{ steps.platform.outputs.tag }}*"
           tag: ${{ env.MFAA_VERSION }}
           out-file-path: "MFA"
           extract: true
 
-      - name: Clean up MFAAvalonia archive
-        if: matrix.os != 'android'
+      - name: Clean up MFAAvalonia archive on Windows
         shell: bash
         run: |
           ARCHIVE_FILE_PATH="${{ fromJson(steps.download_mfa.outputs.downloaded_files)[0] }}"
           rm -f "${ARCHIVE_FILE_PATH}"
-          echo "Archive cleanup command executed for MFAAvalonia."
+          echo "Archive cleanup command executed for MFAAvalonia on Windows."
+
+      - name: Convert PNG to ICO
+        if: matrix.arch == 'x86_64'
+        shell: bash
+        run: |
+          # 安装 ImageMagick
+          choco install imagemagick -y
+
+          # 转换 PNG 到 ICO
+          magick convert assets/logo.png -define icon:auto-resize=256,128,64,48,32,24,16 m9a.ico
+
+      - name: Modify MFAAvalonia exe icon
+        if: matrix.arch == 'x86_64'
+        shell: bash
+        run: |
+          # 下载 rcedit
+          curl -L https://github.com/electron/rcedit/releases/download/v2.0.0/rcedit-x64.exe -o rcedit.exe
+
+          # 修改 exe 图标
+          ./rcedit.exe "MFA/MFAAvalonia.exe" --set-icon "m9a.ico"
+
+          echo "MFAAvalonia icon modified successfully"
 
       - name: Setup Embed Python on Windows
         shell: bash
@@ -125,29 +152,56 @@ jobs:
       - name: Install
         shell: bash
         run: |
-          python -m pip install -r ./requirements.txt
-          python ./install.py ${{ needs.meta.outputs.tag }}
+          PLATFORM_TAG="win-${{ steps.platform.outputs.tag }}"
+          ./install/python/python.exe ./tools/ci/install.py ${{ needs.meta.outputs.tag }} $PLATFORM_TAG
+          cp -rpvn tools/registry/. install/
 
-          if [[ "${{ matrix.os }}" != "android" ]]; then
-            if [ -d "MFA" ]; then
-              echo "Copying MFA files to install directory..."
-              mkdir -p install
-              rsync -av --ignore-existing MFA/ install/
-            else
-              echo "MFA directory not found, skipping copy."
-            fi
-            if [[ "${{ matrix.os }}" == "win" ]]; then
-              mkdir -p install
-              cp -v "tools/DependencySetup_依赖库安装.bat" install/
-            fi
+      - name: Create CLI version
+        shell: bash
+        run: |
+          ./install/python/python.exe ./tools/ci/install_cli.py ${{ needs.meta.outputs.tag }}
+          cp -rpvn tools/registry/. install-cli/
+          cp -rpvn install/python/. install-cli/python/
+          rm -rf install-cli/deps 2>/dev/null || true
+
+      - name: Copy MFA files to main version
+        shell: bash
+        run: |
+          if [ -d "MFA" ]; then
+            echo "Copying MFA files to install directory..."
+            mkdir -p install
+            cp -rpvn MFA/. install/
           else
-            echo "Skipping copy MFA for Android."
+            echo "MFA directory not found, skipping copy."
+          fi
+
+      - name: Replace Assets with custom assets folder
+        shell: bash
+        run: |
+          # 删除大写的 Assets 文件夹
+          if [ -d "install/Assets" ]; then
+            rm -rf install/Assets
+            echo "Removed original Assets folder"
+          fi
+
+          # 创建小写的 assets 文件夹
+          mkdir -p install/assets
+
+          # 如果有自定义图标，复制并重命名为 logo.ico
+          if [ -f "m9a.ico" ]; then
+            cp m9a.ico install/assets/logo.ico
+            echo "Copied custom icon to assets/logo.ico"
           fi
 
       - uses: actions/upload-artifact@v4
         with:
-          name: Maacookie-${{ matrix.os }}-${{ matrix.arch }}
+          name: M9A-win-${{ matrix.arch }}-${{ needs.meta.outputs.tag }}-Full
           path: "install"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: M9A-win-${{ matrix.arch }}-${{ needs.meta.outputs.tag }}-Lite
+          path: "install-cli"
 
   changelog:
     name: Generate changelog
@@ -172,7 +226,7 @@ jobs:
 
   release:
     if: ${{ needs.meta.outputs.is_release == 'true' }}
-    needs: [meta, install, changelog]
+    needs: [meta, windows, changelog]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v4
