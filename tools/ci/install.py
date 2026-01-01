@@ -9,7 +9,6 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(script_dir)
 
 from configure import configure_ocr_model
-from generate_manifest_cache import generate_manifest_cache
 
 working_dir = Path(__file__).parent.parent.parent
 install_path = working_dir / Path("install")
