@@ -45,18 +45,19 @@ def install_resource():
         dirs_exist_ok=True,
     )
     shutil.copy2(
-        working_dir / "assets" / "interface_cli.json",
-        install_path / "interface.json",
+        working_dir / "assets" / "interface.json",
+        install_path,
     )
 
     with open(install_path / "interface.json", "r", encoding="utf-8") as f:
         interface = json.load(f)
 
     interface["version"] = version
-    interface["custom_title"] = f"M9A {version} | 亿韭韭韭小助手"
+    interface["custom_title"] = f"Maa-cookie {version} | 饼干人王国小助手"
 
     with open(install_path / "interface.json", "w", encoding="utf-8") as f:
         json.dump(interface, f, ensure_ascii=False, indent=4)
+
 
 
 def install_chores():
