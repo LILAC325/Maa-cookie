@@ -117,28 +117,6 @@ jobs:
           rm -f "${ARCHIVE_FILE_PATH}"
           echo "Archive cleanup command executed for MFAAvalonia on Windows."
 
-      - name: Convert PNG to ICO
-        if: matrix.arch == 'x86_64'
-        shell: bash
-        run: |
-          # 安装 ImageMagick
-          choco install imagemagick -y
-
-          # 转换 PNG 到 ICO
-          magick convert assets/logo.png -define icon:auto-resize=256,128,64,48,32,24,16 m9a.ico
-
-      - name: Modify MFAAvalonia exe icon
-        if: matrix.arch == 'x86_64'
-        shell: bash
-        run: |
-          # 下载 rcedit
-          curl -L https://github.com/electron/rcedit/releases/download/v2.0.0/rcedit-x64.exe -o rcedit.exe
-
-          # 修改 exe 图标
-          ./rcedit.exe "MFA/MFAAvalonia.exe" --set-icon "m9a.ico"
-
-          echo "MFAAvalonia icon modified successfully"
-
       - name: Setup Embed Python on Windows
         shell: bash
         run: |
