@@ -62,7 +62,7 @@ def install_resource():
         interface = json.load(f)
 
     interface["version"] = version
-    interface["custom_title"] = f"M9A {version} | 亿韭韭韭小助手"
+    interface["custom_title"] = f"Maa-cookie {version} | 饼干人王国小助手"
 
     with open(install_path / "interface.json", "w", encoding="utf-8") as f:
         json.dump(interface, f, ensure_ascii=False, indent=4)
