@@ -252,3 +252,11 @@ jobs:
               echo "Created archive with preserved permissions: $f.tar.gz"
             fi
           done
+          
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: assets/*
+          tag_name: ${{ needs.meta.outputs.tag }}
+          body: ${{ needs.changelog.outputs.release_body }}
+          draft: false
+          prerelease: ${{ needs.meta.outputs.is_prerelease == 'true' }}
