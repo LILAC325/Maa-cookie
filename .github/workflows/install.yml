@@ -19,6 +19,10 @@ on:
       - "**.py"
   workflow_dispatch:
 
+permissions:
+  contents: write
+  actions: write
+
 env:
   MAA_FRAMEWORK_VERSION: "v5.3.0"
   MFAA_VERSION: "v2.2.0"
@@ -211,10 +215,42 @@ jobs:
         with:
           path: assets
 
-      - run: |
+      - name: Process and package artifacts
+        run: |
           cd assets
           for f in *; do
-            (cd $f && zip -r ../$f-${{ needs.meta.outputs.tag }}.zip .)
+            if [[ $f == *"win"* ]]; then
+              (cd "$f" && zip -r "../$f.zip" .)
+            else
+              echo "Processing Unix artifact: $f"
+
+              if [[ -f "$f/MaaPiCli" ]]; then
+                chmod +x "$f/MaaPiCli"
+                echo "Set execute permission for $f/MaaPiCli"
+              fi
+
+              find "$f" -type f -name "MFAAvalonia*" -exec chmod +x {} \; 2>/dev/null || true
+              echo "Set execute permission for all MFAAvalonia files"
+
+              find "$f" -type f -name "MFAUpdater*" -exec chmod +x {} \; 2>/dev/null || true
+              echo "Set execute permission for all MFAUpdater files"
+
+              PYTHON_PATHS=(
+                "$f/python/bin/python3"
+                "$f/python/python"
+                "$f/python/bin/python"
+                "$f/python/python.exe"
+              )
+              for PYTHON_PATH in "${PYTHON_PATHS[@]}"; do
+                if [[ -f "$PYTHON_PATH" ]]; then
+                  chmod +x "$PYTHON_PATH"
+                  echo "Set execute permission for $PYTHON_PATH"
+                fi
+              done
+
+              tar -cpzf "$f.tar.gz" -C "$f" .
+              echo "Created archive with preserved permissions: $f.tar.gz"
+            fi
           done
           
       - uses: softprops/action-gh-release@v2
