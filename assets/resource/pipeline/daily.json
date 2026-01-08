@@ -28,11 +28,11 @@
             "[JumpBack]wait_sailing_collect",
             "[JumpBack]landmark_reward",
             "[Jumpback]landmark_upgrade",
-            "[JumpBack]research_done",
-            "cleargreenpoint"
+            "[JumpBack]research_page",
+            "cleargreenpoint",
+            "nothingtodo"
         ],
-        "post_delay":3000,
-        "timeout":10000
+        "post_delay":4000
     },
     "hotairballoon":{
         "recognition":{
@@ -284,17 +284,6 @@
         "next":[
             "adventurer_cookie",
             "cleargreenpoint"
-        ]
-    },
-    "research_done":{
-        "recognition":{
-            "type":"OCR",
-            "param":{
-                "expected":"糖糖地精研究室"
-            }
-        },
-        "next":[
-            "returnmainpage"
         ]
     },
     "landmark_upgrade":{

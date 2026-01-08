@@ -25,7 +25,7 @@ permissions:
 
 env:
   MAA_FRAMEWORK_VERSION: "v5.3.0"
-  MFAA_VERSION: "v2.2.0"
+  MFAA_VERSION: "v2.0.0"
 
 jobs:
   meta:

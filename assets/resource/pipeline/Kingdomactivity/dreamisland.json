@@ -1,0 +1,209 @@
+{
+    "dreamisland_page":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "的小岛",
+                "roi" : [7,9,420,63]
+            }
+        },
+        "next": [
+            "[JumpBack]dreamisland_task1",
+            "[JumpBack]dreamisland_task2",  
+            "[JumpBack]dreamisland_task3",
+            "returnmainpage"
+        ]
+    },
+    "dreamisland_task1":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "航海手册",
+                "roi" : [1137,651,110,47],
+                "only_rec":true   
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "max_hit":1,
+        "next": [
+            "dreamisland_task1_step1"
+        ]
+    },
+    "dreamisland_task1_step1":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"登陆回忆小岛",
+                "roi" : [290,587,170,46]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next": [
+            "dreamisland_back"
+        ],
+        "post_delay":4000
+    },
+    "dreamisland_back":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+               "expected":"返回"
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "post_delay":4000
+    },
+    "dreamisland_task2":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"展示",
+               "roi" : [1027,658,61,41]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next": [
+            "dreamisland_task2_page"
+        ]
+    },
+    "dreamisland_task2_page":{
+        "next": [
+            "dreamisland_friend"
+        ]
+    },
+    "dreamisland_friend":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"好友小岛照片",
+                "roi" : [48,187,168,48],
+                "only_rec":true
+            }
+        },
+        "next":[
+            "dreamisland_find_coin_check"
+        ]
+    },
+    "dreamisland_find_coin_check":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"已获得每日奖励",
+                "roi" : [305,396,461,170]
+            }
+        },
+        "inverse":true,
+        "next":[
+            "dreamisland_find_coin_page"
+        ]
+    },
+    "dreamisland_find_coin_page":{
+        "next":[
+            "[JumpBack]dreamisland_find_coin",
+            "sw_dreamisland_find_coin_page"
+        ]
+
+    },
+    "sw_dreamisland_find_coin_page":{
+        "action":{
+            "type":"Swipe",
+            "param":{
+                "begin" : [1192,686,1,1],
+                "end" : [1189,323,1,1],
+                "duration" : 2000
+            }
+        },
+        "next":[
+            "dreamisland_find_coin_check2",
+            "dreamisland_page",
+            "[JumpBack]quit"
+        ],
+        "post_delay":2000
+    },
+    "dreamisland_find_coin_check2":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+               "template" : "kingdomactivity/dreamisland_task2.png"
+            }
+        },
+        "next":[
+            "dreamisland_find_coin_page"
+        ]
+    },
+    "dreamisland_find_coin":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+               "template" : "kingdomactivity/dreamisland_task2.png"
+            }
+        },
+        "action":{
+            "type":"Click",
+            "param":{
+                "target_offset" : [223, -335, -95, -15]
+            }
+        },
+        "next": [
+            "dreamisland_find_coin_step1"
+        ]
+    },
+    "dreamisland_find_coin_step1":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+               "template" : "kingdomactivity/dreamisland_find_coin_step1.png"
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next": [
+            "dreamisland_find_coin_step2"
+        ],
+        "post_delay":4000
+    },
+    "dreamisland_find_coin_step2":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+               "template" : "kingdomactivity/dreamisland_find_coin_step2.png"
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next": [
+            "[JumpBack]bottom_click",
+            "[JumpBack]dreamisland_back",
+            "nothingtodo"
+        ],
+        "post_delay":2000
+    },
+    "dreamisland_task3":{
+        "max_hit":1,
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : [
+                    "kingdomactivity/dreamisland_task3_1.png",
+                    "kingdomactivity/dreamisland_task3_2.png",
+                    "kingdomactivity/dreamisland_task3_3.png"
+                ],
+                "threshold" : 0.5
+            }
+        },
+        "action":{
+            "type":"Click"
+        }
+    }
+}
+  

@@ -62,7 +62,8 @@
         "next":[
             "wish_load",
             "wishingtree_page"
-        ]
+        ],
+        "post_delay":1000
     },
     "wish_submit":{
         "recognition":{
@@ -151,7 +152,8 @@
             "wish_cooling",
             "wishingtree_page",
             "ignorereminder"
-        ]
+        ],
+        "post_delay":2000
     },
     "ignorereminder":{
         "recognition":{

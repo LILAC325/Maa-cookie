@@ -1,6 +1,5 @@
 {
     "startup":{
-        "post_wait_freeze":300,
         "timeout":60000,
         "next":[
             "mainpagejudgment",

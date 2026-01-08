@@ -28,7 +28,7 @@
             "todayreward",
             "protectbattle",
             "archipelago",
-            "adventure_swtoright",
+            "[JumpBack]adventure_swtoright",
             "returnmainpage"
         ],
         "post_delay":1000
@@ -190,10 +190,7 @@
                 "end" : [808,590,1,1]
             }
         },
-        "next":[
-            "adventure_page"
-        ],
-        "max_hit":15,
+        "max_hit":10,
         "post_delay":1000
     },
     "check_adventure_page_rightend":{
@@ -467,9 +464,14 @@
         "action":{
             "type":"custom",
             "param":{
-                "custom_action":"DisableNode",
+                "custom_action":"NodeOverride",
                 "custom_action_param":{
-                    "node_name":"archipelago"
+                    "archipelago":{
+                        "enabled":false
+                    },
+                    "adventure_swtoright":{
+                        "enabled":false
+                    }
                 }
             }
         },

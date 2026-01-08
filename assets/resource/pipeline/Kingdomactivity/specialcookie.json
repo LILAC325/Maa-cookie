@@ -85,10 +85,13 @@
             "type":"Click"
         },
         "next": [
-            "specialcookie_general"
+            "[JumpBack]specialcookie_general",
+            "[JumpBack]specialcookie_quick",
+            "specialcookie_done"
         ]
     },
     "specialcookie_quick":{
+        "max_hit":1,
         "recognition":{
             "type":"OCR",
             "param":{
@@ -105,10 +108,13 @@
             }
         },
         "next": [
-            "wait_specialcookie_next"
+            "specialcookie_success",
+            "specialcookie_page",
+            "[JumpBack]nothingtodo"
         ]
     },
     "specialcookie_general":{
+        "max_hit":1,
         "recognition":{
             "type":"OCR",
             "param":{
@@ -126,21 +132,9 @@
             }
         },
         "next":[
-            "wait_specialcookie_next"
-        ],
-        "pre_delay":5000
-    },
-    "wait_specialcookie_next":{
-        "recognition":{
-            "type":"OCR",
-            "param":{
-                "expected":"暂停"
-            }
-        },
-        "next":[
             "specialcookie_success",
-            "wait_specialcookie_next",
-            "specialcookie_done"
+            "specialcookie_page",
+            "[JumpBack]nothingtodo"
         ],
         "pre_delay":5000
     },
@@ -158,7 +152,7 @@
             }
         },
         "next":[
-            "specialcookie_done"
+            "specialcookie_page"
         ],
         "pre_delay":5000
     },

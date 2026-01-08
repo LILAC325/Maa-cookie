@@ -3,7 +3,7 @@
     "name": "Maa-cookie",
     "label": "Maa-饼干人王国",
     "github": "https://github.com/LILAC325/Maa-cookie",
-    "custom_title": "Maa-饼干人",
+    "custom_title": "Maa-饼干人|饼声沸腾的聚会",
     "icon": "icon.png",
     "contact":"{PROJECT_DIR}/assets/resource/doc/contact/联系方式.md",
     "license":null,
@@ -60,9 +60,12 @@
             "name":"清绿点",
             "label":"$清绿点",
             "entry": "cleargreenpoint_entry",
-            "description":"热气球：自动选取上一次地区",
+            "description":null,
             "icon":null,
-            "default_check": true
+            "default_check": true,
+            "option": [
+                "糖糖地精研究室"
+            ]
         },
         {
             "name":"王国管理所",
@@ -85,7 +88,9 @@
                 "海上贸易中心",
                 "熊熊果冻热气球",
                 "熊熊果冻列车",
-                "大嘴鹦鹉的海上交易所"
+                "大嘴鹦鹉的海上交易所",
+                "糖糖地精研究室",
+                "梦幻繁星岛"
             ]
         },
         {
@@ -572,7 +577,7 @@
         "热带苏打群岛": {
             "type":"swith",
             "label":"$热带苏打群岛",
-            "description":"是否开启热带苏打群岛,将自动使用发条进行扫荡",
+            "description":"将自动使用发条进行扫荡|建议开启",
             "icon":null,
             "cases": [
                 {
@@ -1138,6 +1143,81 @@
                 },
                 {
                     "name": "两条高价值词条"
+                }
+            ]
+        },
+        "糖糖地精研究室":{
+            "type":"swith",
+            "label":"$糖糖地精研究室",
+            "description":"是否自动进行研究(此功能可能会消耗大量材料，请谨慎开启)",
+            "icon":null,
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {  
+                        "check_research":{
+                            "enabled": true
+                        }
+                    },
+                    "option":[
+                        "研究偏好"
+                    ]
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "check_research":{
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "研究偏好":{
+            "type":"select",
+            "label":"$研究偏好",
+            "description":"优先选择哪条路线(请勿选择已完成的路线)",
+            "icon":null,
+            "cases":[
+                {
+                    "name": "王国研究",
+                    "pipeline_override": {
+                        "cookie_research":{
+                            "enabled": false
+                        }
+                    }
+                },
+                {
+                    "name": "饼干研究",
+                    "pipeline_override": {
+                        "kingdom_research":{
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "梦幻繁星岛":{
+            "type":"swith",
+            "label":"$梦幻繁星岛",
+            "description":"请确保岛上有勇敢饼干|勇敢饼干最好穿戴的是青蛙皮肤",
+            "icon":null,
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "dreamisland_entry":{
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "dreamisland_entry":{
+                            "enabled": false
+                        }
+                    }
                 }
             ]
         }

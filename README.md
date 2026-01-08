@@ -5,65 +5,47 @@
 
 <div align="center">
 
-# 🍪 maa-cookie
-**基于全新架构的 冲呀！饼干人王国 小助手。图像技术 +模拟控制，解放双手！**
+#  maa-cookie
 
+基于全新架构的 冲呀！饼干人王国 小助手。图像技术 +模拟控制，解放双手！
 由 [MaaFramework](https://github.com/MaaXYZ/MaaFramework) 强力驱动。
 
-如果本项目对您有帮助，欢迎在仓库右上角点个 **Star** 🌟！
+🌟如果本项目对您有帮助，欢迎在仓库右上角点个🌟！
 
 </div>
 
 ---
 
-## 📋 功能列表
+## 功能列表
 
-### 🎯 核心功能
-- **清绿点**
+- 启动游戏
+- 清除绿点
+- 王国管理所
+- 王国活动
+- 冒险
+- 公会
+- 页面奖励
+- 饼干管理
+- 广场
 
-### 🎁 页面奖励
-- ✅ **每日扭蛋**
-- ✅ **邮箱领取**  
-- ✅ **好友礼物**
-- ✅ **每周向导**
-- ✅ **赛季通行证**
+##  鸣谢
 
-### 🏰 王国活动
-- ✅ **愿望树**
-- ✅ **熊熊果洞热气球**
-- ✅ **海上贸易**
-- ✅ **熊熊果冻列车**
-- ✅ **相约之所**
+### 核心框架
 
-### ⚙️ 生产管理
-- **生产管理**
+- [MaaFramework](https://github.com/MaaXYZ/MaaFramework)  
+  基于图像识别的自动化黑盒测试框架 | An automation black-box testing framework based on image recognition
 
-### 👥 公会功能
-- ✅ **公会升级**
-- ✅ **公会扭蛋**
-- ✅ **公会签到**
+### UI 支持
 
-### ⚔️ 冒险系统
-- ✅ **实证战场**
-- ✅ **今日悬赏**
-- ✅ **苏打群岛**
+- [MFAAvalonia](https://github.com/SweetSmellFox/MFAAvalonia)  
+  基于 Avalonia UI 构建的 MaaFramework 通用 GUI 解决方案
 
----
+### 开发者
 
-## 🔮 计划功能
+感谢以下开发者对本项目作出的贡献:
 
-### 🚧 开发中功能
-☐ **配料强化**
-☐ **商品自动购买**
-☐ **公会讨伐** 
+[![Contributors](https://contrib.rocks/image?repo=LILAC325/Maa-cookie/&max=1000)](https://github.com/LILAC325/Maa-cookie/graphs/contributors)
 
----
+## 联系方式
 
-## 🙏 鸣谢
-
-<div align="center">
-
-本项目由 **[MaaFramework](https://github.com/MaaXYZ/MaaFramework)** 强力驱动！  
-UI 由 [MFAAvalonia](https://github.com/SweetSmellFox/MFAAvalonia) 大力支持
-
-</div>
+- [bilibili-混沌人间体](https://space.bilibili.com/191013445?spm_id_from=333.1007.0.0)

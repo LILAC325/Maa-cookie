@@ -8,7 +8,6 @@
     },
     "kingdomproduce_entry":{
         "next":[
-            "kingdom_collection_page",
             "kingdomproduce",
             "[JumpBack]returnmainpage"
         ]
@@ -808,8 +807,7 @@
         },
         "next":[
             "[JumpBack]mainpage_activity_sw_top",
-            "[JumpBack]烽火迷你通行证",
-            "[JumpBack]清新的百合通行证",
+            "[JumpBack]坚毅的银辉妖精王通行证",
             "[JumpBack]周周签到簿",
             "[JumpBack]登场纪念签到",
             "returnmainpage"
@@ -841,7 +839,10 @@
             }
         },
         "action":{
-            "type":"Click"
+            "type":"Click",
+            "param":{
+                "target_offset":[-64, 30, 48, 5]
+            }
         },
         "next":[
             "mainpage_activity_pass_collect"
@@ -907,11 +908,11 @@
             "type":"Click"
         }
     },
-    "烽火迷你通行证":{
+    "坚毅的银辉妖精王通行证":{
         "recognition":{
             "type":"OCR",
             "param":{
-                "expected":"烽火迷你通行证",
+                "expected":"坚毅的",
                 "roi" : [0,70,246,649]
             }
         },
@@ -920,45 +921,17 @@
         },
         "next":[
             "[JumpBack]mainpage_activity_pass_rp",
-            "烽火迷你通行证_done"
+            "通行证_done"
         ],
         "post_delay":2000
     },
-    "烽火迷你通行证_done":{
+    "通行证_done":{
         "action":{
             "type":"Custom",
             "param":{
                 "custom_action":"DisableNode",
                 "custom_action_param":{
-                    "node_name":"烽火迷你通行证"
-                }
-            }
-        }
-    },
-    "清新的百合通行证":{
-        "recognition":{
-            "type":"OCR",
-            "param":{
-                "expected":"清新的百合通行证",
-                "roi" : [0,70,246,649]
-            }
-        },
-        "action":{
-            "type":"Click"
-        },
-        "next":[
-            "[JumpBack]mainpage_activity_pass_rp",
-            "清新的百合通行证_done"
-        ],
-        "post_delay":2000
-    },
-    "清新的百合通行证_done":{
-        "action":{
-            "type":"Custom",
-            "param":{
-                "custom_action":"DisableNode",
-                "custom_action_param":{
-                    "node_name":"清新的百合通行证"
+                    "node_name":"坚毅的银辉妖精王通行证"
                 }
             }
         }
@@ -1021,59 +994,5 @@
                 }
             }
         }
-    },
-    "kingdom_collection_page":{
-        "max_hit":1,
-        "next":[
-            "[JumpBack]kingdom_collection_action1",
-            "[JumpBack]kingdom_collection_action2",
-            "[JumpBack]kingdom_collection",
-            "[JumpBack]kingdom_collection_action3",
-            "kingdomproduce_entry"
-        ]
-    },
-    "kingdom_collection_action1":{
-        "max_hit":1,
-        "action":{
-            "type":"LongPressKey",
-            "param":{
-                "key":33,
-                "duration":1000
-            }
-        }
-    },
-    "kingdom_collection_action2":{
-        "action":{
-            "type":"Swipe",
-            "param":{
-                "begin" : [363,257,1,1],
-                "end" : [842,485,1,1],
-                "duration":1000
-            }
-        },
-        "max_hit":2
-    },
-    "kingdom_collection_action3":{
-        "action":{
-            "type":"Swipe",
-            "param":{
-                "begin" : [1018,111,1,1],
-                "end" : [629,111,1,1],
-                "duration":3000
-            }
-        },
-        "max_hit":2
-    },
-    "kingdom_collection":{
-        "recognition":{
-            "type":"TemplateMatch",
-            "param":{
-                "template":"common/collection.png"
-            }
-        },
-        "action":{
-            "type":"Click"
-        },
-        "max_hit":1
     }
 }

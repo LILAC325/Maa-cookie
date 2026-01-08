@@ -7,6 +7,8 @@
             "[JumpBack]exchance_entry",
             "[JumpBack]train_entry",
             "[JumpBack]specialcookie_entry",
+            "[JumpBack]research_entry",
+            "[JumpBack]dreamisland_entry",
             "returnmainpage"
         ]
     },
@@ -71,6 +73,28 @@
             "[JumpBack]returnmainpage"
         ]
     },
+    "dreamisland_entry":{
+        "max_hit":1,
+        "next":[
+            "choose_dreamisland",
+            "[JumpBack]kingdomactivity",
+            "[JumpBack]returnmainpage"
+        ]
+    },
+    "choose_dreamisland":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "kingdomactivity/choosedreamisland.png"
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next": [
+            "dreamisland_page"
+        ]
+    },
     "choose_hotairballoon":{
         "recognition":{
             "type":"TemplateMatch",
@@ -113,6 +137,163 @@
         "next":[
             "mainpagejudgment",
             "[JumpBack]returnmainpage"
+        ]
+    },
+    "research_entry":{
+        "max_hit":1,
+        "next": [
+            "research_choose",
+            "[JumpBack]kingdomactivity",
+            "[JumpBack]returnmainpage"
+        ]
+    },
+    "research_choose":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "kingdomactivity/research.png"
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next": [
+            "research_page"
+        ]
+    },
+    "research_page":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "roi" : [65,9,248,58],
+                "expected" : "糖糖地精研究室",
+                "only_rec":true
+            }
+        },
+        "next": [
+            "[JumpBack]bottom_click",
+            "check_research",
+            "research_done"
+        ]
+    },
+    "research_done":{
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action":"NodeOverride",
+                "custom_action_param":{
+                    "research_page":{
+                        "enabled":false
+                    }
+                }
+            }
+        },
+        "next":[
+            "returnmainpage"
+        ]
+    },
+    "check_research":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"没有进行中的研究",
+                "roi" : [89,98,181,38],
+                "only_rec":true
+            }
+        },
+        "next":[
+            "start_research_page",
+            "research_done"
+        ]
+    },
+    "start_research_page":{
+        "max_hit":1,
+        "next":[
+            "kingdom_research",
+            "cookie_research"
+        ]
+    },
+    "kingdom_research":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"王国研究",
+                "roi" : [460,661,127,40],
+                "only_rec":true
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "research_main_page"
+        ]
+    },
+    "cookie_research":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"饼干研究",
+                "roi" : [700,655,118,48],
+                "only_rec":true
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "research_main_page"
+        ]
+    },
+    "research_main_page":{
+        "next":[
+            "find_notdo_research",
+            "[JumpBack]sw_research_main_page"
+        ]
+    },
+    "find_notdo_research":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "kingdomactivity/find_notdo_research.png",
+                "threshold":0.9
+            }
+        },
+        "action":{
+            "type":"Click",
+            "param":{
+                "target_offset": [43, 39, 23, 9]
+            }
+        },
+        "max_hit":1,
+        "next":[
+            "research_main_done"
+        ]
+    },
+    "sw_research_main_page":{
+        "action":{
+            "type":"Swipe",
+            "param":{
+                "begin" : [966,565,1,1],
+                "end" : [727,564,1,1],
+                "duration" : 1000
+            }
+        }
+    },
+    "research_main_done":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"研究",
+                "roi" : [402,589,135,36],
+                "only_rec":true
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "research_done"
         ]
     }
 }
