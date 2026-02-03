@@ -71,13 +71,10 @@
             "type":"Click"
         },
         "next": [
-            "dreamisland_task2_page"
-        ]
-    },
-    "dreamisland_task2_page":{
-        "next": [
             "dreamisland_friend"
-        ]
+        ],
+        "max_hit":1,
+        "post_delay":1000
     },
     "dreamisland_friend":{
         "recognition":{
