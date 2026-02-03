@@ -104,7 +104,7 @@
             }
         },
         "next":[
-"legendaryjam_battle_page"
+            "legendaryjam_battle_page"
         ],
         "enabled":false
     },
@@ -112,7 +112,7 @@
         "recognition":{
             "type":"TemplateMatch",
             "param":{
-                "template" : "adventure/seasprite.png"
+                "template" : "adventure/blackpearl.png"     
             }   
         },
         "action":{
@@ -676,10 +676,99 @@
         },
         "next":[
             "[JumpBack]comfirm",
+            "set_arena_team_entry",
             "arena_page",
             "arena_counterattack_page"
         ],
         "post_delay":2000
+    },
+    "set_arena_team_entry":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"攻击队伍设置"
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "set_arena_team_entry_sept1"
+        ],
+        "max_hit":1
+    },
+    "set_arena_team_entry_sept1":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"预设战斗队伍",
+                "roi" : [1036,134,216,301]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "set_arena_team_entry_sept2"
+        ]
+    },
+    "set_arena_team_entry_sept2":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"预设战斗队伍",
+                "roi" : [540,41,191,51]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "find_arena_team_name",
+            "[JumpBack]sw_arena_team_page"
+        ]
+    },
+    "find_arena_team_name":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"竞技场",
+                "roi" : [50,111,191,497]
+            }
+        },
+        "next":[
+            "comfirm_arena_team_name"
+        ]
+    },
+    "comfirm_arena_team_name":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"载入",
+                "roi":"find_arena_team_name",
+                "roi_offset":[953, -84, 97, 178]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "[JumpBack]comfirm",
+            "arena_page",
+            "arena_counterattack_page",
+            "[JumpBack]back"
+        ]
+    },
+    "sw_arena_team_page":{
+        "action":{
+            "type":"Swipe",
+            "param":{
+                "begin" : [1052,570,1,1],
+                "end" : [1051,382,1,1],
+                "duration" : 2000
+            }
+        },
+        "post_delay":1000
     },
     "arena_page":{
         "recognition":{
@@ -850,9 +939,10 @@
         "next":[
             "[JumpBack]arena_tips",
             "arena_ticket_lack",
-            "[JumpBack]arena_clear_page"
+            "[JumpBack]arena_clear_page",
+            "[JumpBack]nothingtodo"
         ],
-        "post_wait_freezes":1000,
+        "post_wait_freezes":2000,
         "post_delay":3000
     },
     "arena_clear_page":{

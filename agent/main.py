@@ -98,9 +98,7 @@ def ensure_venv_and_relaunch_if_needed():
     logger.info(f"正在使用虚拟环境Python重新启动")
 
     try:
-        script_abs = current_file_path
-        args = sys.argv[1:]
-        cmd = [str(python_in_venv), script_abs] + args
+        cmd = [str(python_in_venv)] + sys.argv
         logger.info(f"执行命令: {' '.join(cmd)}")
 
         result = subprocess.run(

@@ -29,10 +29,37 @@
             "[JumpBack]landmark_reward",
             "[Jumpback]landmark_upgrade",
             "[JumpBack]research_page",
+            "[JumpBack]daily_back_mainpage",
             "cleargreenpoint",
             "nothingtodo"
         ],
         "post_delay":4000
+    },
+    "daily_back_mainpage":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template":"common/mainpage.png",
+                "recommended roi" : [37,550,167,60]
+            }
+        },
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action":"NodeOverride",
+                "custom_action_param":{
+                    "back":{
+                        "max_hit":1
+                    }
+                }
+            }
+        },
+        "inverse":true,
+
+        "next":[
+            "[JumpBack]back",
+            "nothingtodo"
+        ]
     },
     "hotairballoon":{
         "recognition":{

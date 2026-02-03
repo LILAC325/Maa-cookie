@@ -117,7 +117,7 @@
                 ]
             }
         },
-        "pre_delay":3000
+        "post_delay":3000
     },
     "greenpoint_click":{
         "recognition":{

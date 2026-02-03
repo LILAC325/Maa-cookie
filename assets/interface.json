@@ -10,7 +10,7 @@
     "welcome":"{PROJECT_DIR}/assets/resource/doc/announcement/简介.md",
     "description":"{PROJECT_DIR}/assets/resource/doc/关于.md",
     "version": "v1.0.2",
-    "mirrorchyan_rid":null,
+    "mirrorchyan_rid":"",
     "mirrorchyan_multiplatform":false,
     "controller": [
         {
@@ -32,8 +32,6 @@
     "resource": [
         {
             "name": "Official",
-            "label":"official",
-            "icon":null,
             "path": [
                 "{PROJECT_DIR}/resource"
             ]
@@ -46,7 +44,9 @@
             "entry":"shop_list",
             "description":"设置全局商店购买列表，不开启则商店类功能可能会失效",
             "icon":null,
-            "default_check": true
+            "default_check": true,
+            "repeatable": false,
+            "repeat_count": 1
         },
         {
             "name":"启动游戏",
@@ -54,7 +54,9 @@
             "entry":"startup",
             "description":null,
             "icon":null,
-            "default_check": true
+            "default_check": true,
+            "repeatable": false,
+            "repeat_count": 1
         },
         {
             "name":"清绿点",
@@ -65,7 +67,9 @@
             "default_check": true,
             "option": [
                 "糖糖地精研究室"
-            ]
+            ],
+            "repeatable": false,
+            "repeat_count": 1
         },
         {
             "name":"王国管理所",
@@ -73,7 +77,9 @@
             "entry":"kingdomproduce_entry",
             "description":null,
             "icon":null,
-            "default_check": true
+            "default_check": true,
+            "repeatable": false,
+            "repeat_count": 1
         },
         {
             "name":"王国活动",
@@ -91,7 +97,9 @@
                 "大嘴鹦鹉的海上交易所",
                 "糖糖地精研究室",
                 "梦幻繁星岛"
-            ]
+            ],
+            "repeatable": false,
+            "repeat_count": 1
         },
         {
             "name": "冒险",
@@ -106,7 +114,9 @@
                 "今日悬赏",
                 "守护之战",
                 "热带苏打群岛"
-            ]
+            ],
+            "repeatable": false,
+            "repeat_count": 1
         },
         {
             "name": "公会",
@@ -119,7 +129,9 @@
                 "公会升级",
                 "公会扭蛋",
                 "公会奖牌交换所"
-            ]
+            ],
+            "repeatable": false,
+            "repeat_count": 1
         },
         {
             "name": "页面奖励",
@@ -127,7 +139,9 @@
             "entry": "mainpage_reward_entry",
             "description":"领取页面奖励",
             "icon":null,
-            "default_check": true
+            "default_check": true,
+            "repeatable": false,
+            "repeat_count": 1
         },
         {
             "name":"饼干管理",
@@ -140,7 +154,9 @@
                 "配料分解",
                 "脆饼分解",
                 "配料强化（单独启动）"
-            ]
+            ],
+            "repeatable": false,
+            "repeat_count": 1
         },
         {
             "name": "广场挂机",
@@ -148,7 +164,9 @@
             "entry": "square_entry",
             "description":null,
             "icon":null,
-            "default_check": false
+            "default_check": true,
+            "repeatable": false,
+            "repeat_count": 1
         }
     ],
     "option": {
@@ -157,7 +175,7 @@
             "label":"$饼干选择",
             "description":"请选择要获取的饼干",
             "icon":null,
-            "default_case":"花小龙饼干",
+            "default_case":"冰锥雪怪饼干",
             "cases": [
                 {
                     "name": "花小龙饼干",
@@ -184,7 +202,7 @@
             ]
         },
         "璀璨贝艺廊":{
-            "type":"swith",
+            "type":"switch",
             "label":"$璀璨贝艺廊",
             "description":"是否启用璀璨贝艺廊商店购买功能",
             "icon":null,
@@ -210,7 +228,7 @@
 
         },
         "公会升级": {
-            "type":"swith",
+            "type":"switch",
             "label":"$是否启用公会升级",
             "description":"自动提交蓝色焰火",
             "icon":null,
@@ -235,7 +253,7 @@
             ]
         },
         "公会扭蛋": {
-            "type":"swith",
+            "type":"switch",
             "label":"$是否启用公会扭蛋",
             "description":"自动进行公会扭蛋",
             "icon":null,
@@ -260,7 +278,7 @@
             ]
         },
         "公会奖牌交换所":{
-            "type":"swith",
+            "type":"switch",
             "label":"$公会奖牌交换所",
             "description":"是否启用公会奖牌交换所",
             "icon":null,
@@ -285,7 +303,7 @@
             ]
         },
         "竞技场":{
-            "type":"swith",
+            "type":"switch",
             "label":"$竞技场",
             "description":"是否启用竞技场",
             "icon":null,
@@ -294,7 +312,9 @@
                 {
                     "name": "yes",
                     "option": [
-                        "竞技场模式"
+                        "竞技场模式",
+                        "是否开启预设队伍设置",
+                        "自动补充竞技场券"
                     ],
                     "pipeline_override": {
                         "arena_entry": {
@@ -322,7 +342,7 @@
                 {
                     "name":"正常对战",
                     "label":"$正常对战",
-                    "description":"正常对战模式,依次与对手对战，直到竞技场劵用完",
+                    "description":"正常对战模式,依次对战，直到竞技场劵用完",
                     "icon":null,
                     "pipeline_override":{
                         "arena_counterattack_page":{
@@ -344,7 +364,7 @@
             ]
         },
         "实证战场": {
-            "type":"swith",
+            "type":"switch",
             "label":"$实证战场",
             "description":"是否启用实证战场",
             "icon":null,
@@ -414,7 +434,7 @@
             ]
         },
         "今日悬赏": {
-            "type":"swith",
+            "type":"switch",
             "label":"$今日悬赏",
             "description":"是否开启今日悬赏",
             "icon":null,
@@ -451,7 +471,7 @@
                 {
                     "name": "今日最高加成",
                     "label":"$今日最高加成",
-                    "description":"选择技能粉末与开糖材料两个副本中今日加成最高的副本",
+                    "description":"自动选择技能粉末与开糖材料两个副本中今日加成最高的副本",
                     "icon":null,
                     "option":[
                         "无加成偏好"
@@ -491,6 +511,7 @@
             "label":"$无加成偏好",
             "description":"技能粉末与开糖材料均无加成时偏好副本",
             "icon":null,
+            "default_case":"技能粉末",
             "cases":[
                 {
                     "name": "技能粉末",
@@ -517,7 +538,7 @@
             ]
         },
         "守护之战": {
-            "type":"swith",
+            "type":"switch",
             "label":"$守护之战",
             "description":"是否开启守护之战，请确保已至少通关大师难度",
             "icon":null,
@@ -549,9 +570,10 @@
             "label":"$守护之战难度选择",
             "description":"选择守护之战的难度",
             "icon":null,
+            "default_case":"大师难度",
             "cases": [
                 {
-                    "name": "大师难度",         
+                    "name":"大师难度",
                     "label":"$大师难度",
                     "description":"请确保已通关大师难度",
                     "icon":null,
@@ -575,10 +597,11 @@
             ]
         },
         "热带苏打群岛": {
-            "type":"swith",
+            "type":"switch",
             "label":"$热带苏打群岛",
             "description":"将自动使用发条进行扫荡|建议开启",
             "icon":null,
+            "default_case":"yes",
             "cases": [
                 {
                     "name": "yes",
@@ -599,10 +622,11 @@
             ]
         },
         "使用加速劵":{
-            "type":"swith",
+            "type":"switch",
             "label":"$使用加速劵",
             "description":"是否使用10分钟加速劵",
             "icon":null,
+            "default_case":"no",
             "cases":[
                 {
                     "name": "yes",
@@ -654,10 +678,11 @@
             ]
         },
         "配料分解":{
-            "type":"swith",
+            "type":"switch",
             "label":"$配料分解",
             "description":"是否启用配料分解功能",
             "icon":null,
+            "default_case":"no",
             "cases":[
                 {
                     "name": "yes",
@@ -678,10 +703,11 @@
             ]
         },
         "脆饼分解":{
-            "type":"swith",
+            "type":"switch",
             "label":"$脆饼分解",
             "description":"是否启用脆饼分解功能",
             "icon":null,
+            "default_case":"no",
             "cases":[
                 {
                     "name": "yes",
@@ -702,7 +728,7 @@
             ]
         },
         "配料强化（单独启动）":{    
-            "type":"swith",
+            "type":"switch",
             "label":"$配料强化（单独启动）",
             "description":"此功能需单独启动，以避免不必要的错误",
             "icon":null,
@@ -732,7 +758,7 @@
             ]
         },
         "许愿树":{
-            "type":"swith",
+            "type":"switch",
             "label":"$许愿树",
             "description":"启用许愿树功能",
             "icon":null,
@@ -761,7 +787,7 @@
             ]
         },
         "相约之所":{
-            "type":"swith",
+            "type":"switch",
             "label":"$相约之所",
             "description":"启用相约之所功能",
             "icon":null,
@@ -789,7 +815,7 @@
             ]
         },
         "海上贸易中心":{
-            "type":"swith",
+            "type":"switch",
             "label":"$海上贸易中心",
             "description":"启用海上贸易中心功能",
             "icon":null,
@@ -817,7 +843,7 @@
             ]
         },
         "大嘴鹦鹉的海上交易所":{
-            "type":"swith",
+            "type":"switch",
             "label":"$大嘴鹦鹉的海上交易所",
             "description":"启用大嘴鹦鹉的海上交易所功能",
             "icon":null,
@@ -845,7 +871,7 @@
             ]
         },
         "熊熊果冻热气球": {
-            "type":"swith",
+            "type":"switch",
             "label":"$熊熊果冻热气球",
             "description":"启用熊熊果冻热气球功能",
             "icon":null,
@@ -870,7 +896,7 @@
             ]
         },
         "熊熊果冻列车": {
-            "type":"swith",
+            "type":"switch",
             "label":"$熊熊果冻列车",
             "description":"启用熊熊果冻列车功能",
             "icon":null,
@@ -948,7 +974,7 @@
             ]
         },
         "词条筛选":{
-            "type":"swith",
+            "type":"switch",
             "label":"$词条筛选",
             "description":"是否启用词条筛选",
             "icon":null,
@@ -976,10 +1002,11 @@
             ]
         },
         "攻击力":{
-            "type":"swith",
+            "type":"switch",
             "label":"$攻击力",
             "description":"保留3.5%~4%",
             "icon":null,
+            "default_case":"no",
             "cases":[
                 {
                     "name": "yes",
@@ -1000,10 +1027,11 @@
             ]
         },
         "伤害减免":{    
-            "type":"swith",
+            "type":"switch",
             "label":"$伤害减免",
             "description":"保留3.7%~4%",
             "icon":null,
+            "default_case":"no",
             "cases":[
                 {
                     "name": "yes",
@@ -1024,10 +1052,11 @@
             ]
         },
         "会心":{
-            "type":"swith",
+            "type":"switch",
             "label":"$会心",
             "description":"保留2.5%~3%",
             "icon":null,
+            "default_case":"no",
             "cases":[
                 {
                     "name": "yes",
@@ -1048,10 +1077,11 @@
             ]
         },
         "冷却时间":{
-            "type":"swith",
+            "type":"switch",
             "label":"$冷却时间",
             "description":"保留1.8%~2%",
             "icon":null,
+            "default_case":"no",
             "cases":[
                 {
                     "name": "yes",
@@ -1072,10 +1102,11 @@
             ]
         },
         "生命值":{
-            "type":"swith",
+            "type":"switch",
             "label":"$生命值",
             "description":"仅保留5%",
             "icon":null,
+            "default_case":"no",
             "cases":[
                 {
                     "name": "yes",
@@ -1096,10 +1127,11 @@
             ]
         },
         "攻击速度":{
-            "type":"swith",
+            "type":"switch",
             "label":"$攻击速度",
             "description":"保留2.8%~3%",
             "icon":null,
+            "default_case":"no",
             "cases":[
                 {
                     "name": "yes",
@@ -1124,6 +1156,7 @@
             "label":"$有效词条保留",
             "description":"保留几条有效词条",
             "icon":null,
+            "default_case":"一条高价值词条",
             "cases":[
                 {
                     "name": "一条高价值词条",
@@ -1140,17 +1173,15 @@
                             "enabled": true
                         }
                     }
-                },
-                {
-                    "name": "两条高价值词条"
                 }
             ]
         },
         "糖糖地精研究室":{
-            "type":"swith",
+            "type":"switch",
             "label":"$糖糖地精研究室",
             "description":"是否自动进行研究(此功能可能会消耗大量材料，请谨慎开启)",
             "icon":null,
+            "default_case":"no",
             "cases":[
                 {
                     "name": "yes",
@@ -1178,6 +1209,7 @@
             "label":"$研究偏好",
             "description":"优先选择哪条路线(请勿选择已完成的路线)",
             "icon":null,
+            "default_case":"王国研究",
             "cases":[
                 {
                     "name": "王国研究",
@@ -1198,10 +1230,11 @@
             ]
         },
         "梦幻繁星岛":{
-            "type":"swith",
+            "type":"switch",
             "label":"$梦幻繁星岛",
             "description":"请确保岛上有勇敢饼干|勇敢饼干最好穿戴的是青蛙皮肤",
             "icon":null,
+            "default_case":"no",
             "cases":[
                 {
                     "name": "yes",
@@ -1215,6 +1248,79 @@
                     "name": "no",
                     "pipeline_override": {
                         "dreamisland_entry":{
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "是否开启预设队伍设置":{
+            "type":"switch",
+            "label":"$是否开启预设队伍设置",
+            "description":"载入预设的竞技场队伍配置",
+            "default_case":"no",
+            "icon":null,
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "set_arena_team_entry":{
+                            "enabled": true
+                        }
+                    },
+                    "option":[
+                        "预设队伍设置"
+                    ]
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "set_arena_team_entry":{
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "预设队伍设置":{
+            "type":"input",
+            "label":"$预设队伍设置",
+            "description":"填写预设队伍名",
+            "icon":null,
+            "inputs":[
+                {
+                    "name":"预设队伍名",
+                    "label":"$预设队伍名",  
+                    "default":"0",
+                    "description":"输入预设队伍名",
+                    "pipeline_type":"string",
+                    "verify": "^\\d+$"
+                }
+            ],
+            "pipeline_override": {
+                "find_arena_team_name": {
+                  "expected": "{预设队伍名}"
+                }
+            }
+        },
+        "自动补充竞技场券":{
+            "type":"switch",
+            "label":"$自动补充竞技场券",
+            "description":"是否自动补充竞技场券",
+            "icon":null,
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "set_arena_team_entry":{
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "set_arena_team_entry":{
                             "enabled": false
                         }
                     }
