@@ -1292,9 +1292,8 @@
                     "name":"预设队伍名",
                     "label":"$预设队伍名",  
                     "default":"0",
-                    "description":"输入预设队伍名",
-                    "pipeline_type":"string",
-                    "verify": "^\\d+$"
+                    "description":"填写预设队伍名",
+                    "pipeline_type":"string"
                 }
             ],
             "pipeline_override": {
@@ -1312,7 +1311,7 @@
                 {
                     "name": "yes",
                     "pipeline_override": {
-                        "set_arena_team_entry":{
+                        "arena_ticket_add":{
                             "enabled": true
                         }
                     }
@@ -1320,7 +1319,7 @@
                 {
                     "name": "no",
                     "pipeline_override": {
-                        "set_arena_team_entry":{
+                        "arena_ticket_add":{
                             "enabled": false
                         }
                     }

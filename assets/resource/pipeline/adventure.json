@@ -686,7 +686,8 @@
         "recognition":{
             "type":"OCR",
             "param":{
-                "expected":"攻击队伍设置"
+                "expected":"攻击队伍设置",
+                 "roi" : [10,625,198,85]
             }
         },
         "action":{
@@ -989,14 +990,35 @@
                 "expected":"补充8个竞技场入场券"
             }
         },
+        "next":[
+            "arena_ticket_add",
+            "arena_done"
+        ]
+    },
+    "arena_ticket_add":{
         "action":{
             "type":"Click",
             "param":{
-                "target":[990,51,1,1]
+                "target" : [587, 510, 1, 1]
             }
         },
         "next":[
-            "arena_done"
+            "arena_ticket_add2"
+        ]
+    },
+    "arena_ticket_add2":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"购买",
+                "roi" : [778, 437, 126, 46]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "arena_battle_page"
         ]
     },
     "arena_done":{

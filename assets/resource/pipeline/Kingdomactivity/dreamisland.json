@@ -107,7 +107,6 @@
             "[JumpBack]dreamisland_find_coin",
             "sw_dreamisland_find_coin_page"
         ]
-
     },
     "sw_dreamisland_find_coin_page":{
         "action":{
@@ -187,6 +186,7 @@
     },
     "dreamisland_task3":{
         "max_hit":1,
+        "timeout":6000,
         "recognition":{
             "type":"TemplateMatch",
             "param":{
