@@ -807,9 +807,9 @@
         },
         "next":[
             "[JumpBack]mainpage_activity_sw_top",
-            "[JumpBack]坚毅的银辉妖精王通行证",
-            "[JumpBack]周周签到簿",
-            "[JumpBack]登场纪念签到",
+            "[JumpBack]通行证",
+            "[JumpBack]周周签到簿（常驻）",
+            "[JumpBack]登场纪念签到（常驻）",
             "returnmainpage"
         ],
         "max_hit":1,
@@ -846,7 +846,8 @@
         },
         "next":[
             "mainpage_activity_pass_collect"
-        ]
+        ],
+        "post_delay":2000
     },
     "mainpage_activity_pass_rp_click":{
         "recognition":{
@@ -908,11 +909,11 @@
             "type":"Click"
         }
     },
-    "坚毅的银辉妖精王通行证":{
+    "通行证":{
         "recognition":{
             "type":"OCR",
             "param":{
-                "expected":"坚毅的",
+                "expected":"通行证",
                 "roi" : [0,70,246,649]
             }
         },
@@ -936,7 +937,7 @@
             }
         }
     },
-    "周周签到簿":{
+    "周周签到簿（常驻）":{
         "recognition":{
             "type":"OCR",
             "param":{
@@ -965,7 +966,7 @@
             }
         }
     },
-    "登场纪念签到":{
+    "登场纪念签到（常驻）":{
         "recognition":{
             "type":"OCR",
             "param":{

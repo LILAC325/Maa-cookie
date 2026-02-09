@@ -1,0 +1,58 @@
+{
+    "activity_sailing_page":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"年货筹备",
+                "roi" : [587, 6, 221, 96]
+            }
+        },
+        "next":[
+            "[JumpBack]activity_sailing_autodeliver",
+            "[Jumpback]comfirm"
+        ]
+    },
+    "activity_sailing_autodeliver":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"自动交货"
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "activity_sailing_shipment_page",
+            "activity_sailing_page"
+        ]
+    },
+    "activity_sailing_shipment_page":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "最高交货量",
+                "roi" : [787, 641, 104, 35]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "activity_confirm_shipment"
+        ]
+    },
+    "activity_confirm_shipment":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "交货",
+                "roi" : [564, 453, 145, 57]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "post_delay":1000
+    }
+}
