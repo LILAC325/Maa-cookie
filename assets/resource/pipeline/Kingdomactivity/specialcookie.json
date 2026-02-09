@@ -24,7 +24,8 @@
         "next": [
             "check_specialcookie_number",
             "huaxiaolong",
-            "snowman"
+            "snowman",
+            "crememink"
         ]
     },
     "check_specialcookie_number":{
@@ -69,7 +70,22 @@
         "next": [
             "specialcookie_page"
         ],
-        "enabled":true
+        "enabled":false
+    },
+    "crememink":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "鲜奶油貂饼干"
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next": [
+            "specialcookie_page"
+        ],
+        "enabled":false
     },
     "specialcookie_page":{
         "recognition":{
@@ -77,7 +93,8 @@
             "param":{
                 "expected" : [
                     "唤醒",
-                    "孵化"
+                    "孵化",
+                    "呼叫"
                 ]
             }
         },
@@ -120,7 +137,8 @@
             "param":{
                 "expected":[
                     "孵化温度",
-                    "起床点数"
+                    "起床点数",
+                    "友情点数"
                 ]
             }
         },

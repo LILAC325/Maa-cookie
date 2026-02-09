@@ -3,7 +3,7 @@
     "name": "Maa-cookie",
     "label": "Maa-饼干人王国",
     "github": "https://github.com/LILAC325/Maa-cookie",
-    "custom_title": "Maa-饼干人|饼声沸腾的聚会",
+    "custom_title": "Maa-饼干人|新春版本",
     "icon": "icon.png",
     "contact":"{PROJECT_DIR}/assets/resource/doc/contact/联系方式.md",
     "license":null,
@@ -39,14 +39,38 @@
     ],
     "task": [
         {
-            "name":"全局商店列表设置",
-            "label":"$全局商店列表设置",
-            "entry":"shop_list",
-            "description":"设置全局商店购买列表，不开启则商店类功能可能会失效",
+            "name":"商店道具设置",
+            "label":"$商店设置",
+            "description":"设置全局商店购买列表，作为”商店设置”的前置",
             "icon":null,
-            "default_check": true,
+            "default_check": false,
             "repeatable": false,
-            "repeat_count": 1
+            "repeat_count": 1,
+            "option":[
+                "金币",
+                "钻石",
+                "传奇灵魂石",
+                "公会文物",
+                "饼干扭蛋劵",
+                "宝物扭蛋券",
+                "配料碎片",
+                "光之碎片",
+                "技能粉末",
+                "竞技场入场券",
+                "王国建筑材料",
+                "脆饼"
+            ]
+        },
+        {
+            "name":"商店设置",
+            "icon":null,
+            "default_check": false,
+            "repeatable": false,
+            "repeat_count": 1,
+            "option":[
+                
+            ]
+
         },
         {
             "name":"启动游戏",
@@ -175,7 +199,7 @@
             "label":"$饼干选择",
             "description":"请选择要获取的饼干",
             "icon":null,
-            "default_case":"冰锥雪怪饼干",
+            "default_case":"鲜奶油貂饼干",
             "cases": [
                 {
                     "name": "花小龙饼干",
@@ -195,6 +219,17 @@
                     "icon":null,
                     "pipeline_override": {
                         "snowman": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "鲜奶油貂饼干",
+                    "label":"$鲜奶油貂饼干",
+                    "description":null,
+                    "icon":null,
+                    "pipeline_override": {
+                        "crememink": {
                             "enabled": true
                         }
                     }
@@ -1320,6 +1355,428 @@
                     "name": "no",
                     "pipeline_override": {
                         "arena_ticket_add":{
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "金币":{
+            "type":"switch",
+            "label":"$金币",
+            "description":"",
+            "icon":null,
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "gold":{
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "gold":{
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "钻石":{
+            "type":"switch",
+            "label":"$钻石",
+            "description":"",
+            "icon":null,
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "diamond":{
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "diamond":{
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "传奇灵魂石":{
+            "type":"switch",
+            "label":"$传奇灵魂石",
+            "description":"",
+            "icon":null,
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "legendsoul":{
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "legendsoul":{
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "公会文物":{
+            "type":"switch",
+            "label":"$公会文物",
+            "description":"",
+            "icon":null,
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "guildRelics":{
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "guildRelics":{
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "饼干扭蛋劵":{
+            "type":"switch",
+            "label":"$饼干扭蛋劵",
+            "description":"",
+            "icon":null,
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "cookiegacha":{
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "cookiegacha":{
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "宝物扭蛋劵":{
+            "type":"switch",
+            "label":"$宝物扭蛋劵",
+            "description":"",
+            "icon":null,
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "treasuregacha":{
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "treasuregacha":{
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "配料碎片":{
+            "type":"switch",
+            "label":"$配料碎片",
+            "description":"",
+            "icon":null,
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "Ingredient_Pieces":{
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "Ingredient_Pieces":{
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "光之碎片":{
+            "type":"switch",
+            "label":"$光之碎片",
+            "description":"",
+            "icon":null,
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "lightPieces":{
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "lightPieces":{
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "技能粉末":{
+            "type":"switch",
+            "label":"$技能粉末",
+            "description":"",
+            "icon":null,
+            "cases":[
+                {
+                    "name": "yes",
+                    "option":[
+                        "低级技能粉末",
+                        "中级技能粉末",
+                        "高级技能粉末"
+                    ]
+                },
+                {
+                    "name": "no"
+                }
+            ]
+        },
+        "竞技场入场券":{
+            "type":"switch",
+            "label":"$竞技场入场券",
+            "description":"",
+            "icon":null,
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "arenaentrance":{
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "arenaentrance":{
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "王国建筑材料":{
+            "type":"switch",
+            "label":"$王国建筑材料",
+            "description":"",
+            "icon":null,
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "kingdommaterials":{
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "kingdommaterials":{
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "脆饼":{
+            "type":"switch",
+            "label":"$脆饼",
+            "description":"",
+            "icon":null,
+            "cases":[
+                {
+                    "name": "yes",
+                    "option":[
+                        "闪光脆饼面团",
+                        "普通脆饼面团",
+                        "脆饼经验碎片"
+                    ]
+                },
+                {
+                    "name": "no"
+                }
+            ]
+        },
+        "低级技能粉末":{
+            "type":"switch",
+            "label":"$低级技能粉末",
+            "description":"",
+            "icon":null,
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "skillpowder1":{
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "skillpowder1":{
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "中级技能粉末":{
+            "type":"switch",
+            "label":"$中级技能粉末",
+            "description":"",
+            "icon":null,
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "skillpowder2":{
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "skillpowder2":{
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "高级技能粉末":{
+            "type":"switch",
+            "label":"$高级技能粉末",
+            "description":"",
+            "icon":null,
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "skillpowder3":{
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "skillpowder3":{
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "闪光脆饼面团":{
+            "type":"switch",
+            "label":"$闪光脆饼面团",
+            "description":"",
+            "icon":null,
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "flash_crispycookiedough":{
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "flash_crispycookiedough":{
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "普通脆饼面团":{
+            "type":"switch",
+            "label":"$普通脆饼面团",
+            "description":"",
+            "icon":null,
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "common_crispycookiedough":{
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "common_crispycookiedough":{
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "脆饼经验碎片":{
+            "type":"switch",
+            "label":"$脆饼经验碎片",
+            "description":"",
+            "icon":null,
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "crispycookiedough_exp":{
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "crispycookiedough_exp":{
                             "enabled": false
                         }
                     }

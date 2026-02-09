@@ -1,5 +1,24 @@
 {
     "shop_list":{
+        "next":[
+            "gold",
+            "diamond",
+            "legendsoul",
+            "guildRelics",
+            "cookiegacha",
+            "treasuregacha",
+            "legendsoul",
+            "Ingredient_Pieces",
+            "lightPieces",
+            "crispycookiedough_exp",
+            "common_crispycookiedough",
+            "flash_crispycookiedough",
+            "kingdommaterials",
+            "arenaentrance",
+            "skillpowder1",
+            "skillpowder2",
+            "skillpowder3"
+        ]
 
     },
     "gold":{

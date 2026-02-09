@@ -1,0 +1,11 @@
+{
+    "gacha_shop_entry":{
+        "next":[
+            "gacha_shop"
+        ]
+    },
+    "gacha_shop":{
+        "next":[
+        ]
+    }
+}
