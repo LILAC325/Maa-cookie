@@ -10,7 +10,8 @@
         "next":[
             "[JumpBack]activity_sailing_autodeliver",
             "[Jumpback]comfirm"
-        ]
+        ],
+        "timeout":5000
     },
     "activity_sailing_autodeliver":{
         "recognition":{

@@ -74,7 +74,7 @@
             "dreamisland_friend"
         ],
         "max_hit":1,
-        "post_delay":1000
+        "post_delay":3000
     },
     "dreamisland_friend":{
         "recognition":{

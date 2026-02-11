@@ -29,11 +29,11 @@
             "[JumpBack]landmark_reward",
             "[Jumpback]landmark_upgrade",
             "[JumpBack]research_page",
-            "[JumpBack]daily_back_mainpage",
             "cleargreenpoint",
+            "[JumpBack]daily_back_mainpage",
             "nothingtodo"
         ],
-        "post_delay":4000
+        "post_delay":5000
     },
     "daily_back_mainpage":{
         "recognition":{
@@ -108,9 +108,22 @@
             "type":"Click"
         },
         "next":[
+            "[JumpBack]hotairballoon_skiptip",
             "wait_hotairballoon"
         ],
         "pre_delay":1000
+    },
+    "hotairballoon_skiptip":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "roi" : [684, 484, 175, 56],
+                "expected" : "探险开始"
+            }
+        },
+        "action":{
+            "type":"Click"
+        }
     },
     "wait_hotairballoon":{
         "recognition":{
@@ -321,9 +334,6 @@
                 "roi" : [72,4,217,60],
                 "only_rec":true
             }
-        },
-        "action":{
-            "type":"Click"
         },
         "next":[
             "[JumpBack]greenpoint_click",

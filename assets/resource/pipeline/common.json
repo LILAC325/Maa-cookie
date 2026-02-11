@@ -126,12 +126,17 @@
                 "template":[
                     "common/greenpoint.png",
                     "common/greenpoint1.png"
+                ],
+                "threshold":[
+                    0.65,
+                    0.65
                 ]
             }
         },
         "action":{
             "type":"Click"
-        }
+        },
+        "post_delay":3000
     },
     "nothingtodo":{
         

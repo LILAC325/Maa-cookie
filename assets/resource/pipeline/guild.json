@@ -3,8 +3,7 @@
         "recognition":{
             "type":"TemplateMatch",
             "param":{
-                "template" : "guild/guild.png",
-                "roi" : [512,630,55,44]
+                "template" : "guild/guild.png"
             }
         },
         "action":{
