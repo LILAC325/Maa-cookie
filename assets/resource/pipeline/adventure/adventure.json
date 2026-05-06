@@ -23,6 +23,7 @@
             }
         },
         "next":[
+            "global_adventure_entry",
             "arena_entry",
             "legendaryjam",
             "todayreward",
@@ -696,6 +697,7 @@
         "next":[
             "set_arena_team_entry_sept1"
         ],
+        "enabled":false,
         "max_hit":1
     },
     "set_arena_team_entry_sept1":{
@@ -964,9 +966,7 @@
         },
         "next":[
             "[JumpBack]bottom_click",
-            "[JumpBack]back_arena_page",
-            "[JumpBack]arena_counterattack_page",
-            "arena_page",
+            "back_arena_page",
             "arena_clear_page"
         ],
         "post_delay":1000
@@ -981,7 +981,12 @@
         "action":{
             "type":"Click"
         },
-        "post_delay":2500
+        "next":[
+            "[JumpBack]bottom_click",
+            "arena_page",
+            "arena_counterattack_page"
+        ],
+        "post_delay":4000
     },
     "arena_ticket_lack":{
         "recognition":{
@@ -1074,8 +1079,7 @@
         },
         "next":[
             "[JumpBack]guildRelics_donate",
-            "timespring_choose_max"
-            
+            "timespring_choose_max"  
         ]
     },
     "timespring_choose_max":{

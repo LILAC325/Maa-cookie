@@ -1,7 +1,8 @@
 {
-    "activtit_entry":{
+    "activity_entry":{
         "next":[
-            "activity_sailing_page"
+            "activity_sailing_page",
+            "activity_challenge_page"
         ]
     }
 }

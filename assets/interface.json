@@ -133,6 +133,7 @@
             "icon":null,
             "default_check": true,
             "option": [
+                "世界探险",
                 "竞技场",
                 "实证战场",
                 "今日悬赏",
@@ -200,7 +201,8 @@
             "icon":null,
             "default_check": true,
             "option": [
-                "“一起来年货筹备”"
+                "一起来年货筹备",
+                "巨型讨伐"
             ],
             "repeatable": false,
             "repeat_count": 1
@@ -1247,6 +1249,9 @@
                     "pipeline_override": {
                         "check_research":{
                             "enabled": false
+                        },
+                        "research_entry":{
+                            "enabled": false
                         }
                     }
                 }
@@ -1280,7 +1285,7 @@
         "梦幻繁星岛":{
             "type":"switch",
             "label":"$梦幻繁星岛",
-            "description":"请确保岛上有勇敢饼干|勇敢饼干最好穿戴的是青蛙皮肤",
+            "description":"请确保岛上有勇敢饼干|勇敢饼干最好穿戴的是青蛙皮肤|请将小岛尽量简单，避免无法识别到饼干",
             "icon":null,
             "default_case":"no",
             "cases":[
@@ -1796,7 +1801,7 @@
                 }
             ]
         },
-        "“一起来年货筹备”":{
+        "一起来年货筹备":{
             "type":"switch",
             "label":"$“一起来年货筹备”",
             "description":"请在相应页面启动",
@@ -1808,10 +1813,7 @@
                         "activity_sailing_page":{
                             "enabled": true
                         }
-                    },
-                    "option":[
-                        "重复次数"
-                    ]
+                    }
                 },
                 {
                     "name": "no",
@@ -1823,25 +1825,159 @@
                 }
             ]
         },
-        "重复次数":{
-            "type":"input",
-            "label":"$重复次数",
-            "description":"数字输入",
+        "巨型讨伐":{
+            "type":"switch",
+            "label":"$巨型讨伐",
+            "description":"请在相应页面启动",
             "icon":null,
-            "inputs":[
+            "cases":[
                 {
-                    "name":"重复次数",
-                    "label":"$重复次数",  
-                    "default":"0",
-                    "description":"填写重复次数",
-                    "pipeline_type":"string"
+                    "name": "yes",
+                    "pipeline_override": {
+                        "activity_challenge_page":{
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "activity_challenge_page":{
+                            "enabled": false
+                        }
+                    }
                 }
-            ],
+            ]
+        },
+        "世界探险":{
+            "type":"switch",
+            "label":"$世界探险",
+            "description":"消耗体力",
+            "icon":null,
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "global_adventure_entry":{
+                            "enabled": true
+                        }
+                    },
+                    "option":[
+                        "香脆世界启用",
+                        "野兽酵母世界启用"
+                    ]
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "global_adventure_entry":{
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "香脆世界启用":{
+            "type":"switch",
+            "label":"$香脆世界启用",
+            "description":"不启用则不打香脆世界副本",
+            "icon":null,
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "chcek_brittle_energy":{
+                            "enabled": true
+                        }
+                    },
+                    "option":[
+                        "香脆世界关卡选择"
+                    ]
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "chcek_brittle_energy":{
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "香脆世界关卡选择":{
+            "type": "input",
+            "label": "自定义关卡",
+            "description": "自己选打什么关",
+            "inputs": [
+            {
+                "name": "章节名",
+                "label": "$章节名",
+                "description": "关卡章节名",
+                "default": "18-30",
+                "pipeline_type": "string"
+            }
+            ],  
             "pipeline_override": {
-                "activity_sailing_page": {
-                  "max_hit": "{重复次数}"
+                "brittle_world_choose": {
+                    "recognition":{
+                        "param":{
+                            "expected" : "{章节名}"
+                        }
+                    }
                 }
             }
-        }
-    }
+        },
+        "野兽酵母世界启用":{
+            "type":"switch",
+            "label":"$野兽酵母世界启用",
+            "description":"不启用则不打野兽酵母世界副本",
+            "icon":null,
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "beast_world_choose":{
+                            "enabled": true
+                        }
+                    },
+                    "option":[
+                        "野兽酵母世界关卡选择"
+                    ]
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "beast_world_choose":{
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+            },
+            "野兽酵母世界关卡选择":{
+                "type": "input",
+                "label": "自定义关卡",
+                "description": "自己选打什么关",
+                "inputs": [
+                {
+                    "name": "章节名",
+                    "label": "$章节名",
+                    "description": "关卡章节名",
+                    "default": "4",
+                    "pipeline_type": "string",
+                    "verify": "^\\d+$"
+                }
+                ],  
+                "pipeline_override": {
+                    "beast_world_choose": {
+                        "recognition":{
+                            "param":{
+                                "expected" : "{章节名}"
+                            }
+                        }
+                    }
+                }
+            }
+      }
 }
+

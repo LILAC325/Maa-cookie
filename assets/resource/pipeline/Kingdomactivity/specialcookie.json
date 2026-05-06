@@ -92,9 +92,9 @@
             "type":"OCR",
             "param":{
                 "expected" : [
-                    "唤醒",
-                    "孵化",
-                    "呼叫"
+                    "^唤醒$",
+                    "^孵化$",
+                    "^呼叫$"
                 ]
             }
         },
@@ -170,9 +170,10 @@
             }
         },
         "next":[
-            "specialcookie_page"
+            "specialcookie_page",
+            "nothingtodo"
         ],
-        "pre_delay":5000
+        "pre_delay":1000
     },
     "specialcookie_done":{
         "action":{

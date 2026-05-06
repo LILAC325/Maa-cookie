@@ -21,13 +21,13 @@
             }
         },
         "next":[
-            "[JumpBack]mainpage_activity_entry",
             "[JumpBack]freegacha",
             "[JumpBack]mailbox",
             "[JumpBack]friendgift",
             "[JumpBack]freeshopping",
             "[JumpBack]kingdomguide",
             "[JumpBack]kingdompass",
+            "[JumpBack]mainpage_activity_entry",
             "returnmainpage"
         ]
     },
@@ -367,56 +367,102 @@
             "type":"TemplateMatch",
             "param":{
                 "template" : "common/gacha.png",
-                "roi" : [606,615,74,81]
+                "roi" : [372, 569, 646, 147]
             }
         },
         "action":{
             "type":"Click"
         },
         "next":[
-            "sw_freegacha"
+            "[JumpBack]freegacha_Clothing",
+            "[JumpBack]freegacha_page",
+            "[JumpBack]sw_freegacha",
+            "freegacha_done"
+        ],
+        "post_delay":2000
+    },
+    "freegacha_Clothing":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"传奇服装",
+                "roi":[2, 61, 119, 659]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "max_hit":1,
+        "next":[
+            "[JumpBack]freegacha_Clothing_page",
+            "nothingtodo"
         ]
     },
-    "sw_freegacha":{
+    "freegacha_Clothing_page":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "每天免费",
+                "roi" : [766, 596, 233, 80]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "[JumpBack]freegacha_Clothing_collect",
+            "[JumpBack]freegacha_Clothing_collect1",
+            "[JumpBack]specialcookie_success",
+            "[JumpBack]bottom_click",
+            "nothingtodo"
+        ],
+        "post_delay":2000
+    },
+    "freegacha_Clothing_collect":{
         "recognition":{
             "type":"TemplateMatch",
             "param":{
-                "template" : "common/gacha2.png",
-                "roi" : [0,0,112,63]
+                "template" : "common/skip.png",
+                "threshold":0.55
             }
         },
+        "action":{
+            "type":"Click"
+        },
+        "post_delay":1000
+    },
+    "freegacha_Clothing_collect1":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"结果"
+            }
+        },
+        "action":{
+            "type":"Click",
+            "param":{
+                "target":[539, 304, 174, 232]
+            }
+        },
+        "post_delay":2000
+    },
+    "sw_freegacha":{
         "action":{
             "type":"Swipe",
             "param":{
                 "begin" : [68,568,1,1],
-                "end" : [68,113,1,1]
+                "end" : [68,113,1,1],
+                "duration" : 2000
             }
         },
-        "next":[
-            "choose_freegacha"
-        ],
+        "max_hit":2,
         "post_delay":2000
-    },
-    "choose_freegacha":{
-        "recognition":{
-            "type":"TemplateMatch",
-            "param":{
-                "template" : "common/gacha3.png",
-                "roi" : [8,60,111,658]
-            }
-        },
-        "action":{
-            "type":"Click"
-        },
-        "next":[
-            "freegacha_page"
-        ]
     },
     "freegacha_page":{
         "recognition":{
             "type":"OCR",
             "param":{
-                "expected" : "领取免费奖励",
+                "expected" : "免费奖励",
                 "roi" : [1035,595,210,80]
             }
         },
@@ -426,18 +472,19 @@
         "next":[
             "freegach_collect"
         ],
-        "on_error":[
-            "freegacha_done"
-        ],
         "timeout":500,
         "post_delay":4000
     },
     "freegach_collect":{
-        "action":{
-            "type":"Click",
+        "recognition":{
+            "type":"OCR",
             "param":{
-                "target": [218,628,854,63]
+                "expected" : "领取",
+                "roi" : [218,628,854,63]
             }
+        },
+        "action":{
+            "type":"Click"
         },
         "next":[
             "freegacha_done"

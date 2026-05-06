@@ -109,7 +109,7 @@
         },
         "next":[
             "[JumpBack]hotairballoon_skiptip",
-            "wait_hotairballoon"
+            "returnmainpage"
         ],
         "pre_delay":1000
     },
@@ -124,27 +124,6 @@
         "action":{
             "type":"Click"
         }
-    },
-    "wait_hotairballoon":{
-        "recognition":{
-            "type":"OCR",
-            "param":{
-                "expected":"熊熊果冻热气球",
-                "roi" : [477,36,320,52]
-            }
-        },
-        "action":{
-            "type":"Custom",
-            "param":{
-                "custom_action":"DisableNode",
-                "custom_action_param":{
-                    "node_name":"hotairballoon_autochoose"
-                }
-            }
-        },
-        "next":[
-            "returnmainpage"
-        ]
     },
     "train":{
         "recognition":{
@@ -262,6 +241,9 @@
                 }
             }
         },
+        "next":[
+            "nothingtodo"
+        ],
         "timeout":1000
     },
     "wait_sailing_collect":{

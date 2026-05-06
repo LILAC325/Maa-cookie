@@ -74,7 +74,7 @@
             "dreamisland_friend"
         ],
         "max_hit":1,
-        "post_delay":3000
+        "post_delay":1000
     },
     "dreamisland_friend":{
         "recognition":{
@@ -84,6 +84,9 @@
                 "roi" : [48,187,168,48],
                 "only_rec":true
             }
+        },
+        "action":{
+            "type":"Click"
         },
         "next":[
             "dreamisland_find_coin_check"
@@ -100,7 +103,8 @@
         "inverse":true,
         "next":[
             "dreamisland_find_coin_page"
-        ]
+        ],
+        "post_delay":2000
     },
     "dreamisland_find_coin_page":{
         "next":[
@@ -195,7 +199,7 @@
                     "kingdomactivity/dreamisland_task3_2.png",
                     "kingdomactivity/dreamisland_task3_3.png"
                 ],
-                "threshold" : 0.5
+                "threshold" : 0.45
             }
         },
         "action":{

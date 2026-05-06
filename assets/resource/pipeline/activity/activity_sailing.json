@@ -9,7 +9,7 @@
         },
         "next":[
             "[JumpBack]activity_sailing_autodeliver",
-            "[Jumpback]comfirm"
+            "[JumpBack]comfirm"
         ],
         "timeout":5000
     },

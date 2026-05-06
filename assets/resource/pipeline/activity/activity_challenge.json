@@ -1,0 +1,76 @@
+{
+    "activity_challenge_page":{
+        "next":[
+            "start_activity_challenge",
+            "nothingtodo"
+        ],
+        "timeout":5000
+    },
+    "start_activity_challenge":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"开始战斗",
+                "roi":[1021, 628, 206, 56]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "[JumpBack]skip_activity_challenge_tips",
+            "wait_activity_challenge_end"
+        ],
+        "post_delay":2000
+    },
+    "skip_activity_challenge_tips":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"开始战斗",
+                "roi":[675, 481, 184, 51]
+            }
+        },
+        "action":{
+            "type":"Click"
+        }
+    },
+    "wait_activity_challenge_end":{
+        "next":[
+            "activity_challenge_end",
+            "wait_activity_challenge_end"
+        ],
+        "pre_wait_freezes": 3000
+    },
+    "activity_challenge_end":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"点击完成",
+                "roi":[531, 602, 210, 110]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "back_activity_challenge_page"
+        ]
+    },
+    "back_activity_challenge_page":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"离开",
+                "roi":[1101, 621, 113, 50]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "activity_challenge_page"
+        ],
+        "post_delay":5000
+    }
+}

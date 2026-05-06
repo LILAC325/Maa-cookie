@@ -256,7 +256,7 @@
             "type":"TemplateMatch",
             "param":{
                 "template" : "kingdomactivity/find_notdo_research.png",
-                "threshold":0.9
+                "threshold":0.95
             }
         },
         "action":{
@@ -265,7 +265,7 @@
                 "target_offset": [43, 39, 23, 9]
             }
         },
-        "max_hit":1,
+        "max_hit":2,
         "next":[
             "research_main_done"
         ]
