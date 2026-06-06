@@ -138,6 +138,20 @@
         },
         "post_delay":3000
     },
+    "goto_mainpage":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":[
+                    "前往王国"
+                ],
+                "roi" : [1156, 649, 97, 53]
+            }
+        },
+        "action":{
+            "type":"Click"
+        }
+    },
     "nothingtodo":{
         
     },
@@ -145,5 +159,114 @@
         "action":{
             "type":"StopTask"
         }
+    },
+    "skip_today_tip":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":[
+                    "今日不再显示"
+                ]
+            }
+        },
+        "action":{
+            "type":"Click",
+            "param":{
+                "target_offset" : [141, 4, -101, -12]
+            }
+        },
+        "next":[
+            "comfirm"
+        ]
+    },
+    "timespring":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : [
+                    "adventure/timespring.png",
+                    "adventure/archipelago_timespring.png"
+                ]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "[JumpBack]guildRelics_donate",
+            "timespring_choose_addone",
+            "timespring_choose_max"  
+        ],
+        "post_delay":1000
+    },
+    "timespring_choose_addone":{
+        "action":{
+            "type":"Click",
+            "param":{
+                "target":[728, 463, 23, 30]
+            }
+        },
+        "enabled":false,
+        "next":[
+            "timespring_confirm"
+        ]
+    },
+    "timespring_choose_max":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "最多"
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "timespring_confirm"
+        ]
+    },
+    "timespring_confirm":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "^快转$"
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "[JumpBack]get_guildrelics",
+            "bottom_click"
+        ]
+    },
+    "guildRelics_donate":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "adventure/guildRelics_donate.png",
+                "roi" : [427,547,49,44]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "inverse":true,
+        "enabled":false
+    },
+    "battle_page":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"准备战斗",
+                "roi" : [887, 623, 220, 55]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "timespring"
+        ]
     }
 }

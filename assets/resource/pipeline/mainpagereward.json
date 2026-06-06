@@ -463,7 +463,7 @@
             "type":"OCR",
             "param":{
                 "expected" : "免费奖励",
-                "roi" : [1035,595,210,80]
+                "roi" : [8, 62, 108, 658]
             }
         },
         "action":{
@@ -472,6 +472,7 @@
         "next":[
             "freegach_collect"
         ],
+        "max_hit":1,
         "timeout":500,
         "post_delay":4000
     },
@@ -480,15 +481,12 @@
             "type":"OCR",
             "param":{
                 "expected" : "领取",
-                "roi" : [218,628,854,63]
+                "roi" : [959, 579, 321, 141]
             }
         },
         "action":{
             "type":"Click"
-        },
-        "next":[
-            "freegacha_done"
-        ]
+        }
     },
     "freegacha_done":{
         "action":{
@@ -799,7 +797,7 @@
         "next":[
             "filluponce_page"
         ],
-        "max_hit":3
+        "max_hit":2
     },
     "filluponce_page":{
         "recognition":{
@@ -857,6 +855,7 @@
             "[JumpBack]通行证",
             "[JumpBack]周周签到簿（常驻）",
             "[JumpBack]登场纪念签到（常驻）",
+            "[JumpBack]mainpage_activity_sw_bottom",
             "returnmainpage"
         ],
         "max_hit":1,
@@ -872,6 +871,18 @@
             }
         },
         "max_hit":3,
+        "post_delay":1000
+    },
+    "mainpage_activity_sw_bottom":{
+        "action":{
+            "type":"Swipe",
+            "param":{
+                "begin" : [231, 378],
+                "end" : [231, 168],
+                "duration" : 2000
+            }
+        },
+        "max_hit":6,
         "post_delay":1000
     },
     "mainpage_activity_pass_rp":{

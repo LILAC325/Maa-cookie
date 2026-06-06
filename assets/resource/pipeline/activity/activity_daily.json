@@ -1,0 +1,98 @@
+{
+    "activity_daily_entry":{
+        "next":[
+            "[JumpBack]bigmove",
+            "returnmainpage"
+        ],
+        "timeout":5000
+    },
+    "bigmove":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "大",
+                "roi" : [1183, 233, 83, 71]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "check_bigmove",
+            "bigmove_done"
+        ],
+        "post_delay":2000
+    },
+    "check_bigmove":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "activity/activity_daily/check_bigmove.png"
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "bigmove_choose"
+        ],
+        "post_delay":2000
+    },
+    "bigmove_choose":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : [
+                    "activity/activity_daily/bigmove_choose.png"
+                ],
+                "roi":[89, 98, 1080, 507],
+                "threshold":0.7
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "bigmove_battle"
+            
+        ]
+    },
+    "bigmove_battle":{
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action":"NodeOverride",
+                "custom_action_param":{
+                    "timespring_choose_addone":{
+                        "enabled":true
+                    }
+                }
+            }
+        },
+        "next":[
+            "[JumpBack]battle_page",
+            "[JumpBack]quit",
+            "bigmove"
+        ]
+    },
+    "bigmove_done":{
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action":"NodeOverride",
+                "custom_action_param":{
+                    "bigmove":{
+                        "enabled":false
+                    }
+                }
+            }
+        },
+        "next":[
+            "[JumpBack]quit",
+            "goto_mainpage"
+        ]
+    },
+    "cooperative_battle":{
+        
+    }
+}

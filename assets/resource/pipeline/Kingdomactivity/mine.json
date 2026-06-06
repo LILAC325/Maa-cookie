@@ -1,0 +1,553 @@
+{
+    "choose_mine":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "kingdomactivity/mine.png"
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "mine_page",
+            "[JumpBack]quit"
+        ],
+        "post_delay":1000
+    },
+    "mine_page":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "地底矿山",
+                "roi" : [0,0,250,100],
+                "only_rec":true
+            }
+        },
+        "next":[
+            "mine_survey",
+            "mine_mining",
+            "mine_battle",
+            "mine_appraisal",
+            "mine_jelly_release",
+            "mine_done"
+        ]
+    },
+    "mine_survey":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "勘查",
+                "roi" : [958, 582, 322, 138]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "mine_survey_page"
+        ],
+        "max_hit":1,
+        "enabled":true,
+        "post_delay":1000
+    },
+    "mine_survey_page":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "矿山勘查",
+                "roi" : [7, 9, 198, 57],
+                "only_rec":true
+            }
+        },
+        "next":[
+            "[JumpBack]bottom_click",
+            "mine_survey_running",
+            "mine_survey_waiting"
+        ],
+        "post_delay":2000
+    },
+    "mine_survey_running":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "停止勘查",
+                "roi" : [286, 641, 143, 51],
+                "only_rec":true
+            }
+        },
+        "next":[
+            "mine_page",
+            "[JumpBack]quit"
+        ],
+        "post_delay":2000
+    },
+    "mine_survey_waiting":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "矿车管理",
+                "roi" : [251, 570, 205, 44],
+                "only_rec":true
+            }
+        },
+        "next":[
+            "[JumpBack]mine_survey_auto_select",
+            "[JumpBack]mine_survey_set_item",
+            "mine_survey_start"
+        ]
+    },
+    "mine_survey_auto_select":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "自动选择",
+                "roi" : [406, 507, 118, 39]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "max_hit":1,
+        "post_delay":1000
+    },
+    "mine_survey_set_item":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "设定勘查道具",
+                "roi" : [924, 466, 158, 28]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "max_hit":1,
+        "next":[
+            "mine_survey_ready"
+        ],
+        "post_delay":1000
+    },
+    "mine_survey_ready":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "准备完毕",
+                "roi" : [1026, 641, 212, 45]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "post_delay":1000
+    },
+    "mine_survey_start":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "勘查开始",
+                "roi" : [919, 637, 170, 54]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "mine_survey_confirm"
+        ],
+        "post_delay":2000
+    },
+    "mine_survey_confirm":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "资讯",
+                "roi" : [571, 192, 133, 53]
+            }
+        },
+        "action":{
+            "type":"Click",
+            "param":{
+                "target" : [560, 458, 151, 56]
+            }
+        },
+        "next":[
+            "[JumpBack]comfirm",
+            "[JumpBack]quit",
+            "mine_survey_page"
+        ],
+        "post_delay":2000
+    },
+    "mine_mining":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "开采"
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "mine_mining_page"
+        ],
+        "max_hit":1,
+        "enabled":true,
+        "post_delay":1000
+    },
+    "mine_mining_page":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "开采矿脉",
+                "roi" : [0, 12, 154, 46],
+                "only_rec":true
+            }
+        },
+        "next":[
+            "[JumpBack]mine_mining_find",
+            "mine_page",
+            "[JumpBack]quit"
+        ],
+        "post_delay":2000
+    },
+    "mine_mining_find":{
+        "recognition":{
+            "type":"TemplateMatch",
+            "param":{
+                "template" : "kingdomactivity/mine_mining_slot.png",
+                "roi" : [0, 68, 1276, 216]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "mine_mining_select",
+            "mine_page",
+            "[JumpBack]quit"
+        ],
+        "post_delay":1000
+    },
+    "mine_mining_select":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "选择",
+                "roi" : [3, 535, 1277, 106]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "mine_mining_auto_select",
+            "mine_page",
+            "[JumpBack]quit"
+        ],
+        "post_delay":1000
+    },
+    "mine_mining_auto_select":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "自动选择",
+                "roi" : [1115, 319, 101, 36]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "mine_mining_start"
+        ],
+        "post_delay":1000
+    },
+    "mine_mining_start":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "开始开采",
+                "roi" : [1035, 634, 164, 51]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "skip_today_tip",
+            "nothingtodo"
+        ],
+        "post_delay":2000
+    },
+    "mine_appraisal":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "鉴定所",
+                "roi" : [161, 607, 106, 97]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "mine_appraisal_page"
+        ],
+        "enabled":true,
+        "post_delay":1000
+    },
+    "mine_appraisal_page":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "鉴定所",
+                "roi" : [544, 88, 211, 46],
+                "only_rec":true
+            }
+        },
+        "next":[
+            "[JumpBack]mine_appraisal_collect",
+            "mine_appraisal_done"
+        ],
+        "post_delay":2000
+    },
+    "mine_appraisal_collect":{
+        "recognition":{
+            "type":"ColorMatch",
+            "param":{
+                "roi" : [347, 564, 269, 51],
+                "upper" : [189, 84, 239],
+                "lower" : [189, 84, 239]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "[JumpBack]bottom_click",
+            "nothingtodo"
+        ],
+        "post_delay":1000
+    },
+    "mine_appraisal_done":{
+        "action":{
+            "type":"Click",
+            "param":{
+                "target" : [1043, 104, 42, 33]
+            }
+        },
+        "next":[
+            "mine_page"
+        ],
+        "post_delay":1000
+    },
+    "mine_jelly_release":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "解除洋菜冻",
+                "roi" : [291, 664, 109, 43]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "mine_jelly_release_page"
+        ],
+        "enabled":true,
+        "post_delay":1000
+    },
+    "mine_jelly_release_page":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "解除洋菜冻",
+                "roi" : [542, 64, 219, 70],
+                "only_rec":true
+            }
+        },
+        "next":[
+            "[JumpBack]mine_jelly_collect",
+            "[JumpBack]mine_jelly_release_set",
+            "mine_jelly_release_done"
+        ],
+        "post_delay":2000
+    },
+    "mine_jelly_release_set":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "配置"
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "check_jelly_release_set"
+        ],
+        "max_hit":1,
+        "post_delay":1000
+    },
+    "check_jelly_release_set":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "未持有"
+            }
+        },
+        "next":[
+            "nothingtodo"
+        ]
+    },
+    "mine_jelly_collect":{
+        "recognition":{
+            "type":"ColorMatch",
+            "param":{
+                "roi" : [874, 575, 178, 48],
+                "upper" : [122, 205, 16],
+                "lower" : [122, 205, 16]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "[JumpBack]bottom_click",
+            "nothingtodo"
+        ],
+        "max_hit":1,
+        "post_delay":1000
+    },
+    "mine_jelly_release_done":{
+        "action":{
+            "type":"Click",
+            "param":{
+                "target" : [1043, 104, 42, 33]
+            }
+        },
+        "next":[
+            "mine_page"
+        ],
+        "post_delay":1000
+    },
+    "mine_battle":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "矿山战斗",
+                "roi" : [1166, 478, 85, 95]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "mine_battle_page",
+            "mine_done"
+        ],
+        "enabled":true,
+        "post_delay":1000
+    },
+    "mine_battle_page":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "矿山战斗",
+                "roi" : [550, 62, 195, 57],
+                "only_rec":true
+            }
+        },
+        "next":[
+            "mine_battle_timespring",
+            "mine_battle_enter"
+        ],
+        "post_delay":2000
+    },
+    "mine_battle_timespring":{
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action":"TimeSpring"
+            }
+        },
+        "next":[
+            "mine_battle_enter"
+        ],
+        "post_delay":1000
+    },
+    "mine_battle_enter":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "进入战斗",
+                "roi" : [547, 591, 190, 60]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "mine_battle_start"
+        ],
+        "post_delay":1000
+    },
+    "mine_battle_start":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "开始战斗",
+                "roi" : [972, 619, 220, 73]
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "mine_battle_victory"
+        ],
+        "post_delay":3000
+    },
+    "mine_battle_victory":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "胜利"
+            }
+        },
+        "next":[
+            "mine_battle_done"
+        ],
+        "post_delay":2000
+    },
+    "mine_battle_done":{
+        "action":{
+            "type":"ClickKey",
+            "param":{
+                "key" : [111]
+            }
+        },
+        "next":[
+            "mine_page"
+        ],
+        "post_delay":1000
+    },
+    "mine_done":{
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action":"NodeOverride",
+                "custom_action_param":{
+                    "mine_entry":{
+                        "enabled":false
+                    }
+                }
+            }
+        },
+        "next":[
+            "returnmainpage"
+        ]
+    }
+}

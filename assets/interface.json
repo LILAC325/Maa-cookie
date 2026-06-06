@@ -73,6 +73,20 @@
 
         },
         {
+            "name":"活动(独立)",
+            "label":"$活动(独立)",
+            "entry": "activity_entry",
+            "description":"在对应独立活动页面进行操作",
+            "icon":null,
+            "default_check": true,
+            "option": [
+                "一起来年货筹备",
+                "巨型讨伐"
+            ],
+            "repeatable": false,
+            "repeat_count": 1
+        },
+        {
             "name":"启动游戏",
             "label":"$启动游戏",
             "entry":"startup",
@@ -81,6 +95,20 @@
             "default_check": true,
             "repeatable": false,
             "repeat_count": 1
+        },
+        {
+            "name":"日常（活动）",
+            "label":"$日常（活动）",
+            "entry": "activity_daily_entry",
+            "description":null,
+            "icon":null,
+            "default_check": true,
+            "option": [
+                "大骚动"
+            ],
+            "repeatable": false,
+            "repeat_count": 1
+
         },
         {
             "name":"清绿点",
@@ -120,7 +148,8 @@
                 "熊熊果冻列车",
                 "大嘴鹦鹉的海上交易所",
                 "糖糖地精研究室",
-                "梦幻繁星岛"
+                "梦幻繁星岛",
+                "地底矿山"
             ],
             "repeatable": false,
             "repeat_count": 1
@@ -190,20 +219,6 @@
             "description":null,
             "icon":null,
             "default_check": true,
-            "repeatable": false,
-            "repeat_count": 1
-        },
-        {
-            "name":"活动(独立)",
-            "label":"$活动(独立)",
-            "entry": "activity_entry",
-            "description":null,
-            "icon":null,
-            "default_check": true,
-            "option": [
-                "一起来年货筹备",
-                "巨型讨伐"
-            ],
             "repeatable": false,
             "repeat_count": 1
         }
@@ -1307,6 +1322,31 @@
                 }
             ]
         },
+        "地底矿山":{
+            "type":"switch",
+            "label":"$矿山",
+            "description":"地底矿山活动",
+            "icon":null,
+            "default_case":"yes",
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "mine_entry":{
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "mine_entry":{
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
         "是否开启预设队伍设置":{
             "type":"switch",
             "label":"$是否开启预设队伍设置",
@@ -1360,6 +1400,7 @@
             "label":"$自动补充竞技场券",
             "description":"是否自动补充竞技场券",
             "icon":null,
+            "default_case":"no",
             "cases":[
                 {
                     "name": "yes",
@@ -1977,7 +2018,32 @@
                         }
                     }
                 }
-            }
+            },
+        "大骚动":{
+            "type":"switch",
+            "label":"$大骚动",
+            "description":"是否启用大骚动功能",
+            "icon":null,
+            "default_case":"yes",
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "bigmove": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "bigmove": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        }
       }
 }
 
