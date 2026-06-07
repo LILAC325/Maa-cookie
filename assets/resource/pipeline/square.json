@@ -108,7 +108,7 @@
             "type":"Click"
         },
         "next":[
-            "[Jumpback]sqare_task_daily_choose",
+            "[JumpBack]sqare_task_daily_choose",
             "[JumpBack]sqare_task_collect",
             "sqare_task_done"
         ]

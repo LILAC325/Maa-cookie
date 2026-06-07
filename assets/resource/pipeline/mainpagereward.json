@@ -343,7 +343,7 @@
             "[JumpBack]comfirm",
             "kingdompass_page"
         ],
-        "pre_delay":2000
+        "post_delay":2000
     },
     "seasonreward":{
         "recognition":{
@@ -360,7 +360,8 @@
             "[JumpBack]comfirm",
             "[JumpBack]bottom_click",
             "kingdompass_page"
-        ]
+        ],
+        "post_delay":2000
     },
     "freegacha":{
         "recognition":{

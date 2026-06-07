@@ -1,0 +1,364 @@
+{
+    "task": [
+        {
+            "name":"王国活动",
+            "label":"$王国活动",
+            "entry":"kingdomevent_list_entry",
+            "description":null,
+            "icon":null,
+            "default_check": true,
+            "option": [
+                "许愿树",
+                "相约之所",
+                "海上贸易中心",
+                "熊熊果冻热气球",
+                "熊熊果冻列车",
+                "大嘴鹦鹉的海上交易所",
+                "糖糖地精研究室",
+                "梦幻繁星岛",
+                "地底矿山"
+            ],
+            "repeatable": false,
+            "repeat_count": 1
+        }
+    ],
+    "option": {
+        "饼干选择": {
+            "type":"select",
+            "label":"$饼干选择",
+            "description":"请选择要获取的饼干",
+            "icon":null,
+            "default_case":"鲜奶油貂饼干",
+            "cases": [
+                {
+                    "name": "花小龙饼干",
+                    "label":"$花小龙饼干",
+                    "description":null,
+                    "icon":null,
+                    "pipeline_override": {
+                        "huaxiaolong": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "冰锥雪怪饼干",
+                    "label":"$冰锥雪怪饼干",
+                    "description":null,
+                    "icon":null,
+                    "pipeline_override": {
+                        "snowman": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "鲜奶油貂饼干",
+                    "label":"$鲜奶油貂饼干",
+                    "description":null,
+                    "icon":null,
+                    "pipeline_override": {
+                        "crememink": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "璀璨贝艺廊":{
+            "type":"switch",
+            "label":"$璀璨贝艺廊",
+            "description":"是否启用璀璨贝艺廊商店购买功能",
+            "icon":null,
+            "default_case":"yes",
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "pearl_exchance": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "pearl_exchance": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+
+        },
+        "使用加速劵":{
+            "type":"switch",
+            "label":"$使用加速劵",
+            "description":"是否使用10分钟加速劵",
+            "icon":null,
+            "default_case":"no",
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "wish_cooling": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "wish_cooling": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "许愿模式":{
+            "type":"select",
+            "label":"$许愿模式",
+            "description":"选择许愿模式",
+            "icon":null,
+            "default_case":"每日30",
+            "cases":[
+                {
+                    "name":"每日30", 
+                    "label":"$每日30",
+                    "description":"每天30次",
+                    "icon":null,
+                    "pipeline_override":{
+                        "checkmax":{
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name":"无限刷取", 
+                    "label":"$无限刷取",
+                    "description":"无限许愿，手动停止",
+                    "icon":null,
+                    "pipeline_override":{
+                        "checkmax":{
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "许愿树":{
+            "type":"switch",
+            "label":"$许愿树",
+            "description":"启用许愿树功能",
+            "icon":null,
+            "default_case":"yes",
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "wishingtree_entry": {
+                            "enabled": true
+                        }
+                    },
+                    "option":[
+                        "使用加速劵",
+                        "许愿模式"
+                    ]
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "wishingtree_entry": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "相约之所":{
+            "type":"switch",
+            "label":"$相约之所",
+            "description":"启用相约之所功能",
+            "icon":null,
+            "default_case":"yes",
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "specialcookie_entry": {
+                            "enabled": true
+                        }
+                    },
+                    "option":[
+                        "饼干选择"
+                    ]
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "specialcookie_entry": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "海上贸易中心":{
+            "type":"switch",
+            "label":"$海上贸易中心",
+            "description":"启用海上贸易中心功能",
+            "icon":null,
+            "default_case":"yes",
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "tradepage_entry": {
+                            "enabled": true
+                        }
+                    },
+                    "option":[
+                        "璀璨贝艺廊"
+                    ]
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "tradepage_entry": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "大嘴鹦鹉的海上交易所":{
+            "type":"switch",
+            "label":"$大嘴鹦鹉的海上交易所",
+            "description":"启用大嘴鹦鹉的海上交易所功能",
+            "icon":null,
+            "default_case":"yes",
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "exchance_entry": {
+                            "enabled": true
+                        }
+                    },
+                    "option":[
+                        "道具交易-技能粉末"
+                    ]
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "exchance_entry": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "熊熊果冻热气球": {
+            "type":"switch",
+            "label":"$熊熊果冻热气球",
+            "description":"启用熊熊果冻热气球功能",
+            "icon":null,
+            "default_case":"yes",
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "hotairballoon_entry": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "hotairballoon_entry": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "熊熊果冻列车": {
+            "type":"switch",
+            "label":"$熊熊果冻列车",
+            "description":"启用熊熊果冻列车功能",
+            "icon":null,
+            "default_case":"yes",
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "train_entry": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "train_entry": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "梦幻繁星岛":{
+            "type":"switch",
+            "label":"$梦幻繁星岛",
+            "description":"请确保岛上有勇敢饼干|勇敢饼干最好穿戴的是青蛙皮肤|请将小岛尽量简单，避免无法识别到饼干",
+            "icon":null,
+            "default_case":"no",
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "dreamisland_entry":{
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "dreamisland_entry":{
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "地底矿山":{
+            "type":"switch",
+            "label":"$矿山",
+            "description":"地底矿山活动",
+            "icon":null,
+            "default_case":"yes",
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "mine_entry":{
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "mine_entry":{
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

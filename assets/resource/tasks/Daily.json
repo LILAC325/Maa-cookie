@@ -1,0 +1,115 @@
+{
+    "task": [
+        {
+            "name":"启动游戏",
+            "label":"$启动游戏",
+            "entry":"startup",
+            "description":null,
+            "icon":null,
+            "default_check": true,
+            "repeatable": false,
+            "repeat_count": 1
+        },
+        {
+            "name":"清绿点",
+            "label":"$清绿点",
+            "entry": "cleargreenpoint_entry",
+            "description":null,
+            "icon":null,
+            "default_check": true,
+            "option": [
+                "糖糖地精研究室"
+            ],
+            "repeatable": false,
+            "repeat_count": 1
+        },
+        {
+            "name":"王国管理所",
+            "label":"$王国管理所",
+            "entry":"kingdomproduce_entry",
+            "description":null,
+            "icon":null,
+            "default_check": true,
+            "repeatable": false,
+            "repeat_count": 1
+        },
+        {
+            "name": "页面奖励",
+            "label":"$页面奖励",
+            "entry": "mainpage_reward_entry",
+            "description":"领取页面奖励",
+            "icon":null,
+            "default_check": true,
+            "repeatable": false,
+            "repeat_count": 1
+        },
+        {
+            "name": "广场挂机",
+            "label":"$广场挂机",
+            "entry": "square_entry",
+            "description":null,
+            "icon":null,
+            "default_check": true,
+            "repeatable": false,
+            "repeat_count": 1
+        }
+    ],
+    "option": {
+        "糖糖地精研究室":{
+            "type":"switch",
+            "label":"$糖糖地精研究室",
+            "description":"是否自动进行研究(此功能可能会消耗大量材料，请谨慎开启)",
+            "icon":null,
+            "default_case":"no",
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {  
+                        "check_research":{
+                            "enabled": true
+                        }
+                    },
+                    "option":[
+                        "研究偏好"
+                    ]
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "check_research":{
+                            "enabled": false
+                        },
+                        "research_entry":{
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "研究偏好":{
+            "type":"select",
+            "label":"$研究偏好",
+            "description":"优先选择哪条路线(请勿选择已完成的路线)",
+            "icon":null,
+            "default_case":"王国研究",
+            "cases":[
+                {
+                    "name": "王国研究",
+                    "pipeline_override": {
+                        "cookie_research":{
+                            "enabled": false
+                        }
+                    }
+                },
+                {
+                    "name": "饼干研究",
+                    "pipeline_override": {
+                        "kingdom_research":{
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

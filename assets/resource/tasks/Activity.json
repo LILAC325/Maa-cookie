@@ -1,0 +1,107 @@
+{
+    "task": [
+        {
+            "name":"活动(独立)",
+            "label":"$活动(独立)",
+            "entry": "activity_entry",
+            "description":"在对应独立活动页面进行操作",
+            "icon":null,
+            "default_check": true,
+            "option": [
+                "一起来年货筹备",
+                "巨型讨伐"
+            ],
+            "repeatable": false,
+            "repeat_count": 1
+        },
+        {
+            "name":"日常（活动）",
+            "label":"$日常（活动）",
+            "entry": "activity_daily_entry",
+            "description":null,
+            "icon":null,
+            "default_check": true,
+            "option": [
+                "大骚动"
+            ],
+            "repeatable": false,
+            "repeat_count": 1
+
+        }
+    ],
+    "option": {
+        "一起来年货筹备":{
+            "type":"switch",
+            "label":"$“一起来年货筹备”",
+            "description":"请在相应页面启动",
+            "icon":null,
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "activity_sailing_page":{
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "activity_sailing_page":{
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "巨型讨伐":{
+            "type":"switch",
+            "label":"$巨型讨伐",
+            "description":"请在相应页面启动",
+            "icon":null,
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "activity_challenge_page":{
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "activity_challenge_page":{
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "大骚动":{
+            "type":"switch",
+            "label":"$大骚动",
+            "description":"是否启用大骚动功能",
+            "icon":null,
+            "default_case":"yes",
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "bigmove": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "bigmove": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

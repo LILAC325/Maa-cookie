@@ -1,0 +1,545 @@
+{
+    "task": [
+        {
+            "name": "冒险",
+            "label":"$冒险",
+            "entry": "adventure_entry",
+            "description":"竞技场：请提前设置好进攻队伍，该功能会一直进攻，无论输赢，直到用完所有的竞技场入场券；实证战场：请确保所选战场已通过最高阶关卡；守护之战：请确保至少通关大师难度",
+            "icon":null,
+            "default_check": true,
+            "option": [
+                "世界探险",
+                "竞技场",
+                "实证战场",
+                "今日悬赏",
+                "守护之战",
+                "热带苏打群岛"
+            ],
+            "repeatable": false,
+            "repeat_count": 1
+        }
+    ],
+    "option": {
+        "竞技场":{
+            "type":"switch",
+            "label":"$竞技场",
+            "description":"是否启用竞技场",
+            "icon":null,
+            "default_case":"yes",
+            "cases":[
+                {
+                    "name": "yes",
+                    "option": [
+                        "竞技场模式",
+                        "是否开启预设队伍设置",
+                        "自动补充竞技场券"
+                    ],
+                    "pipeline_override": {
+                        "arena_entry": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "arena_entry": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "竞技场模式":{
+            "type":"select",
+            "label":"$竞技场模式",
+            "description":"请选择竞技场模式",
+            "icon":null,
+            "default_case":"正常对战",
+            "cases":[
+                {
+                    "name":"正常对战",
+                    "label":"$正常对战",
+                    "description":"正常对战模式,依次对战，直到竞技场劵用完",
+                    "icon":null,
+                    "pipeline_override":{
+                        "arena_counterattack_page":{
+                            "enabled": false
+                        }
+                    }
+                },
+                {
+                    "name":"防御反击",
+                    "label":"$防御反击",
+                    "description":"依次挑战防御记录中失败的对手，直到无人可反击",
+                    "icon":null,
+                    "pipeline_override":{
+                        "arena_page":{
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "实证战场": {
+            "type":"switch",
+            "label":"$实证战场",
+            "description":"是否启用实证战场",
+            "icon":null,
+            "default_case":"yes",
+            "cases": [
+                {
+                    "name": "yes",
+                    "option":[
+                        "实证战场选择"
+                    ],
+                    "pipeline_override": {
+                        "legendaryjam": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "legendaryjam": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "实证战场选择": {
+            "type":"select",
+            "label":"$实证战场选择",
+            "description":"选择要挑战的饼干战场",
+            "icon":null,
+            "default_case":"冰霜女王饼干",
+            "cases": [
+                {
+                    "name": "冰霜女王饼干",
+                    "label":"$冰霜女王饼干",
+                    "description":"启用冰霜女王饼干战场",
+                    "icon":null,
+                    "pipeline_override": {
+                        "frostqueen": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "海妖精饼干",
+                    "label":"$海妖精饼干",
+                    "description":"启用海妖精饼干战场",
+                    "icon":null,
+                    "pipeline_override": {
+                        "seasprite": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "黑珍珠饼干",
+                    "label":"$启用黑珍珠饼干",
+                    "description":"启用黑珍珠饼干战场",
+                    "icon":null,
+                    "pipeline_override": {
+                        "blackpearl": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "今日悬赏": {
+            "type":"switch",
+            "label":"$今日悬赏",
+            "description":"是否开启今日悬赏",
+            "icon":null,
+            "default_case":"yes",
+            "cases": [
+                {
+                    "name": "yes",
+                    "option":[
+                        "今日悬赏选择"
+                    ],
+                    "pipeline_override": {
+                        "todayreward": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "todayreward": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "今日悬赏选择": {
+            "type":"select",
+            "label":"$今日悬赏选择",
+            "description":"选择今日悬赏要刷取的副本",
+            "icon":null,
+            "default_case":"今日最高加成",
+            "cases": [
+                {
+                    "name": "今日最高加成",
+                    "label":"$今日最高加成",
+                    "description":"自动选择技能粉末与开糖材料两个副本中今日加成最高的副本",
+                    "icon":null,
+                    "option":[
+                        "无加成偏好"
+                    ],
+                    "pipeline_override": {
+                        "todayreward_bonus": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "技能粉末",
+                    "label":"$技能粉末",
+                    "description":"只打技能粉末副本",
+                    "icon":null,
+                    "pipeline_override": {
+                        "todayreward_skillpowder": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "开糖材料",
+                    "label":"$开糖材料",
+                    "description":"只打开糖材料副本",
+                    "icon":null,
+                    "pipeline_override": {
+                        "todayreward_sugar": {
+                            "enabled": true
+                        }
+                    }
+                }   
+            ]
+        },
+        "无加成偏好":{  
+            "type":"select",
+            "label":"$无加成偏好",
+            "description":"技能粉末与开糖材料均无加成时偏好副本",
+            "icon":null,
+            "default_case":"技能粉末",
+            "cases":[
+                {
+                    "name": "技能粉末",
+                    "label":"$技能粉末",
+                    "description":"偏好技能粉末副本",
+                    "icon":null,
+                    "pipeline_override": {
+                        "todayreward_skillpowder": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "开糖材料",
+                    "label":"$开糖材料",
+                    "description":"偏好开糖材料副本",
+                    "icon":null,
+                    "pipeline_override": {
+                        "todayreward_sugar": {
+                            "enabled": true
+                        }
+                    }
+                }   
+            ]
+        },
+        "守护之战": {
+            "type":"switch",
+            "label":"$守护之战",
+            "description":"是否开启守护之战，请确保已至少通关大师难度",
+            "icon":null,
+            "default_case":"yes",
+            "cases": [
+                {
+                    "name": "yes",
+                    "option":[
+                        "守护之战难度选择"
+                    ],
+                    "pipeline_override": {
+                        "protectbattle": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "protectbattle": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "守护之战难度选择": {
+            "type":"select",
+            "label":"$守护之战难度选择",
+            "description":"选择守护之战的难度",
+            "icon":null,
+            "default_case":"大师难度",
+            "cases": [
+                {
+                    "name":"大师难度",
+                    "label":"$大师难度",
+                    "description":"请确保已通关大师难度",
+                    "icon":null,
+                    "pipeline_override": {
+                        "protectbattle_master": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "无限难度",
+                    "label":"$无限难度",
+                    "description":"请确保已通关无限难度",
+                    "icon":null,
+                    "pipeline_override": {
+                        "protectbattle_infinite": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "热带苏打群岛": {
+            "type":"switch",
+            "label":"$热带苏打群岛",
+            "description":"将自动使用发条进行扫荡|建议开启",
+            "icon":null,
+            "default_case":"yes",
+            "cases": [
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "archipelago": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "archipelago": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "世界探险":{
+            "type":"switch",
+            "label":"$世界探险",
+            "description":"消耗体力",
+            "icon":null,
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "global_adventure_entry":{
+                            "enabled": true
+                        }
+                    },
+                    "option":[
+                        "香脆世界启用",
+                        "野兽酵母世界启用"
+                    ]
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "global_adventure_entry":{
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "香脆世界启用":{
+            "type":"switch",
+            "label":"$香脆世界启用",
+            "description":"不启用则不打香脆世界副本",
+            "icon":null,
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "chcek_brittle_energy":{
+                            "enabled": true
+                        }
+                    },
+                    "option":[
+                        "香脆世界关卡选择"
+                    ]
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "chcek_brittle_energy":{
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "香脆世界关卡选择":{
+            "type": "input",
+            "label": "自定义关卡",
+            "description": "自己选打什么关",
+            "inputs": [
+            {
+                "name": "章节名",
+                "label": "$章节名",
+                "description": "关卡章节名",
+                "default": "18-30",
+                "pipeline_type": "string"
+            }
+            ],  
+            "pipeline_override": {
+                "brittle_world_choose": {
+                    "recognition":{
+                        "param":{
+                            "expected" : "{章节名}"
+                        }
+                    }
+                }
+            }
+        },
+        "野兽酵母世界启用":{
+            "type":"switch",
+            "label":"$野兽酵母世界启用",
+            "description":"不启用则不打野兽酵母世界副本",
+            "icon":null,
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "beast_world_choose":{
+                            "enabled": true
+                        }
+                    },
+                    "option":[
+                        "野兽酵母世界关卡选择"
+                    ]
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "beast_world_choose":{
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+            },
+            "野兽酵母世界关卡选择":{
+                "type": "input",
+                "label": "自定义关卡",
+                "description": "自己选打什么关",
+                "inputs": [
+                {
+                    "name": "章节名",
+                    "label": "$章节名",
+                    "description": "关卡章节名",
+                    "default": "4",
+                    "pipeline_type": "string",
+                    "verify": "^\\d+$"
+                }
+                ],  
+                "pipeline_override": {
+                    "beast_world_choose": {
+                        "recognition":{
+                            "param":{
+                                "expected" : "{章节名}"
+                            }
+                        }
+                    }
+                }
+            },
+        "是否开启预设队伍设置":{
+            "type":"switch",
+            "label":"$是否开启预设队伍设置",
+            "description":"载入预设的竞技场队伍配置",
+            "default_case":"no",
+            "icon":null,
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "set_arena_team_entry":{
+                            "enabled": true
+                        }
+                    },
+                    "option":[
+                        "预设队伍设置"
+                    ]
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "set_arena_team_entry":{
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "预设队伍设置":{
+            "type":"input",
+            "label":"$预设队伍设置",
+            "description":"填写预设队伍名",
+            "icon":null,
+            "inputs":[
+                {
+                    "name":"预设队伍名",
+                    "label":"$预设队伍名",  
+                    "default":"0",
+                    "description":"填写预设队伍名",
+                    "pipeline_type":"string"
+                }
+            ],
+            "pipeline_override": {
+                "find_arena_team_name": {
+                  "expected": "{预设队伍名}"
+                }
+            }
+        },
+        "自动补充竞技场券":{
+            "type":"switch",
+            "label":"$自动补充竞技场券",
+            "description":"是否自动补充竞技场券",
+            "icon":null,
+            "default_case":"no",
+            "cases":[
+                {
+                    "name": "yes",
+                    "pipeline_override": {
+                        "arena_ticket_add":{
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "no",
+                    "pipeline_override": {
+                        "arena_ticket_add":{
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

@@ -121,6 +121,29 @@ jobs:
           rm -f "${ARCHIVE_FILE_PATH}"
           echo "Archive cleanup command executed for MFAAvalonia on Windows."
 
+      - name: Convert PNG to ICO
+        shell: bash
+        run: |
+          if [ -f "assets/logo.png" ]; then
+            choco install imagemagick -y
+            magick convert assets/logo.png -define icon:auto-resize=256,128,64,48,32,24,16 logo.ico
+            echo "ICO generated from assets/logo.png"
+          else
+            echo "assets/logo.png not found, skipping icon generation"
+          fi
+
+      - name: Replace MFAAvalonia exe icon
+        if: matrix.arch == 'x86_64'
+        shell: bash
+        run: |
+          if [ -f "logo.ico" ] && [ -f "MFA/MFAAvalonia.exe" ]; then
+            curl -L https://github.com/electron/rcedit/releases/download/v2.0.0/rcedit-x64.exe -o rcedit.exe
+            ./rcedit.exe "MFA/MFAAvalonia.exe" --set-icon "logo.ico"
+            echo "MFAAvalonia icon replaced successfully"
+          else
+            echo "Skipping icon replacement (logo.ico or MFAAvalonia.exe not found)"
+          fi
+
       - name: Setup Embed Python on Windows
         shell: bash
         run: |
@@ -157,13 +180,10 @@ jobs:
             echo "Removed original Assets folder"
           fi
 
-          # 创建小写的 assets 文件夹
-          mkdir -p install/assets
-
-          # 如果有自定义图标，复制并重命名为 logo.ico
-          if [ -f "m9a.ico" ]; then
-            cp m9a.ico install/assets/logo.ico
-            echo "Copied custom icon to assets/logo.ico"
+          # 复制自定义图标
+          if [ -f "logo.ico" ]; then
+            cp logo.ico install/logo.ico
+            echo "Copied custom icon to install/logo.ico"
           fi
 
       - uses: actions/upload-artifact@v4
