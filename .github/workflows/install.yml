@@ -125,9 +125,8 @@ jobs:
         shell: bash
         run: |
           if [ -f "assets/logo.png" ]; then
-            choco install imagemagick -y
-            magick convert assets/logo.png -define icon:auto-resize=256,128,64,48,32,24,16 logo.ico
-            echo "ICO generated from assets/logo.png"
+            python -c "from PIL import Image; img = Image.open('assets/logo.png'); img.save('logo.ico', sizes=[(256,256),(128,128),(64,64),(48,48),(32,32),(24,24),(16,16)])"
+            echo "ICO generated from assets/logo.png via Pillow"
           else
             echo "assets/logo.png not found, skipping icon generation"
           fi
