@@ -125,8 +125,9 @@ jobs:
         shell: bash
         run: |
           if [ -f "assets/logo.png" ]; then
+            pip install pillow -q
             python -c "from PIL import Image; img = Image.open('assets/logo.png'); img.save('logo.ico', sizes=[(256,256),(128,128),(64,64),(48,48),(32,32),(24,24),(16,16)])"
-            echo "ICO generated from assets/logo.png via Pillow"
+            echo "ICO generated from assets/logo.png"
           else
             echo "assets/logo.png not found, skipping icon generation"
           fi
