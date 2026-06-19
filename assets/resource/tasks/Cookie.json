@@ -2,7 +2,7 @@
     "task": [
         {
             "name":"饼干管理",
-            "label":"$饼干管理",
+            "label":"饼干管理",
             "entry": "cookie_page_entry",
             "description":null,
             "icon":null,
@@ -19,13 +19,13 @@
     "option": {
         "配料分解":{
             "type":"switch",
-            "label":"$配料分解",
+            "label":"配料分解",
             "description":"是否启用配料分解功能",
             "icon":null,
-            "default_case":"no",
+            "default_case":"No",
             "cases":[
                 {
-                    "name": "yes",
+                    "name": "Yes",
                     "pipeline_override": {
                         "Ingredient_Decompose_entry": {
                             "enabled": true
@@ -33,7 +33,7 @@
                     }
                 },
                 {
-                    "name": "no",
+                    "name": "No",
                     "pipeline_override": {
                         "Ingredient_Decompose_entry": {
                             "enabled": false
@@ -44,13 +44,13 @@
         },
         "脆饼分解":{
             "type":"switch",
-            "label":"$脆饼分解",
+            "label":"脆饼分解",
             "description":"是否启用脆饼分解功能",
             "icon":null,
-            "default_case":"no",
+            "default_case":"No",
             "cases":[
                 {
-                    "name": "yes",
+                    "name": "Yes",
                     "pipeline_override": {
                         "CrispyCookie_decompose_entry": {
                             "enabled": true
@@ -58,7 +58,7 @@
                     }
                 },
                 {
-                    "name": "no",
+                    "name": "No",
                     "pipeline_override": {
                         "CrispyCookie_page": {
                             "enabled": false
@@ -69,13 +69,13 @@
         },
         "配料强化（单独启动）":{    
             "type":"switch",
-            "label":"$配料强化（单独启动）",
+            "label":"配料强化（单独启动）",
             "description":"此功能需单独启动，以避免不必要的错误",
             "icon":null,
-            "default_case":"no",
+            "default_case":"No",
             "cases":[
                 {
-                    "name": "yes",
+                    "name": "Yes",
                     "pipeline_override": {
                         "Ingredient_Enhance_entry": {
                             "enabled": true
@@ -88,7 +88,7 @@
                     ]
                 },
                 {
-                    "name": "no",
+                    "name": "No",
                     "pipeline_override": {
                         "Ingredient_Enhance_entry": {
                             "enabled": false
@@ -99,14 +99,13 @@
         },
         "配料类型筛选":{
             "type":"select",
-            "label":"$配料类型筛选",
+            "label":"配料类型筛选",
             "description":"筛选强化配料",
             "icon":null,
-            "default_case":"yes",
             "cases":[
                 {
                     "name":"覆盆莓",
-                    "label":"$覆盆莓",
+                    "label":"覆盆莓",
                     "description":"攻击力",
                     "icon":null,
                     "pipeline_override":{
@@ -117,7 +116,7 @@
                 },
                 {
                     "name":"杏仁",
-                    "label":"$杏仁",
+                    "label":"杏仁",
                     "description":"伤害减免",
                     "icon":null,
                     "pipeline_override":{
@@ -128,7 +127,7 @@
                 },
                 {
                     "name":"苹果果冻",
-                    "label":"$苹果果冻",
+                    "label":"苹果果冻",
                     "description":"会心",
                     "icon":null,
                     "pipeline_override":{
@@ -139,7 +138,7 @@
                 },
                 {
                     "name":"巧克力豆",
-                    "label":"$巧克力豆",
+                    "label":"巧克力豆",
                     "description":"冷却时间",
                     "icon":null,
                     "pipeline_override":{
@@ -152,13 +151,13 @@
         },
         "词条筛选":{
             "type":"switch",
-            "label":"$词条筛选",
+            "label":"词条筛选",
             "description":"是否启用词条筛选",
             "icon":null,
-            "default_case":"no",
+            "default_case":"No",
             "cases":[
                 {
-                    "name": "yes",
+                    "name": "Yes",
                     "option":[
                         "攻击力",
                         "伤害减免", 
@@ -169,7 +168,7 @@
                     ]
                 },
                 {
-                    "name": "no",
+                    "name": "No",
                     "pipeline_override": {
                         "Ingredient_Enhanced_Decompose":{
                             "enabled": false
@@ -180,13 +179,13 @@
         },
         "攻击力":{
             "type":"switch",
-            "label":"$攻击力",
+            "label":"攻击力",
             "description":"保留3.5%~4%",
             "icon":null,
-            "default_case":"no",
+            "default_case":"No",
             "cases":[
                 {
-                    "name": "yes",
+                    "name": "Yes",
                     "pipeline_override": {
                         "攻击力_value":{
                             "enabled": true
@@ -194,7 +193,7 @@
                     }
                 },
                 {
-                    "name": "no",
+                    "name": "No",
                     "pipeline_override": {
                         "攻击力_value":{
                             "enabled": false
@@ -205,13 +204,13 @@
         },
         "伤害减免":{    
             "type":"switch",
-            "label":"$伤害减免",
+            "label":"伤害减免",
             "description":"保留3.7%~4%",
             "icon":null,
-            "default_case":"no",
+            "default_case":"No",
             "cases":[
                 {
-                    "name": "yes",
+                    "name": "Yes",
                     "pipeline_override": {
                         "伤害减免_value":{
                             "enabled": true
@@ -219,7 +218,7 @@
                     }
                 },
                 {
-                    "name": "no",
+                    "name": "No",
                     "pipeline_override": {
                         "伤害减免_value":{
                             "enabled": false
@@ -230,13 +229,13 @@
         },
         "会心":{
             "type":"switch",
-            "label":"$会心",
+            "label":"会心",
             "description":"保留2.5%~3%",
             "icon":null,
-            "default_case":"no",
+            "default_case":"No",
             "cases":[
                 {
-                    "name": "yes",
+                    "name": "Yes",
                     "pipeline_override": {
                         "会心_value":{
                             "enabled": true
@@ -244,7 +243,7 @@
                     }
                 },
                 {
-                    "name": "no",
+                    "name": "No",
                     "pipeline_override": {
                         "会心_value":{
                             "enabled": false
@@ -255,13 +254,13 @@
         },
         "冷却时间":{
             "type":"switch",
-            "label":"$冷却时间",
+            "label":"冷却时间",
             "description":"保留1.8%~2%",
             "icon":null,
-            "default_case":"no",
+            "default_case":"No",
             "cases":[
                 {
-                    "name": "yes",
+                    "name": "Yes",
                     "pipeline_override": {
                         "冷却时间_value":{
                             "enabled": true
@@ -269,7 +268,7 @@
                     }
                 },
                 {
-                    "name": "no",
+                    "name": "No",
                     "pipeline_override": {
                         "冷却时间_value":{
                             "enabled": false
@@ -280,13 +279,13 @@
         },
         "生命值":{
             "type":"switch",
-            "label":"$生命值",
+            "label":"生命值",
             "description":"仅保留5%",
             "icon":null,
-            "default_case":"no",
+            "default_case":"No",
             "cases":[
                 {
-                    "name": "yes",
+                    "name": "Yes",
                     "pipeline_override": {
                         "生命值_value":{
                             "enabled": true
@@ -294,7 +293,7 @@
                     }
                 },
                 {
-                    "name": "no",
+                    "name": "No",
                     "pipeline_override": {
                         "生命值_value":{
                             "enabled": false
@@ -305,13 +304,13 @@
         },
         "攻击速度":{
             "type":"switch",
-            "label":"$攻击速度",
+            "label":"攻击速度",
             "description":"保留2.8%~3%",
             "icon":null,
-            "default_case":"no",
+            "default_case":"No",
             "cases":[
                 {
-                    "name": "yes",
+                    "name": "Yes",
                     "pipeline_override": {
                         "攻击速度_value":{
                             "enabled": true
@@ -319,7 +318,7 @@
                     }
                 },
                 {
-                    "name": "no",
+                    "name": "No",
                     "pipeline_override": {
                         "攻击速度_value":{
                             "enabled": false
@@ -330,7 +329,7 @@
         },
         "有效词条保留":{
             "type":"select",
-            "label":"$有效词条保留",
+            "label":"有效词条保留",
             "description":"保留几条有效词条",
             "icon":null,
             "default_case":"一条高价值词条",

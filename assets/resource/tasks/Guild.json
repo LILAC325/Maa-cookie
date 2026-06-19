@@ -2,7 +2,7 @@
     "task": [
         {
             "name": "公会",
-            "label":"$公会",
+            "label":"公会",
             "entry": "guild_entry",
             "description":"公会：请确保已加入公会",
             "icon":null,
@@ -19,13 +19,13 @@
     "option": {
         "公会升级": {
             "type":"switch",
-            "label":"$是否启用公会升级",
+            "label":"是否启用公会升级",
             "description":"自动提交蓝色焰火",
             "icon":null,
-            "default_case":"yes",
+            "default_case":"Yes",
             "cases": [
                 {
-                    "name": "yes",
+                    "name": "Yes",
                     "pipeline_override": {
                         "guild_upgrade_entry": {
                             "enabled": true
@@ -33,7 +33,7 @@
                     }
                 },
                 {
-                    "name": "no",
+                    "name": "No",
                     "pipeline_override": {
                         "guild_upgrade_entry": {
                             "enabled": false
@@ -44,13 +44,13 @@
         },
         "公会扭蛋": {
             "type":"switch",
-            "label":"$是否启用公会扭蛋",
+            "label":"是否启用公会扭蛋",
             "description":"自动进行公会扭蛋",
             "icon":null,
-            "default_case":"yes",
+            "default_case":"Yes",
             "cases": [
                 {
-                    "name": "yes",
+                    "name": "Yes",
                     "pipeline_override": {
                         "guild_gacha": {
                             "enabled": true
@@ -58,7 +58,7 @@
                     }
                 },
                 {
-                    "name": "no",
+                    "name": "No",
                     "pipeline_override": {
                         "guild_gacha": {
                             "enabled": false
@@ -69,13 +69,13 @@
         },
         "公会奖牌交换所":{
             "type":"switch",
-            "label":"$公会奖牌交换所",
+            "label":"公会奖牌交换所",
             "description":"是否启用公会奖牌交换所",
             "icon":null,
-            "default_case":"no",
+            "default_case":"No",
             "cases": [
                 {
-                    "name": "yes",
+                    "name": "Yes",
                     "pipeline_override": {
                         "guild_shop_entry": {
                             "enabled": true
@@ -83,7 +83,7 @@
                     }
                 },
                 {
-                    "name": "no",
+                    "name": "No",
                     "pipeline_override": {
                         "guild_shop_entry": {
                             "enabled": false

@@ -2,7 +2,7 @@
     "task": [
         {
             "name":"商店道具设置",
-            "label":"$商店设置",
+            "label":"商店设置",
             "description":"设置全局商店购买列表，作为”商店设置”的前置",
             "icon":null,
             "default_check": false,
@@ -14,7 +14,7 @@
                 "传奇灵魂石",
                 "公会文物",
                 "饼干扭蛋劵",
-                "宝物扭蛋券",
+                "宝物扭蛋劵",
                 "配料碎片",
                 "光之碎片",
                 "技能粉末",
@@ -38,12 +38,12 @@
     "option": {
         "金币":{
             "type":"switch",
-            "label":"$金币",
+            "label":"金币",
             "description":"",
             "icon":null,
             "cases":[
                 {
-                    "name": "yes",
+                    "name": "Yes",
                     "pipeline_override": {
                         "gold":{
                             "enabled": true
@@ -51,7 +51,7 @@
                     }
                 },
                 {
-                    "name": "no",
+                    "name": "No",
                     "pipeline_override": {
                         "gold":{
                             "enabled": false
@@ -62,12 +62,12 @@
         },
         "钻石":{
             "type":"switch",
-            "label":"$钻石",
+            "label":"钻石",
             "description":"",
             "icon":null,
             "cases":[
                 {
-                    "name": "yes",
+                    "name": "Yes",
                     "pipeline_override": {
                         "diamond":{
                             "enabled": true
@@ -75,7 +75,7 @@
                     }
                 },
                 {
-                    "name": "no",
+                    "name": "No",
                     "pipeline_override": {
                         "diamond":{
                             "enabled": false
@@ -86,12 +86,12 @@
         },
         "传奇灵魂石":{
             "type":"switch",
-            "label":"$传奇灵魂石",
+            "label":"传奇灵魂石",
             "description":"",
             "icon":null,
             "cases":[
                 {
-                    "name": "yes",
+                    "name": "Yes",
                     "pipeline_override": {
                         "legendsoul":{
                             "enabled": true
@@ -99,7 +99,7 @@
                     }
                 },
                 {
-                    "name": "no",
+                    "name": "No",
                     "pipeline_override": {
                         "legendsoul":{
                             "enabled": false
@@ -110,12 +110,12 @@
         },
         "公会文物":{
             "type":"switch",
-            "label":"$公会文物",
+            "label":"公会文物",
             "description":"",
             "icon":null,
             "cases":[
                 {
-                    "name": "yes",
+                    "name": "Yes",
                     "pipeline_override": {
                         "guildRelics":{
                             "enabled": true
@@ -123,7 +123,7 @@
                     }
                 },
                 {
-                    "name": "no",
+                    "name": "No",
                     "pipeline_override": {
                         "guildRelics":{
                             "enabled": false
@@ -134,12 +134,12 @@
         },
         "饼干扭蛋劵":{
             "type":"switch",
-            "label":"$饼干扭蛋劵",
+            "label":"饼干扭蛋劵",
             "description":"",
             "icon":null,
             "cases":[
                 {
-                    "name": "yes",
+                    "name": "Yes",
                     "pipeline_override": {
                         "cookiegacha":{
                             "enabled": true
@@ -147,7 +147,7 @@
                     }
                 },
                 {
-                    "name": "no",
+                    "name": "No",
                     "pipeline_override": {
                         "cookiegacha":{
                             "enabled": false
@@ -158,12 +158,12 @@
         },
         "宝物扭蛋劵":{
             "type":"switch",
-            "label":"$宝物扭蛋劵",
+            "label":"宝物扭蛋劵",
             "description":"",
             "icon":null,
             "cases":[
                 {
-                    "name": "yes",
+                    "name": "Yes",
                     "pipeline_override": {
                         "treasuregacha":{
                             "enabled": true
@@ -171,7 +171,7 @@
                     }
                 },
                 {
-                    "name": "no",
+                    "name": "No",
                     "pipeline_override": {
                         "treasuregacha":{
                             "enabled": false
@@ -182,12 +182,12 @@
         },
         "配料碎片":{
             "type":"switch",
-            "label":"$配料碎片",
+            "label":"配料碎片",
             "description":"",
             "icon":null,
             "cases":[
                 {
-                    "name": "yes",
+                    "name": "Yes",
                     "pipeline_override": {
                         "Ingredient_Pieces":{
                             "enabled": true
@@ -195,7 +195,7 @@
                     }
                 },
                 {
-                    "name": "no",
+                    "name": "No",
                     "pipeline_override": {
                         "Ingredient_Pieces":{
                             "enabled": false
@@ -206,12 +206,12 @@
         },
         "光之碎片":{
             "type":"switch",
-            "label":"$光之碎片",
+            "label":"光之碎片",
             "description":"",
             "icon":null,
             "cases":[
                 {
-                    "name": "yes",
+                    "name": "Yes",
                     "pipeline_override": {
                         "lightPieces":{
                             "enabled": true
@@ -219,7 +219,7 @@
                     }
                 },
                 {
-                    "name": "no",
+                    "name": "No",
                     "pipeline_override": {
                         "lightPieces":{
                             "enabled": false
@@ -230,12 +230,12 @@
         },
         "技能粉末":{
             "type":"switch",
-            "label":"$技能粉末",
+            "label":"技能粉末",
             "description":"",
             "icon":null,
             "cases":[
                 {
-                    "name": "yes",
+                    "name": "Yes",
                     "option":[
                         "低级技能粉末",
                         "中级技能粉末",
@@ -243,18 +243,18 @@
                     ]
                 },
                 {
-                    "name": "no"
+                    "name": "No"
                 }
             ]
         },
         "竞技场入场券":{
             "type":"switch",
-            "label":"$竞技场入场券",
+            "label":"竞技场入场券",
             "description":"",
             "icon":null,
             "cases":[
                 {
-                    "name": "yes",
+                    "name": "Yes",
                     "pipeline_override": {
                         "arenaentrance":{
                             "enabled": true
@@ -262,7 +262,7 @@
                     }
                 },
                 {
-                    "name": "no",
+                    "name": "No",
                     "pipeline_override": {
                         "arenaentrance":{
                             "enabled": false
@@ -273,12 +273,12 @@
         },
         "王国建筑材料":{
             "type":"switch",
-            "label":"$王国建筑材料",
+            "label":"王国建筑材料",
             "description":"",
             "icon":null,
             "cases":[
                 {
-                    "name": "yes",
+                    "name": "Yes",
                     "pipeline_override": {
                         "kingdommaterials":{
                             "enabled": true
@@ -286,7 +286,7 @@
                     }
                 },
                 {
-                    "name": "no",
+                    "name": "No",
                     "pipeline_override": {
                         "kingdommaterials":{
                             "enabled": false
@@ -297,12 +297,12 @@
         },
         "脆饼":{
             "type":"switch",
-            "label":"$脆饼",
+            "label":"脆饼",
             "description":"",
             "icon":null,
             "cases":[
                 {
-                    "name": "yes",
+                    "name": "Yes",
                     "option":[
                         "闪光脆饼面团",
                         "普通脆饼面团",
@@ -310,18 +310,18 @@
                     ]
                 },
                 {
-                    "name": "no"
+                    "name": "No"
                 }
             ]
         },
         "低级技能粉末":{
             "type":"switch",
-            "label":"$低级技能粉末",
+            "label":"低级技能粉末",
             "description":"",
             "icon":null,
             "cases":[
                 {
-                    "name": "yes",
+                    "name": "Yes",
                     "pipeline_override": {
                         "skillpowder1":{
                             "enabled": true
@@ -329,7 +329,7 @@
                     }
                 },
                 {
-                    "name": "no",
+                    "name": "No",
                     "pipeline_override": {
                         "skillpowder1":{
                             "enabled": false
@@ -340,12 +340,12 @@
         },
         "中级技能粉末":{
             "type":"switch",
-            "label":"$中级技能粉末",
+            "label":"中级技能粉末",
             "description":"",
             "icon":null,
             "cases":[
                 {
-                    "name": "yes",
+                    "name": "Yes",
                     "pipeline_override": {
                         "skillpowder2":{
                             "enabled": true
@@ -353,7 +353,7 @@
                     }
                 },
                 {
-                    "name": "no",
+                    "name": "No",
                     "pipeline_override": {
                         "skillpowder2":{
                             "enabled": false
@@ -364,12 +364,12 @@
         },
         "高级技能粉末":{
             "type":"switch",
-            "label":"$高级技能粉末",
+            "label":"高级技能粉末",
             "description":"",
             "icon":null,
             "cases":[
                 {
-                    "name": "yes",
+                    "name": "Yes",
                     "pipeline_override": {
                         "skillpowder3":{
                             "enabled": true
@@ -377,7 +377,7 @@
                     }
                 },
                 {
-                    "name": "no",
+                    "name": "No",
                     "pipeline_override": {
                         "skillpowder3":{
                             "enabled": false
@@ -388,12 +388,12 @@
         },
         "闪光脆饼面团":{
             "type":"switch",
-            "label":"$闪光脆饼面团",
+            "label":"闪光脆饼面团",
             "description":"",
             "icon":null,
             "cases":[
                 {
-                    "name": "yes",
+                    "name": "Yes",
                     "pipeline_override": {
                         "flash_crispycookiedough":{
                             "enabled": true
@@ -401,7 +401,7 @@
                     }
                 },
                 {
-                    "name": "no",
+                    "name": "No",
                     "pipeline_override": {
                         "flash_crispycookiedough":{
                             "enabled": false
@@ -412,12 +412,12 @@
         },
         "普通脆饼面团":{
             "type":"switch",
-            "label":"$普通脆饼面团",
+            "label":"普通脆饼面团",
             "description":"",
             "icon":null,
             "cases":[
                 {
-                    "name": "yes",
+                    "name": "Yes",
                     "pipeline_override": {
                         "common_crispycookiedough":{
                             "enabled": true
@@ -425,7 +425,7 @@
                     }
                 },
                 {
-                    "name": "no",
+                    "name": "No",
                     "pipeline_override": {
                         "common_crispycookiedough":{
                             "enabled": false
@@ -436,12 +436,12 @@
         },
         "脆饼经验碎片":{
             "type":"switch",
-            "label":"$脆饼经验碎片",
+            "label":"脆饼经验碎片",
             "description":"",
             "icon":null,
             "cases":[
                 {
-                    "name": "yes",
+                    "name": "Yes",
                     "pipeline_override": {
                         "crispycookiedough_exp":{
                             "enabled": true
@@ -449,7 +449,7 @@
                     }
                 },
                 {
-                    "name": "no",
+                    "name": "No",
                     "pipeline_override": {
                         "crispycookiedough_exp":{
                             "enabled": false

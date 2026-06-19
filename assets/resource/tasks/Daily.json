@@ -2,7 +2,7 @@
     "task": [
         {
             "name":"启动游戏",
-            "label":"$启动游戏",
+            "label":"启动游戏",
             "entry":"startup",
             "description":null,
             "icon":null,
@@ -12,7 +12,7 @@
         },
         {
             "name":"清绿点",
-            "label":"$清绿点",
+            "label":"清绿点",
             "entry": "cleargreenpoint_entry",
             "description":null,
             "icon":null,
@@ -25,7 +25,7 @@
         },
         {
             "name":"王国管理所",
-            "label":"$王国管理所",
+            "label":"王国管理所",
             "entry":"kingdomproduce_entry",
             "description":null,
             "icon":null,
@@ -35,17 +35,26 @@
         },
         {
             "name": "页面奖励",
-            "label":"$页面奖励",
+            "label":"页面奖励",
             "entry": "mainpage_reward_entry",
             "description":"领取页面奖励",
             "icon":null,
             "default_check": true,
             "repeatable": false,
-            "repeat_count": 1
+            "repeat_count": 1,
+            "option": [
+                "页面奖励_免费扭蛋",
+                "页面奖励_邮箱",
+                "页面奖励_好友赠送",
+                "页面奖励_免费商城",
+                "页面奖励_王国向导",
+                "页面奖励_王国通行证",
+                "页面奖励_活动页面"
+            ]
         },
         {
             "name": "广场挂机",
-            "label":"$广场挂机",
+            "label":"广场挂机",
             "entry": "square_entry",
             "description":null,
             "icon":null,
@@ -57,13 +66,13 @@
     "option": {
         "糖糖地精研究室":{
             "type":"switch",
-            "label":"$糖糖地精研究室",
+            "label":"糖糖地精研究室",
             "description":"是否自动进行研究(此功能可能会消耗大量材料，请谨慎开启)",
             "icon":null,
-            "default_case":"no",
+            "default_case":"No",
             "cases":[
                 {
-                    "name": "yes",
+                    "name": "Yes",
                     "pipeline_override": {  
                         "check_research":{
                             "enabled": true
@@ -74,7 +83,7 @@
                     ]
                 },
                 {
-                    "name": "no",
+                    "name": "No",
                     "pipeline_override": {
                         "check_research":{
                             "enabled": false
@@ -88,7 +97,7 @@
         },
         "研究偏好":{
             "type":"select",
-            "label":"$研究偏好",
+            "label":"研究偏好",
             "description":"优先选择哪条路线(请勿选择已完成的路线)",
             "icon":null,
             "default_case":"王国研究",
@@ -105,6 +114,261 @@
                     "name": "饼干研究",
                     "pipeline_override": {
                         "kingdom_research":{
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "页面奖励_免费扭蛋":{
+        "type":"switch",
+        "label":"免费扭蛋",
+        "description":"是否自动领取免费扭蛋",
+        "icon":null,
+        "default_case":"Yes",
+        "cases":[
+            {
+                "name": "Yes",
+                "pipeline_override": {
+                    "freegacha":{
+                        "enabled": true
+                    }
+                }
+            },
+            {
+                "name": "No",
+                "pipeline_override": {
+                    "freegacha":{
+                        "enabled": false
+                    }
+                }
+            }
+        ]
+    },
+    "页面奖励_邮箱":{
+        "type":"switch",
+        "label":"邮箱",
+        "description":"是否自动领取邮箱奖励",
+        "icon":null,
+        "default_case":"Yes",
+        "cases":[
+            {
+                "name": "Yes",
+                "pipeline_override": {
+                    "mailbox":{
+                        "enabled": true
+                    }
+                }
+            },
+            {
+                "name": "No",
+                "pipeline_override": {
+                    "mailbox":{
+                        "enabled": false
+                    }
+                }
+            }
+        ]
+    },
+    "页面奖励_好友赠送":{
+        "type":"switch",
+        "label":"好友赠送",
+        "description":"是否自动领取好友赠送",
+        "icon":null,
+        "default_case":"Yes",
+        "cases":[
+            {
+                "name": "Yes",
+                "pipeline_override": {
+                    "friendgift":{
+                        "enabled": true
+                    }
+                }
+            },
+            {
+                "name": "No",
+                "pipeline_override": {
+                    "friendgift":{
+                        "enabled": false
+                    }
+                }
+            }
+        ]
+    },
+    "页面奖励_免费商城":{
+        "type":"switch",
+        "label":"免费商城",
+        "description":"是否自动领取免费商城物品",
+        "icon":null,
+        "default_case":"Yes",
+        "cases":[
+            {
+                "name": "Yes",
+                "pipeline_override": {
+                    "freeshopping":{
+                        "enabled": true
+                    }
+                }
+            },
+            {
+                "name": "No",
+                "pipeline_override": {
+                    "freeshopping":{
+                        "enabled": false
+                    }
+                }
+            }
+        ]
+    },
+    "页面奖励_王国向导":{
+        "type":"switch",
+        "label":"王国向导",
+        "description":"是否自动领取王国向导奖励",
+        "icon":null,
+        "default_case":"Yes",
+        "cases":[
+            {
+                "name": "Yes",
+                "pipeline_override": {
+                    "kingdomguide":{
+                        "enabled": true
+                    }
+                }
+            },
+            {
+                "name": "No",
+                "pipeline_override": {
+                    "kingdomguide":{
+                        "enabled": false
+                    }
+                }
+            }
+        ]
+    },
+    "页面奖励_王国通行证":{
+        "type":"switch",
+        "label":"王国通行证",
+        "description":"是否自动领取王国通行证奖励",
+        "icon":null,
+        "default_case":"Yes",
+        "cases":[
+            {
+                "name": "Yes",
+                "pipeline_override": {
+                    "kingdompass":{
+                        "enabled": true
+                    }
+                }
+            },
+            {
+                "name": "No",
+                "pipeline_override": {
+                    "kingdompass":{
+                        "enabled": false
+                    }
+                }
+            }
+        ]
+    },
+    "页面奖励_活动页面":{
+            "type":"switch",
+            "label":"活动页面",
+            "description":"各种限时活动",
+            "icon":null,
+            "default_case":"Yes",
+            "cases":[
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "mainpage_activity_entry":{
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "页面奖励_通行证",
+                        "页面奖励_周周签到簿",
+                        "页面奖励_登场纪念签到"
+                    ]
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "mainpage_activity_entry":{
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "页面奖励_通行证":{
+            "type":"switch",
+            "label":"通行证",
+            "description":"是否自动领取通行证奖励",
+            "icon":null,
+            "default_case":"Yes",
+            "cases":[
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "通行证":{
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "通行证":{
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "页面奖励_周周签到簿":{
+            "type":"switch",
+            "label":"周周签到簿",
+            "description":"是否自动领取周周签到簿奖励",
+            "icon":null,
+            "default_case":"Yes",
+            "cases":[
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "周周签到簿（常驻）":{
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "周周签到簿（常驻）":{
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "页面奖励_登场纪念签到":{
+            "type":"switch",
+            "label":"登场纪念签到",
+            "description":"是否自动领取登场纪念签到奖励",
+            "icon":null,
+            "default_case":"Yes",
+            "cases":[
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "登场纪念签到（常驻）":{
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "登场纪念签到（常驻）":{
                             "enabled": false
                         }
                     }

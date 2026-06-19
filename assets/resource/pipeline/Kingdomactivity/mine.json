@@ -45,6 +45,7 @@
             "type":"Click"
         },
         "next":[
+            "[JumpBack]bottom_click",
             "mine_survey_page"
         ],
         "max_hit":1,
@@ -173,8 +174,9 @@
         },
         "next":[
             "[JumpBack]comfirm",
-            "[JumpBack]quit",
-            "mine_survey_page"
+            "mine_survey_page",
+            "[JumpBack]quit"
+            
         ],
         "post_delay":2000
     },
@@ -189,6 +191,7 @@
             "type":"Click"
         },
         "next":[
+            "[JumpBack]bottom_click",
             "mine_mining_page"
         ],
         "max_hit":1,
@@ -294,6 +297,7 @@
         "next":[
             "mine_appraisal_page"
         ],
+        "max_hit":1,
         "enabled":true,
         "post_delay":1000
     },
@@ -356,6 +360,7 @@
         "next":[
             "mine_jelly_release_page"
         ],
+        "max_hit":1,
         "enabled":true,
         "post_delay":1000
     },
@@ -370,7 +375,7 @@
         },
         "next":[
             "[JumpBack]mine_jelly_collect",
-            "[JumpBack]mine_jelly_release_set",
+            "mine_jelly_release_set",
             "mine_jelly_release_done"
         ],
         "post_delay":2000
@@ -386,9 +391,24 @@
             "type":"Click"
         },
         "next":[
-            "check_jelly_release_set"
+            "check_jelly_release_set",
+            "mine_jelly_release_choose"
         ],
-        "max_hit":1,
+        "post_delay":1000
+    },
+    "mine_jelly_release_choose":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "选择"
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "mine_jelly_release_page"
+        ],
         "post_delay":1000
     },
     "check_jelly_release_set":{
@@ -399,7 +419,7 @@
             }
         },
         "next":[
-            "nothingtodo"
+            "mine_jelly_release_done"
         ]
     },
     "mine_jelly_collect":{
@@ -448,6 +468,7 @@
             "mine_battle_page",
             "mine_done"
         ],
+        "max_hit":1,
         "enabled":true,
         "post_delay":1000
     },
@@ -461,22 +482,11 @@
             }
         },
         "next":[
-            "mine_battle_timespring",
-            "mine_battle_enter"
+            "[JumpBack]timespring",
+            "[JumpBack]mine_battle_enter",
+            "mine_battle_done"
         ],
         "post_delay":2000
-    },
-    "mine_battle_timespring":{
-        "action":{
-            "type":"Custom",
-            "param":{
-                "custom_action":"TimeSpring"
-            }
-        },
-        "next":[
-            "mine_battle_enter"
-        ],
-        "post_delay":1000
     },
     "mine_battle_enter":{
         "recognition":{
@@ -505,22 +515,7 @@
         "action":{
             "type":"Click"
         },
-        "next":[
-            "mine_battle_victory"
-        ],
         "post_delay":3000
-    },
-    "mine_battle_victory":{
-        "recognition":{
-            "type":"OCR",
-            "param":{
-                "expected" : "胜利"
-            }
-        },
-        "next":[
-            "mine_battle_done"
-        ],
-        "post_delay":2000
     },
     "mine_battle_done":{
         "action":{
