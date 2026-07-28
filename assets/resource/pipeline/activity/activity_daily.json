@@ -1,21 +1,17 @@
 {
     "activity_daily_entry":{
         "next":[
-            "[JumpBack]bigmove",
+            "bigmove",
             "returnmainpage"
         ],
         "post_delay":4000
     },
     "bigmove":{
-        "recognition":{
-            "type":"OCR",
-            "param":{
-                "expected" : "大",
-                "roi" : [1183, 233, 83, 71]
-            }
-        },
         "action":{
-            "type":"Click"
+            "type":"Click",
+            "param":{
+                "target":[1183, 241, 75, 40]
+            }
         },
         "next":[
             "check_bigmove",
@@ -36,19 +32,23 @@
         "next":[
             "bigmove_choose"
         ],
-        "post_delay":3000
+        "post_delay":6000
     },
     "bigmove_choose":{
-        "recognition":{
-            "type":"TemplateMatch",
-            "param":{
-                "template" : [
-                    "activity/activity_daily/bigmove_choose.png"
-                ],
-                "roi":[89, 98, 1080, 507],
-                "threshold":0.55
-            }
-        },
+        "recognition":"Or",
+        "any_of":[
+                {
+                    "recognition":"TemplateMatch",
+                    "template" : "activity/activity_daily/bigmove_choose.png",
+                    "threshold":0.5,
+                    "roi":[493, 253, 299, 221]
+                },
+                {
+                    "recognition":"TemplateMatch",
+                    "template" : "activity/activity_daily/bigmove_choose1.png",
+                    "roi":[493, 253, 299, 221]
+                }
+            ],
         "action":{
             "type":"Click"
         },
@@ -88,8 +88,8 @@
             }
         },
         "next":[
-            "[JumpBack]quit",
-            "goto_mainpage"
+            "[JumpBack]goto_mainpage",
+            "returnmainpage"
         ]
     },
     "cooperative_battle_appear":{
