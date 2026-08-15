@@ -788,8 +788,7 @@
         "recognition":{
             "type":"OCR",
             "param":{
-                "expected" : "一次填满",
-                "roi" : [1085,658,176,54]
+                "expected" : "一次填满"
             }
         },
         "action":{

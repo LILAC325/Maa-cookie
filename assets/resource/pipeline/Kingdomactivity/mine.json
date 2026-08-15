@@ -3,7 +3,10 @@
         "recognition":{
             "type":"TemplateMatch",
             "param":{
-                "template" : "kingdomactivity/mine.png"
+                "template" : [
+                    "kingdomactivity/mine1.png",
+                    "kingdomactivity/mine2.png"
+                ]
             }
         },
         "action":{
@@ -13,7 +16,7 @@
             "mine_page",
             "[JumpBack]quit"
         ],
-        "post_delay":1000
+        "post_delay":3000
     },
     "mine_page":{
         "recognition":{
@@ -226,11 +229,24 @@
             "type":"Click"
         },
         "next":[
+            "[JumpBack]mine_mining_switch",
             "mine_mining_select",
             "mine_page",
             "[JumpBack]quit"
         ],
         "post_delay":1000
+    },
+    "mine_mining_switch":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "选择一个",
+                "roi" : [36, 659, 251, 45]
+            }
+        },
+        "action":{
+            "type":"Click"
+        }
     },
     "mine_mining_select":{
         "recognition":{

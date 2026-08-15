@@ -2,6 +2,7 @@
     "cleargreenpoint_entry":{
         "next":[
             "[JumpBack]adventurer_cookie",
+            "[JumpBack]choose_mine",
             "cleargreenpoint",
             "mainpagejudgment",
             "[JumpBack]returnmainpage"
@@ -19,6 +20,7 @@
             "type":"Click"
         },
         "next":[
+            "[JumpBack]choose_mine",
             "[JumpBack]bottom_click",
             "[JumpBack]comfirm",
             "[JumpBack]train",
