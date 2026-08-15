@@ -23,6 +23,7 @@ Thumbs.db
 
 # Build / Install
 deps/
+!deps/tools/
 install/
 debug/
 config/

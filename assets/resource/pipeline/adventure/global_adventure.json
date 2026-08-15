@@ -1,16 +1,20 @@
 {
     "global_adventure_entry":{
+        "next":[
+            "find_global_adventure_entry",
+            "[JumpBack]adventure_page_大事记"
+        ]
+    },
+    "find_global_adventure_entry":{
         "recognition":{
             "type":"OCR",
             "param":{
                 "expected":"世界探险"
             }
         },
-        "action":{
-            "type":"Click"
-        },
         "next":[
-            "global_adventure_page"
+            "check_adventure_energy",
+            "global_adventure_done"
         ]
     },
     "global_adventure_page":{
@@ -70,6 +74,34 @@
         "next":[
             "switch_world",
             "global_adventure_page"
+        ],
+        "post_delay":2000
+    },
+    "check_adventure_energy":{
+        "recognition":"Or",
+        "any_of":[
+            {
+                "recognition":"OCR",
+                "expected":"^([2-9]\\d|[1-9]\\d{2,})$",
+                "roi" : "global_adventure_entry",
+                "roi_offset" : [-11, 349, -113, -12]
+                
+            },
+            {
+                "recognition":"OCR",
+                "expected":"^(1[2-9]|[2-9]\\d|[1-9]\\d{2,})$",
+                "roi" : "global_adventure_entry",
+                "roi_offset" : [-9, 404, -115, -12]
+            }
+        ],
+        "action":{
+            "type":"Click",
+            "param":{
+                "target":"global_adventure_entry"
+            }
+        },
+        "next":[
+            "global_adventure_page"
         ]
     },
     "chcek_brittle_energy":{
@@ -85,7 +117,8 @@
         "next":[
             "[JumpBack]brittle_world_choose",
             "quit",
-            "brittle_world"
+            "brittle_world",
+            "global_adventure_done"
         ]
     },
     "brittle_world_choose":{
@@ -139,7 +172,8 @@
         "next":[
             "switch_world",
             "global_adventure_page"
-        ]
+        ],
+        "post_delay":2000
     },
     "chcek_beast_energy":{
         "recognition":{
@@ -203,7 +237,8 @@
         "max_hit":1,
         "next":[
             "choose_world_map"
-        ]
+        ],
+        "post_delay":2000
     },
     "choose_world_map":{
         "recognition":{
@@ -214,7 +249,10 @@
             }
         },
         "action":{
-            "type":"Click"
+            "type":"Click",
+            "param":{
+                "target":[92, 597, 48, 39]
+            }
         },
         "next":[
             "choose_world_map_beast",

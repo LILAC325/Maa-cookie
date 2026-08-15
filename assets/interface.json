@@ -46,6 +46,8 @@
         "resource/tasks/KingdomActivity.json",
         "resource/tasks/Adventure.json",
         "resource/tasks/Guild.json",
-        "resource/tasks/Cookie.json"
+        "resource/tasks/Cookie.json",
+        "resource/tasks/preset/Daily.json",
+        "resource/tasks/preset/DailyActivity.json"
     ]
 }

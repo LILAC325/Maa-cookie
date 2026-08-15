@@ -25,14 +25,55 @@
         "next":[
             "global_adventure_entry",
             "arena_entry",
-            "legendaryjam",
-            "todayreward",
-            "protectbattle",
-            "archipelago",
-            "[JumpBack]adventure_swtoright",
+            "protectbattle_entry",
+            "legendaryjam_entry",
+            "todayreward_entry",
+            "archipelago_entry",
             "returnmainpage"
         ],
         "post_delay":1000
+    },
+    "adventure_page_大事记":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "大事记",
+                "roi" : [88, 650, 175, 62]
+            }
+        },
+       "action":{
+            "type":"Click"
+       }
+    },
+    "adventure_page_赛季":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "赛季",
+                "roi" : [648, 655, 177, 54]
+            }
+        },
+        "action":{
+            "type":"Click"
+        }
+    },
+    "adventure_page_成长":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "成长",
+                "roi" : [843, 658, 161, 49]
+            }
+        },
+        "action":{
+            "type":"Click"
+        }
+    },
+    "legendaryjam_entry":{
+        "next":[
+            "legendaryjam",
+            "[JumpBack]adventure_page_赛季"
+        ]
     },
     "legendaryjam":{
         "recognition":{
@@ -46,8 +87,7 @@
         },
         "next":[
             "legendaryjam_page"
-        ],
-        "enabled":false 
+        ]
     },
     "legendaryjam_page":{
         "recognition":{
@@ -59,6 +99,7 @@
         },
         "next":[
             "check_legendaryjam_time",
+            "[JumpBack]legendaryjam_月光",
             "[JumpBack]frostqueen",
             "[JumpBack]seasprite",
             "[JumpBack]blackpearl",
@@ -73,6 +114,23 @@
                 "end" : [1187,372,1,1]
             }
         }
+    },
+    "legendaryjam_月光":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected":"永远的"
+            }
+        },
+        "action":{
+            "type":"Click",
+            "param":{
+                "target_offset":[681, -29, 35, 17]
+            }
+        },
+        "next":[
+            "legendaryjam_battle_page"
+        ]
     },
     "frostqueen":{
         "recognition":{
@@ -183,36 +241,10 @@
             "[JumpBack]quit"
         ]
     },
-    "adventure_swtoright":{
-        "action":{
-            "type":"Swipe",
-            "param":{
-                "begin" : [1213,587,1,1],
-                "end" : [808,590,1,1]
-            }
-        },
-        "max_hit":10,
-        "post_delay":1000
-    },
-    "check_adventure_page_rightend":{
-        "recognition":{
-            "type":"OCR",
-            "param":{
-                "expected" : "获得解放的村子",
-                "roi" : [858,636,412,52]
-            }
-        },
-        "action":{
-            "type":"custom",
-            "param":{
-                "custom_action":"DisableNode",
-                "custom_action_param":{
-                    "node_name":"adventure_swtoright"
-                }
-            }
-        },
+    "todayreward_entry":{
         "next":[
-            "adventure_page"
+            "todayreward",
+            "[JumpBack]adventure_page_成长"
         ]
     },
     "todayreward":{
@@ -227,8 +259,7 @@
         },
         "next":[
             "todayreward_page"
-        ],
-        "enabled":false
+        ]
     },
     "todayreward_page":{
         "recognition":{
@@ -432,6 +463,12 @@
             "timespring"
         ]
     },
+    "archipelago_entry":{
+        "next":[
+            "archipelago",
+            "[JumpBack]adventure_page_成长"
+        ]
+    },
     "archipelago":{
         "recognition":{
             "type":"OCR",
@@ -439,20 +476,30 @@
                 "expected" : "热带苏打群岛"
             }
         },
-        "action":{
-            "type":"Click"
-        },
         "next":[
+            "check_archipelago",
             "archipelago_page"
         ],
-        "enabled":false
+        "post_delay":4000
     },
-    "archipelago_page":{
+    "check_archipelago":{
         "recognition":{
             "type":"OCR",
             "param":{
-                "expected" : "热带苏打群岛",
-                "roi" : [0,0,233,67]
+                "expected" : "100",
+                "roi" : "archipelago",
+                "roi_offset" : [-31, 366, 63, 14]
+            }
+        },
+        "next":[
+            "archipelago_done"
+        ]
+    },
+    "archipelago_page":{
+        "action":{
+            "type":"Click",
+            "param":{
+                "target":"archipelago"
             }
         },
         "next":[
@@ -469,30 +516,21 @@
                 "custom_action_param":{
                     "archipelago":{
                         "enabled":false
-                    },
-                    "adventure_swtoright":{
-                        "enabled":false
                     }
                 }
             }
         },
         "next":[
-            "archipelago_back"
+            "adventure_page",
+            "[JumpBack]goto_mainpage"
         ]
     },
-    "archipelago_back":{
-        "recognition":{
-            "type":"OCR",
-            "param":{
-                "expected":"前往王国"
-            }
-        },
-        "action":{
-            "type":"Click"
-        },
+    "protectbattle_entry":{
         "next":[
-            "adventure_page"
-        ]
+            "protectbattle",
+            "[JumpBack]adventure_page_赛季"
+        ],
+        "pre_delay":2000
     },
     "protectbattle":{
         "recognition":{
@@ -508,8 +546,7 @@
             "[JumpBack]bottom_click",
             "protectbattle_page"
         ],
-        "post_delay":2000,
-        "enabled":false
+        "post_delay":2000
     },
     "protectbattle_page":{
         "recognition":{
@@ -541,7 +578,8 @@
         "recognition":{
             "type":"OCR",
             "param":{
-                "expected":"大师"
+                "expected":"大师",
+                "roi":[483, 141, 792, 566]
             }
         },
         "action":{
@@ -551,8 +589,7 @@
                 "custom_action_param":{
                     "protectbattle_battle_entry":{
                         "recognition":{
-                            "roi":"protectbattle_master",
-                            "roi_offset":[547,32,22,10]
+                            "roi":"protectbattle_master"
                         }
                     }
                 }
@@ -576,8 +613,7 @@
                 "custom_action_param":{
                     "protectbattle_battle_entry":{
                         "recognition":{
-                            "roi":"protectbattle_infinite",
-                            "roi_offset":[547,32,22,10]
+                            "roi":"protectbattle_infinite"
                         }
                     }
                 }
@@ -591,7 +627,8 @@
         "recognition":{
             "type":"OCR",
             "param":{
-                "expected":"进入"
+                "expected":"进入",
+                "roi_offset":[504, 27, 109, 27]
             }
         },
         "action":{
@@ -609,21 +646,11 @@
                 "roi" : [5,620,183,99]
             }
         },
-        "action":{
-            "type":"custom",
-            "param":{
-                "custom_action":"NodeOverride",
-                "custom_action_param":{
-                    "guildRelics_donate":{
-                        "enabled":true
-                    }
-                }
-            }
-        },
         "next":[
+            "check_protectbattle_number",
             "[JumpBack]timespring",
-            "[JumpBack]comfirm",
-            "check_protectbattle_number"
+            "[JumpBack]comfirm"
+            
         ]
     },
     "protectbattle_done":{
@@ -680,6 +707,9 @@
             "set_arena_team_entry",
             "arena_page",
             "arena_counterattack_page"
+        ],
+        "on_error":[
+            "adventure_page_大事记"
         ],
         "post_delay":2000
     },
@@ -809,7 +839,8 @@
                     "失败",
                     "平局"
                 ],
-                "roi" : [464,207,241,239]
+                "only_rec":true,
+                "roi" : [501, 336, 164, 45]
             }
         },
         "action":{
@@ -833,7 +864,8 @@
                     "失败",
                     "平局"
                 ],
-                "roi" : [720,188,248,255]
+                "only_rec":true,
+                "roi" : [763, 334, 155, 39]
             }
         },
         "action":{
@@ -857,7 +889,8 @@
                     "失败",
                     "平局"
                 ],
-                "roi" : [972,194,249,253]
+                "only_rec":true,
+                "roi" : [1000, 324, 204, 57]
             }
         },
         "action":{

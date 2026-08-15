@@ -41,7 +41,7 @@
                     "recognition":"TemplateMatch",
                     "template" : "activity/activity_daily/bigmove_choose.png",
                     "threshold":0.5,
-                    "roi":[493, 253, 299, 221]
+                    "roi":[329, 109, 821, 497]
                 },
                 {
                     "recognition":"TemplateMatch",
@@ -73,7 +73,8 @@
             "[JumpBack]battle_page",
             "[JumpBack]quit",
             "bigmove"
-        ]
+        ],
+        "post_delay":3000
     },
     "bigmove_done":{
         "action":{

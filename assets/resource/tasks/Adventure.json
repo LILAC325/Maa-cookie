@@ -258,7 +258,7 @@
         "守护之战": {
             "type":"switch",
             "label":"守护之战",
-            "description":"是否开启守护之战，请确保已至少通关大师难度",
+            "description":"是否开启守护之战，请确保已至少通关大师难度|需打开自动提交文物按钮",
             "icon":null,
             "default_case":"Yes",
             "cases": [
@@ -286,7 +286,7 @@
         "守护之战难度选择": {
             "type":"select",
             "label":"守护之战难度选择",
-            "description":"选择守护之战的难度",
+            "description":"目前仅提供大师、无限难度，请确保选择的难度已通关",
             "icon":null,
             "default_case":"大师难度",
             "cases": [
