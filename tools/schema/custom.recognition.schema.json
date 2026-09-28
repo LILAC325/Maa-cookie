@@ -1,0 +1,167 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://github.com/LILAC325/Maa-cookie/tools/schema/custom.recognition.schema.json",
+    "title": "Maa-cookie Custom Recognition",
+    "description": "Maa-cookie 已注册的自定义识别（agent/custom/reco/）及其 custom_recognition_param 参数约束。",
+    "type": "object",
+    "$defs": {
+        "RequiredParam": {
+            "description": "自定义识别必须提供 custom_recognition_param 或 custom_recognition_param_code 之一。",
+            "anyOf": [
+                {
+                    "required": [
+                        "custom_recognition_param"
+                    ]
+                },
+                {
+                    "required": [
+                        "custom_recognition_param_code"
+                    ]
+                }
+            ]
+        },
+        "Logic": {
+            "type": "object",
+            "description": "多节点识别结果之间的组合逻辑。",
+            "properties": {
+                "type": {
+                    "enum": [
+                        "AND",
+                        "OR",
+                        "CUSTOM"
+                    ],
+                    "default": "AND",
+                    "description": "AND=全部命中；OR=任一命中；CUSTOM=按 expression 求值"
+                },
+                "expression": {
+                    "type": "string",
+                    "description": "仅 type=CUSTOM 时使用。支持 $0/$1 引用节点结果、{NodeName} 引用其他已执行节点、AND/OR/NOT 运算符"
+                }
+            },
+            "unevaluatedProperties": false
+        },
+        "MultiRecognition": {
+            "allOf": [
+                {
+                    "$ref": "#/$defs/RequiredParam"
+                }
+            ],
+            "properties": {
+                "custom_recognition": {
+                    "const": "MultiRecognition",
+                    "description": "依次执行多个节点的识别，按 logic 组合结果，并按 return 计算最终 ROI。"
+                },
+                "custom_recognition_param": {
+                    "type": "object",
+                    "properties": {
+                        "nodes": {
+                            "type": "array",
+                            "description": "参与识别的节点名列表，按顺序对应 $0、$1、$2…",
+                            "minItems": 1,
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "logic": {
+                            "$ref": "#/$defs/Logic"
+                        },
+                        "return": {
+                            "description": "ROI 计算方式：int[4] 直接返回固定坐标；string 为表达式，支持 $0、{NodeName}、UNION($0,$1)、INTERSECTION($0,$1)、OFFSET($0,dx,dy,dw,dh) 及嵌套",
+                            "oneOf": [
+                                {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "integer"
+                                    },
+                                    "minItems": 4,
+                                    "maxItems": 4
+                                },
+                                {
+                                    "type": "string",
+                                    "minLength": 1
+                                }
+                            ]
+                        }
+                    },
+                    "required": [
+                        "nodes",
+                        "return"
+                    ],
+                    "unevaluatedProperties": false
+                }
+            }
+        },
+        "Count": {
+            "allOf": [
+                {
+                    "$ref": "#/$defs/RequiredParam"
+                }
+            ],
+            "properties": {
+                "custom_recognition": {
+                    "const": "Count",
+                    "description": "对同一节点计数：未达 target 次时按内部 recognition 反复识别，达到后放行；task_id 变化时自动清零。"
+                },
+                "custom_recognition_param": {
+                    "type": "object",
+                    "properties": {
+                        "target": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "default": 9223372036854775807,
+                            "description": "目标次数，缺省为 sys.maxsize（相当于不限次）"
+                        },
+                        "recognition": {
+                            "type": "object",
+                            "description": "计数期间实际执行的识别参数，缺省为 {\"type\": \"DirectHit\"}",
+                            "properties": {
+                                "type": {
+                                    "type": "string"
+                                },
+                                "param": {
+                                    "type": "object"
+                                }
+                            },
+                            "required": [
+                                "type"
+                            ]
+                        }
+                    },
+                    "unevaluatedProperties": false
+                }
+            }
+        }
+    },
+    "allOf": [
+        {
+            "if": {
+                "required": [
+                    "custom_recognition"
+                ],
+                "properties": {
+                    "custom_recognition": {
+                        "const": "MultiRecognition"
+                    }
+                }
+            },
+            "then": {
+                "$ref": "#/$defs/MultiRecognition"
+            }
+        },
+        {
+            "if": {
+                "required": [
+                    "custom_recognition"
+                ],
+                "properties": {
+                    "custom_recognition": {
+                        "const": "Count"
+                    }
+                }
+            },
+            "then": {
+                "$ref": "#/$defs/Count"
+            }
+        }
+    ]
+}

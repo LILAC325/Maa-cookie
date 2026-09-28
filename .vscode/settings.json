@@ -1,0 +1,16 @@
+{
+    "Codegeex.CommitMessageStyle": "Auto",
+    "Codegeex.GenerationPreference": "automatic",
+    "Codegeex.CompletionDelay": 0.3,
+    "[json]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+    "[jsonc]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+    "editor.formatOnSave": true,
+    "files.associations": { "*.json": "jsonc", "*.jsonc": "jsonc" },
+    "files.eol": "\n",
+    "json.schemas": [
+        { "fileMatch": ["/assets/interface.json"], "url": "./tools/schema/interface.schema.json" },
+        { "fileMatch": ["/assets/config/*.json"], "url": "./tools/schema/interface_config.schema.json" },
+        { "fileMatch": ["/assets/resource/tasks/*.json"], "url": "./tools/schema/interface_import.schema.json" },
+        { "fileMatch": ["/assets/resource/pipeline/*.json"], "url": "./tools/schema/pipeline.schema.json" }
+    ]
+}

@@ -1,0 +1,410 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://github.com/LILAC325/Maa-cookie/tools/schema/custom.action.schema.json",
+    "title": "Maa-cookie Custom Action",
+    "description": "Maa-cookie 已注册的自定义动作（agent/custom/action/）及其 custom_action_param 参数约束。",
+    "type": "object",
+    "$defs": {
+        "RequiredParam": {
+            "description": "自定义动作必须提供 custom_action_param 或 custom_action_param_code 之一。",
+            "anyOf": [
+                {
+                    "required": [
+                        "custom_action_param"
+                    ]
+                },
+                {
+                    "required": [
+                        "custom_action_param_code"
+                    ]
+                }
+            ]
+        },
+        "DataOnlyAction": {
+            "description": "数据节点：只有 custom_action_param，没有 custom_action，用于存放其他 action 读取的数据。",
+            "properties": {
+                "custom_action": false,
+                "custom_action_param": {
+                    "type": "object"
+                }
+            },
+            "required": [
+                "custom_action_param"
+            ]
+        },
+        "Screenshot": {
+            "allOf": [
+                {
+                    "$ref": "#/$defs/RequiredParam"
+                }
+            ],
+            "properties": {
+                "custom_action": {
+                    "const": "Screenshot",
+                    "description": "保存当前屏幕截图到指定目录（同时校验分辨率是否为 16:9）。"
+                },
+                "custom_action_param": {
+                    "type": "object",
+                    "properties": {
+                        "save_dir": {
+                            "type": "string",
+                            "description": "截图保存目录，不存在会自动创建"
+                        }
+                    },
+                    "required": [
+                        "save_dir"
+                    ],
+                    "unevaluatedProperties": false
+                }
+            }
+        },
+        "DisableNode": {
+            "allOf": [
+                {
+                    "$ref": "#/$defs/RequiredParam"
+                }
+            ],
+            "properties": {
+                "custom_action": {
+                    "const": "DisableNode",
+                    "description": "将特定 node 设置为 disable 状态 。"
+                },
+                "custom_action_param": {
+                    "type": "object",
+                    "properties": {
+                        "node_name": {
+                            "type": "string",
+                            "description": "需要设置为 disable 状态的节点名称"
+                        }
+                    },
+                    "required": [
+                        "node_name"
+                    ],
+                    "unevaluatedProperties": false
+                }
+            }
+        },
+        "NodeOverride": {
+            "allOf": [
+                {
+                    "$ref": "#/$defs/RequiredParam"
+                }
+            ],
+            "properties": {
+                "custom_action": {
+                    "const": "NodeOverride",
+                    "description": "在 node 中执行 pipeline_override 。"
+                },
+                "custom_action_param": {
+                    "type": "object",
+                    "description": "以「节点名 -> 覆盖参数对象」为键值的覆盖表，键名不固定",
+                    "additionalProperties": {
+                        "type": "object"
+                    }
+                }
+            }
+        },
+        "ROISequentialClick": {
+            "allOf": [
+                {
+                    "$ref": "#/$defs/RequiredParam"
+                }
+            ],
+            "properties": {
+                "custom_action": {
+                    "const": "ROISequentialClick",
+                    "description": "按列表顺序轮转点击预设 ROI：每次调用只点一个，索引循环使用。"
+                },
+                "custom_action_param": {
+                    "type": "object",
+                    "properties": {
+                        "roi_list": {
+                            "type": "array",
+                            "description": "ROI 列表，元素为 [x, y, width, height]",
+                            "minItems": 1,
+                            "items": {
+                                "type": "array",
+                                "items": {
+                                    "type": "integer"
+                                },
+                                "minItems": 4,
+                                "maxItems": 4
+                            }
+                        },
+                        "click_center": {
+                            "type": "boolean",
+                            "default": true,
+                            "description": "true=点击 ROI 中心；false=点击 ROI 左上角"
+                        }
+                    },
+                    "required": [
+                        "roi_list"
+                    ],
+                    "unevaluatedProperties": false
+                }
+            }
+        },
+        "OnetConnect": {
+            "allOf": [
+                {
+                    "$ref": "#/$defs/RequiredParam"
+                }
+            ],
+            "properties": {
+                "custom_action": {
+                    "const": "OnetConnect",
+                    "description": "连连看（中秋配对游戏）自动解题。全部参数可省略，缺省值见 DEFAULTS。"
+                },
+                "custom_action_param": {
+                    "type": "object",
+                    "properties": {
+                        "auto_grid": {
+                            "type": "boolean",
+                            "default": true,
+                            "description": "true=自动标定网格；false=使用 origin/rows/cols"
+                        },
+                        "origin": {
+                            "type": "array",
+                            "description": "第 0 行第 0 列格子中心（auto_grid=false / 标定失败时兜底）",
+                            "items": {
+                                "type": "number"
+                            },
+                            "minItems": 2,
+                            "maxItems": 2
+                        },
+                        "step": {
+                            "type": "array",
+                            "description": "列 / 行方向步长",
+                            "items": {
+                                "type": "number"
+                            },
+                            "minItems": 2,
+                            "maxItems": 2
+                        },
+                        "rows": {
+                            "type": "integer"
+                        },
+                        "cols": {
+                            "type": "integer"
+                        },
+                        "search_radius": {
+                            "type": "integer",
+                            "description": "单格搜索窗半径（抗平移）"
+                        },
+                        "core_size": {
+                            "type": "integer",
+                            "description": "聚类核心区边长"
+                        },
+                        "cluster_threshold": {
+                            "type": "number",
+                            "description": "同类判定阈值"
+                        },
+                        "empty_threshold": {
+                            "type": "number",
+                            "description": "棋盘底色占比 > 该值为空格"
+                        },
+                        "block_threshold": {
+                            "type": "number",
+                            "description": "金属挡板占比 > 该值为障碍格"
+                        },
+                        "special_threshold": {
+                            "type": "number",
+                            "description": "金黄钟表卡底色占比 > 该值按普通牌参与配对"
+                        },
+                        "question_template": {
+                            "type": "string",
+                            "description": "问号块模板文件名"
+                        },
+                        "click_delay": {
+                            "type": "number",
+                            "description": "一对内两次点击的间隔（秒）"
+                        },
+                        "settle_delay": {
+                            "type": "number",
+                            "description": "消除动画等待（秒）"
+                        },
+                        "rescan_pairs": {
+                            "type": "integer",
+                            "description": "每消 N 对重新截图校正一次"
+                        },
+                        "max_rounds": {
+                            "type": "integer"
+                        },
+                        "max_prop_clicks": {
+                            "type": "integer",
+                            "description": "洗牌/提示道具最多点击次数"
+                        },
+                        "shuffle_button": {
+                            "type": [
+                                "array",
+                                "null"
+                            ],
+                            "description": "[x, y] 洗牌道具按钮，无则 null",
+                            "items": {
+                                "type": "integer"
+                            },
+                            "minItems": 2,
+                            "maxItems": 2
+                        },
+                        "hint_button": {
+                            "type": [
+                                "array",
+                                "null"
+                            ],
+                            "description": "[x, y] 提示道具按钮，无则 null",
+                            "items": {
+                                "type": "integer"
+                            },
+                            "minItems": 2,
+                            "maxItems": 2
+                        },
+                        "max_levels": {
+                            "type": "integer",
+                            "description": "关卡总数"
+                        },
+                        "level_roi": {
+                            "type": "array",
+                            "description": "右上角「关卡N」文字区域",
+                            "items": {
+                                "type": "integer"
+                            },
+                            "minItems": 4,
+                            "maxItems": 4
+                        },
+                        "remain_roi": {
+                            "type": "array",
+                            "description": "右上角「剩余牌数: N」文字区域",
+                            "items": {
+                                "type": "integer"
+                            },
+                            "minItems": 4,
+                            "maxItems": 4
+                        },
+                        "ocr_threshold": {
+                            "type": "number",
+                            "description": "OCR 置信度阈值"
+                        },
+                        "level_transition_delay": {
+                            "type": "number",
+                            "description": "清空一关后先停留的间隙（秒）"
+                        },
+                        "board_ready_timeout": {
+                            "type": "number",
+                            "description": "等待新关盘面落位（连续两轮签名一致）的超时（秒）"
+                        },
+                        "hud_lost_timeout": {
+                            "type": "number",
+                            "description": "关卡 HUD 双双消失超过此时长 = 本局结束（秒）"
+                        },
+                        "hud_lost_trust_rounds": {
+                            "type": "integer",
+                            "description": "剩余牌数读不到时，盘面连续稳定的轮数达到该值即视为仍在游戏中"
+                        },
+                        "wait_level_timeout": {
+                            "type": "number",
+                            "description": "等待下一关关卡号变化的超时（秒）"
+                        },
+                        "level_poll_interval": {
+                            "type": "number",
+                            "description": "轮询下一关的间隔（秒）"
+                        },
+                        "clear_confirm_rounds": {
+                            "type": "integer",
+                            "description": "「本关已清空」需连续确认的轮数，防过渡画面误判"
+                        },
+                        "max_stall": {
+                            "type": "integer",
+                            "description": "盘面连续无变化的最大轮数，超过判定死局"
+                        },
+                        "max_no_progress": {
+                            "type": "integer",
+                            "description": "连续无解且无可翻问号的轮数上限，超过则收尾重试"
+                        },
+                        "reveal_reset_interval": {
+                            "type": "integer",
+                            "description": "每 N 轮无进展重置翻开计数，允许重翻问号"
+                        }
+                    },
+                    "unevaluatedProperties": false
+                }
+            }
+        }
+    },
+    "allOf": [
+        {
+            "if": {
+                "required": [
+                    "custom_action"
+                ],
+                "properties": {
+                    "custom_action": {
+                        "const": "Screenshot"
+                    }
+                }
+            },
+            "then": {
+                "$ref": "#/$defs/Screenshot"
+            }
+        },
+        {
+            "if": {
+                "required": [
+                    "custom_action"
+                ],
+                "properties": {
+                    "custom_action": {
+                        "const": "DisableNode"
+                    }
+                }
+            },
+            "then": {
+                "$ref": "#/$defs/DisableNode"
+            }
+        },
+        {
+            "if": {
+                "required": [
+                    "custom_action"
+                ],
+                "properties": {
+                    "custom_action": {
+                        "const": "NodeOverride"
+                    }
+                }
+            },
+            "then": {
+                "$ref": "#/$defs/NodeOverride"
+            }
+        },
+        {
+            "if": {
+                "required": [
+                    "custom_action"
+                ],
+                "properties": {
+                    "custom_action": {
+                        "const": "ROISequentialClick"
+                    }
+                }
+            },
+            "then": {
+                "$ref": "#/$defs/ROISequentialClick"
+            }
+        },
+        {
+            "if": {
+                "required": [
+                    "custom_action"
+                ],
+                "properties": {
+                    "custom_action": {
+                        "const": "OnetConnect"
+                    }
+                }
+            },
+            "then": {
+                "$ref": "#/$defs/OnetConnect"
+            }
+        }
+    ]
+}

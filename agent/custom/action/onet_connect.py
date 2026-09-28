@@ -134,6 +134,8 @@ DEFAULTS: Dict[str, object] = {
     "level_poll_interval": 0.5,
     "clear_confirm_rounds": 3,
     "max_stall": 6,
+    "max_no_progress": 12,
+    "reveal_reset_interval": 4,
 }
 
 

@@ -57,6 +57,10 @@ def install_resource():
         working_dir / "assets" / "interface.json",
         install_path,
     )
+    shutil.copy2(
+        working_dir / "assets" / "icon.png",
+        install_path,
+    )
 
     with open(install_path / "interface.json", "r", encoding="utf-8") as f:
         interface = json.load(f)

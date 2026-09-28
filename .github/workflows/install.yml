@@ -124,12 +124,12 @@ jobs:
       - name: Convert PNG to ICO
         shell: bash
         run: |
-          if [ -f "assets/logo.png" ]; then
+          if [ -f "assets/icon.png" ]; then
             pip install pillow -q
-            python -c "from PIL import Image; img = Image.open('assets/logo.png'); img.save('logo.ico', sizes=[(256,256),(128,128),(64,64),(48,48),(32,32),(24,24),(16,16)])"
-            echo "ICO generated from assets/logo.png"
+            python -c "from PIL import Image; img = Image.open('assets/icon.png'); img.save('logo.ico', sizes=[(256,256),(128,128),(64,64),(48,48),(32,32),(24,24),(16,16)])"
+            echo "ICO generated from assets/icon.png"
           else
-            echo "assets/logo.png not found, skipping icon generation"
+            echo "assets/icon.png not found, skipping icon generation"
           fi
 
       - name: Replace MFAAvalonia exe icon

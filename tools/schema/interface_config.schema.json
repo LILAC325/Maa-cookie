@@ -1,0 +1,168 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "definitions": {
+        "welcome": {
+            "oneOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            ]
+        }
+    },
+    "properties": {
+        "controller": {
+            "title": "\u6fc0\u6d3b\u7684\u63a7\u5236\u5668",
+            "type": "object",
+            "properties": {
+                "name": {
+                    "title": "\u63a7\u5236\u5668\u540d",
+                    "type": "string"
+                },
+                "type": {
+                    "title": "\u63a7\u5236\u5668\u7c7b\u578b",
+                    "type": "string",
+                    "enum": [
+                        "Adb",
+                        "Win32",
+                        "PlayCover",
+                        "Linux"
+                    ]
+                }
+            }
+        },
+        "adb": {
+            "title": "ADB\u914d\u7f6e",
+            "type": "object",
+            "properties": {
+                "adb_path": {
+                    "title": "ADB\u8def\u5f84\u53c2\u6570",
+                    "type": "string"
+                },
+                "address": {
+                    "title": "ADB\u8fde\u63a5\u53c2\u6570",
+                    "type": "string"
+                },
+                "config": {
+                    "title": "\u989d\u5916\u914d\u7f6e\u53c2\u6570",
+                    "type": "object"
+                }
+            }
+        },
+        "win32": {
+            "title": "Win32\u914d\u7f6e",
+            "type": "object"
+        },
+        "playcover": {
+            "title": "PlayCover\u914d\u7f6e",
+            "type": "object",
+            "properties": {
+                "address": {
+                    "title": "\u670d\u52a1\u5730\u5740",
+                    "type": "string"
+                },
+                "uuid": {
+                    "title": "Bundle Identifier",
+                    "type": "string"
+                }
+            }
+        },
+        "linux": {
+            "title": "Linux\u914d\u7f6e",
+            "type": "object",
+            "properties": {
+                "wlr_socket_path": {
+                    "title": "Wayland Socket \u8def\u5f84",
+                    "type": "string"
+                },
+                "uinput_screen_width": {
+                    "title": "UInput \u5c4f\u5e55\u5bbd\u5ea6\uff08\u50cf\u7d20\uff09",
+                    "type": "integer"
+                },
+                "uinput_screen_height": {
+                    "title": "UInput \u5c4f\u5e55\u9ad8\u5ea6\uff08\u50cf\u7d20\uff09",
+                    "type": "integer"
+                },
+                "eis_socket_path": {
+                    "title": "EIS socket \u8def\u5f84",
+                    "type": "string"
+                }
+            }
+        },
+        "resource": {
+            "title": "\u6fc0\u6d3b\u7684\u8d44\u6e90",
+            "type": "string"
+        },
+        "task": {
+            "title": "\u6fc0\u6d3b\u7684\u4efb\u52a1",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "title": "\u4efb\u52a1\u540d",
+                        "type": "string"
+                    },
+                    "option": {
+                        "title": "\u4efb\u52a1\u9009\u9879",
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "title": "\u9009\u9879\u540d",
+                                    "type": "string"
+                                },
+                                "value": {
+                                    "title": "\u9009\u9879\u503c",
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "name",
+                                "value"
+                            ]
+                        }
+                    }
+                },
+                "required": [
+                    "name"
+                ]
+            }
+        },
+        "last_welcome": {
+            "title": "\u4e0a\u6b21\u663e\u793a\u7684\u516c\u544a\u58f0\u660e",
+            "oneOf": [
+                {
+                    "type": "null"
+                },
+                {
+                    "$ref": "#/definitions/welcome"
+                }
+            ]
+        },
+        "last_resolved_welcome": {
+            "title": "\u4e0a\u6b21\u663e\u793a\u7684\u516c\u544a\u5185\u5bb9",
+            "oneOf": [
+                {
+                    "type": "null"
+                },
+                {
+                    "$ref": "#/definitions/welcome"
+                }
+            ]
+        }
+    },
+    "required": [
+        "controller",
+        "resource",
+        "task"
+    ]
+}
