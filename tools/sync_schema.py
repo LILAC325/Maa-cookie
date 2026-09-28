@@ -7,6 +7,10 @@
 上游 ref 固定为 REF（与 requirements.txt 里的 maafw 版本保持一致），
 升级 maafw 时改这里一处，然后重跑本脚本即可。
 
+注意 REF 取的是**已发布到 PyPI 的 maafw 版本**对应的 tag：MaaFramework 有时
+会先打 GitHub tag 再滞后发布 PyPI wheel（如 v5.14.1 只有 tag、PyPI 最高 5.14.0），
+此时 REF 必须跟 PyPI 对齐，否则 CI 里 pip download 会直接失败。
+
 注意：custom.action.schema.json / custom.recognition.schema.json 是本项目
 自维护的，不由本脚本同步。
 """
@@ -18,7 +22,7 @@ import time
 import urllib.request
 from pathlib import Path
 
-REF = "v5.14.1"
+REF = "v5.14.0"
 BASE_URL = f"https://raw.githubusercontent.com/MaaXYZ/MaaFramework/{REF}/tools"
 TARGET_DIR = Path(__file__).parent / "schema"
 
