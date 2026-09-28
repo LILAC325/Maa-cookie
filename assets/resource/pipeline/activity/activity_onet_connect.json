@@ -1,0 +1,64 @@
+{
+    "check_onet_connect":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "expected" : "进入（0/9）",
+                "roi" : [1065, 628, 136, 51]
+            }
+        },
+        "action":{
+            "type":"Click",
+            "param":{
+                "target":[1065, 628, 136, 51]
+            }
+        },
+        "inverse":true,
+        "next":[
+            "onet_connect"
+        ],
+        "post_delay": 4000
+    },
+    "onet_connect":{
+        "recognition":{
+            "type":"DirectHit"
+        },
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action":"OnetConnect",
+                "custom_action_param":{
+                    "auto_grid":true,
+                    "step":[71.9, 85.3],
+                    "max_levels":3,
+                    "level_roi":[965, 8, 100, 46],
+                    "remain_roi":[1030, 40, 180, 46],
+                    "level_transition_delay":5.0,
+                    "question_template":"question.png",
+                    "shuffle_button":null,
+                    "hint_button":null
+                }
+            }
+        },
+        "next":[
+            "onet_connect_done"
+        ]
+    },
+    "onet_connect_done":{
+        "recognition":{
+            "type":"OCR",
+            "param":{
+                "roi" : [1132, 631, 81, 46],
+                "expected" : "离开"
+            }
+        },
+        "action":{
+            "type":"Click"
+        },
+        "next":[
+            "check_onet_connect",
+            "nothingtodo"
+        ],
+        "post_delay": 2000
+   }
+}

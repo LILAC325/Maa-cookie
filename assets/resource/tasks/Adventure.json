@@ -94,7 +94,7 @@
                         "实证战场选择"
                     ],
                     "pipeline_override": {
-                        "legendaryjam": {
+                        "legendaryjam_entry": {
                             "enabled": true
                         }
                     }
@@ -102,7 +102,7 @@
                 {
                     "name": "No",
                     "pipeline_override": {
-                        "legendaryjam": {
+                        "legendaryjam_entry": {
                             "enabled": false
                         }
                     }
@@ -116,6 +116,17 @@
             "icon":null,
             "default_case":"冰霜女王饼干",
             "cases": [
+                {
+                    "name":"月光饼干",
+                    "label":"月光饼干",
+                    "description":"启用月光饼干战场",
+                    "icon":null,
+                    "pipeline_override": {
+                        "legendaryjam_月光": {
+                            "enabled": true     
+                        }
+                    }
+                },
                 {
                     "name": "冰霜女王饼干",
                     "label":"冰霜女王饼干",
@@ -164,7 +175,7 @@
                         "今日悬赏选择"
                     ],
                     "pipeline_override": {
-                        "todayreward": {
+                        "todayreward_entry": {
                             "enabled": true
                         }
                     }
@@ -172,7 +183,7 @@
                 {
                     "name": "No",
                     "pipeline_override": {
-                        "todayreward": {
+                        "todayreward_entry": {
                             "enabled": false
                         }
                     }
@@ -268,7 +279,7 @@
                         "守护之战难度选择"
                     ],
                     "pipeline_override": {
-                        "protectbattle": {
+                        "protectbattle_entry": {
                             "enabled": true
                         }
                     }
@@ -276,7 +287,7 @@
                 {
                     "name": "No",
                     "pipeline_override": {
-                        "protectbattle": {
+                        "protectbattle_entry": {
                             "enabled": false
                         }
                     }
@@ -324,7 +335,7 @@
                 {
                     "name": "Yes",
                     "pipeline_override": {
-                        "archipelago": {
+                        "archipelago_entry": {
                             "enabled": true
                         }
                     }
@@ -332,7 +343,7 @@
                 {
                     "name": "No",
                     "pipeline_override": {
-                        "archipelago": {
+                        "archipelago_entry": {
                             "enabled": false
                         }
                     }

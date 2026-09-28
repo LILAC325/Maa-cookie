@@ -128,6 +128,7 @@
                 "target_offset":[681, -29, 35, 17]
             }
         },
+        "enabled":false,
         "next":[
             "legendaryjam_battle_page"
         ]
@@ -145,6 +146,7 @@
                 "target_offset" : [150, 0, 50, 0]
             }
         },
+        "enabled":false,    
         "next":[
             "legendaryjam_battle_page"
         ]

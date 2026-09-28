@@ -346,6 +346,7 @@
         },
         "next":[
             "[JumpBack]bottom_click",
+            "[JumpBack]comfirm",
             "nothingtodo"
         ],
         "post_delay":1000
