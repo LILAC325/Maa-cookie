@@ -1,2 +1,6 @@
 json-with-comments
 maafw==5.14.0
+Pillow
+loguru
+pytz
+opencv-python; platform_machine == "AMD64"

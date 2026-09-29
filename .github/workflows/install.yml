@@ -165,19 +165,16 @@ jobs:
             echo "MFA directory not found, skipping copy."
           fi
 
-      - name: Replace Assets with custom assets folder
+      - name: Apply custom app icon
         shell: bash
         run: |
-          # 删除大写的 Assets 文件夹
-          if [ -d "install/Assets" ]; then
-            rm -rf install/Assets
-            echo "Removed original Assets folder"
-          fi
-
-          # 复制自定义图标
+          # MFAAvalonia v2.0.0 的 IconHelper 只从 {exe目录}/Assets/logo.ico 读取
+          # 窗口/托盘图标，读不到时才回落到 exe 内置的默认图标。
+          # 所以必须把自定义图标写进 install/Assets/logo.ico，且不能删掉 Assets 目录。
+          mkdir -p install/Assets
           if [ -f "logo.ico" ]; then
-            cp logo.ico install/logo.ico
-            echo "Copied custom icon to install/logo.ico"
+            cp logo.ico install/Assets/logo.ico
+            echo "Copied custom icon to install/Assets/logo.ico"
           fi
 
       - uses: actions/upload-artifact@v7
