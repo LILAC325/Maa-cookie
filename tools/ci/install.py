@@ -68,6 +68,14 @@ def install_resource():
     interface["version"] = version
     interface["custom_title"] = f"Maa-cookie {version} | 饼干人王国小助手"
 
+    # 源码里的 contact / welcome / description 带 assets/ 前缀（开发态布局），
+    # 而安装包里资源根目录就是 resource/，没有 assets/ 这一层。
+    # 不改写的话「关于 / 帮助」这三处文档在包内会取不到。
+    for key in ("contact", "welcome", "description"):
+        value = interface.get(key)
+        if isinstance(value, str) and value.startswith("{PROJECT_DIR}/assets/"):
+            interface[key] = value.replace("{PROJECT_DIR}/assets/", "{PROJECT_DIR}/", 1)
+
     with open(install_path / "interface.json", "w", encoding="utf-8") as f:
         json.dump(interface, f, ensure_ascii=False, indent=4)
 

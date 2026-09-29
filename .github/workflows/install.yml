@@ -132,11 +132,45 @@ jobs:
             echo "assets/icon.png not found, skipping icon generation"
           fi
 
-      # 注意：不要用 rcedit 改 MFAAvalonia.exe 的图标。
-      # 历史上 MFAAvalonia v2.0.0 的 win-x64 exe 是 self-contained 单文件（托管程序集
-      # 全部内嵌在 exe 尾部，约 69MB），rcedit 重写 PE 会丢弃这段尾部 bundle，把 exe
-      # 砍成 ~190KB 的空 apphost，导致双击无任何反应。
-      # 图标统一由 interface.json 的 icon 字段 + install/Assets/logo.ico 提供。
+      - name: Replace MFAAvalonia exe icon
+        if: matrix.arch == 'x86_64'
+        shell: bash
+        run: |
+          EXE="MFA/MFAAvalonia.exe"
+          if [ ! -f "logo.ico" ] || [ ! -f "$EXE" ]; then
+            echo "Skipping icon replacement (logo.ico or MFAAvalonia.exe not found)"
+            exit 0
+          fi
+
+          size_before=$(stat -c %s "$EXE")
+
+          # rcedit 只能用在「普通 apphost」上。MFAAvalonia v2.0.0 的 win-x64 exe 曾是
+          # self-contained 单文件（约 69MB，托管程序集全部内嵌在 exe 尾部），rcedit 重写
+          # PE 会丢弃这段尾部 bundle，把 exe 砍成 ~190KB 的空 apphost，双击无任何反应。
+          # v2.16.2 是框架依赖构建（SelfContained=false / PublishSingleFile=false），exe
+          # 只有几百 KB，可安全改写。这里用体积做守卫，超过 5MB 一律跳过。
+          if [ "$size_before" -gt 5000000 ]; then
+            echo "MFAAvalonia.exe looks like a single-file bundle ($size_before bytes), skip rcedit"
+            exit 0
+          fi
+
+          curl -L https://github.com/electron/rcedit/releases/download/v2.0.0/rcedit-x64.exe -o rcedit.exe
+          ./rcedit.exe "$EXE" --set-icon "logo.ico"
+
+          size_after=$(stat -c %s "$EXE")
+          echo "MFAAvalonia.exe icon replaced: $size_before -> $size_after bytes"
+
+          # 兜底：万一 rcedit 把 exe 改坏了（体积骤减），直接让构建失败而不是产出坏包。
+          if [ "$size_after" -lt "$((size_before * 3 / 4))" ]; then
+            echo "::error::MFAAvalonia.exe shrank unexpectedly after rcedit ($size_before -> $size_after)"
+            exit 1
+          fi
+
+      # 说明：rcedit 只负责资源管理器/任务栏里 MFAAvalonia.exe 的「文件图标」。
+      # 运行时的窗口图标与托盘图标由 MFAAvalonia 自己读取：
+      #   1) interface.json 的 icon 字段（相对安装根目录，也就是包根的 icon.png）
+      #   2) {安装目录}/Assets/logo.ico
+      # 两者都由本工作流产出，见下方 Apply custom app icon 步骤。
 
       - name: Setup Embed Python on Windows
         shell: bash

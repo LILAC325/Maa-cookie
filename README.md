@@ -53,6 +53,12 @@
 
 > 首次运行会自动创建 Python 虚拟环境并安装依赖，请保持网络畅通。
 
+> [!IMPORTANT]
+> **需要 .NET 10 Desktop Runtime**
+> MFAAvalonia 官方发布包自某个版本起改为**非自包含构建**（v2.16.2 的 README 明确写「官方发布包默认为非自包含构建」），因此运行本程序需要 **.NET 10 Desktop Runtime**。
+> 若未安装，首次启动会失败。包内自带 `DependencySetup_依赖库安装_win.bat`，右键「以管理员身份运行」即可自动安装 VC++ Redist + .NET Desktop Runtime 10。
+> 已安装时可正常启动；不确定是否已安装的话，直接运行该 bat 也是安全的（重复安装会走 repair）。
+
 ### 手动构建
 
 如果你需要从源码构建：
