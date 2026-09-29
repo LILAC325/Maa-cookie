@@ -24,8 +24,8 @@ permissions:
   actions: write
 
 env:
-  MAA_FRAMEWORK_VERSION: "v5.3.0"
-  MFAA_VERSION: "v2.0.0"
+  MAA_FRAMEWORK_VERSION: "v5.14.0"
+  MFAA_VERSION: "v2.16.2"
 
 jobs:
   meta:
@@ -133,10 +133,10 @@ jobs:
           fi
 
       # 注意：不要用 rcedit 改 MFAAvalonia.exe 的图标。
-      # MFAAvalonia v2.0.0 起 win-x64 的 MFAAvalonia.exe 是 self-contained 单文件
-      # （约 69MB，托管程序集全部内嵌在 exe 尾部），rcedit 重写 PE 时会丢弃这段
-      # 尾部 bundle，把 exe 砍成 ~190KB 的空 apphost，导致双击无任何反应。
-      # 图标改由 interface.json 的 icon 字段 + install/logo.ico 提供。
+      # 历史上 MFAAvalonia v2.0.0 的 win-x64 exe 是 self-contained 单文件（托管程序集
+      # 全部内嵌在 exe 尾部，约 69MB），rcedit 重写 PE 会丢弃这段尾部 bundle，把 exe
+      # 砍成 ~190KB 的空 apphost，导致双击无任何反应。
+      # 图标统一由 interface.json 的 icon 字段 + install/Assets/logo.ico 提供。
 
       - name: Setup Embed Python on Windows
         shell: bash
@@ -168,9 +168,11 @@ jobs:
       - name: Apply custom app icon
         shell: bash
         run: |
-          # MFAAvalonia v2.0.0 的 IconHelper 只从 {exe目录}/Assets/logo.ico 读取
-          # 窗口/托盘图标，读不到时才回落到 exe 内置的默认图标。
-          # 所以必须把自定义图标写进 install/Assets/logo.ico，且不能删掉 Assets 目录。
+          # MFAAvalonia 读取窗口/托盘图标的顺序：
+          #   1) interface.json 的 icon 字段（相对安装根目录，也就是包根的 icon.png）
+          #   2) {安装目录}/Assets/logo.ico
+          #   3) exe 内置的默认图标
+          # 这里写入 Assets/logo.ico 作为兜底，且不能删掉 Assets 目录。
           mkdir -p install/Assets
           if [ -f "logo.ico" ]; then
             cp logo.ico install/Assets/logo.ico
