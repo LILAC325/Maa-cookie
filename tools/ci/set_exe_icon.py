@@ -358,6 +358,11 @@ def replace_icon(exe: Path, ico: Path) -> None:
 
 
 def main() -> int:
+    # GitHub Actions 的 Windows runner 控制台是 cp1252，直接 print 中文会抛
+    # UnicodeEncodeError（异常信息本身也带中文，连 traceback 都打不出来）。
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8", errors="replace")
     if len(sys.argv) != 3:
         print(__doc__.strip(), file=sys.stderr)
         return 2
