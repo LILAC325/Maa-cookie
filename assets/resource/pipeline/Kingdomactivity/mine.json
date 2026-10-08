@@ -128,6 +128,19 @@
         },
         "max_hit":1,
         "next":[
+            "mine_survey_load"
+        ],
+        "post_delay":1000
+    },
+    "mine_survey_load":{
+        "action":{
+            "type":"Custom",
+            "param":{
+                "custom_action":"MineSurveyLoad",
+                "custom_action_param":{}
+            }
+        },
+        "next":[
             "mine_survey_ready"
         ],
         "post_delay":1000
